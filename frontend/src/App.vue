@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-
+    <router-view></router-view>
   </div>
 </template>
 
@@ -27,7 +27,7 @@ body {
 }
 
 button:active {
-    transform: scale(0.95);
+  transform: scale(0.95);
 }
 
 .container {
