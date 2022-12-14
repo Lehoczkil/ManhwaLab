@@ -21,6 +21,7 @@ public class Comment {
     private String text;
     private String userId;
     private Timestamp commentedAt;
+    @Enumerated(EnumType.STRING)
     private CommentType commentType;
     private Long parentCommentId;
     private Integer likes;

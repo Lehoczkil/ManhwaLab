@@ -23,8 +23,10 @@ public class ManhwaProfile {
     private Long id;
     private String name;
     private String description;
+    @Enumerated(EnumType.STRING)
     private ComicType type;
     private Integer numberOfChapters;
+    @Enumerated(EnumType.STRING)
     private Status status;
     private Timestamp released;
     private Timestamp updated;

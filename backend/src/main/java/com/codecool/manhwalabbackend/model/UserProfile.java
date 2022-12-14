@@ -23,6 +23,7 @@ public class UserProfile {
     private String description;
     private Integer age;
     private String Password;
+    @Enumerated(EnumType.STRING)
     private Gender gender;
     private String location;
     private Timestamp lastOnline;
