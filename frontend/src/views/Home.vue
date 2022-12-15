@@ -1,6 +1,7 @@
 <template>
     <article>
-        <h1>ManhwaLab</h1>
+        <main></main>
+        <aside></aside>
     </article>
 </template>
 
