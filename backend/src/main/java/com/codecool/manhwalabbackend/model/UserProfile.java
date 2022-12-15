@@ -19,6 +19,7 @@ public class UserProfile {
     @Column(name = "id", nullable = false)
     private Long id;
     private String userName;
+    @Column(columnDefinition = "TEXT")
     private String description;
     private Integer age;
     private String Password;
