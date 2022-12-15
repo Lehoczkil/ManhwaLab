@@ -41,12 +41,15 @@ INSERT INTO manhwa_profile_theme_list (manhwa_profile_id, theme_List_id) VALUES 
 
 
 ---------------------------------------------------------------------------------------------
--- MANHWA PROFILE USER PROFILE LIST
-
-
----------------------------------------------------------------------------------------------
 -- USER PROFILE
 
+INSERT INTO user_profile (password, age, description, gender, joined, last_online, location, user_name) VALUES ('pw', 42, '', 'Male', current_timestamp, current_timestamp, 'Budapest', 'Béla');
 
 ---------------------------------------------------------------------------------------------
 -- COMMENT
+
+
+---------------------------------------------------------------------------------------------
+-- MANHWA PROFILE USER PROFILE LIST
+
+INSERT INTO manhwa_profile_user_profile (manhwa_profile_id, user_profile_id) VALUES (1, 1);
