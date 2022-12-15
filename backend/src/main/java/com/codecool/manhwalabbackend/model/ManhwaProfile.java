@@ -33,11 +33,11 @@ public class ManhwaProfile {
     private String author;
     private Integer views;
     private Integer favourite;
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     private List<UserProfile> userProfileID;
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     private List<Genre> genreList;
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     private List<Theme> themeList;
 //    image?
 }
