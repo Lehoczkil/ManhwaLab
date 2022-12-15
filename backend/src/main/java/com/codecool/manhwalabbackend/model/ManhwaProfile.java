@@ -21,6 +21,7 @@ public class ManhwaProfile {
     @Column(name = "id", nullable = false)
     private Long id;
     private String name;
+    @Column(columnDefinition = "TEXT")
     private String description;
     @Enumerated(EnumType.STRING)
     private ComicType type;
