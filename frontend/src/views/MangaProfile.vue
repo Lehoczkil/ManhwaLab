@@ -125,7 +125,10 @@
                 <input type="text" class="name">
             </div>
             <div class="comment-container">
-                
+                <Comment />
+                <Comment />
+                <Comment />
+                <Comment />
             </div>
         </section>
         <section class="recommendations"></section>
@@ -133,7 +136,11 @@
 </template>
 
 <script>
+import Comment from '../components/Comment'
 export default {
-    name: 'MangaProfile'
+    name: 'MangaProfile',
+    components: {
+        Comment
+    }
 }
 </script>
