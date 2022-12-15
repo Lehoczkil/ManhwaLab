@@ -24,7 +24,7 @@ public class ManhwaProfileController {
     @GetMapping(value = "/{manhwaName}")
     public ManhwaProfile getManhwa(@PathVariable String manhwaName){
         manhwaName = "Murim Login";
-        return manhwaProfileService.getManhwaProfileByName("Murim Login");
+        return manhwaProfileService.getManhwaProfileByName(manhwaName);
     }
 
     @GetMapping(value = "/{manhwaName}/views")
@@ -34,7 +34,8 @@ public class ManhwaProfileController {
 
     @GetMapping(value = "/{manhwaName}/genres")
     public List<String> getManhwaGenres(@PathVariable String manhwaName){
-        return null;
+        manhwaName = "Murim Login";
+        return manhwaProfileService.getManhwaGenres(manhwaProfileService.getManhwaProfileByName(manhwaName).getId().intValue());
     }
 
     @GetMapping(value = "/{manhwaName}/themes")
@@ -44,7 +45,8 @@ public class ManhwaProfileController {
 
     @GetMapping(value = "/{manhwaName}/rating")
     public Float getMnahwaRating(@PathVariable String manhwaName){
-        return null;
+        manhwaName = "Murim Login";
+        return manhwaProfileService.getManhwaRating(manhwaName);
     }
 
 }

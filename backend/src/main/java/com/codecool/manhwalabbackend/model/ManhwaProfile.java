@@ -40,5 +40,7 @@ public class ManhwaProfile {
     @ManyToMany(cascade = CascadeType.ALL)
     private List<Theme> themeList;
     private Float rating;
+    private Integer RatingRanking;
+    private Integer popularityRanking;
 //    image?
 }
