@@ -33,4 +33,9 @@ public class ManhwaProfileController {
         return null;
     }
 
+    @GetMapping(value = "/{manhwaName}/rating")
+    public Float getMnahwaRating(@PathVariable String manhwaName){
+        return null;
+    }
+
 }
