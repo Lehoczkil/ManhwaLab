@@ -12,8 +12,7 @@ import javax.persistence.*;
 @Builder
 public class Genre {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "GenreID")
-    @SequenceGenerator(name = "GenreID", sequenceName = "GenreID", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
     private String name;

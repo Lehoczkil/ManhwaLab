@@ -17,8 +17,7 @@ import java.util.List;
 @Builder
 public class ManhwaProfile {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ManhwaID")
-    @SequenceGenerator(name = "ManhwaID", sequenceName = "ManhwaID", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
     private String name;
