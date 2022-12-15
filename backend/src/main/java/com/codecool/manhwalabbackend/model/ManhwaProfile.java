@@ -17,11 +17,11 @@ import java.util.List;
 @Builder
 public class ManhwaProfile {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ManhwaID")
-    @SequenceGenerator(name = "ManhwaID", sequenceName = "ManhwaID", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
     private String name;
+    @Column(columnDefinition = "TEXT")
     private String description;
     @Enumerated(EnumType.STRING)
     private ComicType type;
@@ -33,11 +33,12 @@ public class ManhwaProfile {
     private String author;
     private Integer views;
     private Integer favourite;
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     private List<UserProfile> userProfileID;
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     private List<Genre> genreList;
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     private List<Theme> themeList;
+    private Float rating;
 //    image?
 }

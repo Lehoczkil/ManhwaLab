@@ -14,8 +14,7 @@ import java.sql.Timestamp;
 @Builder
 public class Comment {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CommentID")
-    @SequenceGenerator(name = "CommentID", sequenceName = "CommentID", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
     private String text;
