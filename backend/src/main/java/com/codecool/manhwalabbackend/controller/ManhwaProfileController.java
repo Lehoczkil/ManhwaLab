@@ -34,7 +34,8 @@ public class ManhwaProfileController {
 
     @GetMapping(value = "/{manhwaName}/genres")
     public List<String> getManhwaGenres(@PathVariable String manhwaName){
-        return null;
+        manhwaName = "Murim Login";
+        return manhwaProfileService.getManhwaGenres(manhwaProfileService.getManhwaProfileByName(manhwaName).getId().intValue());
     }
 
     @GetMapping(value = "/{manhwaName}/themes")
