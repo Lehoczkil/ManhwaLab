@@ -34,7 +34,7 @@ public class ManhwaProfile {
     private Integer views;
     private Integer favourite;
     @ManyToMany(cascade = CascadeType.ALL)
-    private List<UserProfile> userProfileID;
+    private List<UserProfile> userProfile;
     @ManyToMany(cascade = CascadeType.ALL)
     private List<Genre> genreList;
     @ManyToMany(cascade = CascadeType.ALL)
