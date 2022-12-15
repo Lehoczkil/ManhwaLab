@@ -39,5 +39,6 @@ public class ManhwaProfile {
     private List<Genre> genreList;
     @ManyToMany(cascade = CascadeType.ALL)
     private List<Theme> themeList;
+    private Float rating;
 //    image?
 }
