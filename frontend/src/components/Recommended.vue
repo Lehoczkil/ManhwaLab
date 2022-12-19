@@ -16,7 +16,7 @@
         background: purple;
         margin-inline: 2vw;
         width: 50vw;
-        margin: auto;
+        margin:2vh auto;
     }
     .shows {
         display: flex;
