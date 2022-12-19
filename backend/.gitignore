@@ -31,3 +31,12 @@ build/
 
 ### VS Code ###
 .vscode/
+
+
+### Custom ###
+myStart.sh
+mvnw
+mvnw.cmd
+MANIFEST.MF
+maven-wrapper.properties
+maven-wrapper.jar
