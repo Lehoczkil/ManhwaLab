@@ -26,11 +26,52 @@
             </div>
         </section>
         <section class="shows">
-            <Recommended/>
-            <Recommended/>
+            <Recommended />
+            <Recommended />
         </section>
     </article>
 </template>
+
+<style>
+article {
+    padding: 1vw;
+    background: yellow;;
+}
+.profile-pic {
+    height: clamp(400px, 48vh, 2000px);
+    width: clamp(288px, 34vh, 1440px);
+    background: black;
+}
+
+.profile {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5vh;
+    background: grey
+}
+.content {
+    width: 78vw;
+    padding: 2vw 2vw 2vw 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: red;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    background: white;
+}
+.description {
+    text-align: justify;
+    background: white;
+}
+
+.shows {
+    background: grey;
+}
+</style>
 
 <script>
 import Recommended from '../components/Recommended'
