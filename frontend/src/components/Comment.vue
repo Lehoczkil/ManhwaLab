@@ -42,7 +42,7 @@
     </div>
 </template>
 
-<style>
+<style scoped>
 .name-container {
     display: flex;
     justify-content: space-between;
