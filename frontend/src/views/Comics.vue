@@ -1,0 +1,194 @@
+<template>
+    <article>
+        <section class="controls">
+            <div class="row">
+
+                <details class="custom-select">
+                    <summary class="radios">
+                        <input type="radio" name="item" id="default" title="Auswählen..." checked>
+                        <input type="radio" name="item" id="item1" title="Item 1">
+                        <input type="radio" name="item" id="item2" title="Item 2">
+                        <input type="radio" name="item" id="item3" title="Item 3">
+                        <input type="radio" name="item" id="item4" title="Item 4">
+                        <input type="radio" name="item" id="item5" title="Item 5">
+                    </summary>
+                    <ul class="list">
+                        <li>
+                            <label for="item1">
+                                Item 1
+                                <span></span>
+                            </label>
+                        </li>
+                        <li>
+                            <label for="item2">Item 2</label>
+                        </li>
+                        <li>
+                            <label for="item3">Item 3</label>
+                        </li>
+                        <li>
+                            <label for="item4">Item 4</label>
+                        </li>
+                        <li>
+                            <label for="item5">Item 5</label>
+                        </li>
+                    </ul>
+                </details>
+            </div>
+        </section>
+    </article>
+</template>
+
+<style scoped>
+html * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #262626;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: sans-serif;
+    padding: 5rem;
+}
+
+details {
+    position: relative;
+    width: 300px;
+    margin-right: 1rem;
+}
+
+details[open] {
+    z-index: 1;
+}
+
+summary {
+    padding: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: #ddd;
+    list-style: none;
+}
+
+summary::-webkit-details-marker {
+    display: none;
+}
+
+details[open] summary:before {
+    content: '';
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    background: transparent;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+summary:after {
+    content: '';
+    float: right;
+    width: .5rem;
+    height: .5rem;
+    border-bottom: 1px solid currentColor;
+    border-left: 1px solid currentColor;
+    border-bottom-left-radius: 2px;
+    transform: rotate(45deg) translate(50%, 0%);
+    transform-origin: center center;
+    transition: transform ease-in-out 100ms
+}
+
+summary:focus {
+    outline: none;
+}
+
+details[open] summary:after {
+    transform: rotate(-45deg) translate(0%, 0%);
+}
+
+ul {
+    width: 100%;
+    background: #ddd;
+    position: absolute;
+    top: calc(100% + .5rem);
+    left: 0;
+    padding: 1rem;
+    margin: 0;
+    box-sizing: border-box;
+    border-radius: 5px;
+    max-height: 200px;
+    overflow-y: auto;
+    list-style: none;
+}
+
+li {
+    margin: 0;
+    padding: 1rem 0;
+    border-bottom: 1px solid #ccc;
+}
+
+li:first-child {
+    padding-top: 0;
+}
+
+li:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+/* FAKE SELECT */
+
+summary.radios {
+    counter-reset: radios;
+}
+
+summary.radios:before {
+    content: var(--selection);
+}
+
+input[type=radio] {
+    counter-increment: radios;
+    appearance: none;
+    display: none;
+}
+
+input[type=radio]:checked {
+    display: inline;
+    --display: block;
+}
+
+input[type=radio]:after {
+    content: attr(title);
+    display: inline;
+    font-size: 1rem;
+}
+
+ul.list {
+    counter-reset: labels;
+}
+
+label {
+    width: 100%;
+    display: flex;
+    cursor: pointer;
+    justify-content: space-between;
+}
+
+label span {
+    --display: none;
+    display: var(--display);
+    width: 1rem;
+    height: 1rem;
+    border: 1px solid #727272;
+    border-radius: 3px;
+}
+</style>
+
+<script>
+export default {
+    name: 'Comics'
+}
+</script>
