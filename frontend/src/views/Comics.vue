@@ -14,6 +14,7 @@
                 <button type="submit">Go</button>  
             </div>
         </section>
+        <List />
     </article>
 </template>
 
@@ -47,7 +48,7 @@
     padding-inline: 1vw;
     padding-block: 0.5vh;
     border: none;
-    border-radius: clamp(2px, 0.5vh, 15px) 0 0 clamp(2px, 0.5vh, 15px);
+    border-radius: clamp(2px, 1.5vh, 40px) 0 0 clamp(2px, 1.5vh, 40px);
     transition: all 0.3s;
 }
 
@@ -67,7 +68,7 @@
     height: 6vh;
     width: 10vw;
     border: none;
-    border-radius: 0 clamp(2px, 0.5vh, 15px) clamp(2px, 0.5vh, 15px) 0;
+    border-radius: 0 clamp(2px, 1.5vh, 40px) clamp(2px, 1.5vh, 40px) 0;
     padding-inline: 1.5vw;
     padding-block: 0.5vh;
     transition: all 0.3s;
@@ -83,11 +84,13 @@
 
 <script>
 import Select from '../components/Select'
+import List from '../components/List'
 
 export default {
     name: 'Comics',
     components: {
-        Select
+        Select,
+        List
     }
 }
 </script>
