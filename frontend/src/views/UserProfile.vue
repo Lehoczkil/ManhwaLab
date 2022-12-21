@@ -32,7 +32,7 @@
     </article>
 </template>
 
-<style>
+<style scoped>
 article {
     padding: 1vw;
     background: yellow;;
