@@ -3,6 +3,7 @@ import Home from "../views/Home";
 import MangaProfile from "../views/MangaProfile";
 import UserProfile from "../views/UserProfile";
 import Comics from "../views/Comics";
+import Recommendations from "../views/Recommendations";
 
 const routes = [
   {
@@ -24,6 +25,11 @@ const routes = [
     path: "/comics",
     name: "Comics",
     component: Comics,
+  },
+  {
+    path: "/recommendations",
+    name: "Recommendations",
+    component: Recommendations,
   },
 ];
 
