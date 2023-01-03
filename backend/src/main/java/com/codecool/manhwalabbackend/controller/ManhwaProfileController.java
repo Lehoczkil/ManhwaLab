@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/manhwa")
+@RequestMapping("/api/manhwaLab")
 public class ManhwaProfileController {
 
     ManhwaProfileService manhwaProfileService;
