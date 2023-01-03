@@ -10,11 +10,11 @@ import java.util.List;
 @Repository
 public interface ManhwaProfileRepository extends JpaRepository<ManhwaProfile, Long> {
 
-    ManhwaProfile getManhwaProfileByName(String name);
+    ManhwaProfile getManhwaProfileByTitle(String title);
 
     @Query(value = "SELECT rating FROM manhwa_profile " +
-            "WHERE manhwa_profile.name LIKE ?1", nativeQuery = true)
-    Float getManhwaProfileRatingByName(String name);
+            "WHERE manhwa_profile.title LIKE ?1", nativeQuery = true)
+    Float getManhwaProfileRatingByTitle(String title);
 
 
 }

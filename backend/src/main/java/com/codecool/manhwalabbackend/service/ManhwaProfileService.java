@@ -17,12 +17,12 @@ public class ManhwaProfileService {
         this.manhwaProfileRepository = manhwaProfileRepository;
     }
 
-    public ManhwaProfile getManhwaProfileByName(String name){
-        return manhwaProfileRepository.getManhwaProfileByName(name);
+    public ManhwaProfile getManhwaProfileByName(String title){
+        return manhwaProfileRepository.getManhwaProfileByTitle(title);
     }
 
-    public Float getManhwaRating(String name){
-        return manhwaProfileRepository.getManhwaProfileRatingByName(name);
+    public Float getManhwaRating(String title){
+        return manhwaProfileRepository.getManhwaProfileRatingByTitle(title);
     }
 
 }
