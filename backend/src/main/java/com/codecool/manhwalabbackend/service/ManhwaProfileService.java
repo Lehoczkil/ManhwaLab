@@ -25,5 +25,9 @@ public class ManhwaProfileService {
         return manhwaProfileRepository.getManhwaProfileRatingByTitle(title);
     }
 
+    public List<ManhwaProfile> getAllManhwa(){
+        return manhwaProfileRepository.findAll();
+    }
+
 }
 
