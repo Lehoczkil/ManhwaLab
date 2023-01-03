@@ -25,8 +25,5 @@ public class ManhwaProfileService {
         return manhwaProfileRepository.getManhwaProfileRatingByName(name);
     }
 
-    public List<String> getManhwaGenres(int manhwaId){
-        return manhwaProfileRepository.getManhwaGenres(manhwaId);
-    }
 }
 
