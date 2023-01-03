@@ -1,20 +1,35 @@
 ---------------------------------------------------------------------------------------------
 -- GENRE
 
-INSERT INTO genre (name) VALUES ('Action');
-INSERT INTO genre (name) VALUES ('Fantasy');
-INSERT INTO genre (name) VALUES ('Martial Arts');
-INSERT INTO genre (name) VALUES ('Comedy');
-INSERT INTO genre (name) VALUES ('Adventure');
-INSERT INTO genre (name) VALUES ('Seinen');
+INSERT INTO genre (name) VALUES ('Action');--1
+INSERT INTO genre (name) VALUES ('Fantasy');--2
+INSERT INTO genre (name) VALUES ('Comedy');--3
+INSERT INTO genre (name) VALUES ('Adventure');--4
+INSERT INTO genre (name) VALUES ('Seinen');--5
+INSERT INTO genre (name) VALUES ('Shounen');--6
+
+
 
 ---------------------------------------------------------------------------------------------
 -- THEME
 
-INSERT INTO theme (name) VALUES ('System');
-INSERT INTO theme (name) VALUES ('Academy');
-INSERT INTO theme (name) VALUES ('Reincarnation');
-INSERT INTO theme (name) VALUES ('Overpowered');
+INSERT INTO theme (name) VALUES ('System'); --1
+INSERT INTO theme (name) VALUES ('Academy'); --2
+INSERT INTO theme (name) VALUES ('Reincarnation'); --3
+INSERT INTO theme (name) VALUES ('Overpowered'); --4
+INSERT INTO theme (name) VALUES ('Martial Arts');--5
+INSERT INTO theme (name) VALUES ('Hero');--6
+INSERT INTO theme (name) VALUES ('Return');--7
+INSERT INTO theme (name) VALUES ('Wuxia');--8
+INSERT INTO theme (name) VALUES ('Virtual Reality');--9
+INSERT INTO theme (name) VALUES ('Game');--10
+INSERT INTO theme (name) VALUES ('Dungeons');--10
+
+
+
+
+
+
 
 ---------------------------------------------------------------------------------------------
 -- MANHWA PROFILE
@@ -96,14 +111,88 @@ INSERT INTO manhwa_profile_genre_list (manhwa_profile_id, genre_List_id) VALUES 
 INSERT INTO manhwa_profile_genre_list (manhwa_profile_id, genre_List_id) VALUES ( 1, 2);
 INSERT INTO manhwa_profile_genre_list (manhwa_profile_id, genre_List_id) VALUES ( 1, 3);
 INSERT INTO manhwa_profile_genre_list (manhwa_profile_id, genre_List_id) VALUES ( 1, 4);
+INSERT INTO manhwa_profile_genre_list (manhwa_profile_id, genre_List_id) VALUES ( 1, 5);
+
+INSERT INTO manhwa_profile_genre_list (manhwa_profile_id, genre_List_id) VALUES ( 2, 1);
+INSERT INTO manhwa_profile_genre_list (manhwa_profile_id, genre_List_id) VALUES ( 2, 2);
+INSERT INTO manhwa_profile_genre_list (manhwa_profile_id, genre_List_id) VALUES ( 2, 3);
+INSERT INTO manhwa_profile_genre_list (manhwa_profile_id, genre_List_id) VALUES ( 2, 4);
+
+INSERT INTO manhwa_profile_genre_list (manhwa_profile_id, genre_List_id) VALUES ( 3, 1);
+INSERT INTO manhwa_profile_genre_list (manhwa_profile_id, genre_List_id) VALUES ( 3, 2);
+
+INSERT INTO manhwa_profile_genre_list (manhwa_profile_id, genre_List_id) VALUES ( 4, 1);
+INSERT INTO manhwa_profile_genre_list (manhwa_profile_id, genre_List_id) VALUES ( 4, 2);
+INSERT INTO manhwa_profile_genre_list (manhwa_profile_id, genre_List_id) VALUES ( 4, 6);
+
+INSERT INTO manhwa_profile_genre_list (manhwa_profile_id, genre_List_id) VALUES ( 5, 1);
+INSERT INTO manhwa_profile_genre_list (manhwa_profile_id, genre_List_id) VALUES ( 5, 2);
+
+INSERT INTO manhwa_profile_genre_list (manhwa_profile_id, genre_List_id) VALUES ( 6, 1);
+INSERT INTO manhwa_profile_genre_list (manhwa_profile_id, genre_List_id) VALUES ( 6, 2);
+INSERT INTO manhwa_profile_genre_list (manhwa_profile_id, genre_List_id) VALUES ( 6, 3);
+INSERT INTO manhwa_profile_genre_list (manhwa_profile_id, genre_List_id) VALUES ( 6, 4);
+
+
+INSERT INTO manhwa_profile_genre_list (manhwa_profile_id, genre_List_id) VALUES ( 7, 1);
+INSERT INTO manhwa_profile_genre_list (manhwa_profile_id, genre_List_id) VALUES ( 7, 2);
+INSERT INTO manhwa_profile_genre_list (manhwa_profile_id, genre_List_id) VALUES ( 7, 6);
+
+
+INSERT INTO manhwa_profile_genre_list (manhwa_profile_id, genre_List_id) VALUES ( 8, 1);
+INSERT INTO manhwa_profile_genre_list (manhwa_profile_id, genre_List_id) VALUES ( 8, 2);
+INSERT INTO manhwa_profile_genre_list (manhwa_profile_id, genre_List_id) VALUES ( 8, 4);
+
+
+INSERT INTO manhwa_profile_genre_list (manhwa_profile_id, genre_List_id) VALUES ( 9, 1);
+INSERT INTO manhwa_profile_genre_list (manhwa_profile_id, genre_List_id) VALUES ( 9, 2);
+INSERT INTO manhwa_profile_genre_list (manhwa_profile_id, genre_List_id) VALUES ( 9, 4);
+INSERT INTO manhwa_profile_genre_list (manhwa_profile_id, genre_List_id) VALUES ( 9, 6);
+
+
+INSERT INTO manhwa_profile_genre_list (manhwa_profile_id, genre_List_id) VALUES ( 10, 1);
+INSERT INTO manhwa_profile_genre_list (manhwa_profile_id, genre_List_id) VALUES ( 10, 2);
+INSERT INTO manhwa_profile_genre_list (manhwa_profile_id, genre_List_id) VALUES ( 10, 4);
+INSERT INTO manhwa_profile_genre_list (manhwa_profile_id, genre_List_id) VALUES ( 10, 6);
+
 
 
 ---------------------------------------------------------------------------------------------
 -- MANHWA PROFILE THEME LIST
 
 INSERT INTO manhwa_profile_theme_list (manhwa_profile_id, theme_List_id) VALUES ( 1, 1);
-INSERT INTO manhwa_profile_theme_list (manhwa_profile_id, theme_List_id) VALUES ( 1, 3);
-INSERT INTO manhwa_profile_theme_list (manhwa_profile_id, theme_List_id) VALUES ( 1, 4);
+INSERT INTO manhwa_profile_theme_list (manhwa_profile_id, theme_List_id) VALUES ( 1, 5);
+
+INSERT INTO manhwa_profile_theme_list (manhwa_profile_id, theme_List_id) VALUES ( 2, 1);
+INSERT INTO manhwa_profile_theme_list (manhwa_profile_id, theme_List_id) VALUES ( 2, 10);
+
+INSERT INTO manhwa_profile_theme_list (manhwa_profile_id, theme_List_id) VALUES ( 3, 7);
+INSERT INTO manhwa_profile_theme_list (manhwa_profile_id, theme_List_id) VALUES ( 3, 9);
+INSERT INTO manhwa_profile_theme_list (manhwa_profile_id, theme_List_id) VALUES ( 3, 10);
+
+INSERT INTO manhwa_profile_theme_list (manhwa_profile_id, theme_List_id) VALUES ( 4, 4);
+INSERT INTO manhwa_profile_theme_list (manhwa_profile_id, theme_List_id) VALUES ( 4, 7);
+
+INSERT INTO manhwa_profile_theme_list (manhwa_profile_id, theme_List_id) VALUES ( 5, 3);
+INSERT INTO manhwa_profile_theme_list (manhwa_profile_id, theme_List_id) VALUES ( 5, 6);
+
+
+INSERT INTO manhwa_profile_theme_list (manhwa_profile_id, theme_List_id) VALUES ( 6, 11);
+
+INSERT INTO manhwa_profile_theme_list (manhwa_profile_id, theme_List_id) VALUES ( 7, 5);
+INSERT INTO manhwa_profile_theme_list (manhwa_profile_id, theme_List_id) VALUES ( 7, 8);
+
+INSERT INTO manhwa_profile_theme_list (manhwa_profile_id, theme_List_id) VALUES ( 8, 3);
+INSERT INTO manhwa_profile_theme_list (manhwa_profile_id, theme_List_id) VALUES ( 8, 5);
+
+
+INSERT INTO manhwa_profile_theme_list (manhwa_profile_id, theme_List_id) VALUES ( 9, 3);
+
+INSERT INTO manhwa_profile_theme_list (manhwa_profile_id, theme_List_id) VALUES ( 10, 2);
+INSERT INTO manhwa_profile_theme_list (manhwa_profile_id, theme_List_id) VALUES ( 10, 4);
+INSERT INTO manhwa_profile_theme_list (manhwa_profile_id, theme_List_id) VALUES ( 10, 5);
+INSERT INTO manhwa_profile_theme_list (manhwa_profile_id, theme_List_id) VALUES ( 10, 10);
+
 
 
 ---------------------------------------------------------------------------------------------
