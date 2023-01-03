@@ -20,7 +20,7 @@ public class ManhwaProfile {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
-    private String name;
+    private String title;
     @Column(columnDefinition = "TEXT")
     private String description;
     @Enumerated(EnumType.STRING)
@@ -40,7 +40,7 @@ public class ManhwaProfile {
     @ManyToMany(cascade = CascadeType.ALL)
     private List<Theme> themeList;
     private Float rating;
-    private Integer RatingRanking;
+    private Integer ratingRanking;
     private Integer popularityRanking;
-//    image?
+    private String coverPageLink;
 }
