@@ -20,7 +20,6 @@ public class ManhwaProfileController {
 
     @GetMapping(value = "/{manhwaName}")
     public ManhwaProfile getManhwa(@PathVariable String manhwaName){
-        manhwaName = "Murim Login";
         return manhwaProfileService.getManhwaProfileByName(manhwaName);
     }
 
