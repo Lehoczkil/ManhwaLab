@@ -46,9 +46,4 @@ public class ManhwaProfileController {
         return manhwaProfileService.getManhwaRating(manhwaName);
     }
 
-    @GetMapping(value = "/manhwaList")
-    public List<ManhwaProfile> getAllManhwa(){
-        return manhwaProfileService.getAllManhwa();
-    }
-
 }
