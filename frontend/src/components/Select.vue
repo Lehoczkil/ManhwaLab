@@ -1,92 +1,52 @@
 <template>
-    <nav>
-        <label for="touch"><span>titre</span></label>
-        <input type="checkbox" id="touch">
-        <ul class="slide">
-            <li><a href="#">Lorem Ipsum</a></li>
-            <li><a href="#">Lorem Ipsum</a></li>
-            <li><a href="#">Lorem Ipsum</a></li>
-            <li><a href="#">Lorem Ipsum</a></li>
-            <li><a href="#">Lorem Ipsum</a></li>
-            <li><a href="#">Lorem Ipsum</a></li>
-            <li><a href="#">Lorem Ipsum</a></li>
-            <li><a href="#">Lorem Ipsum</a></li>
-            <li><a href="#">Lorem Ipsum</a></li>
-            <li><a href="#">Lorem Ipsum</a></li>
-        </ul>
-    </nav>
+    <select>
+        <option value="">{{ title }}</option>
+        <option value="Item1">Item1</option>
+        <option value="Item1">Item2</option>
+        <option value="Item1">Item3</option>
+        <option value="Item1">Item4</option>
+        <option value="Item1">Item5</option>
+        <option value="Item1">Item6</option>
+    </select>
 </template>
 
 <style scoped>
-li a {
-    text-decoration: none;
-    color: #2d2f31;
+select {
+    height: 6vh;
+    width: clamp(70px, 20vw, 450px);
+    background: #353434;
+    border-radius: clamp(2px, 1.5vh, 40px);
+    padding-inline: 1.5vw;
+    transition: all 0.3s;
+    border: none;
+    font-weight: 400;
+    font-size: 16px;
+    color: #9ba7bf;
+    outline: none;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
 }
 
-nav {
-    width: 23vw;
-    background: #d9d9d9;
-    border-radius:  3.8vh;
-}
-
-span {
-    padding: 1.5vh 1.5vw;
-    background: #2d2f31;
+select::after {
+    content: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0nMTInIGhlaWdodD0nOScgdmlld0JveD0nMCAwIDEyIDknIGZpbGw9J25vbmUnIHhtbG5zPSdodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2Zyc+PHBhdGggZD0nTTEuNDEgMC42MTQyNThMNiA1LjE5NDI2TDEwLjU5IDAuNjE0MjU4TDEyIDIuMDI0MjZMNiA4LjAyNDI2TDAgMi4wMjQyNkwxLjQxIDAuNjE0MjU4WicgZmlsbD0nIzlCQTdCRicvPjwvc3ZnPg==);
+    font: 17px Consolas, monospace;
+    right: 20px;
     color: white;
-    font-size: clamp(17px, 1vw, 100px);
-    cursor: pointer;
-    display: block;
-    border-radius: 50vw;
-    min-height: 6vh;
-    margin: auto;
-
-}
-
-li:hover {
-    background: lightgreen;
-    z-index: 0;
-}
-
-span::after {
-    float: right;
-    content: "+";
-}
-
-.slide {
-    clear: both;
-    width: 100%;
-    border-radius:  3vh 3vh 0vh 0vh;
-    max-height: 0;
-    overflow: hidden;
-    text-align: center;
-    transition: max-height .3s ease-out;
-}
-
-.slide li {
-    padding: 1.5vw;
-    transition: all .3s;
-}
-
-#touch {
+    top: 26px;
+    transform: translateY(-50%);
+    padding: 0 0 0 20px;
+    background: #353434;
     position: absolute;
-    opacity: 0;
-    height: 0px;
-}
-
-#touch:checked+.slide {
-    max-height: 250px;
-    overflow-y: scroll;
-    transition: max-height .7s ease-in;
-}
-
-#touch:checked+nav {
-    z-index: 100000;
-    margin-bottom: 3vh;
+    pointer-events: none;
 }
 </style>
 
 <script>
 export default {
-    name: 'Select'
+    name: 'Select',
+    props: {
+        title: String
+    }
 }
 </script>
