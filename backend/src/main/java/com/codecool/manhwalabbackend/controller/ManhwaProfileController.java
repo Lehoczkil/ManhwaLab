@@ -13,14 +13,8 @@ import java.util.List;
 @RequestMapping("/api/manhwaLab")
 public class ManhwaProfileController {
 
-    ManhwaProfileService manhwaProfileService;
-    GenreService genreService;
-
-    @Autowired
-    public ManhwaProfileController(ManhwaProfileService manhwaProfileService, GenreService genreService) {
-        this.manhwaProfileService = manhwaProfileService;
-        this.genreService = genreService;
-    }
+    private final ManhwaProfileService manhwaProfileService;
+    private final GenreService genreService;
 
     @GetMapping(value = "/{manhwaName}")
     public ManhwaProfile getManhwa(@PathVariable String manhwaName){

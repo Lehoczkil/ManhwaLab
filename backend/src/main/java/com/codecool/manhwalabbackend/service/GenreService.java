@@ -8,7 +8,7 @@ import java.util.List;
 
 @Service
 public class GenreService {
-    GenreRepository genreRepository;
+    private final GenreRepository genreRepository;
 
     @Autowired
     public GenreService(GenreRepository genreRepository) {

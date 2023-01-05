@@ -9,7 +9,7 @@ import java.util.List;
 @Service
 public class ThemeService {
 
-    ThemeRepository themeRepository;
+    private final ThemeRepository themeRepository;
 
     @Autowired
     public ThemeService(ThemeRepository themeRepository) {
