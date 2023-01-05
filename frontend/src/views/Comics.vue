@@ -19,10 +19,11 @@
 </template>
 
 <style scoped>
+
+
 .row {
     display: flex;
     width: 60%;
-    background: red;
     margin-inline: auto;
     justify-content: space-between;
 }
@@ -33,7 +34,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    background: green;
 }
 
 .search {
