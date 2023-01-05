@@ -4,9 +4,9 @@ services:
     image: manhwalab-app:manhwalab
     restart: always
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://database:5433/aron
-      - SPRING_DATASOURCE_USERNAME=aron
-      - SPRING_DATASOURCE_PASSWORD=Sisakvirag17
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://database:5432/aron
+      - DB_USERNAME=aron
+      - DB_PASSWORD=Sisakvirag17
     depends_on:
       - database
     ports:
@@ -21,7 +21,7 @@ services:
       - POSTGRES_USER=aron
       - POSTGRES_PASSWORD=Sisakvirag17
     ports:
-      - "5433:5433"
+      - "5433:5432"
     expose:
       - "5433"
     volumes:
