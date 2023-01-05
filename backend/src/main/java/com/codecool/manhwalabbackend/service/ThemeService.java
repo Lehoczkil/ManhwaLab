@@ -1,5 +1,6 @@
 package com.codecool.manhwalabbackend.service;
 
+import com.codecool.manhwalabbackend.model.Theme;
 import com.codecool.manhwalabbackend.repository.ThemeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,7 +17,9 @@ public class ThemeService {
         this.themeRepository = themeRepository;
     }
 
-
+    public List<Theme> getAllTheme(){
+        return themeRepository.findAll();
+    }
     public List<String> getManhwaThemes(int manhwaId){
         return themeRepository.getManhwaThemes(manhwaId);
     }
