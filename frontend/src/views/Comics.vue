@@ -11,7 +11,7 @@
             </div>
             <div class="search">
                 <input type="search" placeholder="Search...">
-                <button type="submit">Go</button>  
+                <button type="submit">Go</button>
             </div>
         </section>
         <List />
@@ -19,8 +19,6 @@
 </template>
 
 <style scoped>
-
-
 .row {
     display: flex;
     width: 60%;
