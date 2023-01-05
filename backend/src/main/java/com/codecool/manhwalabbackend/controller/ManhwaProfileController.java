@@ -4,7 +4,6 @@ import com.codecool.manhwalabbackend.model.ManhwaProfile;
 import com.codecool.manhwalabbackend.service.GenreService;
 import com.codecool.manhwalabbackend.service.ManhwaProfileService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,31 +17,29 @@ public class ManhwaProfileController {
     private final ManhwaProfileService manhwaProfileService;
     private final GenreService genreService;
 
-    @GetMapping(value = "/{manhwaName}")
-    public ManhwaProfile getManhwa(@PathVariable String manhwaName){
-        return manhwaProfileService.getManhwaProfileByName(manhwaName);
+    @GetMapping(value = "/{id}")
+    public ManhwaProfile getManhwa(@PathVariable Long id){
+        return manhwaProfileService.getManhwaProfileById(id);
     }
 
-    @GetMapping(value = "/{manhwaName}/views")
-    public Integer getManhwaViewNumbers(@PathVariable String manhwaName){
+    @GetMapping(value = "/{manhwaId}/views")
+    public Integer getManhwaViewNumbers(@PathVariable Long manhwaId){
         return null;
     }
 
-    @GetMapping(value = "/{manhwaName}/genres")
-    public List<String> getManhwaGenres(@PathVariable String manhwaName){
-        manhwaName = "Murim Login";
-        return genreService.getManhwaGenres(manhwaProfileService.getManhwaProfileByName(manhwaName).getId().intValue());
+    @GetMapping(value = "/{manhwaId}/genres")
+    public List<String> getManhwaGenres(@PathVariable Long manhwaId){
+        return genreService.getManhwaGenres(manhwaId.intValue());
     }
 
-    @GetMapping(value = "/{manhwaName}/themes")
-    public List<String> getManhwaThemes(@PathVariable String manhwaName){
+    @GetMapping(value = "/{manhwaId}/themes")
+    public List<String> getManhwaThemes(@PathVariable Long manhwaId){
         return null;
     }
 
-    @GetMapping(value = "/{manhwaName}/rating")
-    public Float getMnahwaRating(@PathVariable String manhwaName){
-        manhwaName = "Murim Login";
-        return manhwaProfileService.getManhwaRating(manhwaName);
+    @GetMapping(value = "/{manhwaId}/rating")
+    public Float getMnahwaRating(@PathVariable Long manhwaId){
+        return null;
     }
 
 }

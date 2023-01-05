@@ -17,8 +17,8 @@ public class ManhwaProfileService {
         this.manhwaProfileRepository = manhwaProfileRepository;
     }
 
-    public ManhwaProfile getManhwaProfileByName(String title){
-        return manhwaProfileRepository.getManhwaProfileByTitle(title);
+    public ManhwaProfile getManhwaProfileById(Long id){
+        return manhwaProfileRepository.getManhwaProfileById(id);
     }
 
     public Float getManhwaRating(String title){
