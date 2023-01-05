@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin("http://localhost:8081")
 @RequestMapping("/api/manhwaLab")
+@CrossOrigin({"http://localhost:8081"})
 public class ManhwaProfileController {
 
     ManhwaProfileService manhwaProfileService;
