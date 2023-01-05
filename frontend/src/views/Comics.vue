@@ -2,12 +2,12 @@
     <article>
         <section class="controls">
             <div class="row">
-                <Select />
-                <Select />
+                <Select title="Genre" />
+                <Select title="Status" />
             </div>
             <div class="row">
-                <Select />
-                <Select />
+                <Select title="Type" />
+                <Select title="Sort by" />
             </div>
             <div class="search">
                 <input type="search" placeholder="Search...">
