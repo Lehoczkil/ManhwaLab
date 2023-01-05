@@ -101,8 +101,8 @@
 }
 
 .pic {
-    width: clamp(220px, 15vw, 1800px);
-    height: clamp(275px, 20vw, 2250px);
+    width: clamp(210px, 12vw, 2100px);
+    height: clamp(280px, 18vw, 2800px);
     background: black;
     margin: 1vh auto;
     border-radius: clamp(20px, 1vw, 50px);
