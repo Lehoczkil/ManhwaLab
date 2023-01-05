@@ -13,7 +13,7 @@
 <style scoped>
 select {
     height: 6vh;
-    width: clamp(70px, 20vw, 450px);
+    width: clamp(70px, 28vw, 1000px);
     background: #353434;
     border-radius: clamp(2px, 1.5vh, 40px);
     padding-inline: 1.5vw;
