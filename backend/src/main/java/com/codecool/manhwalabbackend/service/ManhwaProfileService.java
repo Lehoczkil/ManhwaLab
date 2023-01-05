@@ -10,7 +10,7 @@ import java.util.List;
 @Service
 public class ManhwaProfileService {
 
-    ManhwaProfileRepository manhwaProfileRepository;
+    private final ManhwaProfileRepository manhwaProfileRepository;
 
     @Autowired
     public ManhwaProfileService(ManhwaProfileRepository manhwaProfileRepository) {
