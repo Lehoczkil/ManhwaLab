@@ -1,12 +1,9 @@
 <template>
     <select>
         <option value="">{{ title }}</option>
-        <option value="Item1">Item1</option>
-        <option value="Item1">Item2</option>
-        <option value="Item1">Item3</option>
-        <option value="Item1">Item4</option>
-        <option value="Item1">Item5</option>
-        <option value="Item1">Item6</option>
+        <option v-for="record in data" :key="record.id" :value=record.name>
+            {{ record.name }}
+        </option>
     </select>
 </template>
 
@@ -46,7 +43,8 @@ select::after {
 export default {
     name: 'Select',
     props: {
-        title: String
+        title: String,
+        data: Array
     }
 }
 </script>
