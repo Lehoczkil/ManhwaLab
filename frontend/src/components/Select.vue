@@ -1,10 +1,18 @@
 <template>
-    <select>
+    <select v-if="title !== 'Type'">
         <option value="">{{ title }}</option>
         <option v-for="record in data" :key="record.id" :value=record.name>
             {{ record.name }}
         </option>
     </select>
+
+    <select v-if="title === 'Type'">
+        <option value="">{{ title }}</option>
+        <option v-for="record in data" :key="record.id" :value=record.name>
+            {{ record }}
+        </option>
+    </select>
+
 </template>
 
 <style scoped>
