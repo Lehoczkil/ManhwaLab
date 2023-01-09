@@ -2,7 +2,7 @@
     <article>
         <section class="controls">
             <div class="row">
-                <Select title="Genre" />
+                <Select  title="Genre" :data="genres"  />
                 <Select title="Status" />
             </div>
             <div class="row">
@@ -82,13 +82,24 @@
 
 <script>
 import Select from '../components/Select'
+import { useGenreStore } from '@/stores/GenreStore'
 import List from '../components/List'
+import { storeToRefs } from 'pinia'
 
 export default {
     name: 'Comics',
     components: {
         Select,
         List
+    },
+    setup() {
+        const genreStore = useGenreStore()
+
+        genreStore.getGenres()
+        
+        const { genres } = storeToRefs(genreStore)
+
+        return { genreStore, genres }
     }
 }
 </script>
