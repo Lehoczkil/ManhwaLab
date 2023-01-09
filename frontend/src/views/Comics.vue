@@ -1,12 +1,13 @@
 <template>
     <article>
+        {{ types }}
         <section class="controls">
             <div class="row">
-                <Select  title="Genre" :data="genres"  />
-                <Select title="Status" />
+                <Select title="Genre" :data="genres" />
+                <Select title="Theme" :data="themes" />
             </div>
             <div class="row">
-                <Select title="Type" />
+                <Select title="Type" :data="types" />
                 <Select title="Sort by" />
             </div>
             <div class="search">
@@ -83,9 +84,10 @@
 <script>
 import Select from '../components/Select'
 import { useGenreStore } from '@/stores/GenreStore'
+import { useThemeStore } from '@/stores/ThemeStore'
+import { useTypeStore } from '@/stores/TypeStore'
 import List from '../components/List'
 import { storeToRefs } from 'pinia'
-
 export default {
     name: 'Comics',
     components: {
@@ -94,12 +96,18 @@ export default {
     },
     setup() {
         const genreStore = useGenreStore()
-
         genreStore.getGenres()
-        
         const { genres } = storeToRefs(genreStore)
+        
+        const themeStore = useThemeStore()
+        themeStore.getThemes()
+        const { themes } = storeToRefs(themeStore)
+        
+        const typeStore = useTypeStore()
+        typeStore.getTypes()
+        const { types } = storeToRefs(typeStore)
 
-        return { genreStore, genres }
+        return { genreStore, genres, themeStore, themes, typeStore, types }
     }
 }
 </script>
