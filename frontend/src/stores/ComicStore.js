@@ -30,8 +30,8 @@ export const useComicStore = defineStore("comicStore", {
         );
       }
       if (theme) {
-        filteredComics = filteredComics.filter(
-          (comic) => comic.theme === theme
+        filteredComics = filteredComics.filter((comic) =>
+          comic.themeList.map((t) => t.name).includes(theme)
         );
       }
       if (type) {
