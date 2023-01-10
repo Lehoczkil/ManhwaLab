@@ -14,11 +14,11 @@ import java.sql.Timestamp;
 @Builder
 public class UserProfile {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ProfileID")
-    @SequenceGenerator(name = "ProfileID", sequenceName = "ProfileID", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
     private String userName;
+    @Column(columnDefinition = "TEXT")
     private String description;
     private Integer age;
     private String Password;
