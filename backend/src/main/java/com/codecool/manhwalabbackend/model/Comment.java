@@ -1,6 +1,6 @@
 package com.codecool.manhwalabbackend.model;
 
-import com.codecool.manhwalabbackend.model.Enums.CommentType;
+import com.codecool.manhwalabbackend.model.enums.CommentType;
 import lombok.*;
 
 import javax.persistence.*;

@@ -1,7 +1,7 @@
 package com.codecool.manhwalabbackend.model;
 
-import com.codecool.manhwalabbackend.model.Enums.Status;
-import com.codecool.manhwalabbackend.model.Enums.ComicType;
+import com.codecool.manhwalabbackend.model.enums.Status;
+import com.codecool.manhwalabbackend.model.enums.ComicType;
 import lombok.*;
 import javax.persistence.*;
 
