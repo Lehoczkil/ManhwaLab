@@ -12,7 +12,7 @@
             </div>
             <div class="search">
                 <input type="search" placeholder="Search...">
-                <button type="submit">Go</button>
+                <button type="submit" @click="handleClick" >Go</button>
             </div>
         </section>
         <List />
@@ -84,6 +84,7 @@
 <script>
 import Select from '../components/Select'
 import { useGenreStore } from '@/stores/GenreStore'
+import { useComicStore } from '@/stores/ComicStore'
 import { useThemeStore } from '@/stores/ThemeStore'
 import { useTypeStore } from '@/stores/TypeStore'
 import List from '../components/List'
@@ -93,6 +94,19 @@ export default {
     components: {
         Select,
         List
+    },
+    methods: {
+        handleClick() {
+            const comicStore = useComicStore();
+
+            if (document.querySelector('#Genre') && document.querySelector('#Type') && document.querySelector('#Theme')) {
+                const genre = document.querySelector('#Genre').value
+                const theme = document.querySelector('#Theme').value
+                const type = document.querySelector('#Type').value
+                
+                comicStore.filterComics(genre, theme, type)
+            }
+        }
     },
     setup() {
         const genreStore = useGenreStore()
