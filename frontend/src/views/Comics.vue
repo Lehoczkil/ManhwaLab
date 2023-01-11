@@ -11,8 +11,8 @@
                 <Select title="Sort by" />
             </div>
             <div class="search">
-                <input type="search" placeholder="Search...">
-                <button type="submit" @click="handleClick" >Go</button>
+                <input type="search" placeholder="Search..." id="search">
+                <button type="submit" @click="handleClick">Go</button>
             </div>
         </section>
         <List />
@@ -104,8 +104,9 @@ export default {
                 const theme = document.querySelector('#Theme').value
                 const type = document.querySelector('#Type').value
                 const sort = document.querySelector('#sort').value
-                
-                comicStore.filterComics(genre, theme, type, sort)
+                const search = document.querySelector('#search').value
+
+                comicStore.filterComics(genre, theme, type, sort, search)
             }
         }
     },
@@ -113,11 +114,11 @@ export default {
         const genreStore = useGenreStore()
         genreStore.getGenres()
         const { genres } = storeToRefs(genreStore)
-        
+
         const themeStore = useThemeStore()
         themeStore.getThemes()
         const { themes } = storeToRefs(themeStore)
-        
+
         const typeStore = useTypeStore()
         typeStore.getTypes()
         const { types } = storeToRefs(typeStore)
