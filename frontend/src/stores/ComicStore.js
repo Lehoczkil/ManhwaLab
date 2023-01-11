@@ -42,9 +42,8 @@ export const useComicStore = defineStore("comicStore", {
           }
           return 0;
         });
-
-        this.comics = sortedComics;
       }
+      this.comics = sortedComics;
     },
     filterComics(genre, theme, type, sort, search) {
       this.comics = this.originals;
