@@ -1,17 +1,18 @@
 <template>
     <article>
+        {{ types }}
         <section class="controls">
             <div class="row">
-                <Select />
-                <Select />
+                <Select title="Genre" :data="genres" />
+                <Select title="Theme" :data="themes" />
             </div>
             <div class="row">
-                <Select />
-                <Select />
+                <Select title="Type" :data="types" />
+                <Select title="Sort by" />
             </div>
             <div class="search">
-                <input type="search" placeholder="Search...">
-                <button type="submit">Go</button>  
+                <input type="search" placeholder="Search..." id="search">
+                <button type="submit" @click="handleClick">Go</button>
             </div>
         </section>
         <List />
@@ -22,7 +23,6 @@
 .row {
     display: flex;
     width: 60%;
-    background: red;
     margin-inline: auto;
     justify-content: space-between;
 }
@@ -33,7 +33,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    background: green;
 }
 
 .search {
@@ -84,13 +83,47 @@
 
 <script>
 import Select from '../components/Select'
+import { useGenreStore } from '@/stores/GenreStore'
+import { useComicStore } from '@/stores/ComicStore'
+import { useThemeStore } from '@/stores/ThemeStore'
+import { useTypeStore } from '@/stores/TypeStore'
 import List from '../components/List'
-
+import { storeToRefs } from 'pinia'
 export default {
     name: 'Comics',
     components: {
         Select,
         List
+    },
+    methods: {
+        handleClick() {
+            const comicStore = useComicStore();
+
+            if (document.querySelector('#Genre') && document.querySelector('#Type') && document.querySelector('#Theme')) {
+                const genre = document.querySelector('#Genre').value
+                const theme = document.querySelector('#Theme').value
+                const type = document.querySelector('#Type').value
+                const sort = document.querySelector('#sort').value
+                const search = document.querySelector('#search').value
+
+                comicStore.filterComics(genre, theme, type, sort, search)
+            }
+        }
+    },
+    setup() {
+        const genreStore = useGenreStore()
+        genreStore.getGenres()
+        const { genres } = storeToRefs(genreStore)
+
+        const themeStore = useThemeStore()
+        themeStore.getThemes()
+        const { themes } = storeToRefs(themeStore)
+
+        const typeStore = useTypeStore()
+        typeStore.getTypes()
+        const { types } = storeToRefs(typeStore)
+
+        return { genreStore, genres, themeStore, themes, typeStore, types }
     }
 }
 </script>

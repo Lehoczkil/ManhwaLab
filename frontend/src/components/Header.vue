@@ -27,6 +27,7 @@ header {
     padding-inline: 1vw;
     padding-block: 1vh;
     justify-content: space-between;
+    margin-bottom: 3vh;
 }
 
 img {
