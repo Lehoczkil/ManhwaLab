@@ -103,8 +103,9 @@ export default {
                 const genre = document.querySelector('#Genre').value
                 const theme = document.querySelector('#Theme').value
                 const type = document.querySelector('#Type').value
+                const sort = document.querySelector('#sort').value
                 
-                comicStore.filterComics(genre, theme, type)
+                comicStore.filterComics(genre, theme, type, sort)
             }
         }
     },
