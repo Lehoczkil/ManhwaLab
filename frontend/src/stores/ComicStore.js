@@ -46,7 +46,7 @@ export const useComicStore = defineStore("comicStore", {
         this.comics = sortedComics;
       }
     },
-    filterComics(genre, theme, type, sort) {
+    filterComics(genre, theme, type, sort, search) {
       this.comics = this.originals;
       let filteredComics = this.originals;
       if (genre) {
@@ -65,6 +65,17 @@ export const useComicStore = defineStore("comicStore", {
 
       this.comics = filteredComics;
       this.sortComics(sort);
+      this.searchInComics(search);
+    },
+    searchInComics(title) {
+      let searchedComics = this.comics;
+      title = title.toLowerCase();
+      if (title) {
+        searchedComics = searchedComics.filter((comic) =>
+          comic.title.toLowerCase().includes(title)
+        );
+      }
+      this.comics = searchedComics;
     },
   },
 });
