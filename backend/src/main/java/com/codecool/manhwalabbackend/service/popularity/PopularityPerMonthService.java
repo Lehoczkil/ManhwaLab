@@ -1,6 +1,6 @@
 package com.codecool.manhwalabbackend.service.popularity;
 
-import com.codecool.manhwalabbackend.model.date.StartDateOfViewCounts;
+import com.codecool.manhwalabbackend.model.date.StartDateOfViewCounting;
 import com.codecool.manhwalabbackend.repository.date.StartDateOfViewCountsRepository;
 import com.codecool.manhwalabbackend.repository.popularity.PopularityPerMonthRepository;
 import lombok.RequiredArgsConstructor;
@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.Month;
-import java.time.Year;
 
 @Service
 @RequiredArgsConstructor
@@ -21,7 +20,7 @@ public class PopularityPerMonthService {
 
     public void nullifyMonthlyViews(Long id){
         Long idOfStartTimes = 1L;
-        StartDateOfViewCounts data = startDateOfViewCountsRepository.getStartDateOfViewCountsById(idOfStartTimes);
+        StartDateOfViewCounting data = startDateOfViewCountsRepository.getStartDateOfViewCountsById(idOfStartTimes);
         LocalDateTime startDate = data.getStartDateOfMonthlyViews();
         LocalDateTime currentDate = LocalDateTime.now();
         Month currentMonth = data.getCurrentMonth();
