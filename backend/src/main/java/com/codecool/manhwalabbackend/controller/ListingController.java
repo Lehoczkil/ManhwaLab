@@ -1,6 +1,6 @@
 package com.codecool.manhwalabbackend.controller;
 
-import com.codecool.manhwalabbackend.model.Enums.ComicType;
+import com.codecool.manhwalabbackend.model.enums.ComicType;
 import com.codecool.manhwalabbackend.model.Genre;
 import com.codecool.manhwalabbackend.model.ManhwaProfile;
 import com.codecool.manhwalabbackend.model.Theme;
