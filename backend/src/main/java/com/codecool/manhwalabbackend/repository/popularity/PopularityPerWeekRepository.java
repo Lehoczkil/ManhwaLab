@@ -12,5 +12,5 @@ public interface PopularityPerWeekRepository extends JpaRepository<PopularityPer
 
     @Modifying
     @Query("UPDATE PopularityPerWeek ppw SET ppw.viewsThisWeek = NULL WHERE ppw.id = :id")
-    void nullifyData(@Param("id") Long id);
+    void nullifyWeeklyViews(@Param("id") Long id);
 }

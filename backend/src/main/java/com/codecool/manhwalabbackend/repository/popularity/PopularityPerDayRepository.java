@@ -12,5 +12,5 @@ public interface PopularityPerDayRepository extends JpaRepository<PopularityPerD
 
     @Modifying
     @Query("UPDATE PopularityPerDay ppd SET ppd.viewsThisDay = NULL WHERE ppd.id = :id")
-    void nullifyData(@Param("id") Long id);
+    void nullifyDailyViews(@Param("id") Long id);
 }

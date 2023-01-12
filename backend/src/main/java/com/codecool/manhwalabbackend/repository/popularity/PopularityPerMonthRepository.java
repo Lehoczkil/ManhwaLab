@@ -9,6 +9,6 @@ import org.springframework.data.repository.query.Param;
 public interface PopularityPerMonthRepository extends JpaRepository <PopularityPerMonth, Long> {
 
     @Modifying
-    @Query("UPDATE PopularityPerMonth ppm SET ppd.viewsThisMonth = NULL WHERE ppm.id = :id")
-    void nullifyData(@Param("id") Long id);
+    @Query("UPDATE PopularityPerMonth ppm SET ppm.viewsThisMonth = NULL WHERE ppm.id = :id")
+    void nullifyMonthlyViews(@Param("id") Long id);
 }
