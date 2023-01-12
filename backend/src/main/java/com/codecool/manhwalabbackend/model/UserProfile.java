@@ -1,11 +1,10 @@
 package com.codecool.manhwalabbackend.model;
 
-import com.codecool.manhwalabbackend.model.Enums.Gender;
+import com.codecool.manhwalabbackend.model.enums.Gender;
 import javax.persistence.*;
 import lombok.*;
 
 import java.sql.Timestamp;
-import java.util.List;
 
 @Entity
 @Setter

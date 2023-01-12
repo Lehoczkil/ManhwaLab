@@ -1,4 +1,4 @@
-package com.codecool.manhwalabbackend.model.Enums;
+package com.codecool.manhwalabbackend.model.enums;
 
 public enum CommentType {
     REPLY,
