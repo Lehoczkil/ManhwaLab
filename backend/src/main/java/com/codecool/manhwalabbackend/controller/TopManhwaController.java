@@ -4,6 +4,7 @@ import com.codecool.manhwalabbackend.model.DTO.ManhwaProfileDTO;
 import com.codecool.manhwalabbackend.model.ManhwaProfile;
 import com.codecool.manhwalabbackend.service.popularity.PopularityPerDayService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,6 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping("api/manhwaLab")
 @RequiredArgsConstructor
+@CrossOrigin({"http://localhost:8081"})
 public class TopManhwaController {
 
     @GetMapping(value = "/top/daily")
