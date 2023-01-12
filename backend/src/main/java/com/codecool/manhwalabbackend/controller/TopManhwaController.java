@@ -17,9 +17,11 @@ import java.util.List;
 @CrossOrigin({"http://localhost:8081"})
 public class TopManhwaController {
 
+    private final PopularityPerDayService popularityPerDayService;
+
     @GetMapping(value = "/top/daily")
     public List<ManhwaProfileDTO> getTopDaily(){
-        return null;
+        return popularityPerDayService.getTopFiveDailyComic();
     }
 
     @GetMapping(value = "/top/weekly")
