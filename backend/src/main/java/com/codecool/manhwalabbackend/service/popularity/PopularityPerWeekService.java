@@ -1,7 +1,6 @@
 package com.codecool.manhwalabbackend.service.popularity;
 
 import com.codecool.manhwalabbackend.model.DTO.ManhwaProfileDTO;
-import com.codecool.manhwalabbackend.model.ManhwaProfile;
 import com.codecool.manhwalabbackend.model.popularity.ComicPopularityPerWeek;
 import com.codecool.manhwalabbackend.repository.ManhwaProfileRepository;
 import com.codecool.manhwalabbackend.repository.date.StartDateOfViewCountsRepository;
@@ -24,6 +23,8 @@ public class PopularityPerWeekService {
     private final PopularityPerWeekRepository popularityPerWeekRepository;
     private final StartDateOfViewCountsRepository startDateOfViewCountsRepository;
     private final ManhwaProfileRepository manhwaProfileRepository;
+    private final PopularityUtility popularityUtility;
+
 
 
 
@@ -47,12 +48,10 @@ public class PopularityPerWeekService {
         List<ManhwaProfileDTO> topFiveManhwaToday = new ArrayList<>();
         for (ComicPopularityPerWeek comicPopularityPerWeek : popularityPerWeekRepository.findAll(pageable).getContent()) {
 
-            Long comicId = comicPopularityPerWeek.getComicId();
-            ManhwaProfile manhwaProfileById = manhwaProfileRepository.getManhwaProfileById(comicId);
-            String title = manhwaProfileById.getTitle();
-            topFiveManhwaToday.add(new ManhwaProfileDTO(comicId, title));
+            popularityUtility.manhwaProfileDtoBuilder(topFiveManhwaToday, comicPopularityPerWeek.getComicId(), manhwaProfileRepository);
         }
         return topFiveManhwaToday;
 
     }
+
 }
