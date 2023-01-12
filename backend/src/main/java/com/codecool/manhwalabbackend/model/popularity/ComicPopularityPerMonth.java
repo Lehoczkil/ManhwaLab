@@ -2,10 +2,7 @@ package com.codecool.manhwalabbackend.model.popularity;
 
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Getter
@@ -13,13 +10,12 @@ import javax.persistence.Id;
 @AllArgsConstructor
 @Builder
 @NoArgsConstructor
-public class PopularityPerDay {
-
+public class ComicPopularityPerMonth {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private Long id;
     private Long comicId;
-    private Integer viewsThisDay;
-}
+    private Integer viewsThisMonth;
 
+}

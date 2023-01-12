@@ -1,13 +1,13 @@
 package com.codecool.manhwalabbackend.repository.date;
 
-import com.codecool.manhwalabbackend.model.date.StartDateOfViewCounts;
+import com.codecool.manhwalabbackend.model.date.StartDateOfViewCounting;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 
 @Repository
-public interface StartDateOfViewCountsRepository extends JpaRepository<StartDateOfViewCounts, Long> {
+public interface StartDateOfViewCountsRepository extends JpaRepository<StartDateOfViewCounting, Long> {
 
-    StartDateOfViewCounts getStartDateOfViewCountsById(Long id);
+    StartDateOfViewCounting getStartDateOfViewCountsById(Long id);
 
 }

@@ -10,7 +10,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Builder
 @NoArgsConstructor
-public class PopularityPerWeek {
+public class ComicPopularityPerWeek {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
