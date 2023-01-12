@@ -208,3 +208,20 @@ INSERT INTO user_profile (password, age, description, gender, joined, last_onlin
 -- MANHWA PROFILE USER PROFILE LIST
 
 INSERT INTO manhwa_profile_user_profile (manhwa_profile_id, user_profile_id) VALUES (1, 1);
+
+
+---------------------------------------------------------------------------------------------------
+
+-- Comic popularity per day
+
+INSERT INTO comic_popularity_per_day(comic_id, views_this_day) VALUES (2, 76);
+INSERT INTO comic_popularity_per_day(comic_id, views_this_day) VALUES (3, 46);
+INSERT INTO comic_popularity_per_day(comic_id, views_this_day) VALUES (1, 762);
+INSERT INTO comic_popularity_per_day(comic_id, views_this_day) VALUES (4, 7623);
+INSERT INTO comic_popularity_per_day(comic_id, views_this_day) VALUES (8, 2);
+INSERT INTO comic_popularity_per_day(comic_id, views_this_day) VALUES (5, 78923);
+INSERT INTO comic_popularity_per_day(comic_id, views_this_day) VALUES (9, 71026);
+INSERT INTO comic_popularity_per_day(comic_id, views_this_day) VALUES (7, 69420);
+INSERT INTO comic_popularity_per_day(comic_id, views_this_day) VALUES (10, 1000);
+INSERT INTO comic_popularity_per_day(comic_id, views_this_day) VALUES (6, 666);
+
