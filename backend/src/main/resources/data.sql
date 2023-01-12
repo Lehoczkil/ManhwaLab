@@ -225,3 +225,35 @@ INSERT INTO comic_popularity_per_day(comic_id, views_this_day) VALUES (7, 69420)
 INSERT INTO comic_popularity_per_day(comic_id, views_this_day) VALUES (10, 1000);
 INSERT INTO comic_popularity_per_day(comic_id, views_this_day) VALUES (6, 666);
 
+---------------------------------------------------------------------------------------------------
+
+-- Comic popularity per week
+
+INSERT INTO comic_popularity_per_week(comic_id, views_this_week) VALUES (2, 76);
+INSERT INTO comic_popularity_per_week(comic_id, views_this_week) VALUES (3, 46);
+INSERT INTO comic_popularity_per_week(comic_id, views_this_week) VALUES (1, 762);
+INSERT INTO comic_popularity_per_week(comic_id, views_this_week) VALUES (4, 7623);
+INSERT INTO comic_popularity_per_week(comic_id, views_this_week) VALUES (8, 2);
+INSERT INTO comic_popularity_per_week(comic_id, views_this_week) VALUES (5, 78923);
+INSERT INTO comic_popularity_per_week(comic_id, views_this_week) VALUES (9, 71026);
+INSERT INTO comic_popularity_per_week(comic_id, views_this_week) VALUES (7, 69420);
+INSERT INTO comic_popularity_per_week(comic_id, views_this_week) VALUES (10, 1000);
+INSERT INTO comic_popularity_per_week(comic_id, views_this_week) VALUES (6, 666);
+
+
+
+---------------------------------------------------------------------------------------------------
+
+-- Comic popularity per month
+
+INSERT INTO comic_popularity_per_month(comic_id, views_this_month) VALUES (6, 6666);
+INSERT INTO comic_popularity_per_month(comic_id, views_this_month) VALUES (2, 2345);
+INSERT INTO comic_popularity_per_month(comic_id, views_this_month) VALUES (5, 56266);
+INSERT INTO comic_popularity_per_month(comic_id, views_this_month) VALUES (3, 3662126);
+INSERT INTO comic_popularity_per_month(comic_id, views_this_month) VALUES (4, 41266);
+INSERT INTO comic_popularity_per_month(comic_id, views_this_month) VALUES (1, 166676);
+INSERT INTO comic_popularity_per_month(comic_id, views_this_month) VALUES (10, 1063266);
+INSERT INTO comic_popularity_per_month(comic_id, views_this_month) VALUES (8, 866623);
+INSERT INTO comic_popularity_per_month(comic_id, views_this_month) VALUES (7, 76);
+INSERT INTO comic_popularity_per_month(comic_id, views_this_month) VALUES (9, 9789);
+
