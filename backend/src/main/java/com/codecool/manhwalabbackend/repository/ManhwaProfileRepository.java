@@ -5,8 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
 @Repository
 public interface ManhwaProfileRepository extends JpaRepository<ManhwaProfile, Long> {
 
@@ -15,6 +13,8 @@ public interface ManhwaProfileRepository extends JpaRepository<ManhwaProfile, Lo
     @Query(value = "SELECT rating FROM manhwa_profile " +
             "WHERE manhwa_profile.title LIKE ?1", nativeQuery = true)
     Float getManhwaProfileRatingByTitle(String title);
+
+    ManhwaProfile getManhwaProfileById(Long id);
 
 
 }
