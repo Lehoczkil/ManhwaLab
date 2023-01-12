@@ -33,7 +33,7 @@ public class TopManhwaController {
     }
 
     @GetMapping(value = "/top/monthly")
-    public List<ManhwaProfile> getTopMonthly(){
-        return null;
+    public List<ManhwaProfileDTO> getTopMonthly(){
+        return popularityPerMonthService.getTopFiveMonthlyComic();
     }
 }
