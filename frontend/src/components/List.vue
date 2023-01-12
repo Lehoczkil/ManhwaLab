@@ -1,84 +1,12 @@
 <template>
     <article class="comic-list">
-        <div class="comic">
-            <div class="pic"></div>
-            <h1>Title</h1>
-        </div>
-        <div class="comic">
-            <div class="pic"></div>
-            <h1>Title</h1>
-        </div>
-        <div class="comic">
-            <div class="pic"></div>
-            <h1>Title</h1>
-        </div>
-        <div class="comic">
-            <div class="pic"></div>
-            <h1>Title</h1>
-        </div>
-        <div class="comic">
-            <div class="pic"></div>
-            <h1>Title</h1>
-        </div>
-        <div class="comic">
-            <div class="pic"></div>
-            <h1>Title</h1>
-        </div>
-        <div class="comic">
-            <div class="pic"></div>
-            <h1>Title</h1>
-        </div>
-        <div class="comic">
-            <div class="pic"></div>
-            <h1>Title</h1>
-        </div>
-        <div class="comic">
-            <div class="pic"></div>
-            <h1>Title</h1>
-        </div>
-        <div class="comic">
-            <div class="pic"></div>
-            <h1>Title</h1>
-        </div>
-        <div class="comic">
-            <div class="pic"></div>
-            <h1>Title</h1>
-        </div>
-        <div class="comic">
-            <div class="pic"></div>
-            <h1>Title</h1>
-        </div>
-        <div class="comic">
-            <div class="pic"></div>
-            <h1>Title</h1>
-        </div>
-        <div class="comic">
-            <div class="pic"></div>
-            <h1>Title</h1>
-        </div>
-        <div class="comic">
-            <div class="pic"></div>
-            <h1>Title</h1>
-        </div>
-        <div class="comic">
-            <div class="pic"></div>
-            <h1>Title</h1>
-        </div>
-        <div class="comic">
-            <div class="pic"></div>
-            <h1>Title</h1>
-        </div>
-        <div class="comic">
-            <div class="pic"></div>
-            <h1>Title</h1>
-        </div>
-        <div class="comic">
-            <div class="pic"></div>
-            <h1>Title</h1>
-        </div>
-        <div class="comic">
-            <div class="pic"></div>
-            <h1>Title</h1>
+        <div class="loading" v-if="loading">Loading comics...</div>
+
+        <div class="comics" v-for="comic in comics" :key="comic.id">
+            <div class="comic">
+                <img :src="comic.coverPageLink" alt="" class="pic">
+                <h1>{{ comic.title }}</h1>
+            </div>
         </div>
     </article>
 </template>
@@ -90,27 +18,42 @@
     grid-gap: 1rem;
     justify-content: space-around;
     padding: 2vw;
-    background: blue;
     margin-top: 1vh;
 }
 
 .comic {
     text-align: center;
-    background: wheat;
+    background: rgb(35, 35, 34);
     margin-bottom: 1vh;
+    height: clamp(340px, 25vw, 3400px);
+    padding: 0.5vh;
+    color: white;
+    border-radius: clamp(20px, 1vw, 50px);
 }
 
 .pic {
-    width: clamp(220px, 15vw, 1800px);
-    height: clamp(275px, 20vw, 2250px);
-    background: black;
+    width: clamp(210px, 12vw, 2100px);
+    height: clamp(280px, 18vw, 2800px);
     margin: 1vh auto;
     border-radius: clamp(20px, 1vw, 50px);
+    border: 0.5px solid white;
 }
 </style>
 
 <script>
+import { useComicStore } from '../stores/ComicStore';
+import { storeToRefs } from 'pinia'
+
 export default {
-    name: 'List'
+    name: 'List',
+    setup() {
+        const comicStore = useComicStore()
+
+        const { comics, loading } = storeToRefs(comicStore)
+
+        comicStore.getComics()
+
+        return { comicStore, comics, loading }
+    }
 }
 </script>
