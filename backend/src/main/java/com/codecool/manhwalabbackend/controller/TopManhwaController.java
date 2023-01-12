@@ -28,8 +28,8 @@ public class TopManhwaController {
     }
 
     @GetMapping(value = "/top/weekly")
-    public List<ManhwaProfile> getTopWeekly(){
-        return null;
+    public List<ManhwaProfileDTO> getTopWeekly(){
+        return popularityPerWeekService.getTopFiveWeeklyComic();
     }
 
     @GetMapping(value = "/top/monthly")
