@@ -13,4 +13,7 @@ public class ManhwaProfileDTO {
 
     private Long comicId;
     private String title;
+    private String coverPageLink;
+    private Float rating;
+    private Integer numberOfChapters;
 }
