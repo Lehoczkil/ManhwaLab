@@ -13,7 +13,7 @@ import javax.persistence.*;
 public class ComicPopularityPerWeek {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
     private Long comicId;
