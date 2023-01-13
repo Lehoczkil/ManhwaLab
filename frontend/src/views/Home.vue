@@ -1,14 +1,13 @@
 <template>
     <article>
         <main>
-            <Slider />
-            <Slider />
-            <Slider />
+            <Slider :comics="dailyTop" />
+            <Slider :comics="weeklyTop" />
+            <Slider :comics="monthlyTop" />
         </main>
         <aside>
-            <TopList />
-            <TopList />
-            <TopList />
+            <TopList :comics="topOngoing" />
+            <TopList :comics="mostViewed" />
         </aside>
     </article>
 </template>
@@ -18,7 +17,8 @@ article {
     display: flex;
 }
 
-main, aside {
+main,
+aside {
     min-height: 85vh;
     padding-block: 2vh;
 }
@@ -37,12 +37,24 @@ aside {
 <script>
 import Slider from '../components/Slider'
 import TopList from '../components/TopList'
+import { useComicStore } from '@/stores/ComicStore'
+import { storeToRefs } from 'pinia'
 
 export default {
     name: 'Home',
     components: {
         Slider,
         TopList
+    },
+    setup() {
+        const comicStore = useComicStore()
+        
+        comicStore.getTopComics()
+        comicStore.getMostViewed()
+        comicStore.getTopOngoing()
+
+        const { dailyTop, weeklyTop, monthlyTop, topOngoing, mostViewed } = storeToRefs(comicStore)
+        return { comicStore, dailyTop, weeklyTop, monthlyTop, topOngoing, mostViewed }
     }
 }
 </script>
