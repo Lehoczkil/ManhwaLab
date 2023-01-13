@@ -5,17 +5,43 @@ export const useComicStore = defineStore("comicStore", {
     originals: [],
     currentComic: {},
     comics: [],
+    dailyTop: [],
+    weeklyTop: [],
+    monthlyTop: [],
+    mostViewed: [],
+    topOngoing: [],
     loading: false,
   }),
   actions: {
     async getComics() {
       this.loading = true;
-      const res = await fetch("http://localhost:8080/api/manhwaLab/manhwaList");
-      const data = await res.json();
+      const all = await fetch("http://localhost:8080/api/manhwaLab/manhwaList");
+      const allJson = await all.json();
 
-      this.comics = data;
-      this.originals = data;
+      this.comics = allJson;
+      this.originals = allJson;
+
       this.loading = false;
+    },
+    async getTopComics() {
+      const daily = await fetch(
+        "http://localhost:8080/api/manhwaLab/top/daily"
+      );
+      const dailyJson = await daily.json();
+
+      const weekly = await fetch(
+        "http://localhost:8080/api/manhwaLab/top/weekly"
+      );
+      const weeklyJson = await weekly.json();
+
+      const monthly = await fetch(
+        "http://localhost:8080/api/manhwaLab/top/monthly"
+      );
+      const monthlyJson = await monthly.json();
+
+      this.dailyTop = dailyJson;
+      this.weeklyTop = weeklyJson;
+      this.monthlyTop = monthlyJson;
     },
     async getComicByName(name) {
       const res = await fetch("http://localhost:8080/api/manhwaLab/" + name);
@@ -75,6 +101,26 @@ export const useComicStore = defineStore("comicStore", {
         );
       }
       this.comics = searchedComics;
+    },
+    async getMostViewed() { 
+      await this.getComics();
+      if (this.comics.length > 0) { 
+        let mostViewed = this.comics;
+        
+        this.mostViewed = mostViewed.sort(function(a, b) {
+          a.views - b.views
+        }).slice(0,5);
+      }
+    },
+    async getTopOngoing() {
+      await this.getComics();
+      let topOngoing = this.comics.filter(
+        (comic) => comic.status === "ONGOING"
+      );
+      topOngoing = topOngoing.sort(function (a, b) {
+        return a.rating - b.rating;
+      });
+      this.topOngoing = topOngoing.slice(0, 5);
     },
   },
 });
