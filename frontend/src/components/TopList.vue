@@ -2,11 +2,7 @@
     <section>
         <h1>Top</h1>
         <div class="shows">
-            <TopShow/>
-            <TopShow/>
-            <TopShow/>
-            <TopShow/>
-            <TopShow/>
+            <TopShow v-for="comic in comics" :key="comic.id" :comic="comic" />
         </div>
     </section>
 </template>
@@ -18,6 +14,9 @@ export default {
     name: 'TopList',
     components: {
         TopShow
+    },
+    props: {
+        comics: Array
     }
 }
 </script>
