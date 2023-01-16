@@ -1,13 +1,13 @@
 <template>
     <article>
         <main>
-            <Slider :comics="dailyTop" />
-            <Slider :comics="weeklyTop" />
-            <Slider :comics="monthlyTop" />
+            <Slider :comics="dailyTop" title="Popular Today" />
+            <Slider :comics="weeklyTop" title="Popular This Week" />
+            <Slider :comics="monthlyTop" title="Popular This Month" />
         </main>
         <aside>
-            <TopList :comics="topOngoing" />
-            <TopList :comics="mostViewed" />
+            <TopList :comics="topOngoing" title="Top Rated Ongoing" />
+            <TopList :comics="mostViewed" title="Most Viewed" />
         </aside>
     </article>
 </template>
@@ -48,7 +48,7 @@ export default {
     },
     setup() {
         const comicStore = useComicStore()
-        
+
         comicStore.getTopComics()
         comicStore.getMostViewed()
         comicStore.getTopOngoing()
