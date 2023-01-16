@@ -1,24 +1,32 @@
 <template>
     <div class="show">
-        <div class="show-pic"></div>
+        <img :src="comic.coverPageLink" alt="picture about the comic" class="pic">
         <div class="content">
             <div class="title-container">
-                <h1>Title</h1>
+                <h1>{{comic.title}}</h1>
                 <button>Add</button>
             </div>
             <div class="info">
-                <p class="type">Manhwa</p>
-                <p class="chapters">112 ch</p>
+                <p class="type">{{comic.type}}</p>
+                <p class="chapters">{{ comic.numberOfChapters }}</p>
             </div>
             <div class="stat">
-                <p class="rating">9.5</p>
-                <p class="views">342,896</p>
+                <p class="rating">{{ comic.rating }}</p>
+                <p class="views">{{ comic.views }}</p>
             </div>
         </div>
     </div>
 </template>
 
 <style scoped>
+
+.pic {
+    width: clamp(133px, 8vw, 1330px);
+    height: clamp(200px, 12vw, 2000px);
+    margin: 1vh auto;
+    border-radius: clamp(20px, 1vw, 50px);
+    border: 0.5px solid white;
+}
 
 .show {
     background: white;
@@ -49,6 +57,9 @@
 
 <script>
 export default {
-    name: 'TopComic'
+    name: 'TopComic',
+    props: {
+        comic: Object
+    }
 }
 </script>

@@ -1,8 +1,6 @@
 <template>
     <div class="comic">
-        <div>
-            <img :src="comic.coverPageLink" alt="picture about the comic" class="pic">
-        </div>
+        <img :src="comic.coverPageLink" alt="picture about the comic" class="pic">
         <h1>{{ comic.title }}</h1>
         <p></p>
         <div class="rating">
