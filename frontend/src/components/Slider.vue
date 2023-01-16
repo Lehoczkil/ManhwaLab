@@ -1,6 +1,6 @@
 <template>
     <section>
-        <h1>Test</h1>
+        <h1>{{ title }}</h1>
         <div class="comic-container">
             <Comic v-for="comic in comics" :key="comic.comicId" :comic="comic" />
         </div>
@@ -26,7 +26,8 @@ export default {
         Comic
     },
     props: {
-        comics: Array
+        comics: Array,
+        title: String
     }
 }
 </script>
