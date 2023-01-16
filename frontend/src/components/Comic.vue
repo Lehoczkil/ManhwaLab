@@ -26,16 +26,16 @@
     background: rgb(35, 35, 34);
     margin-bottom: 1vh;
     padding: 1vh;
-    color: white;
     border-radius: clamp(20px, 1vw, 50px);
 }
 
-.rating {
-    float: bottom;
+span {
+    margin-left: 1vw;
 }
 
 .star {
     height: 2vh;
+    filter: invert();
 }
 
 .pic {
