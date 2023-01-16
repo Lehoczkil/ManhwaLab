@@ -30,6 +30,12 @@ main {
 
 aside {
     flex-basis: 35%;
+    max-height: 165vh;
+    overflow-y: scroll;
+}
+
+::-webkit-scrollbar {
+  width: 18px;
 }
 </style>
 
