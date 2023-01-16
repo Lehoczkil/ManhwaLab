@@ -2,7 +2,7 @@
     <div class="comic">
         <img :src="comic.coverPageLink" alt="picture about the comic" class="pic">
         <h1>{{ comic.title }}</h1>
-        <p></p>
+        <p>{{ comic.numberOfChapters }} chapters</p>
         <div class="rating">
             <img class="star" src="../assets/star.png" alt="star">
             <img class="star" src="../assets/star.png" alt="star">
@@ -16,6 +16,24 @@
 
 
 <style scoped>
+.comic {
+    flex-basis: 18%;
+    height: clamp(430px, 26vh, 3200px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    background: rgb(35, 35, 34);
+    margin-bottom: 1vh;
+    padding: 1vh;
+    color: white;
+    border-radius: clamp(20px, 1vw, 50px);
+}
+
+.rating {
+    float: bottom;
+}
+
 .star {
     height: 2vh;
 }
@@ -27,7 +45,6 @@
     border-radius: clamp(20px, 1vw, 50px);
     border: 0.5px solid white;
 }
-
 </style>
 
 <script>
