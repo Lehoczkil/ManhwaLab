@@ -11,9 +11,10 @@
 .comic-container {
     display: flex;
     justify-content: space-between;
-    background: red;
-    height: clamp(200px, 15vh, 1200px);
+    height: clamp(420px, 26vh, 4200px);
+    flex-wrap: wrap;
     align-items: center;
+    margin-block: 3vh;
 }
 </style>
 
