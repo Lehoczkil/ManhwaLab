@@ -15,22 +15,21 @@
 <style scoped>
 article {
     display: flex;
+    color: white;
 }
 
 main,
 aside {
     min-height: 85vh;
-    padding-block: 2vh;
+    padding: 2vh;
 }
 
 main {
     flex-basis: 65%;
-    background: green;
 }
 
 aside {
     flex-basis: 35%;
-    background: blue;
 }
 </style>
 
