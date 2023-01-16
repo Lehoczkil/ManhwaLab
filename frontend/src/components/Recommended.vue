@@ -1,12 +1,12 @@
 <template>
     <section class="recommended">
         <h1>More like this</h1>
-        <div class="shows">
-            <Show />
-            <Show />
-            <Show />
-            <Show />
-            <Show />
+        <div class="comics">
+            <comic />
+            <comic />
+            <comic />
+            <comic />
+            <comic />
         </div>
     </section>
 </template>
@@ -18,7 +18,7 @@
         width: 50vw;
         margin:2vh auto;
     }
-    .shows {
+    .comics {
         display: flex;
         justify-content: space-around;
     }
@@ -29,11 +29,11 @@
 </style>
 
 <script>
-import Show from './Show'
+import Comic from './Comic'
 export default {
     name: 'Recommended',
     components: {
-        Show
+        Comic
     }
 }
 </script>

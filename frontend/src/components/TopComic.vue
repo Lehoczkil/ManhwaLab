@@ -49,6 +49,6 @@
 
 <script>
 export default {
-    name: 'TopShow'
+    name: 'TopComic'
 }
 </script>

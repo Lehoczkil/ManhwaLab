@@ -1,5 +1,5 @@
 <template>
-    <div class="show">
+    <div class="comic">
         <div>
             <img :src="comic.coverPageLink" alt="picture about the comic" class="pic">
         </div>
@@ -30,17 +30,12 @@
     border: 0.5px solid white;
 }
 
-.show-pic {
-    height: clamp(100px, 12.5vh, 700px);
-    width: clamp(72px, 9vh, 350px);
-    background: black;
-}
 </style>
 
 <script>
 
 export default {
-    name: "Show",
+    name: "Comic",
     props: {
         comic: Object,
     },

@@ -1,14 +1,14 @@
 <template>
     <section>
         <h1>Test</h1>
-        <div class="show-container">
-            <Show v-for="comic in comics" :key="comic.comicId" :comic="comic" />
+        <div class="comic-container">
+            <Comic v-for="comic in comics" :key="comic.comicId" :comic="comic" />
         </div>
     </section>
 </template>
 
 <style scoped>
-.show-container {
+.comic-container {
     display: flex;
     justify-content: space-between;
     background: red;
@@ -18,12 +18,12 @@
 </style>
 
 <script>
-import Show from './Show'
+import Comic from './Comic'
 
 export default {
     name: 'Slider',
     components: {
-        Show
+        Comic
     },
     props: {
         comics: Array

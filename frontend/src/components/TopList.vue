@@ -2,18 +2,18 @@
     <section>
         <h1>Top</h1>
         <div class="shows">
-            <TopShow v-for="comic in comics" :key="comic.id" :comic="comic" />
+            <TopComic v-for="comic in comics" :key="comic.id" :comic="comic" />
         </div>
     </section>
 </template>
 
 <script>
-import TopShow from './TopShow'
+import TopComic from './TopComic'
 
 export default {
     name: 'TopList',
     components: {
-        TopShow
+        TopComic
     },
     props: {
         comics: Array
