@@ -214,15 +214,20 @@ INSERT INTO manhwa_profile_user_profile (manhwa_profile_id, user_profile_id) VAL
 
 -- Comic popularity per day
 
-INSERT INTO comic_popularity_per_day(comic_id, views_this_day, date) VALUES (2, 76, DATE_TRUNC('day',NOW()));
-INSERT INTO comic_popularity_per_day(comic_id, views_this_day, date) VALUES (3, 46, DATE_TRUNC('day',NOW()));
+INSERT INTO comic_popularity_per_day(comic_id, views_this_day, date) VALUES (2, 76, DATE_TRUNC('day',DATE '2023-01-17'));
+INSERT INTO comic_popularity_per_day(comic_id, views_this_day, date) VALUES (3, 46, DATE_TRUNC('day',DATE '2023-01-17'));
 INSERT INTO comic_popularity_per_day(comic_id, views_this_day, date) VALUES (1, 762, DATE_TRUNC('day',DATE '2023-01-17'));
-INSERT INTO comic_popularity_per_day(comic_id, views_this_day, date) VALUES (4, 7623, DATE_TRUNC('day',NOW()));
-INSERT INTO comic_popularity_per_day(comic_id, views_this_day, date) VALUES (8, 2, DATE_TRUNC('day',NOW()));
+INSERT INTO comic_popularity_per_day(comic_id, views_this_day, date) VALUES (4, 7623, DATE_TRUNC('day', DATE '2023-01-17'));
+INSERT INTO comic_popularity_per_day(comic_id, views_this_day, date) VALUES (8, 2, DATE_TRUNC('day', DATE '2023-01-17'));
 INSERT INTO comic_popularity_per_day(comic_id, views_this_day, date) VALUES (5, 78923, DATE_TRUNC('day',DATE '2023-01-25'));
-INSERT INTO comic_popularity_per_day(comic_id, views_this_day, date) VALUES (9, 71026, DATE_TRUNC('day',NOW()));
-INSERT INTO comic_popularity_per_day(comic_id, views_this_day, date) VALUES (7, 69420, DATE_TRUNC('day',NOW()));
-INSERT INTO comic_popularity_per_day(comic_id, views_this_day, date) VALUES (10, 1000, DATE_TRUNC('day',NOW()));
-INSERT INTO comic_popularity_per_day(comic_id, views_this_day, date) VALUES (6, 666, DATE_TRUNC('day',NOW()));
+INSERT INTO comic_popularity_per_day(comic_id, views_this_day, date) VALUES (5, 78923, DATE_TRUNC('day',DATE '2023-01-26'));
+INSERT INTO comic_popularity_per_day(comic_id, views_this_day, date) VALUES (5, 78923, DATE_TRUNC('day',DATE '2023-01-27'));
+INSERT INTO comic_popularity_per_day(comic_id, views_this_day, date) VALUES (9, 71026, DATE_TRUNC('day', DATE '2023-01-17'));
+INSERT INTO comic_popularity_per_day(comic_id, views_this_day, date) VALUES (7, 69420, DATE_TRUNC('day', DATE '2023-01-17'));
+INSERT INTO comic_popularity_per_day(comic_id, views_this_day, date) VALUES (10, 1000, DATE_TRUNC('day', DATE '2023-01-17'));
+INSERT INTO comic_popularity_per_day(comic_id, views_this_day, date) VALUES (6, 666, DATE_TRUNC('day', DATE '2023-01-18'));
+INSERT INTO comic_popularity_per_day(comic_id, views_this_day, date) VALUES (6, 666, DATE_TRUNC('day', DATE '2023-01-19'));
+INSERT INTO comic_popularity_per_day(comic_id, views_this_day, date) VALUES (6, 666, DATE_TRUNC('day', DATE '2023-01-16'));
+
 
 ---------------------------------------------------------------------------------------------------
