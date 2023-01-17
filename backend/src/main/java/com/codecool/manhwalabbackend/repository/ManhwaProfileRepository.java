@@ -11,7 +11,7 @@ public interface ManhwaProfileRepository extends JpaRepository<ManhwaProfile, Lo
     ManhwaProfile getManhwaProfileByTitle(String title);
 
     @Query(value = "SELECT rating FROM manhwa_profile " +
-            "WHERE manhwa_profile.title LIKE ?1", nativeQuery = true)
+            "WHERE manhwa_profile.title LIKE ?1 ORDER BY rating DESC", nativeQuery = true)
     Float getManhwaProfileRatingByTitle(String title);
 
     ManhwaProfile getManhwaProfileById(Long id);
