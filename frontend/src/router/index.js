@@ -4,6 +4,7 @@ import MangaProfile from "../views/MangaProfile";
 import UserProfile from "../views/UserProfile";
 import Comics from "../views/Comics";
 import Recommendations from "../views/Recommendations";
+import { nextTick } from "vue";
 
 const routes = [
   {
@@ -12,8 +13,8 @@ const routes = [
     component: Home,
   },
   {
-    path: "/manga-profile",
-    name: "MangaProfile",
+    path: "/comics/:id",
+    props: true,
     component: MangaProfile,
   },
   {
@@ -36,6 +37,13 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
+});
+
+router.afterEach((to) => {
+  console.log("Navigated to: ", to.path);
+  nextTick().then(() => {
+    console.log('actual navigated to')
+  })
 });
 
 export default router;
