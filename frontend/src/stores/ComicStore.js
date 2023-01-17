@@ -56,7 +56,7 @@ export const useComicStore = defineStore("comicStore", {
         });
       } else if (sort === "rating") {
         sortedComics.sort(function (a, b) {
-          return a.rating - b.rating;
+          return b.rating - a.rating;
         });
       } else if (sort === "abc") {
         sortedComics.sort(function (a, b) {
