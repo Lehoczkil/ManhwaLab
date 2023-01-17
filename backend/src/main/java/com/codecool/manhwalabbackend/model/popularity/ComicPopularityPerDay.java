@@ -3,6 +3,7 @@ package com.codecool.manhwalabbackend.model.popularity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 @Getter
@@ -18,5 +19,6 @@ public class ComicPopularityPerDay {
     private Long id;
     private Long comicId;
     private Integer viewsThisDay;
+    private LocalDate date;
 }
 
