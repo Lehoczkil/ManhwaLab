@@ -11,6 +11,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.temporal.TemporalAdjusters;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,14 +53,14 @@ public class PopularityService {
     }
 
     private List<ManhwaProfileDTO> getMonthlyManhwaProfileDTOS() {
-        return getManhwaProfileDTOSBetweenDates( LocalDate.parse("2023-01-01"), LocalDate.parse("2023-01-30"));
+        return getManhwaProfileDTOSBetweenDates( getStartOfCurrentMonth(), getEndOfCurrentMonth());
     }
 
     private List<ManhwaProfileDTO> getManhwaProfileDTOSBetweenDates(LocalDate startDate, LocalDate endDate) {
         List<ManhwaProfileDTO> topFiveManhwaToday = new ArrayList<>();
         int limit = 5;
-        for (ComicPopularityPerDay comicPopularityPerDay : popularityRepository
-                .getComicPopularityPerDaysBetweenDates(startDate, endDate, limit)) {
+
+        for (ComicPopularityPerDay comicPopularityPerDay : popularityRepository.getComicPopularityPerDaysBetweenDates(startDate, endDate, limit)) {
 
             Long comicId = comicPopularityPerDay.getComicId();
             popularityUtility.manhwaProfileDtoBuilder(topFiveManhwaToday, comicId, manhwaProfileRepository);
@@ -71,5 +72,13 @@ public class PopularityService {
         Sort sort = Sort.by(Sort.Direction.DESC, "viewsThisDay");
 //        change magic numbers
         return PageRequest.of(0, 5, sort);
+    }
+
+    private LocalDate getStartOfCurrentMonth(){
+        return LocalDate.now().with(TemporalAdjusters.firstDayOfMonth());
+    }
+
+    private LocalDate getEndOfCurrentMonth(){
+        return LocalDate.now().with(TemporalAdjusters.lastDayOfMonth());
     }
 }

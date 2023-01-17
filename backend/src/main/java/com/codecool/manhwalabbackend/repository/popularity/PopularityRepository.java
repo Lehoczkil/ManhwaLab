@@ -14,10 +14,10 @@ public interface PopularityRepository extends JpaRepository<ComicPopularityPerDa
 
     List<ComicPopularityPerDay> getComicPopularityPerDaysByDate(LocalDate date, Pageable pageable);
 
-    @Query( value ="SELECT id, date, comic_popularity_per_day.comic_id, SUM(views_this_day) as views_this_day " +
+    @Query( value = "SELECT comic_popularity_per_day.comic_id, (array_agg(id))[1] as id, (array_agg(date))[1] as date, SUM(views_this_day) as views_this_day " +
             "FROM comic_popularity_per_day " +
             "WHERE date BETWEEN ?1 AND ?2 " +
-            "GROUP BY comic_id, id, date " +
+            "GROUP BY comic_id " +
             "ORDER BY views_this_day DESC " +
             "LIMIT ?3", nativeQuery = true)
     List<ComicPopularityPerDay> getComicPopularityPerDaysBetweenDates(LocalDate weekStartDate, LocalDate weekEndDate, int limit);
