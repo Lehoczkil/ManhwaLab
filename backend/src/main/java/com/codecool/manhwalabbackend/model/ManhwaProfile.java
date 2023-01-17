@@ -6,7 +6,7 @@ import lombok.*;
 import javax.persistence.*;
 
 
-import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -28,8 +28,8 @@ public class ManhwaProfile {
     private Integer numberOfChapters;
     @Enumerated(EnumType.STRING)
     private Status status;
-    private Timestamp released;
-    private Timestamp updated;
+    private LocalDate released;
+    private LocalDate updated;
     private String author;
     private Integer views;
     private Integer favourite;
