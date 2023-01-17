@@ -35,15 +35,15 @@ INSERT INTO theme (name) VALUES ('Dungeons');--10
 -- MANHWA PROFILE
 INSERT INTO manhwa_profile (author, description, favourite, title, number_of_chapters, released, status, type, updated, views, rating, cover_page_link)
 VALUES ('Zerobic', 'An era where hunters thrive on hunting monsters that come from Gates. Jin Tae-Kyung is a low-rank hunter who picks up a VR machine, and accidentally logs into the game, which is set in the world of Martial Arts. After many ups and downs, Tae-Kyung is able to escape this world. The strength and skills, which he received in the Murim were able to be carried over back to the real world. This allows him to continue making a living a hunter… but he decides to return back to the world of Murim, out of care for his NPC friends.'
-        , 4283, 'Murim Login', 135, current_timestamp, 'ONGOING', 'MANHWA', current_timestamp, 666, 9.9, 'https://www.asurascans.com/wp-content/uploads/2022/04/LoginMoorimCover05.png');
+        , 4283, 'Murim Login', 135, current_timestamp, 'ONGOING', 'MANHWA', current_timestamp, 647219, 9.3, 'https://www.asurascans.com/wp-content/uploads/2022/04/LoginMoorimCover05.png');
 
 INSERT INTO manhwa_profile (author, description, favourite, title, number_of_chapters, released, status, type, updated, views, rating, cover_page_link)
 VALUES ('Hermode/Cho Wooneh (RedIce Studio)', 'The mobile gacha game ‘Pick Me Up!’ is known for being brutally difficult, and no one has been able to clear a dungeon. Loki, the fifth among all the world’s masters, loses consciousness while trying to clear the dungeon. Upon waking up, Loki finds himself turned into a 1-star level 1 hero, ‘Islat Han’. “It’s him! I’m certain he’s the one who brought me here!” In order to return to Earth, he must lead novice masters and heroes and break through the 100th floor of the dungeon! “You messed with the wrong person.” This is the story of master Loki who is forced to carry everyone to victory and cannot afford a single defeat.'
-       , 456, 'Pick Me Up, Infinite Gacha', 20, current_timestamp, 'ONGOING', 'MANHWA', current_timestamp, 6669, 9.9, 'https://www.asurascans.com/wp-content/uploads/2022/12/infiniteGachaCover01.jpg');
+       , 456, 'Pick Me Up, Infinite Gacha', 20, current_timestamp, 'ONGOING', 'MANHWA', current_timestamp, 23423, 10.0, 'https://www.asurascans.com/wp-content/uploads/2022/12/infiniteGachaCover01.jpg');
 
 INSERT INTO manhwa_profile (author, description, favourite, title, number_of_chapters, released, status, type, updated, views, rating, cover_page_link)
 VALUES ('-', 'If you max out your level in-game, you can get heaven-defying powers in real life?! Player Ling Ce finally obtained this reward through his hard work but ended up receiving the most useless skills. Just as he was mourning his luck, a mysterious power brought him back to three years in the past. With the experiences and memories of his previous life, how many different wonderful things can he bring to his new life?'
-       , 1450, 'The Game That I Came From', 149, current_timestamp, 'ONGOING', 'MANHUA', current_timestamp, 666, 9.9, 'https://www.asurascans.com/wp-content/uploads/2021/03/Cover-1.jpg');
+       , 1450, 'The Game That I Came From', 149, current_timestamp, 'ONGOING', 'MANHUA', current_timestamp, 39824, 6.6, 'https://www.asurascans.com/wp-content/uploads/2021/03/Cover-1.jpg');
 
 INSERT INTO manhwa_profile (author, description, favourite, title, number_of_chapters, released, status, type, updated, views, rating, cover_page_link)
 VALUES ('-', 'Jin Runcandel was the youngest son of Runcandel, the land’s most prestigious swordsman family…
@@ -56,16 +56,16 @@ He, who was kicked out miserably and came to a meaningless end, was given anothe
 
 Memories of his past life, overwhelming talent, and a contract with God…
 The preparations to become the greatest are complete.'
-       , 340, 'Swordmaster’s Youngest Son', 53, current_timestamp, 'ONGOING', 'MANHWA', current_timestamp, 666, 9.9, 'https://www.asurascans.com/wp-content/uploads/2022/04/cover.jpg');
+       , 340, 'Swordmaster’s Youngest Son', 53, current_timestamp, 'ONGOING', 'MANHWA', current_timestamp, 3361, 7.9, 'https://www.asurascans.com/wp-content/uploads/2022/04/cover.jpg');
 
 
 INSERT INTO manhwa_profile (author, description, favourite, title, number_of_chapters, released, status, type, updated, views, rating, cover_page_link)
 VALUES ('-', 'After being accused of murdering a colleague, Cassian Lee came to his death. The moment he thought it was all over, his soul was suddenly possessed by a boy’s body and he awakens as a villain'
-       , 14890, 'Villain To Kill', 79, current_timestamp, 'ONGOING', 'MANHWA', current_timestamp, 666, 9.9, 'https://www.asurascans.com/wp-content/uploads/2021/02/villain.jpg');
+       , 14890, 'Villain To Kill', 79, current_timestamp, 'ONGOING', 'MANHWA', current_timestamp, 66798, 6.9, 'https://www.asurascans.com/wp-content/uploads/2021/02/villain.jpg');
 
 INSERT INTO manhwa_profile (author, description, favourite, title, number_of_chapters, released, status, type, updated, views, rating, cover_page_link)
 VALUES ('-', 'Cheon Haesun is the protagonist who‘s terminally ill because of various poisons. Cheon Haesun, who was never welcome anywhere, will have his story of becoming the strongest hunter play out on an Earth upon which dungeons and monsters have broken out!'
-       , 1912, 'Poison-Eating Healer', 23, current_timestamp, 'ONGOING', 'MANHWA', current_timestamp, 666, 9.9, 'https://www.asurascans.com/wp-content/uploads/2022/12/resource_1.png');
+       , 1912, 'Poison-Eating Healer', 23, current_timestamp, 'ONGOING', 'MANHWA', current_timestamp, 666, 9.6, 'https://www.asurascans.com/wp-content/uploads/2022/12/resource_1.png');
 
 INSERT INTO manhwa_profile (author, description, favourite, title, number_of_chapters, released, status, type, updated, views, rating, cover_page_link)
 VALUES ('Eunyeol', 'If the Grim Reaper calls your name three times, you will be taken to the underworld.
@@ -79,16 +79,16 @@ After desperately eating the herb of immortality, I couldn’t believe it, but I
 When I realized this was real and opened my eyes, there were old geezers standing around me…!
 Where am I…? Mount Wudang? The Wudang sect?! And what’s even worse, I’ve possessed the body of an errand boy. …This is nuts!!!
 I… I am… the strongest… the absolute f**king strongest Heavenly Leader of the Evil sect, Hyeokryeon Mugang!'
-       , 10265, 'Wandering Warrior of Wudang', 84, current_timestamp, 'ONGOING', 'MANHWA', current_timestamp, 666, 9.9, 'https://www.asurascans.com/wp-content/uploads/2021/09/unknown.jpg');
+       , 10265, 'Wandering Warrior of Wudang', 84, current_timestamp, 'ONGOING', 'MANHWA', current_timestamp, 78924, 2.9, 'https://www.asurascans.com/wp-content/uploads/2021/09/unknown.jpg');
 
 INSERT INTO manhwa_profile (author, description, favourite, title, number_of_chapters, released, status, type, updated, views, rating, cover_page_link)
 VALUES ('Kim Pyeongbeom', 'The greatest martial family, Samion. Daven, a member of the Samion family, is a one-armed martial soldier without a right arm. Despite the ridicule and contempt he got for only having a left arm, he surpassed the direct line of the Samion family like a genius. However, he got betrayed by his family and parents in the end, thus meeting a poor end. But, he was reincarnated. “I have a right arm?” He had a new family tradition. A naturally gifted body. Experience from his past life. And the god Yulion with him as well. After his reincarnation, everything changed, and a new adventure started.
 '
-       , 1295, 'Standard of Reincarnation', 41, current_timestamp, 'ONGOING', 'MANHWA', current_timestamp, 666, 9.9, 'https://www.asurascans.com/wp-content/uploads/2022/08/standardofReCover03.png');
+       , 1295, 'Standard of Reincarnation', 41, current_timestamp, 'ONGOING', 'MANHWA', current_timestamp, 86234, 5.5, 'https://www.asurascans.com/wp-content/uploads/2022/08/standardofReCover03.png');
 
 INSERT INTO manhwa_profile (author, description, favourite, title, number_of_chapters, released, status, type, updated, views, rating, cover_page_link)
 VALUES ('-', 'Hamel, a warrior who traveled with his colleagues to exterminate the devil. Unfortunately, he died just before the battle with the devil started. “Yes.” What the hell? He was reborn as the descendant of his fellow warrior, Vermouth. The descendant from the bloodline of the great Vermouth, Hamel. No, he was now Eugene Lionhart. “It was already enough with me having the delusion that I was a genius in my past life. But… this… It’s… It’s incomparable.’ From a dying body to a new body, he has the achievement that he did not have in his previous life. And, a reincarnation of an unknown origin, the reality of living together with the demons. Facing a new world where everything is questionable. The journey of the unfinished previous life begins with Eugene’s body.'
-       , 4521, 'Damn Reincarnation', 47, current_timestamp, 'ONGOING', 'MANHWA', current_timestamp, 666, 9.9, 'https://www.asurascans.com/wp-content/uploads/2022/06/Damn_ReincarnationCover003.png');
+       , 4521, 'Damn Reincarnation', 47, current_timestamp, 'ONGOING', 'MANHWA', current_timestamp, 74823, 4.6, 'https://www.asurascans.com/wp-content/uploads/2022/06/Damn_ReincarnationCover003.png');
 
 INSERT INTO manhwa_profile (author, description, favourite, title, number_of_chapters, released, status, type, updated, views, rating, cover_page_link)
 VALUES ('-', 'An Earth in the 21st century that has fused with another world. An era of “dungeons” teeming with monsters and the “adventurers” that raid them.
@@ -100,7 +100,7 @@ Although he was once considered the greatest adventurers in Asia, he has been ac
 “You there, get in Warrior High School.”
 
 This is a story about a young man who’s lost his dream, hiding his identity, finding himself once again.'
-       , 4056, 'Warrior High School – Dungeon Raid Department', 27, current_timestamp, 'ONGOING', 'MANHWA', current_timestamp, 666, 9.9, 'https://www.asurascans.com/wp-content/uploads/2022/10/WarriorHighSchoolCover04.png');
+       , 4056, 'Warrior High School – Dungeon Raid Department', 27, current_timestamp, 'ONGOING', 'MANHWA', current_timestamp, 274658123, 8.6, 'https://www.asurascans.com/wp-content/uploads/2022/10/WarriorHighSchoolCover04.png');
 
 
 ---------------------------------------------------------------------------------------------
@@ -214,46 +214,15 @@ INSERT INTO manhwa_profile_user_profile (manhwa_profile_id, user_profile_id) VAL
 
 -- Comic popularity per day
 
-INSERT INTO comic_popularity_per_day(comic_id, views_this_day) VALUES (2, 76);
-INSERT INTO comic_popularity_per_day(comic_id, views_this_day) VALUES (3, 46);
-INSERT INTO comic_popularity_per_day(comic_id, views_this_day) VALUES (1, 762);
-INSERT INTO comic_popularity_per_day(comic_id, views_this_day) VALUES (4, 7623);
-INSERT INTO comic_popularity_per_day(comic_id, views_this_day) VALUES (8, 2);
-INSERT INTO comic_popularity_per_day(comic_id, views_this_day) VALUES (5, 78923);
-INSERT INTO comic_popularity_per_day(comic_id, views_this_day) VALUES (9, 71026);
-INSERT INTO comic_popularity_per_day(comic_id, views_this_day) VALUES (7, 69420);
-INSERT INTO comic_popularity_per_day(comic_id, views_this_day) VALUES (10, 1000);
-INSERT INTO comic_popularity_per_day(comic_id, views_this_day) VALUES (6, 666);
+INSERT INTO comic_popularity_per_day(comic_id, views_this_day, date) VALUES (2, 76, DATE_TRUNC('day',NOW()));
+INSERT INTO comic_popularity_per_day(comic_id, views_this_day, date) VALUES (3, 46, DATE_TRUNC('day',NOW()));
+INSERT INTO comic_popularity_per_day(comic_id, views_this_day, date) VALUES (1, 762, DATE_TRUNC('day',DATE '2023-01-17'));
+INSERT INTO comic_popularity_per_day(comic_id, views_this_day, date) VALUES (4, 7623, DATE_TRUNC('day',NOW()));
+INSERT INTO comic_popularity_per_day(comic_id, views_this_day, date) VALUES (8, 2, DATE_TRUNC('day',NOW()));
+INSERT INTO comic_popularity_per_day(comic_id, views_this_day, date) VALUES (5, 78923, DATE_TRUNC('day',DATE '2023-01-25'));
+INSERT INTO comic_popularity_per_day(comic_id, views_this_day, date) VALUES (9, 71026, DATE_TRUNC('day',NOW()));
+INSERT INTO comic_popularity_per_day(comic_id, views_this_day, date) VALUES (7, 69420, DATE_TRUNC('day',NOW()));
+INSERT INTO comic_popularity_per_day(comic_id, views_this_day, date) VALUES (10, 1000, DATE_TRUNC('day',NOW()));
+INSERT INTO comic_popularity_per_day(comic_id, views_this_day, date) VALUES (6, 666, DATE_TRUNC('day',NOW()));
 
 ---------------------------------------------------------------------------------------------------
-
--- Comic popularity per week
-
-INSERT INTO comic_popularity_per_week(comic_id, views_this_week) VALUES (2, 76);
-INSERT INTO comic_popularity_per_week(comic_id, views_this_week) VALUES (3, 46);
-INSERT INTO comic_popularity_per_week(comic_id, views_this_week) VALUES (1, 762);
-INSERT INTO comic_popularity_per_week(comic_id, views_this_week) VALUES (4, 7623);
-INSERT INTO comic_popularity_per_week(comic_id, views_this_week) VALUES (8, 2);
-INSERT INTO comic_popularity_per_week(comic_id, views_this_week) VALUES (5, 78923);
-INSERT INTO comic_popularity_per_week(comic_id, views_this_week) VALUES (9, 71026);
-INSERT INTO comic_popularity_per_week(comic_id, views_this_week) VALUES (7, 69420);
-INSERT INTO comic_popularity_per_week(comic_id, views_this_week) VALUES (10, 1000);
-INSERT INTO comic_popularity_per_week(comic_id, views_this_week) VALUES (6, 666);
-
-
-
----------------------------------------------------------------------------------------------------
-
--- Comic popularity per month
-
-INSERT INTO comic_popularity_per_month(comic_id, views_this_month) VALUES (6, 6666);
-INSERT INTO comic_popularity_per_month(comic_id, views_this_month) VALUES (2, 2345);
-INSERT INTO comic_popularity_per_month(comic_id, views_this_month) VALUES (5, 56266);
-INSERT INTO comic_popularity_per_month(comic_id, views_this_month) VALUES (3, 3662126);
-INSERT INTO comic_popularity_per_month(comic_id, views_this_month) VALUES (4, 41266);
-INSERT INTO comic_popularity_per_month(comic_id, views_this_month) VALUES (1, 166676);
-INSERT INTO comic_popularity_per_month(comic_id, views_this_month) VALUES (10, 1063266);
-INSERT INTO comic_popularity_per_month(comic_id, views_this_month) VALUES (8, 866623);
-INSERT INTO comic_popularity_per_month(comic_id, views_this_month) VALUES (7, 76);
-INSERT INTO comic_popularity_per_month(comic_id, views_this_month) VALUES (9, 9789);
-
