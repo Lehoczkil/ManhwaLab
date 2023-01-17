@@ -3,6 +3,7 @@ package com.codecool.manhwalabbackend.repository.popularity;
 import com.codecool.manhwalabbackend.model.popularity.ComicPopularityPerDay;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
@@ -13,5 +14,11 @@ public interface PopularityRepository extends JpaRepository<ComicPopularityPerDa
 
     List<ComicPopularityPerDay> getComicPopularityPerDaysByDate(LocalDate date, Pageable pageable);
 
-    List<ComicPopularityPerDay> getComicPopularityPerDaysByDateBetween(LocalDate weekStartDate, LocalDate weekEndDate, Pageable pageable);
+    @Query( value ="SELECT id, date, comic_popularity_per_day.comic_id, SUM(views_this_day) as views_this_day " +
+            "FROM comic_popularity_per_day " +
+            "WHERE date BETWEEN ?1 AND ?2 " +
+            "GROUP BY comic_id, id, date " +
+            "ORDER BY views_this_day DESC " +
+            "LIMIT ?3", nativeQuery = true)
+    List<ComicPopularityPerDay> getComicPopularityPerDaysBetweenDates(LocalDate weekStartDate, LocalDate weekEndDate, int limit);
 }
