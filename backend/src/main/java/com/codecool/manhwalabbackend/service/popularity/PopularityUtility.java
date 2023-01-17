@@ -2,7 +2,6 @@ package com.codecool.manhwalabbackend.service.popularity;
 
 import com.codecool.manhwalabbackend.model.DTO.ManhwaProfileDTO;
 import com.codecool.manhwalabbackend.model.ManhwaProfile;
-import com.codecool.manhwalabbackend.model.popularity.ComicPopularityPerWeek;
 import com.codecool.manhwalabbackend.repository.ManhwaProfileRepository;
 import org.springframework.stereotype.Component;
 

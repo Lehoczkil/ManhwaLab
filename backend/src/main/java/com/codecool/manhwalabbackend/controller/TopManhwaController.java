@@ -1,9 +1,7 @@
 package com.codecool.manhwalabbackend.controller;
 
 import com.codecool.manhwalabbackend.model.DTO.ManhwaProfileDTO;
-import com.codecool.manhwalabbackend.service.popularity.PopularityPerDayService;
-import com.codecool.manhwalabbackend.service.popularity.PopularityPerMonthService;
-import com.codecool.manhwalabbackend.service.popularity.PopularityPerWeekService;
+import com.codecool.manhwalabbackend.service.popularity.PopularityService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,22 +16,20 @@ import java.util.List;
 @CrossOrigin({"http://localhost:8081"})
 public class TopManhwaController {
 
-    private final PopularityPerDayService popularityPerDayService;
-    private final PopularityPerWeekService popularityPerWeekService;
-    private final PopularityPerMonthService popularityPerMonthService;
+    private final PopularityService popularityService;
 
     @GetMapping(value = "/top/daily")
     public List<ManhwaProfileDTO> getTopDaily(){
-        return popularityPerDayService.getTopFiveDailyComic();
+        return popularityService.getDailyTopFiveComic();
     }
 
     @GetMapping(value = "/top/weekly")
     public List<ManhwaProfileDTO> getTopWeekly(){
-        return popularityPerWeekService.getTopFiveWeeklyComic();
+        return popularityService.getWeeklyTopFiveComic();
     }
 
     @GetMapping(value = "/top/monthly")
     public List<ManhwaProfileDTO> getTopMonthly(){
-        return popularityPerMonthService.getTopFiveMonthlyComic();
+        return popularityService.getMonthlyTopFiveComic();
     }
 }
