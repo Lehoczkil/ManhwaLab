@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ManhwaProfileDTO {
+public class ComicProfileDTO {
 
     private Long comicId;
     private String title;

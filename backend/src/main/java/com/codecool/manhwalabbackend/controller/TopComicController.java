@@ -1,6 +1,6 @@
 package com.codecool.manhwalabbackend.controller;
 
-import com.codecool.manhwalabbackend.model.DTO.ManhwaProfileDTO;
+import com.codecool.manhwalabbackend.model.DTO.ComicProfileDTO;
 import com.codecool.manhwalabbackend.service.popularity.PopularityService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -14,22 +14,22 @@ import java.util.List;
 @RequestMapping("api/manhwaLab")
 @RequiredArgsConstructor
 @CrossOrigin({"http://localhost:8081"})
-public class TopManhwaController {
+public class TopComicController {
 
     private final PopularityService popularityService;
 
     @GetMapping(value = "/top/daily")
-    public List<ManhwaProfileDTO> getTopDaily(){
+    public List<ComicProfileDTO> getTopDaily(){
         return popularityService.getDailyTopFiveComic();
     }
 
     @GetMapping(value = "/top/weekly")
-    public List<ManhwaProfileDTO> getTopWeekly(){
+    public List<ComicProfileDTO> getTopWeekly(){
         return popularityService.getWeeklyTopFiveComic();
     }
 
     @GetMapping(value = "/top/monthly")
-    public List<ManhwaProfileDTO> getTopMonthly(){
+    public List<ComicProfileDTO> getTopMonthly(){
         return popularityService.getMonthlyTopFiveComic();
     }
 }

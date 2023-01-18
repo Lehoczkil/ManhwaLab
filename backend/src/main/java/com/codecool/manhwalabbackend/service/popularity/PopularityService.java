@@ -1,8 +1,8 @@
 package com.codecool.manhwalabbackend.service.popularity;
 
-import com.codecool.manhwalabbackend.model.DTO.ManhwaProfileDTO;
+import com.codecool.manhwalabbackend.model.DTO.ComicProfileDTO;
 import com.codecool.manhwalabbackend.model.popularity.ComicPopularityPerDay;
-import com.codecool.manhwalabbackend.repository.ManhwaProfileRepository;
+import com.codecool.manhwalabbackend.repository.ComicProfileRepository;
 import com.codecool.manhwalabbackend.repository.popularity.PopularityRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
@@ -19,51 +19,51 @@ import java.util.List;
 public class PopularityService {
 
     private final PopularityRepository popularityRepository;
-    private final ManhwaProfileRepository manhwaProfileRepository;
+    private final ComicProfileRepository comicProfileRepository;
     private final PopularityUtility popularityUtility;
     private final FirstAndLastDaysOfTimePeriod firstAndLastDaysOfTimePeriod;
 
 
-    public List<ManhwaProfileDTO> getDailyTopFiveComic(){
+    public List<ComicProfileDTO> getDailyTopFiveComic(){
         Pageable pageable = getPageable();
         return getDailyManhwaProfileDTOS(pageable);
     }
 
-    private List<ManhwaProfileDTO> getDailyManhwaProfileDTOS(Pageable pageable) {
-        List<ManhwaProfileDTO> topFiveManhwaToday = new ArrayList<>();
+    private List<ComicProfileDTO> getDailyManhwaProfileDTOS(Pageable pageable) {
+        List<ComicProfileDTO> topFiveManhwaToday = new ArrayList<>();
         for (ComicPopularityPerDay comicPopularityPerDay : popularityRepository
                 .getComicPopularityPerDaysByDate(LocalDate.now(), pageable)) {
 
             Long comicId = comicPopularityPerDay.getComicId();
-            popularityUtility.manhwaProfileDtoBuilder(topFiveManhwaToday, comicId, manhwaProfileRepository);
+            popularityUtility.comicProfileDtoBuilder(topFiveManhwaToday, comicId, comicProfileRepository);
         }
         return topFiveManhwaToday;
     }
 
-    public List<ManhwaProfileDTO> getWeeklyTopFiveComic(){
+    public List<ComicProfileDTO> getWeeklyTopFiveComic(){
         return getWeeklyManhwaProfileDTOS();
     }
 
-    private List<ManhwaProfileDTO> getWeeklyManhwaProfileDTOS() {
+    private List<ComicProfileDTO> getWeeklyManhwaProfileDTOS() {
         return getManhwaProfileDTOSBetweenDates(firstAndLastDaysOfTimePeriod.getStartOfWeek(), firstAndLastDaysOfTimePeriod.getEndOfWeek());
     }
 
-    public List<ManhwaProfileDTO> getMonthlyTopFiveComic(){
+    public List<ComicProfileDTO> getMonthlyTopFiveComic(){
         return getMonthlyManhwaProfileDTOS();
     }
 
-    private List<ManhwaProfileDTO> getMonthlyManhwaProfileDTOS() {
+    private List<ComicProfileDTO> getMonthlyManhwaProfileDTOS() {
         return getManhwaProfileDTOSBetweenDates( firstAndLastDaysOfTimePeriod.getFirstDayOfMonth(), firstAndLastDaysOfTimePeriod.getLastDayOfMonth());
     }
 
-    private List<ManhwaProfileDTO> getManhwaProfileDTOSBetweenDates(LocalDate startDate, LocalDate endDate) {
-        List<ManhwaProfileDTO> topFiveManhwaToday = new ArrayList<>();
+    private List<ComicProfileDTO> getManhwaProfileDTOSBetweenDates(LocalDate startDate, LocalDate endDate) {
+        List<ComicProfileDTO> topFiveManhwaToday = new ArrayList<>();
         int limit = 5;
 
         for (ComicPopularityPerDay comicPopularityPerDay : popularityRepository.getComicPopularityPerDaysBetweenDates(startDate, endDate, limit)) {
 
             Long comicId = comicPopularityPerDay.getComicId();
-            popularityUtility.manhwaProfileDtoBuilder(topFiveManhwaToday, comicId, manhwaProfileRepository);
+            popularityUtility.comicProfileDtoBuilder(topFiveManhwaToday, comicId, comicProfileRepository);
         }
         return topFiveManhwaToday;
     }
