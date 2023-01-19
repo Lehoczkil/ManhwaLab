@@ -339,6 +339,7 @@ export default {
         const comicStore = useComicStore()
 
         comicStore.getComicById(props.id)
+        comicStore.increaseViewCount(props.id)
 
         const { currentComic } = storeToRefs(comicStore)
 
