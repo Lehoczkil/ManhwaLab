@@ -4,7 +4,7 @@ import com.codecool.manhwalabbackend.model.enums.Gender;
 import javax.persistence.*;
 import lombok.*;
 
-import java.sql.Timestamp;
+import java.time.LocalDate;
 
 @Entity
 @Setter
@@ -25,8 +25,8 @@ public class UserProfile {
     @Enumerated(EnumType.STRING)
     private Gender gender;
     private String location;
-    private Timestamp lastOnline;
-    private Timestamp joined;
+    private LocalDate lastOnline;
+    private LocalDate joined;
 //    profile picture
 
 }

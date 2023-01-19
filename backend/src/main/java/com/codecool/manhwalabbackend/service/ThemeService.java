@@ -20,8 +20,8 @@ public class ThemeService {
     public List<Theme> getAllTheme(){
         return themeRepository.findAll();
     }
-    public List<String> getManhwaThemes(int manhwaId){
-        return themeRepository.getManhwaThemes(manhwaId);
+    public List<String> getComicThemes(int comicId){
+        return themeRepository.getComicThemes(comicId);
     }
 }
 
