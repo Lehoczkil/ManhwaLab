@@ -132,5 +132,14 @@ export const useComicStore = defineStore("comicStore", {
         this.comics.length === this.numberOfComics && this.numberOfComics > 0
       );
     },
+    increaseViewCount(id) {
+      fetch(`http://localhost:8080/api/manhwaLab/${id}/update-view`, {
+        method: "POST",
+        headers: {
+          'Accept': "application/json",
+          "Content-Type": "application/json",
+        },
+      });
+    },
   },
 });
