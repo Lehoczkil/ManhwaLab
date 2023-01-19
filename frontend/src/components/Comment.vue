@@ -78,10 +78,10 @@
 
 .star {
     height: 2vh;
+    filter: invert();
 }
 
 .comment {
-    background: blue;
     margin-bottom: 2vh;
     display: flex;
     padding: 1vw;
@@ -90,7 +90,7 @@
 .profile-pic {
     height: clamp(200px, 15vw, 1400px);
     width: clamp(200px, 15vw, 1400px);
-    background: black;
+    background: white;
 }
 
 .content {
