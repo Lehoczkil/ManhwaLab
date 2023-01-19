@@ -9,6 +9,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -72,6 +73,17 @@ public class PopularityService {
         Sort sort = Sort.by(Sort.Direction.DESC, "viewsThisDay");
 //        change magic numbers
         return PageRequest.of(0, 5, sort);
+    }
+
+    @Transactional
+    public void updateDailyViewForComic(Long comicId, LocalDate date){
+        try {
+            ComicPopularityPerDay currentComicPopularityPerDay = popularityRepository.getComicPopularityPerDayByComicIdAndDate(comicId, date);
+            Integer currentDailyViews = currentComicPopularityPerDay.getViewsThisDay();
+            currentComicPopularityPerDay.setViewsThisDay(currentDailyViews + 1);
+        }catch (NullPointerException e) {
+            popularityRepository.save(new ComicPopularityPerDay(popularityRepository.findTopByOrderByIdDesc().getId()+1, comicId, 1, LocalDate.now()));
+        }
     }
 
 
