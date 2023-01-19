@@ -2,8 +2,9 @@ package com.codecool.manhwalabbackend.service;
 
 import com.codecool.manhwalabbackend.model.ComicProfile;
 import com.codecool.manhwalabbackend.repository.ComicProfileRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -23,6 +24,13 @@ public class ComicProfileService {
 
     public List<ComicProfile> getAllComic(){
         return comicProfileRepository.findAll();
+    }
+
+    @Transactional
+    public void updateComicViews(Long comicId){
+        ComicProfile currentComic = comicProfileRepository.getComicProfileById(comicId);
+        Integer currentVies = currentComic.getViews();
+        currentComic.setViews(currentVies + 1);
     }
 
 }
