@@ -8,14 +8,10 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class ComicProfileService {
 
     private final ComicProfileRepository comicProfileRepository;
-
-    @Autowired
-    public ComicProfileService(ComicProfileRepository comicProfileRepository) {
-        this.comicProfileRepository = comicProfileRepository;
-    }
 
     public ComicProfile getComicProfileByName(String title){
         return comicProfileRepository.getComicProfileByTitle(title);
