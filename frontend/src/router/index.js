@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home";
-import MangaProfile from "../views/MangaProfile";
+import ComicProfile from "../views/ComicProfile";
 import UserProfile from "../views/UserProfile";
 import Comics from "../views/Comics";
 import Recommendations from "../views/Recommendations";
@@ -12,9 +12,9 @@ const routes = [
     component: Home,
   },
   {
-    path: "/manga-profile",
-    name: "MangaProfile",
-    component: MangaProfile,
+    path: "/comics/:id",
+    props: true,
+    component: ComicProfile,
   },
   {
     path: "/user-profile",

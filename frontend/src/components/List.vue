@@ -5,7 +5,7 @@
         <div class="comics" v-for="comic in comics" :key="comic.id">
             <div class="comic">
                 <img :src="comic.coverPageLink" alt="" class="pic">
-                <h1>{{ comic.title }}</h1>
+                <h1 @click="handleClick(comic.id)">{{ comic.title }}</h1>
             </div>
         </div>
     </article>
@@ -46,12 +46,18 @@ import { storeToRefs } from 'pinia'
 
 export default {
     name: 'List',
+    methods: {
+        handleClick(comicId) {
+            this.$router.push(`/comics/${comicId}`)
+        }
+    },
     setup() {
         const comicStore = useComicStore()
 
         const { comics, loading } = storeToRefs(comicStore)
-
-        comicStore.getComics()
+        if (!comicStore.haveComics()) {
+            comicStore.getComics()
+        }
 
         return { comicStore, comics, loading }
     }

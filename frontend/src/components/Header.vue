@@ -5,14 +5,9 @@
                 <input type="search" placeholder="Find manhwa...">
                 <button>Search</button>
             </div>
-            <div class="select">
-                <select>
-                    <option value="">Browse</option>
-                    <option value="">Recommendations</option>
-                </select>
-            </div>
+            <button id="browse" @click="handleBrowseBtn">Browse</button>
         </div>
-        <img src="../assets/logo.png" alt="logo">
+        <img src="../assets/logo.png" alt="logo" @click="handleMainPageBtn">
         <div class="auth">
             <button>Register</button>
             <button>Login</button>
@@ -31,7 +26,7 @@ header {
 }
 
 img {
-    width: clamp(100px, 13vw, 1000px)
+    width: clamp(100px, 10vw, 1000px)
 }
 
 .search-container {
@@ -95,54 +90,8 @@ img {
     border-left: none;
 }
 
-select {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    -ms-appearance: none;
-    appearance: none;
-    outline: 0;
-    box-shadow: none;
-    border: 0 !important;
-    background: white;
-    flex: 1;
-    color: black;
-    text-align: center;
-    cursor: pointer;
-}
-
-select::-ms-expand {
-    display: none;
-}
-
-.select {
-    position: relative;
-    display: flex;
-    width: clamp(160px, 7vw, 1000px);
-    height: 3vh;
-    overflow: hidden;
-    border-radius: .25em;
-}
-
-.select::after {
-    content: '\25BC';
-    position: absolute;
-    height: 3vh;
-    top: 0;
-    right: 0;
-    padding: 0 0.5vw;
-    background: buttonface;
-    cursor: pointer;
-    pointer-events: none;
-    transition: .25s all ease;
-}
-
-.select:hover::after {
-    color: white;
-    background: black;
-    border: 2px solid white;
-}
-
-.auth button {
+.auth button,
+#browse {
     background: transparent;
     border: none;
     border-radius: clamp(5px, 0.5vh, 30px);
@@ -155,15 +104,27 @@ select::-ms-expand {
     width: clamp(100px, 9vw, 500px);
 }
 
-.auth button:hover {
+.auth button:hover,
+#browse:hover {
     background: white;
     color: black;
 }
 
+#browse {
+    margin-left: 1vw;
+}
 </style>
 
 <script>
 export default {
-    name: 'Header'
+    name: 'Header',
+    methods: {
+        handleBrowseBtn() {
+            this.$router.push('/comics')
+        },
+        handleMainPageBtn() {
+            this.$router.push('/')
+        }
+    }
 }
 </script>

@@ -1,7 +1,7 @@
 <template>
     <div class="comic">
         <img :src="comic.coverPageLink" alt="picture about the comic" class="pic">
-        <h1>{{ comic.title }}</h1>
+        <h1 @click="handleClick">{{ comic.title }}</h1>
         <p>{{ comic.numberOfChapters }} chapters</p>
         <div class="rating">
             <img class="star" src="../assets/star.png" alt="star">
@@ -52,7 +52,17 @@ span {
 export default {
     name: "Comic",
     props: {
-        comic: Object,
+        comic: {
+            type: Object,
+            default() {
+                return {}
+            }
+        }
     },
+    methods: {
+        handleClick() {
+            this.$router.push(`/comics/${this.comic.comicId}`)
+        }
+    }
 }
 </script>
