@@ -28,7 +28,7 @@ public class ComicProfileController {
         return comicProfileService.getComicProfileByName(comicTitle);
     }
 
-    @GetMapping(value = "/{comicId}/update-view")
+    @PostMapping(value = "/{comicId}/update-view")
     @Transactional
     public ResponseEntity<String> updateComicViewNumbers(@PathVariable Long comicId){
         comicProfileService.updateComicViews(comicId);
