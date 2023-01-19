@@ -317,7 +317,7 @@ import { useComicStore } from '@/stores/ComicStore'
 import { storeToRefs } from 'pinia'
 
 export default {
-    name: 'MangaProfile',
+    name: 'ComicProfile',
     components: {
         Comment,
         Recommended
