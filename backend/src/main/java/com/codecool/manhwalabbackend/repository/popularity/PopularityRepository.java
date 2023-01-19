@@ -21,4 +21,7 @@ public interface PopularityRepository extends JpaRepository<ComicPopularityPerDa
             "ORDER BY views_this_day DESC " +
             "LIMIT ?3", nativeQuery = true)
     List<ComicPopularityPerDay> getComicPopularityPerDaysBetweenDates(LocalDate weekStartDate, LocalDate weekEndDate, int limit);
+
+    ComicPopularityPerDay getComicPopularityPerDayByComicIdAndDate(Long comicId, LocalDate date);
+
 }
