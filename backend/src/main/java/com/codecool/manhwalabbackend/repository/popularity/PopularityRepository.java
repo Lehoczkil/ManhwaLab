@@ -24,4 +24,5 @@ public interface PopularityRepository extends JpaRepository<ComicPopularityPerDa
 
     ComicPopularityPerDay getComicPopularityPerDayByComicIdAndDate(Long comicId, LocalDate date);
 
+    ComicPopularityPerDay findTopByOrderByIdDesc();
 }
