@@ -35,7 +35,7 @@ INSERT INTO theme (name) VALUES ('Dungeons');--10
 -- COMIC PROFILE
 INSERT INTO comic_profile (author, description, favourite, title, number_of_chapters, released, status, type, updated, views, rating, cover_page_link)
 VALUES ('Zerobic', 'An era where hunters thrive on hunting monsters that come from Gates. Jin Tae-Kyung is a low-rank hunter who picks up a VR machine, and accidentally logs into the game, which is set in the world of Martial Arts. After many ups and downs, Tae-Kyung is able to escape this world. The strength and skills, which he received in the Murim were able to be carried over back to the real world. This allows him to continue making a living a hunter… but he decides to return back to the world of Murim, out of care for his NPC friends.'
-        , 4283, 'Murim Login', 135, CURRENT_DATE, 'ONGOING', 'MANHWA', CURRENT_DATE, 647219, 9.3, 'https://www.asurascans.com/wp-content/uploads/2022/04/LoginMoorimCover05.png');
+        , 4283, 'Murim Login', 135, CURRENT_DATE, 'ONGOING', 'MANHWA', CURRENT_DATE, 0, 9.3, 'https://www.asurascans.com/wp-content/uploads/2022/04/LoginMoorimCover05.png');
 
 INSERT INTO comic_profile (author, description, favourite, title, number_of_chapters, released, status, type, updated, views, rating, cover_page_link)
 VALUES ('Hermode/Cho Wooneh (RedIce Studio)', 'The mobile gacha game ‘Pick Me Up!’ is known for being brutally difficult, and no one has been able to clear a dungeon. Loki, the fifth among all the world’s masters, loses consciousness while trying to clear the dungeon. Upon waking up, Loki finds himself turned into a 1-star level 1 hero, ‘Islat Han’. “It’s him! I’m certain he’s the one who brought me here!” In order to return to Earth, he must lead novice masters and heroes and break through the 100th floor of the dungeon! “You messed with the wrong person.” This is the story of master Loki who is forced to carry everyone to victory and cannot afford a single defeat.'
@@ -216,7 +216,7 @@ INSERT INTO comic_profile_user_profile (comic_profile_id, user_profile_id) VALUE
 
 INSERT INTO comic_popularity_per_day(comic_id, views_this_day, date) VALUES (2, 76, DATE '2023-01-17');
 INSERT INTO comic_popularity_per_day(comic_id, views_this_day, date) VALUES (3, 46, DATE '2023-01-17');
-INSERT INTO comic_popularity_per_day(comic_id, views_this_day, date) VALUES (1, 762, DATE '2023-01-17');
+INSERT INTO comic_popularity_per_day(comic_id, views_this_day, date) VALUES (1, 0, DATE '2023-01-19');
 INSERT INTO comic_popularity_per_day(comic_id, views_this_day, date) VALUES (4, 7623, DATE '2023-01-17');
 INSERT INTO comic_popularity_per_day(comic_id, views_this_day, date) VALUES (8, 2, DATE '2023-01-17');
 INSERT INTO comic_popularity_per_day(comic_id, views_this_day, date) VALUES (5, 78923, DATE '2023-01-25');
