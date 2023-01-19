@@ -15,7 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class ManhwaProfile {
+public class ComicProfile {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -36,8 +36,14 @@ public class ManhwaProfile {
     @ManyToMany(cascade = CascadeType.ALL)
     private List<UserProfile> userProfile;
     @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "genreForComic",
+                joinColumns = @JoinColumn(name = "comicProfileId"),
+                inverseJoinColumns = @JoinColumn(name = "genreId"))
     private List<Genre> genreList;
     @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "themeForComic",
+            joinColumns = @JoinColumn(name = "comicProfileId"),
+            inverseJoinColumns = @JoinColumn(name = "themeId"))
     private List<Theme> themeList;
     private Float rating;
     private Integer ratingRanking;

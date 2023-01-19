@@ -16,8 +16,8 @@ public class GenreService {
         this.genreRepository = genreRepository;
     }
 
-    public List<String> getManhwaGenres(int manhwaId){
-        return genreRepository.getManhwaGenres(manhwaId);
+    public List<String> getComicGenres(int comicId){
+        return genreRepository.getComicGenres(comicId);
     }
 
     public List<Genre> getAllGenre(){

@@ -2,10 +2,10 @@ package com.codecool.manhwalabbackend.controller;
 
 import com.codecool.manhwalabbackend.model.enums.ComicType;
 import com.codecool.manhwalabbackend.model.Genre;
-import com.codecool.manhwalabbackend.model.ManhwaProfile;
+import com.codecool.manhwalabbackend.model.ComicProfile;
 import com.codecool.manhwalabbackend.model.Theme;
 import com.codecool.manhwalabbackend.service.GenreService;
-import com.codecool.manhwalabbackend.service.ManhwaProfileService;
+import com.codecool.manhwalabbackend.service.ComicProfileService;
 import com.codecool.manhwalabbackend.service.ThemeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -23,13 +23,13 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ListingController {
 
-    private final ManhwaProfileService manhwaProfileService;
+    private final ComicProfileService comicProfileService;
     private final GenreService genreService;
     private final ThemeService themeService;
 
     @GetMapping(value = "/manhwaList")
-    public List<ManhwaProfile> getAllManhwa(){
-        return manhwaProfileService.getAllManhwa();
+    public List<ComicProfile> getAllComic(){
+        return comicProfileService.getAllComic();
     }
 
     @GetMapping(value = "/genres")
