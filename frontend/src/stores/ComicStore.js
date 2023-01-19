@@ -118,7 +118,7 @@ export const useComicStore = defineStore("comicStore", {
         (comic) => comic.status === "ONGOING"
       );
       topOngoing = topOngoing.sort(function (a, b) {
-        return a.rating - b.rating;
+        return b.rating - a.rating;
       });
       this.topOngoing = topOngoing.slice(0, 5);
     },
