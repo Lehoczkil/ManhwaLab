@@ -11,6 +11,7 @@ export const useComicStore = defineStore("comicStore", {
     mostViewed: [],
     topOngoing: [],
     loading: false,
+    numberOfComics: 0,
   }),
   actions: {
     async getComics() {
@@ -20,6 +21,7 @@ export const useComicStore = defineStore("comicStore", {
 
       this.comics = allJson;
       this.originals = allJson;
+      this.numberOfComics = allJson.length;
 
       this.loading = false;
     },
@@ -42,11 +44,6 @@ export const useComicStore = defineStore("comicStore", {
       this.dailyTop = dailyJson;
       this.weeklyTop = weeklyJson;
       this.monthlyTop = monthlyJson;
-    },
-    async getComicByName(name) {
-      const res = await fetch("http://localhost:8080/api/manhwaLab/" + name);
-      const data = await res.json();
-      this.currentComic = data;
     },
     sortComics(sort) {
       let sortedComics = this.comics;
@@ -91,25 +88,28 @@ export const useComicStore = defineStore("comicStore", {
       this.comics = filteredComics;
       this.sortComics(sort);
       this.searchInComics(search);
+      this.numberOfComics = filteredComics.length;
     },
     searchInComics(title) {
       let searchedComics = this.comics;
-      title = title.toLowerCase();
       if (title) {
+        title = title.toLowerCase();
         searchedComics = searchedComics.filter((comic) =>
           comic.title.toLowerCase().includes(title)
         );
       }
       this.comics = searchedComics;
     },
-    async getMostViewed() { 
+    async getMostViewed() {
       await this.getComics();
-      if (this.comics.length > 0) { 
+      if (this.comics.length > 0) {
         let mostViewed = this.comics;
-        
-        this.mostViewed = mostViewed.sort(function(a, b) {
-          a.views - b.views
-        }).slice(0,5);
+
+        this.mostViewed = mostViewed
+          .sort(function (a, b) {
+            a.views - b.views;
+          })
+          .slice(0, 5);
       }
     },
     async getTopOngoing() {
@@ -121,6 +121,16 @@ export const useComicStore = defineStore("comicStore", {
         return a.rating - b.rating;
       });
       this.topOngoing = topOngoing.slice(0, 5);
+    },
+    async getComicById(id) {
+      await this.getComics();
+      let currentComic = this.comics.find((comic) => comic.id == id);
+      this.currentComic = currentComic;
+    },
+    haveComics() {
+      return (
+        this.comics.length === this.numberOfComics && this.numberOfComics > 0
+      );
     },
   },
 });
