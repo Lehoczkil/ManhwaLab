@@ -2,18 +2,12 @@
     <article>
         <main>
             <div class="pic-container">
-                <div class="show-pic"></div>
+                <img :src="currentComic.coverPageLink" alt="" class="pic">
                 <div class="content">
-                    <h1>Title</h1>
+                    <h1>{{ currentComic.title }}</h1>
                     <div class="description">
                         <p>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-                            been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
-                            galley of type and scrambled it to make a type specimen book. It has survived not only five
-                            centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-                            It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
-                            passages, and more recently with desktop publishing software like Aldus PageMaker including
-                            versions of Lorem Ipsum.
+                            {{ currentComic.description }}
                         </p>
                     </div>
                 </div>
@@ -24,56 +18,54 @@
                     <div class="row">
                         <div class="box">
                             <p>Type</p>
-                            <button>Manga</button>
+                            <span>{{ currentComic.type }}</span>
                         </div>
 
                         <div class="box">
                             <p>Chapters</p>
-                            <button>124</button>
+                            <span>{{ currentComic.numberOfChapters }}</span>
                         </div>
 
                         <div class="box">
                             <p>Status</p>
-                            <button>Ongoing</button>
+                            <span>{{ currentComic.status }}</span>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="box">
                             <p>Author</p>
-                            <button>Me</button>
+                            <span>{{ currentComic.author }}</span>
                         </div>
 
                         <div class="box">
                             <p>Released</p>
-                            <button>2020.10.27.</button>
+                            <span>{{ currentComic.released }}</span>
                         </div>
 
                         <div class="box">
                             <p>Updated</p>
-                            <button>2022.12.15.</button>
+                            <span>{{ currentComic.updated }}</span>
                         </div>
                     </div>
 
                     <div class="tag-container">
-                        <p>Genres</p>
+                        <p class="tag-title">Genres</p>
                         <div class="tags">
-                            <button class="tag">Genre</button>
-                            <button class="tag">Genre</button>
-                            <button class="tag">Genre</button>
-                            <button class="tag">Genre</button>
-                            <button class="tag">Genre</button>
+                            <button class="tag" v-for="genre in currentComic.genreList" :key="genre.id"
+                                @click="handleFilterByGenre(genre.name)">{{
+                                    genre.name
+                                }}</button>
                         </div>
                     </div>
 
                     <div class="tag-container">
-                        <p>Genres</p>
+                        <p class="tag-title">Themes</p>
                         <div class="tags">
-                            <button class="tag">Genre</button>
-                            <button class="tag">Genre</button>
-                            <button class="tag">Genre</button>
-                            <button class="tag">Genre</button>
-                            <button class="tag">Genre</button>
+                            <button class="tag" v-for="theme in currentComic.themeList" :key="theme.id"
+                                @click="handleFilterByTheme(theme.name)">{{
+                                    theme.name
+                                }}</button>
                         </div>
                     </div>
                 </div>
@@ -82,7 +74,7 @@
                     <div class="rating">
                         <div class="stat-row">
                             <p>Rating</p>
-                            <p class="data">10.0</p>
+                            <p class="data">{{ currentComic.rating }}</p>
                         </div>
                         <div class="stars">
                             <img class="star inverse" src="../assets/star.png" alt="star">
@@ -94,19 +86,19 @@
                     </div>
                     <div class="stat-row">
                         <p>Ranked</p>
-                        <p class="data">#1</p>
+                        <p class="data">{{ currentComic.ratingRanking }}</p>
                     </div>
                     <div class="stat-row">
                         <p>Popularity</p>
-                        <p class="data">#1</p>
+                        <p class="data">{{ currentComic.popularityRanking }}</p>
                     </div>
                     <div class="stat-row">
                         <p>Views</p>
-                        <p class="data">382,764</p>
+                        <p class="data">{{ currentComic.views }}</p>
                     </div>
                     <div class="stat-row">
                         <p>Favorites</p>
-                        <p class="data">3562</p>
+                        <p class="data">{{ currentComic.favourite }}</p>
                     </div>
 
                 </div>
@@ -141,11 +133,24 @@
 </template>
 
 <style scoped>
+article,
+.box span {
+    color: white;
+    font-size: 1vw;
+}
+
 .show-pic,
 .stat {
-    height: clamp(400px, 48vh, 2000px);
+    height: clamp(400px, 60vh, 2000px);
     width: clamp(288px, 34vh, 1440px);
-    background: black;
+}
+
+.pic {
+    width: clamp(180px, 18vw, 1800px);
+    height: clamp(270px, 27vw, 2700px);
+    margin: 1vh auto;
+    border-radius: clamp(20px, 1vw, 50px);
+    border: 0.5px solid white;
 }
 
 .content,
@@ -159,7 +164,6 @@
 }
 
 .description {
-    background: red;
     border-radius: clamp(5px, 1vw, 60px);
     padding: 2vw;
     height: 36vh
@@ -169,13 +173,11 @@
 .stat {
     display: flex;
     justify-content: space-between;
-    background: green;
     padding: 1vh;
 }
 
 .stat {
     flex-direction: column;
-    background: black;
 }
 
 .data-container,
@@ -184,55 +186,66 @@
     display: flex;
     justify-content: space-between;
     padding-block: 1vw;
+    align-items: center;
 }
 
 .info {
-    background: lightblue;
     border-radius: clamp(5px, 1vw, 60px);
     padding: 2vw;
-    height: 48vh;
+    height: 60vh;
 }
 
 .data-container {
-    background: purple;
     padding-inline: 0.5vw;
 }
 
 .box {
-    width: clamp(200px, 15vw, 700px);
+    width: clamp(200px, 19vw, 1000px);
+    height: 12vh;
     font-size: clamp(15px, 1vw, 80px);
 }
 
-.box button {
-    width: 8vw;
+.box span {
+    width: 12vw;
+    height: 7vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     background: red;
     border: none;
-    border-radius: clamp(2px, 0.5vh, 15px);
+    border-radius: clamp(3px, 1vh, 15px);
 }
 
 .tag-container {
     width: 70vw;
+    margin-block: 3vh;
 }
 
 .tags {
     display: flex;
     flex-wrap: wrap;
+    margin-top: 2vh;
 }
 
 .tag {
-    width: clamp(140px, 10vw, 600px);
-    background: white;
+    width: clamp(140px, 12vw, 600px);
+    height: 4vh;
+    background: rgb(35, 35, 34);
+    color: white;
     padding-inline: 0.5vw;
     padding-block: 0.5vh;
-    border: none;
+    border: grey 1px solid;
     border-radius: clamp(2px, 0.5vh, 15px);
-    margin-right: 2vw;
+    margin-right: 4vw;
     margin-bottom: 1vh;
 }
 
 .stat {
     color: white;
-    padding: 1vw;
+    padding: 2vw;
+    background: rgb(35, 35, 34);
+    border-radius: 1.5vh;
 }
 
 .stars {
@@ -256,6 +269,7 @@
 
 .data {
     color: red;
+    font-weight: 800;
 }
 
 .comment-section {
@@ -294,20 +308,41 @@
     display: flex;
     justify-content: space-evenly;
 }
-
-.comment-container {
-    background: green;
-}
 </style>
 
 <script>
 import Comment from '../components/Comment'
 import Recommended from '../components/Recommended'
+import { useComicStore } from '@/stores/ComicStore'
+import { storeToRefs } from 'pinia'
+
 export default {
     name: 'MangaProfile',
     components: {
         Comment,
         Recommended
+    },
+    props: {
+        id: String
+    },
+    methods: {
+        handleFilterByGenre(genre) {
+            this.comicStore.filterComics(genre, null, null, null, null)
+            this.$router.push(`/comics`)
+        },
+        handleFilterByTheme(theme) {
+            this.comicStore.filterComics(null, theme, null, null)
+            this.$router.push(`/comics`)
+        }
+    },
+    setup(props) {
+        const comicStore = useComicStore()
+
+        comicStore.getComicById(props.id)
+
+        const { currentComic } = storeToRefs(comicStore)
+
+        return { comicStore, currentComic }
     }
 }
 </script>
