@@ -2,7 +2,7 @@
     <div class="comic">
         <img :src="comic.coverPageLink" alt="picture about the comic" class="pic">
         <div class="content">
-            <h1>{{ comic.title }}</h1>
+            <h1 @click="handleClick">{{ comic.title }}</h1>
             <div class="info">
                 <p class="type">Type: {{ comic.type }}</p>
                 <p class="chapters">{{ comic.numberOfChapters }} chapters</p>
@@ -78,10 +78,26 @@ h1 {
 </style>
 
 <script>
+import { useComicStore } from '../stores/ComicStore';
+import { storeToRefs } from 'pinia';
+
 export default {
     name: 'TopComic',
     props: {
         comic: Object
+    },
+    methods: {
+        handleClick() {
+            
+            this.$router.push(`/comics/${this.comic.id}`)
+        }
+    },
+    setup() {
+        const comicStore = useComicStore()
+
+        const { comics, loading } = storeToRefs(comicStore)
+
+        return { comicStore, comics, loading }
     }
 }
 </script>
