@@ -1,6 +1,6 @@
 <template>
     <section>
-        <h1>{{ title }}</h1>
+        <h1 class="title">{{ title }}</h1>
         <div class="comic-container">
             <Comic v-for="comic in comics" :key="comic.comicId" :comic="comic" />
         </div>
@@ -17,6 +17,13 @@
     margin-top: 1vh;
 }
 
+@media (max-width:950px) {
+    .title {
+        text-align: center;
+        font-size: 2rem;
+        margin-block: 3vh;
+    }
+}
 
 </style>
 
