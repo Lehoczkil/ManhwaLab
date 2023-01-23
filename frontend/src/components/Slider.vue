@@ -9,13 +9,15 @@
 
 <style scoped>
 .comic-container {
-    display: flex;
-    justify-content: space-between;
-    height: clamp(420px, 26vh, 4200px);
-    flex-wrap: wrap;
-    align-items: center;
-    margin-block: 3vh;
+    min-height: 420px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 200px);
+    grid-gap: 1rem;
+    justify-content: space-around;
+    margin-top: 1vh;
 }
+
+
 </style>
 
 <script>
