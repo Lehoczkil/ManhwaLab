@@ -1,27 +1,39 @@
 <template>
     <header>
-        <div class="search-container">
+        <input type="checkbox" id="nav-check">
+        <img src="../assets/logo.png" alt="logo with a purple potion and the text 'ManhwaLab'"
+            @click="handleMainPageBtn">
+        <div class="menu-icon">
+            <label for="nav-check">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+        </div>
+
+        <nav class="menu-items">
             <div class="search">
                 <input type="search" placeholder="Find manhwa...">
                 <button>Search</button>
             </div>
-            <button id="browse" @click="handleBrowseBtn">Browse</button>
-        </div>
-        <img src="../assets/logo.png" alt="logo" @click="handleMainPageBtn">
-        <div class="auth">
-            <button>Register</button>
-            <button>Login</button>
-        </div>
+            <div class="auth">
+                <button id="browse" @click="handleBrowseBtn">Browse</button>
+                <button>Register</button>
+                <button>Login</button>
+            </div>
+        </nav>
     </header>
 </template>
 
 <style scoped>
-header {
+header,
+.menu-items {
     background: black;
     display: flex;
     padding-inline: 1vw;
     padding-block: 1vh;
     justify-content: space-between;
+    align-items: center;
     margin-bottom: 3vh;
 }
 
@@ -29,15 +41,8 @@ img {
     width: clamp(100px, 10vw, 1000px)
 }
 
-.search-container {
-    flex-basis: 28%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
 .auth {
-    flex-basis: 20%;
+    width: 35vw;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -45,6 +50,8 @@ img {
 
 .search {
     display: flex;
+    align-items: center;
+    width: 20vw;
 }
 
 .search input {
@@ -57,11 +64,8 @@ img {
     transition: all 0.3s;
 }
 
-.search input:hover,
-.search input:focus,
 .menu:hover,
 .menu:focus {
-    border: 1px solid white;
     border-right: none;
     background: black;
     color: white;
@@ -69,9 +73,13 @@ img {
 
 .search input:focus,
 .menu:focus {
-    border: 3px solid white;
     border-right: none;
     outline: none;
+}
+
+.search input:focus, .search input:hover {
+    background: #353434;
+    color: white;
 }
 
 .search button {
@@ -84,10 +92,8 @@ img {
 }
 
 .search button:hover {
-    background: black;
+    background: darkmagenta;
     color: white;
-    border: 1px solid white;
-    border-left: none;
 }
 
 .auth button,
@@ -112,6 +118,98 @@ img {
 
 #browse {
     margin-left: 1vw;
+}
+
+.menu-icon {
+    display: none;
+}
+
+#nav-check {
+    display: none;
+}
+
+@media (max-width:950px) {
+
+    header {
+        min-width: 350px;
+    }
+
+    .menu-icon {
+        display: inline-block;
+    }
+
+    label {
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        padding: 13px;
+    }
+
+    label:hover,
+    #nav-check:checked~label {
+        background-color: rgba(0, 0, 0, 0.3);
+    }
+
+    span {
+        display: block;
+        width: 25px;
+        height: 10px;
+        border-top: 2px solid #eee;
+    }
+
+    .menu-items {
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: 0px;
+        transition: all 0.3s ease-in;
+        overflow-y: hidden;
+        top: 50px;
+        left: 0px;
+    }
+
+    .menu-items {
+        display: block;
+        width: 100%;
+    }
+
+    #nav-check:not(:checked)~.menu-items {
+        display: none;
+    }
+
+    #nav-check:not(:checked)~header {
+        height: 3vh;
+    }
+
+    #nav-check:checked~.menu-items {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+        margin-top: 1vh;
+        height: auto;
+        overflow-y: auto;
+    }
+
+    .auth,
+    .auth button {
+        display: block;
+    }
+
+    .search {
+        justify-content: center;
+    }
+
+    .auth button,
+    #browse,
+    .search {
+        width: clamp(200px, 30vw, 900px);
+        margin: auto;
+        text-align: center;
+        margin-bottom: 1vh;
+    }
+
 }
 </style>
 
