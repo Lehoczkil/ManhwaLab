@@ -22,7 +22,7 @@
 .pic {
     width: clamp(133px, 8vw, 1330px);
     height: clamp(200px, 12vw, 2000px);
-    margin: 1vh auto;
+    margin: 1vh;
     border-radius: clamp(20px, 1vw, 50px);
     border: 0.5px solid white;
 }
@@ -44,8 +44,9 @@ h1 {
 .comic {
     margin-block: 1vh;
     padding: 1.5vh;
-    height: clamp(330px, 21vh, 1000px);
+    min-height: 330px;
     align-items: center;
+    justify-content: space-around;
 }
 
 .content {
@@ -75,6 +76,7 @@ h1 {
 ::-webkit-scrollbar {
   width: 14px;
 }
+
 </style>
 
 <script>
