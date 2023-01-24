@@ -77,6 +77,21 @@ h1 {
   width: 14px;
 }
 
+@media (max-width: 950px) {
+    .comic {
+        flex-direction: column;
+        width: 80vw;
+        margin-inline: auto;
+        background: rgb(35, 35, 34);
+        border-radius: clamp(20px, 1vw, 50px);
+        margin-bottom: 3vh;
+    }
+
+    .content {
+        width: 70vw;
+    }
+}
+
 </style>
 
 <script>
