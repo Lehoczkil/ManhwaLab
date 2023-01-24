@@ -24,8 +24,8 @@
 
 <style scoped>
 select {
-    height: 6vh;
-    width: clamp(70px, 28vw, 1000px);
+    height: clamp(30px, 6vh, 200px);
+    width: clamp(140px, 28vw, 1000px);
     background: #353434;
     border-radius: clamp(2px, 1.5vh, 40px);
     padding-inline: 1.5vw;
@@ -52,6 +52,14 @@ select::after {
     position: absolute;
     pointer-events: none;
 }
+
+@media(max-width:950px) {
+    select {
+        margin-bottom: 2vh;
+        width: 60vw;
+    }
+}
+
 </style>
 
 <script>
