@@ -33,7 +33,7 @@
 
 .pic {
     width: clamp(210px, 12vw, 2100px);
-    height: clamp(280px, 18vw, 2800px);
+    height: clamp(280px, 16vw, 2800px);
     margin: 1vh auto;
     border-radius: clamp(20px, 1vw, 50px);
     border: 0.5px solid white;
