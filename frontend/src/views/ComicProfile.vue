@@ -113,14 +113,6 @@
                 <button class="auth">Sign in</button>
                 <button class="auth">Login</button>
             </div>
-            <div class="name-container">
-                <div class="log-in-actions">
-                    <img class="star inverse" src="../assets/star.png" alt="star">
-                    <img class="star inverse" src="../assets/star.png" alt="star">
-                    <img class="star inverse" src="../assets/star.png" alt="star">
-                </div>
-                <input type="text" class="name" placeholder="Name...">
-            </div>
             <div class="comment-container">
                 <Comment />
                 <Comment />
@@ -166,7 +158,8 @@ article,
 .description {
     border-radius: clamp(5px, 1vw, 60px);
     padding: 2vw;
-    height: 36vh
+    height: 36vh;
+    font-size: 1rem;
 }
 
 .pic-container,
@@ -207,7 +200,7 @@ article,
 
 .box span {
     width: 12vw;
-    height: 7vh;
+    min-height: 9vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -278,8 +271,7 @@ article,
     color: white !important;
 }
 
-.auth-container,
-.name-container {
+.auth-container{
     width: 30vw;
     display: flex;
     justify-content: space-between;
@@ -296,17 +288,87 @@ article,
     color: white;
 }
 
-.name {
-    flex-basis: 70%;
-    padding: 0.5vw 1vw;
-    max-width: 100%;
-    border-radius: clamp(5px, 0.7vw, 20px);
-}
-
 .log-in-actions {
     flex-basis: 30%;
     display: flex;
     justify-content: space-evenly;
+}
+
+@media (max-width: 950px) {
+    article {
+        overflow-x: hidden;
+    }
+
+    .pic-container,
+    .data-container,
+    .row {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .description {
+        max-height: 250px;
+        margin-block: 1vh;
+        overflow-y: scroll;
+    }
+
+    .row,
+    .box {
+        width: 80vw;
+    }
+
+    .box span {
+        width: 40vw;
+        font-size: 1rem;
+    }
+
+    .tag-container {
+        font-size: 1rem;
+    }
+
+    .tags {
+        justify-content: space-between;
+        width: 84vw;
+    }
+
+    .tag {
+        width: 33vw;
+    }
+
+    .stat {
+        width: 80vw;
+        padding: 5vw;
+        font-size: 1.2rem;
+        margin-bottom: 3vh;
+    }
+
+    .stars {
+        width: 100%;
+        margin-top: 3vh;
+    }
+
+    .star {
+        width: 30px;
+        height: auto;
+    }
+
+    .comment-section {
+        width: 84vw;
+        margin: auto;
+    }
+
+    .auth-container {
+        width: 80vw;
+        margin-top: 2vh;
+        margin-bottom: 7vh;
+    }
+
+    .auth {
+        font-size: 1rem;
+        width: 30vw;
+        height: 35px;
+    }
+
 }
 </style>
 

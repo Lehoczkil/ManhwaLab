@@ -25,7 +25,7 @@
     text-align: center;
     background: rgb(35, 35, 34);
     margin-bottom: 1vh;
-    height: clamp(340px, 25vw, 3400px);
+    height: clamp(430px, 25vw, 3400px);
     padding: 0.5vh;
     color: white;
     border-radius: clamp(20px, 1vw, 50px);
