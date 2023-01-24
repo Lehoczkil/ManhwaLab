@@ -204,7 +204,7 @@ img {
     .auth button,
     #browse,
     .search {
-        width: clamp(200px, 30vw, 900px);
+        width: clamp(120px, 30vw, 900px);
         margin: auto;
         text-align: center;
         margin-bottom: 1vh;
