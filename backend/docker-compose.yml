@@ -4,9 +4,9 @@ services:
     image: manhwalab-app:manhwalab
     restart: always
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://database:5432/aron
-      - DB_USERNAME=aron
-      - DB_PASSWORD=Sisakvirag17
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://database:5432/username
+      - DB_USERNAME=
+      - DB_PASSWORD=
     depends_on:
       - database
     ports:
@@ -18,11 +18,21 @@ services:
     image: manhwalab-database:manhwalab-db
     restart: always
     environment:
-      - POSTGRES_USER=aron
-      - POSTGRES_PASSWORD=Sisakvirag17
+      - POSTGRES_USER=
+      - POSTGRES_PASSWORD=
     ports:
       - "5433:5432"
     expose:
       - "5433"
     volumes:
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  frontend:
+    image: manhwalab-frontend:manhwalab-fr
+    restart: always
+    depends_on:
+      - backend
+    ports:
+      - "8081:8080"
+    expose:
+      - "8081"
