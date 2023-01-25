@@ -15,7 +15,7 @@ export const useComicStore = defineStore("comicStore", {
   actions: {
     async getComics() {
       this.loading = true;
-      const all = await fetch("http://localhost:8080/api/manhwaLab/manhwaList");
+      const all = await fetch("http://10.44.7.208:8080/api/manhwaLab/manhwaList");
       const allJson = await all.json();
 
       this.comics = allJson;
@@ -25,17 +25,17 @@ export const useComicStore = defineStore("comicStore", {
     },
     async getTopComics() {
       const daily = await fetch(
-        "http://localhost:8080/api/manhwaLab/top/daily"
+        "http://10.44.7.208:8080/api/manhwaLab/top/daily"
       );
       const dailyJson = await daily.json();
 
       const weekly = await fetch(
-        "http://localhost:8080/api/manhwaLab/top/weekly"
+        "http://10.44.7.208:8080/api/manhwaLab/top/weekly"
       );
       const weeklyJson = await weekly.json();
 
       const monthly = await fetch(
-        "http://localhost:8080/api/manhwaLab/top/monthly"
+        "http://10.44.7.208:8080/api/manhwaLab/top/monthly"
       );
       const monthlyJson = await monthly.json();
 
@@ -44,7 +44,7 @@ export const useComicStore = defineStore("comicStore", {
       this.monthlyTop = monthlyJson;
     },
     async getComicByName(name) {
-      const res = await fetch("http://localhost:8080/api/manhwaLab/" + name);
+      const res = await fetch("http://10.44.7.208:8080/api/manhwaLab/" + name);
       const data = await res.json();
       this.currentComic = data;
     },

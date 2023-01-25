@@ -6,7 +6,7 @@ export const useGenreStore = defineStore("genreStore", {
   }),
   actions: {
     async getGenres() {
-      const res = await fetch("http://localhost:8080/api/manhwaLab/genres");
+      const res = await fetch("http://10.44.7.208:8080/api/manhwaLab/genres");
       const data = await res.json();
 
       this.genres = data;
