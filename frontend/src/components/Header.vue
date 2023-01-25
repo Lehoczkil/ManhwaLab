@@ -38,7 +38,8 @@ header,
 }
 
 img {
-    width: clamp(100px, 10vw, 1000px)
+    width: 152px;
+    height: 72px;
 }
 
 .auth {
@@ -77,7 +78,8 @@ img {
     outline: none;
 }
 
-.search input:focus, .search input:hover {
+.search input:focus,
+.search input:hover {
     background: #353434;
     color: white;
 }
@@ -210,6 +212,10 @@ img {
         margin-bottom: 1vh;
     }
 
+    img {
+        width: 76px;
+        height: 36px;
+    }
 }
 </style>
 
