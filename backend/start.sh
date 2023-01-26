@@ -1,3 +1,5 @@
+#!/bin/bash
+
 
 export DB_USERNAME=""
 export DB_NAME=""
