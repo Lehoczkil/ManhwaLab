@@ -28,7 +28,7 @@
 }
 
 .controls {
-    min-height: 30vh;
+    min-height: 35vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -37,11 +37,12 @@
 
 .search {
     width: 60vw;
+
 }
 
 .search input {
     width: clamp(150px, 50vw, 1200px);
-    height: 6vh;
+    height: clamp(30px, 6vh, 200px);
     background: #2d2f31;
     color: white;
     padding-inline: 1vw;
@@ -64,7 +65,7 @@
 }
 
 .search button {
-    height: 6vh;
+    height: clamp(30px, 6vh, 200px);
     width: 10vw;
     border: none;
     border-radius: 0 clamp(2px, 1.5vh, 40px) clamp(2px, 1.5vh, 40px) 0;
@@ -78,6 +79,30 @@
 .search button:hover {
     background: darkslateblue;
     color: white;
+}
+
+@media(max-width:950px) {
+    .row {
+        display: block;
+        text-align: center;
+    }
+
+    .controls {
+        margin-bottom: 5vh;
+    }
+
+    .search input,
+    .search button {
+        display: block;
+        width: 60vw;
+        border-radius: clamp(2px, 1.5vh, 40px);
+        margin-bottom: 2vh;
+    }
+
+    .search button {
+        background: rgb(79, 42, 98);
+        font-size: 1.2rem;
+    }
 }
 </style>
 

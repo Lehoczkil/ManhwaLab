@@ -48,5 +48,5 @@ public class ComicProfile {
     private Float rating;
     private Integer ratingRanking;
     private Integer popularityRanking;
-    private String coverPageLink;
+    private String coverPage;
 }

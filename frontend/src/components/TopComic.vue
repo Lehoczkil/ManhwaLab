@@ -1,8 +1,8 @@
 <template>
     <div class="comic">
-        <img :src="comic.coverPageLink" alt="picture about the comic" class="pic">
+        <img :src="`http://localhost:8080${comic.coverPage}`" alt="picture about the comic" class="pic">
         <div class="content">
-            <h1>{{ comic.title }}</h1>
+            <h1 @click="handleClick">{{ comic.title }}</h1>
             <div class="info">
                 <p class="type">Type: {{ comic.type }}</p>
                 <p class="chapters">{{ comic.numberOfChapters }} chapters</p>
@@ -22,7 +22,7 @@
 .pic {
     width: clamp(133px, 8vw, 1330px);
     height: clamp(200px, 12vw, 2000px);
-    margin: 1vh auto;
+    margin: 1vh;
     border-radius: clamp(20px, 1vw, 50px);
     border: 0.5px solid white;
 }
@@ -44,8 +44,9 @@ h1 {
 .comic {
     margin-block: 1vh;
     padding: 1.5vh;
-    height: clamp(330px, 21vh, 1000px);
+    min-height: 330px;
     align-items: center;
+    justify-content: space-around;
 }
 
 .content {
@@ -75,13 +76,45 @@ h1 {
 ::-webkit-scrollbar {
   width: 14px;
 }
+
+@media (max-width: 950px) {
+    .comic {
+        flex-direction: column;
+        width: 80vw;
+        margin-inline: auto;
+        background: rgb(35, 35, 34);
+        border-radius: clamp(20px, 1vw, 50px);
+        margin-bottom: 3vh;
+    }
+
+    .content {
+        width: 70vw;
+    }
+}
+
 </style>
 
 <script>
+import { useComicStore } from '../stores/ComicStore';
+import { storeToRefs } from 'pinia';
+
 export default {
     name: 'TopComic',
     props: {
         comic: Object
+    },
+    methods: {
+        handleClick() {
+            
+            this.$router.push(`/comics/${this.comic.id}`)
+        }
+    },
+    setup() {
+        const comicStore = useComicStore()
+
+        const { comics, loading } = storeToRefs(comicStore)
+
+        return { comicStore, comics, loading }
     }
 }
 </script>

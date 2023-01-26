@@ -37,6 +37,14 @@ aside {
 ::-webkit-scrollbar {
   width: 18px;
 }
+
+@media (max-width: 950px) {
+    article {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+}
+
 </style>
 
 <script>

@@ -21,15 +21,15 @@
                     <div class="likes">
                         <div class="like">
                             <button>
-                                <img class="star" src="../assets/star.png" alt="star">
+                                <img class="star" src="../assets/like.png" alt="like">
                             </button>
                             <p>293</p>
                         </div>
                         <div class="like">
                             <button>
-                                <img class="star" src="../assets/star.png" alt="star">
+                                <img class="star" src="../assets/dislike.png" alt="dislike">
                             </button>
-                            <p>293</p>
+                            <p>23</p>
                         </div>
                     </div>
                     <div class="interactions">
@@ -69,6 +69,9 @@
 
 .like {
     width: clamp(50px, 4vw, 250px);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .like button {
@@ -78,10 +81,10 @@
 
 .star {
     height: 2vh;
+    filter: invert();
 }
 
 .comment {
-    background: blue;
     margin-bottom: 2vh;
     display: flex;
     padding: 1vw;
@@ -90,7 +93,7 @@
 .profile-pic {
     height: clamp(200px, 15vw, 1400px);
     width: clamp(200px, 15vw, 1400px);
-    background: black;
+    background: white;
 }
 
 .content {
@@ -112,7 +115,42 @@
     background: red;
     width: clamp(90px, 2vw, 1000px);
     border: none;
+    color: white;
     border-radius: clamp(2px, 0.5vw, 20px);
+}
+
+@media(max-width: 950px) {
+    .comment {
+        flex-direction: column;
+        justify-content: center;
+        width: 84vw;
+        margin: 7vh auto;
+        font-size: 1rem;
+    }
+
+    .profile-pic {
+        margin-inline: auto;
+        margin-bottom: 2vh;
+        height: 100px;
+        width: 100px;
+    }
+
+    .date p {
+        font-weight: 600;
+    }
+
+    .likes {
+        width: 28vw;
+        justify-content: space-between;
+    }
+
+    .action {
+        width: 15vw;
+        font-size: 1rem;
+    }
+    .interactions {
+        width: 40vw;
+    }
 }
 </style>
 
