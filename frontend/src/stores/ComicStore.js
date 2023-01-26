@@ -133,7 +133,7 @@ export const useComicStore = defineStore("comicStore", {
       );
     },
     increaseViewCount(id) {
-      fetch(`http://localhost:8080/api/manhwaLab/${id}/update-view`, {
+      fetch(`http://10.44.7.208:8080/api/manhwaLab/${id}/update-view`, {
         method: "POST",
         headers: {
           'Accept': "application/json",

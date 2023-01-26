@@ -2,7 +2,7 @@
     <article>
         <main>
             <div class="pic-container">
-                <img :src="`http://localhost:8080${currentComic.coverPage}`" alt="" class="pic">
+                <img :src="`http://10.44.7.208:8080${currentComic.coverPage}`" alt="" class="pic">
                 <div class="content">
                     <h1>{{ currentComic.title }}</h1>
                     <div class="description">

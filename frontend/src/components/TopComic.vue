@@ -1,6 +1,6 @@
 <template>
     <div class="comic">
-        <img :src="`http://localhost:8080${comic.coverPage}`" alt="picture about the comic" class="pic">
+        <img :src="`http://10.44.7.208:8080${comic.coverPage}`" alt="picture about the comic" class="pic">
         <div class="content">
             <h1 @click="handleClick">{{ comic.title }}</h1>
             <div class="info">
