@@ -4,7 +4,7 @@
 
         <div class="comics" v-for="comic in comics" :key="comic.id">
             <div class="comic">
-                <img :src="comic.coverPageLink" alt="" class="pic">
+                <img :src="`http://localhost:8080${comic.coverPage}`" alt="Cover page of the manhwa" class="pic">
                 <h1 @click="handleClick(comic.id)">{{ comic.title }}</h1>
             </div>
         </div>
