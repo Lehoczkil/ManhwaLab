@@ -35,7 +35,7 @@ INSERT INTO theme (name) VALUES ('Dungeons');--10
 -- COMIC PROFILE
 INSERT INTO comic_profile (author, description, favourite, title, number_of_chapters, released, status, type, updated, views, rating, cover_page)
 VALUES ('Zerobic', 'An era where hunters thrive on hunting monsters that come from Gates. Jin Tae-Kyung is a low-rank hunter who picks up a VR machine, and accidentally logs into the game, which is set in the world of Martial Arts. After many ups and downs, Tae-Kyung is able to escape this world. The strength and skills, which he received in the Murim were able to be carried over back to the real world. This allows him to continue making a living a hunter… but he decides to return back to the world of Murim, out of care for his NPC friends.'
-       , 4283, 'Murim Login', 135, CURRENT_DATE, 'ONGOING', 'MANHWA', CURRENT_DATE, 0, 9.3, '/images/murim-login-webp');
+       , 4283, 'Murim Login', 135, CURRENT_DATE, 'ONGOING', 'MANHWA', CURRENT_DATE, 0, 9.3, '/images/murim-login.webp');
 
 INSERT INTO comic_profile (author, description, favourite, title, number_of_chapters, released, status, type, updated, views, rating, cover_page)
 VALUES ('Hermode/Cho Wooneh (RedIce Studio)', 'The mobile gacha game ‘Pick Me Up!’ is known for being brutally difficult, and no one has been able to clear a dungeon. Loki, the fifth among all the world’s masters, loses consciousness while trying to clear the dungeon. Upon waking up, Loki finds himself turned into a 1-star level 1 hero, ‘Islat Han’. “It’s him! I’m certain he’s the one who brought me here!” In order to return to Earth, he must lead novice masters and heroes and break through the 100th floor of the dungeon! “You messed with the wrong person.” This is the story of master Loki who is forced to carry everyone to victory and cannot afford a single defeat.'
@@ -43,7 +43,7 @@ VALUES ('Hermode/Cho Wooneh (RedIce Studio)', 'The mobile gacha game ‘Pick Me 
 
 INSERT INTO comic_profile (author, description, favourite, title, number_of_chapters, released, status, type, updated, views, rating, cover_page)
 VALUES ('-', 'If you max out your level in-game, you can get heaven-defying powers in real life?! Player Ling Ce finally obtained this reward through his hard work but ended up receiving the most useless skills. Just as he was mourning his luck, a mysterious power brought him back to three years in the past. With the experiences and memories of his previous life, how many different wonderful things can he bring to his new life?'
-       , 1450, 'The Game That I Came From', 149, CURRENT_DATE, 'ONGOING', 'MANHUA', CURRENT_DATE, 39824, 6.6, '/images/the-game-i-came-from.webp');
+       , 1450, 'The Game That I Came From', 149, CURRENT_DATE, 'ONGOING', 'MANHUA', CURRENT_DATE, 39824, 6.6, '/images/the-game-that-i-came-from.webp');
 
 INSERT INTO comic_profile (author, description, favourite, title, number_of_chapters, released, status, type, updated, views, rating, cover_page)
 VALUES ('-', 'Jin Runcandel was the youngest son of Runcandel, the land’s most prestigious swordsman family…
