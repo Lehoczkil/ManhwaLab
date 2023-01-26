@@ -1,24 +1,26 @@
 <template>
-    <select v-if="title !== 'Type' && title !== 'Sort by'" :id="title">
-        <option value="">{{ title }}</option>
-        <option v-for="record in data" :key="record.id" :value=record.name>
-            {{ record.name }}
-        </option>
-    </select>
-
-    <select v-if="title === 'Type' && title !== 'Sort by'" :id="title">
-        <option value="">{{ title }}</option>
-        <option v-for="record in data" :key="record.id" :value=record.name>
-            {{ record }}
-        </option>
-    </select>
-
-    <select v-if="title === 'Sort by'" id="sort">
-        <option value="">{{ title }}</option>
-        <option value="abc">Abc</option>
-        <option value="rating">Highest rating</option>
-        <option value="view">Most Viewed</option>
-    </select>
+    <div>
+        <select v-if="title !== 'Type' && title !== 'Sort by'" :id="title">
+            <option value="">{{ title }}</option>
+            <option v-for="record in data" :key="record.id" :value=record.name>
+                {{ record.name }}
+            </option>
+        </select>
+    
+        <select v-if="title === 'Type' && title !== 'Sort by'" :id="title">
+            <option value="">{{ title }}</option>
+            <option v-for="record in data" :key="record.id" :value=record.name>
+                {{ record }}
+            </option>
+        </select>
+    
+        <select v-if="title === 'Sort by'" id="sort">
+            <option value="">{{ title }}</option>
+            <option value="abc">Abc</option>
+            <option value="rating">Highest rating</option>
+            <option value="view">Most Viewed</option>
+        </select>
+    </div>
 
 </template>
 
