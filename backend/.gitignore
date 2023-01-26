@@ -40,3 +40,5 @@ mvnw.cmd
 MANIFEST.MF
 maven-wrapper.properties
 maven-wrapper.jar
+my-docker-compose.yml
+my-build-docker.sh
