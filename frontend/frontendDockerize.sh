@@ -1,0 +1,1 @@
+docker build -t manhwalab-frontend:manhwalab-fr -f frontend.dockerfile .

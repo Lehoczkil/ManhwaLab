@@ -2,7 +2,7 @@
 
 
 export DB_USERNAME=""
-export DB_NAME=""
+export SPRING_DATASOURCE_URL=""
 export DB_PASSWORD=""
 
 mvn clean package
