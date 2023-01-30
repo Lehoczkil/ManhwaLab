@@ -1,11 +1,12 @@
 #
 # Build stage
 #
-RUN chmod +x ./myStart.sh
-RUN ./myStart.sh
+
 FROM maven:3.8.2-jdk-11 AS build
 #RUN apk --update add openjdk11-jre
 COPY . .
+RUN chmod +x ./myStart.sh
+RUN ./myStart.sh
 RUN mvn clean package -DskipTests
 
 #
