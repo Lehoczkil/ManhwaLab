@@ -11,7 +11,7 @@ RUN mvn clean package -DskipTests
 #
 FROM openjdk:11-jdk-slim
 
-COPY --from=build /target/backend-0.0.1-SNAPSHOT.jar backend.jar
+COPY --from=build /target/ManhwaLabBackend-0.0.1-SNAPSHOT.jar backend.jar
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "backend.jar"]
 
