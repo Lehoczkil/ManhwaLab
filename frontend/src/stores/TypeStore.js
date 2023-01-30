@@ -6,7 +6,7 @@ export const useTypeStore = defineStore("typeStore", {
   }),
   actions: {
     async getTypes() {
-      const res = await fetch("http://10.44.7.208:8080/api/manhwaLab/types");
+      const res = await fetch("https://backend-web-service-0qh4.onrender.com/api/manhwaLab/types");
       const data = await res.json();
 
       this.types = data;

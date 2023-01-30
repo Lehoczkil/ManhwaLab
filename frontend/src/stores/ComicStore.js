@@ -16,7 +16,7 @@ export const useComicStore = defineStore("comicStore", {
   actions: {
     async getComics() {
       this.loading = true;
-      const all = await fetch("http://10.44.7.208:8080/api/manhwaLab/manhwaList");
+      const all = await fetch("https://backend-web-service-0qh4.onrender.com/api/manhwaLab/manhwaList");
       const allJson = await all.json();
 
       this.comics = allJson;
@@ -27,17 +27,17 @@ export const useComicStore = defineStore("comicStore", {
     },
     async getTopComics() {
       const daily = await fetch(
-        "http://10.44.7.208:8080/api/manhwaLab/top/daily"
+        "https://backend-web-service-0qh4.onrender.com/api/manhwaLab/top/daily"
       );
       const dailyJson = await daily.json();
 
       const weekly = await fetch(
-        "http://10.44.7.208:8080/api/manhwaLab/top/weekly"
+        "https://backend-web-service-0qh4.onrender.com/manhwaLab/top/weekly"
       );
       const weeklyJson = await weekly.json();
 
       const monthly = await fetch(
-        "http://10.44.7.208:8080/api/manhwaLab/top/monthly"
+        "https://backend-web-service-0qh4.onrender.com/manhwaLab/top/monthly"
       );
       const monthlyJson = await monthly.json();
 
@@ -133,7 +133,7 @@ export const useComicStore = defineStore("comicStore", {
       );
     },
     increaseViewCount(id) {
-      fetch(`http://10.44.7.208:8080/api/manhwaLab/${id}/update-view`, {
+      fetch(`https://backend-web-service-0qh4.onrender.com/manhwaLab/${id}/update-view`, {
         method: "POST",
         headers: {
           'Accept': "application/json",
