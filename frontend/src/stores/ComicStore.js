@@ -32,12 +32,12 @@ export const useComicStore = defineStore("comicStore", {
       const dailyJson = await daily.json();
 
       const weekly = await fetch(
-        "https://backend-web-service-0qh4.onrender.com/manhwaLab/top/weekly"
+        "https://backend-web-service-0qh4.onrender.com/api/manhwaLab/top/weekly"
       );
       const weeklyJson = await weekly.json();
 
       const monthly = await fetch(
-        "https://backend-web-service-0qh4.onrender.com/manhwaLab/top/monthly"
+        "https://backend-web-service-0qh4.onrender.com/api/manhwaLab/top/monthly"
       );
       const monthlyJson = await monthly.json();
 
