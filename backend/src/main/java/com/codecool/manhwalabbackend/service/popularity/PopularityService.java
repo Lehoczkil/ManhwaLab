@@ -17,6 +17,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class PopularityService {
 
     private final PopularityRepository popularityRepository;
@@ -75,7 +76,6 @@ public class PopularityService {
         return PageRequest.of(0, 5, sort);
     }
 
-    @Transactional
     public void updateDailyViewForComic(Long comicId, LocalDate date){
         try {
             ComicPopularityPerDay currentComicPopularityPerDay = popularityRepository.getComicPopularityPerDayByComicIdAndDate(comicId, date);

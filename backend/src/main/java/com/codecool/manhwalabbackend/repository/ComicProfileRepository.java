@@ -2,6 +2,7 @@ package com.codecool.manhwalabbackend.repository;
 
 import com.codecool.manhwalabbackend.model.ComicProfile;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
@@ -15,6 +16,10 @@ public interface ComicProfileRepository extends JpaRepository<ComicProfile, Long
     Float getComicProfileRatingByTitle(String title);
 
     ComicProfile getComicProfileById(Long id);
+
+    @Modifying()
+    @Query(value = "UPDATE comic_profile SET views=?1 WHERE id=?2", nativeQuery = true)
+    void updateViews(int views, Long comicId);
 
 
 }
