@@ -224,9 +224,11 @@ export default {
     name: 'Header',
     methods: {
         handleBrowseBtn() {
+            document.querySelector('#nav-check').checked = false;
             this.$router.push('/comics')
         },
         handleMainPageBtn() {
+            document.querySelector('#nav-check').checked = false;
             this.$router.push('/')
         }
     }
