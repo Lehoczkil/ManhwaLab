@@ -1,6 +1,6 @@
 <template>
     <div class="comic" @click="handleClick">
-        <img :src="`https://second-backend-web-service-0qh4.onrender.com${comic.coverPage}`" alt="picture about the comic" class="pic">
+        <img :src="`https://second-backend-web-service.onrender.com${comic.coverPage}`" alt="picture about the comic" class="pic">
         <div class="content">
             <h1>{{ comic.title }}</h1>
             <div class="info">
