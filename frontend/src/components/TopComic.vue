@@ -1,8 +1,8 @@
 <template>
-    <div class="comic">
-        <img :src="`https://backend-web-service-0qh4.onrender.com${comic.coverPage}`" alt="picture about the comic" class="pic">
+    <div class="comic" @click="handleClick">
+        <img :src="`https://second-backend-web-service.onrender.com${comic.coverPage}`" alt="picture about the comic" class="pic">
         <div class="content">
-            <h1 @click="handleClick">{{ comic.title }}</h1>
+            <h1>{{ comic.title }}</h1>
             <div class="info">
                 <p class="type">Type: {{ comic.type }}</p>
                 <p class="chapters">{{ comic.numberOfChapters }} chapters</p>

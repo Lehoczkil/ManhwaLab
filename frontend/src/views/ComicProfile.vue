@@ -2,7 +2,7 @@
     <article>
         <main>
             <div class="pic-container">
-                <img :src="`https://backend-web-service-0qh4.onrender.com${currentComic.coverPage}`" alt="" class="pic">
+                <img :src="`https://second-backend-web-service.onrender.com${currentComic.coverPage}`" alt="" class="pic">
                 <div class="content">
                     <h1>{{ currentComic.title }}</h1>
                     <div class="description">
