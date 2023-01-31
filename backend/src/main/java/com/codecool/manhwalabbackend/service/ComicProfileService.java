@@ -10,6 +10,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class ComicProfileService {
 
     private final ComicProfileRepository comicProfileRepository;
@@ -26,11 +27,11 @@ public class ComicProfileService {
         return comicProfileRepository.findAll();
     }
 
-    @Transactional
     public void updateComicViews(Long comicId){
         ComicProfile currentComic = comicProfileRepository.getComicProfileById(comicId);
         Integer currentVies = currentComic.getViews();
         currentComic.setViews(currentVies + 1);
+        comicProfileRepository.updateViews(currentVies+1, comicId);
     }
 
 }

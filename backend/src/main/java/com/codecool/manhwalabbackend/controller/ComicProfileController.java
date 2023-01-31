@@ -9,7 +9,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -29,7 +28,6 @@ public class ComicProfileController {
     }
 
     @PostMapping(value = "/{comicId}/update-view")
-    @Transactional
     public ResponseEntity<String> updateComicViewNumbers(@PathVariable Long comicId){
         comicProfileService.updateComicViews(comicId);
         popularityService.updateDailyViewForComic(comicId, LocalDate.now());
