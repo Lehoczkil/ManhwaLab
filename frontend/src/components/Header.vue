@@ -18,11 +18,12 @@
             </div>
             <div class="auth">
                 <button id="browse" @click="handleBrowseBtn">Browse</button>
-                <button>Register</button>
+                <button @click="showRegister">Register</button>
                 <button @click="showLogin">Login</button>
             </div>
         </nav>
         <Login v-show="isLoginVisible" @close="closeLogin" />
+        <Register v-show="isRegisterVisible" @close="closeRegister" />
     </header>
 </template>
 
@@ -223,15 +224,18 @@ img {
 <script>
 import { useComicStore } from '@/stores/ComicStore'
 import Login from './Login.vue'
+import Register from './Register.vue'
 
 export default {
     name: 'Header',
     components: {
-        Login
+        Login,
+        Register
     },
     data() {
         return {
             isLoginVisible: false,
+            isRegisterVisible: false,
         };
     },
     methods: {
@@ -244,16 +248,25 @@ export default {
             this.$router.push('/')
         },
         handleSearch() {
+            document.querySelector('#nav-check').checked = false;
             const comicStore = useComicStore();
             let text = document.querySelector('#search').value
             comicStore.filterComics(null, null, null, null, text)
             this.$router.push('/comics')
         },
         showLogin() {
+            document.querySelector('#nav-check').checked = false;
             this.isLoginVisible = true;
         },
         closeLogin() {
             this.isLoginVisible = false;
+        },
+        showRegister() {
+            document.querySelector('#nav-check').checked = false;
+            this.isRegisterVisible = true;
+        },
+        closeRegister() {
+            this.isRegisterVisible = false;
         }
     }
 }
