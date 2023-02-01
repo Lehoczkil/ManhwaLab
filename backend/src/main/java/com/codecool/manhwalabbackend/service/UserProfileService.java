@@ -1,5 +1,6 @@
 package com.codecool.manhwalabbackend.service;
 
+import com.codecool.manhwalabbackend.model.UserProfile;
 import com.codecool.manhwalabbackend.repository.UserProfileRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
