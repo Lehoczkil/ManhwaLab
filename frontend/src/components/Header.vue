@@ -19,9 +19,10 @@
             <div class="auth">
                 <button id="browse" @click="handleBrowseBtn">Browse</button>
                 <button>Register</button>
-                <button>Login</button>
+                <button @click="showLogin">Login</button>
             </div>
         </nav>
+        <Login v-show="isLoginVisible" @close="closeLogin" />
     </header>
 </template>
 
@@ -221,8 +222,18 @@ img {
 
 <script>
 import { useComicStore } from '@/stores/ComicStore'
+import Login from './Login.vue'
+
 export default {
     name: 'Header',
+    components: {
+        Login
+    },
+    data() {
+        return {
+            isLoginVisible: false,
+        };
+    },
     methods: {
         handleBrowseBtn() {
             document.querySelector('#nav-check').checked = false;
@@ -234,9 +245,15 @@ export default {
         },
         handleSearch() {
             const comicStore = useComicStore();
-            text = document.querySelector('#search').value
-            comicStore.filterComics(null, null, null, null, search)
+            let text = document.querySelector('#search').value
+            comicStore.filterComics(null, null, null, null, text)
             this.$router.push('/comics')
+        },
+        showLogin() {
+            this.isLoginVisible = true;
+        },
+        closeLogin() {
+            this.isLoginVisible = false;
         }
     }
 }
