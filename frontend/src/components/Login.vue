@@ -1,6 +1,6 @@
 <template>
     <div class="modal-backdrop">
-        <div class="modal">
+        <form class="modal">
             <header class="modal-header">
                 <h2>Login</h2>
                 <button type="button" class="btn-close" @click="close">
@@ -14,11 +14,11 @@
             </section>
 
             <footer class="modal-footer">
-                <button type="button" class="btn login">
+                <button type="submit" class="btn login">
                     Login
                 </button>
             </footer>
-        </div>
+        </form>
     </div>
 </template>
 
