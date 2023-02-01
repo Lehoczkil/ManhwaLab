@@ -17,5 +17,9 @@ public class UserProfileService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return null;
     }
+
+    public void addNewUser(UserProfile userProfile){
+        userProfileRepository.save(userProfile);
+    }
 }
 
