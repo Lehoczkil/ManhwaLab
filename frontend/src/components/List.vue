@@ -3,9 +3,9 @@
         <div class="loading" v-if="loading">Loading comics...</div>
 
         <div class="comics" v-for="comic in comics" :key="comic.id">
-            <div class="comic">
+            <div class="comic" @click="handleClick(comic.id)">
                 <img :src="`https://second-backend-web-service.onrender.com${comic.coverPage}`" alt="Cover page of the manhwa" class="pic">
-                <h1 @click="handleClick(comic.id)">{{ comic.title }}</h1>
+                <h1>{{ comic.title }}</h1>
             </div>
         </div>
     </article>
