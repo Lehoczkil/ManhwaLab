@@ -21,6 +21,8 @@ public class UserProfile {
     @Column(columnDefinition = "TEXT")
     private String description;
     private Integer age;
+    private String email;
+
     private String Password;
     @Enumerated(EnumType.STRING)
     private Gender gender;
