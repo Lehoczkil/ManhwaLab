@@ -19,10 +19,6 @@ public class ComicProfileService {
         return comicProfileRepository.getComicProfileByTitle(title);
     }
 
-    public Float getComicRating(String title){
-        return comicProfileRepository.getComicProfileRatingByTitle(title);
-    }
-
     public List<ComicProfile> getAllComic(){
         return comicProfileRepository.findAll();
     }

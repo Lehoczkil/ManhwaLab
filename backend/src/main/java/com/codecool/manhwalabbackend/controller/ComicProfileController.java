@@ -35,19 +35,4 @@ public class ComicProfileController {
 
     }
 
-    @GetMapping(value = "/{comicTitle}/genres")
-    public List<String> getComicGenres(@PathVariable String comicTitle){
-        return genreService.getComicGenres(comicProfileService.getComicProfileByName(comicTitle).getId().intValue());
-    }
-
-    @GetMapping(value = "/{comicTitle}/themes")
-    public List<String> getComicThemes(@PathVariable String comicTitle){
-        return null;
-    }
-
-    @GetMapping(value = "/{comicTitle}/rating")
-    public Float getComicRating(@PathVariable String comicTitle){
-        return comicProfileService.getComicRating(comicTitle);
-    }
-
 }
