@@ -1,5 +1,6 @@
 package com.codecool.manhwalabbackend.service;
 
+import com.codecool.manhwalabbackend.model.DTO.UserProfileDTO;
 import com.codecool.manhwalabbackend.model.UserProfile;
 import com.codecool.manhwalabbackend.repository.UserProfileRepository;
 import lombok.RequiredArgsConstructor;
@@ -21,6 +22,14 @@ public class UserProfileService implements UserDetailsService {
 
     public void addNewUser(UserProfile userProfile){
         userProfileRepository.save(userProfile);
+    }
+
+    private UserProfile userProfileBuilder(UserProfileDTO userProfileDTO){
+        UserProfile userProfile = new UserProfile();
+        userProfile.setUserName(userProfileDTO.getUsername());
+        userProfile.setPassword(userProfileDTO.getPassword());
+        userProfile.setEmail(userProfileDTO.getEmail());
+        return userProfile;
     }
 }
 
