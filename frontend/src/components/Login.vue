@@ -24,12 +24,17 @@
 
 <style>
 
+h2 {
+    color:  #353434;
+}
+
 input {
     width: 80%;
     height: 40px;
     text-align: center;
     background: transparent;
     border: none;
+    border-bottom:1px solid black;
     color: black;
     border-radius: 5px;
     font-size: 20px;
