@@ -37,7 +37,8 @@
 
 .search {
     width: 60vw;
-
+    display: flex;
+    align-items: center;
 }
 
 .search input {
@@ -82,6 +83,10 @@
 }
 
 @media(max-width:950px) {
+
+    .search {
+        flex-direction: column;
+    }
     .row {
         display: block;
         text-align: center;
