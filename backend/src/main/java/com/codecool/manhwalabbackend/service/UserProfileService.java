@@ -20,7 +20,8 @@ public class UserProfileService implements UserDetailsService {
         return null;
     }
 
-    public void addNewUser(UserProfile userProfile){
+    public void addNewUser(UserProfileDTO userProfileDTO){
+        UserProfile userProfile = userProfileBuilder(userProfileDTO);
         userProfileRepository.save(userProfile);
     }
 
