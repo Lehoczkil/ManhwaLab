@@ -250,8 +250,8 @@ export default {
         handleSearch() {
             document.querySelector('#nav-check').checked = false;
             const comicStore = useComicStore();
-            let text = document.querySelector('#search').value
-            comicStore.filterComics(null, null, null, null, text)
+            const search = document.querySelector('#search').value
+            comicStore.filterComics(null, null, null, null, search);
             this.$router.push('/comics')
         },
         showLogin() {
