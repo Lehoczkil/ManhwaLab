@@ -17,7 +17,7 @@ public class UserProfileService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return null;
+        return userProfileRepository.getUserProfileByUsername(username);
     }
 
     public void addNewUser(UserProfileDTO userProfileDTO){
