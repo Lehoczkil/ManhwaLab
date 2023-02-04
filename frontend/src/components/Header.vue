@@ -21,7 +21,7 @@
                 <button v-if="tokenStore.isTokenExists()" @click="showRegister">Register</button>
                 <button v-if="tokenStore.isTokenExists()" @click="showLogin">Login</button>
                 <button v-if="!tokenStore.isTokenExists()">Profile</button>
-                <button v-if="!tokenStore.isTokenExists()">Logout</button>
+                <button v-if="!tokenStore.isTokenExists()" @click="handleLogout">Logout</button>
             </div>
         </nav>
         <Login v-show="isLoginVisible" @close="closeLogin" />
@@ -271,6 +271,9 @@ export default {
         },
         closeRegister() {
             this.isRegisterVisible = false;
+        },
+        handleLogout() {
+            this.tokenStore.clearToken();
         }
     },
     setup() {
