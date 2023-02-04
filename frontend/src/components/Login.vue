@@ -129,6 +129,7 @@ input:hover {
 
 
 <script>
+import { useTokenStore } from '@/stores/TokenStore';
 export default {
     name: 'Login',
     methods: {
@@ -151,8 +152,9 @@ export default {
             })
 
             if (response.headers.get('Authorization')) {
-                console.log('here')
-                localStorage.setItem('access_token', response.headers.get('Authorization'))
+                this.$emit('close')
+                const tokenStore = useTokenStore()
+                tokenStore.setToken(response.headers.get('Authorization'))
             }
         }
     }
