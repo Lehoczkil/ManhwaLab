@@ -18,10 +18,10 @@
             </div>
             <div class="auth">
                 <button id="browse" @click="handleBrowseBtn">Browse</button>
-                <button v-if="tokenStore.isTokenExists()" @click="showRegister">Register</button>
-                <button v-if="tokenStore.isTokenExists()" @click="showLogin">Login</button>
-                <button v-if="!tokenStore.isTokenExists()">Profile</button>
-                <button v-if="!tokenStore.isTokenExists()" @click="handleLogout">Logout</button>
+                <button v-if="!tokenStore.isTokenExists()" @click="showRegister">Register</button>
+                <button v-if="!tokenStore.isTokenExists()" @click="showLogin">Login</button>
+                <button v-if="tokenStore.isTokenExists()">Profile</button>
+                <button v-if="tokenStore.isTokenExists()" @click="handleLogout">Logout</button>
             </div>
         </nav>
         <Login v-show="isLoginVisible" @close="closeLogin" />
@@ -44,6 +44,7 @@ header,
 img {
     width: 152px;
     height: 72px;
+    cursor: pointer;
 }
 
 .auth {
