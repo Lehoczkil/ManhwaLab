@@ -18,8 +18,10 @@
             </div>
             <div class="auth">
                 <button id="browse" @click="handleBrowseBtn">Browse</button>
-                <button @click="showRegister">Register</button>
-                <button @click="showLogin">Login</button>
+                <button v-if="tokenStore.isTokenExists()" @click="showRegister">Register</button>
+                <button v-if="tokenStore.isTokenExists()" @click="showLogin">Login</button>
+                <button v-if="!tokenStore.isTokenExists()">Profile</button>
+                <button v-if="!tokenStore.isTokenExists()">Logout</button>
             </div>
         </nav>
         <Login v-show="isLoginVisible" @close="closeLogin" />
@@ -223,6 +225,8 @@ img {
 
 <script>
 import { useComicStore } from '@/stores/ComicStore'
+import { useTokenStore } from '@/stores/TokenStore'
+import { storeToRefs } from 'pinia'
 import Login from './Login.vue'
 import Register from './Register.vue'
 
@@ -268,6 +272,11 @@ export default {
         closeRegister() {
             this.isRegisterVisible = false;
         }
+    },
+    setup() {
+        const tokenStore = useTokenStore()
+        const { token } = storeToRefs(tokenStore)
+        return { tokenStore, token }
     }
 }
 </script>
