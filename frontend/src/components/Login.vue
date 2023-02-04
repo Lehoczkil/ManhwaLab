@@ -1,6 +1,6 @@
 <template>
     <div class="modal-backdrop">
-        <form class="modal">
+        <div class="modal">
             <header class="modal-header">
                 <h2>Login</h2>
                 <button type="button" class="btn-close" @click="close">
@@ -9,23 +9,22 @@
             </header>
 
             <section class="modal-body">
-                <input type="text" placeholder="Username">
-                <input type="password" placeholder="Password">
+                <input type="text" placeholder="Username" id="username">
+                <input type="password" placeholder="Password" id="password">
             </section>
 
             <footer class="modal-footer">
-                <button type="submit" class="btn login">
+                <button type="button" class="btn login" @click="handleLogin">
                     Login
                 </button>
             </footer>
-        </form>
+        </div>
     </div>
 </template>
 
 <style>
-
 h2 {
-    color:  #353434;
+    color: #353434;
 }
 
 input {
@@ -34,7 +33,7 @@ input {
     text-align: center;
     background: transparent;
     border: none;
-    border-bottom:1px solid black;
+    border-bottom: 1px solid black;
     color: black;
     border-radius: 5px;
     font-size: 20px;
@@ -45,7 +44,8 @@ input:focus {
     outline: none;
 }
 
-input:focus, input:hover {
+input:focus,
+input:hover {
     background: #353434;
     transition: 0.3s;
     color: white;
@@ -135,6 +135,26 @@ export default {
         close() {
             this.$emit('close');
         },
-    },
-};
+        async handleLogin() {
+            const username = document.querySelector('#username').value
+            const password = document.querySelector('#password').value
+
+            const response = await fetch(`/login`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    username: username,
+                    password: password
+                })
+            })
+
+            if (response.headers.get('Authorization')) {
+                console.log('here')
+                localStorage.setItem('access_token', response.headers.get('Authorization'))
+            }
+        }
+    }
+}
 </script>
