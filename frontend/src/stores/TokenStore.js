@@ -15,6 +15,10 @@ export const useTokenStore = defineStore("tokenStore", {
     },
     isTokenExists() {
         return this.token === '';
+    },
+    clearToken() {
+      localStorage.removeItem("access_token");
+      this.token = '';
     }
   },
 });
