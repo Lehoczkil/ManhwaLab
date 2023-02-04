@@ -76,7 +76,7 @@
                             <p>Rating</p>
                             <p class="data">{{ currentComic.rating }}</p>
                         </div>
-                        <div class="stars">
+                        <div class="stars" v-if="tokenStore.isTokenExists()">
                             <img class="star inverse" src="../assets/star.png" alt="star">
                             <img class="star inverse" src="../assets/star.png" alt="star">
                             <img class="star inverse" src="../assets/star.png" alt="star">
@@ -110,8 +110,10 @@
                     style="width: 100%; padding: 1vw; max-width: 100%; border-radius: clamp(5px, 0.7vw, 20px)"></textarea>
             </div>
             <div class="auth-container">
-                <button class="auth">Sign in</button>
-                <button class="auth">Login</button>
+                <button class="auth" v-if="!tokenStore.isTokenExists()">Sign in</button>
+                <button class="auth" v-if="!tokenStore.isTokenExists()">Login</button>
+
+                <button class="auth" v-if="tokenStore.isTokenExists()">Send</button>
             </div>
             <div class="comment-container">
                 <Comment />
@@ -376,6 +378,7 @@ article,
 import Comment from '../components/Comment'
 import Recommended from '../components/Recommended'
 import { useComicStore } from '@/stores/ComicStore'
+import { useTokenStore } from '@/stores/TokenStore'
 import { storeToRefs } from 'pinia'
 
 export default {
@@ -399,13 +402,15 @@ export default {
     },
     setup(props) {
         const comicStore = useComicStore()
+        const tokenStore = useTokenStore()
 
         comicStore.getComicById(props.id)
         comicStore.increaseViewCount(props.id)
 
         const { currentComic } = storeToRefs(comicStore)
+        const { token } = storeToRefs(tokenStore)
 
-        return { comicStore, currentComic }
+        return { comicStore, currentComic, tokenStore, token }
     }
 }
 </script>
