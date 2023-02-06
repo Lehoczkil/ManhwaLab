@@ -13,7 +13,7 @@ public class ComicProfileDTO {
 
     private Long comicId;
     private String title;
-    private String coverPage;
+    private String coverPageSmall;
     private Float rating;
     private Integer numberOfChapters;
 }
