@@ -16,17 +16,11 @@ public class ComicProfileService {
     private final ComicProfileRepository comicProfileRepository;
 
     public ComicProfile getComicProfileByName(String title){
-        ComicProfile currentComic = comicProfileRepository.getComicProfileByTitle(title);
-        currentComic.setCoverPageSmall(null);
-        return currentComic;
+        return comicProfileRepository.getComicProfileByTitle(title);
     }
 
     public List<ComicProfile> getAllComic(){
-        List<ComicProfile> allComics = comicProfileRepository.findAll();
-        for (ComicProfile currentComic : allComics) {
-            currentComic.setCoverPageBig(null);
-        }
-        return allComics;
+        return comicProfileRepository.findAll();
     }
 
     public void updateComicViews(Long comicId){
