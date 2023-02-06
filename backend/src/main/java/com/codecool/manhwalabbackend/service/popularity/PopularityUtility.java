@@ -13,7 +13,7 @@ public class PopularityUtility {
         String title = comicProfileById.getTitle();
         Integer numberOfChapters = comicProfileById.getNumberOfChapters();
         Float rating = comicProfileById.getRating();
-        String coverPage = comicProfileById.getCoverPage();
+        String coverPage = comicProfileById.getCoverPageSmall();
         topFiveComicToday.add(new ComicProfileDTO(comicId, title, coverPage, rating, numberOfChapters));
     }
 }

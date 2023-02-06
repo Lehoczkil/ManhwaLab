@@ -2,7 +2,7 @@
     <article>
         <main>
             <div class="pic-container">
-                <img :src="`${currentComic.coverPage}`" alt="" class="pic">
+                <img :src="`${currentComic.coverPageBig}`" alt="" class="pic">
                 <div class="content">
                     <h1>{{ currentComic.title }}</h1>
                     <div class="description">
