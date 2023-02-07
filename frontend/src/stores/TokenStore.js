@@ -7,7 +7,6 @@ export const useTokenStore = defineStore("tokenStore", {
   actions: {
     setToken(token) {
       if (token.includes("Bearer")) {
-        localStorage.setItem("access_token", token);
         this.token = token;
       } else {
         console.error("Access token not exists");
@@ -17,7 +16,7 @@ export const useTokenStore = defineStore("tokenStore", {
         return this.token !== '';
     },
     clearToken() {
-      localStorage.removeItem("access_token");
+      localStorage.removeItem("token");
       this.token = '';
     }
   },
