@@ -31,6 +31,7 @@
 
 
 <script>
+import { useTokenStore } from '@/stores/TokenStore';
 
 export default {
     name: 'Register',
@@ -55,7 +56,22 @@ export default {
                 })
             })
 
-            this.close()
+            const response = await fetch(`/login`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    username: username,
+                    password: password
+                })
+            })
+
+            if (response.headers.get('Authorization')) {
+                this.$emit('close')
+                const tokenStore = useTokenStore()
+                tokenStore.setToken(response.headers.get('Authorization'))
+            }
         }
     },
 };
