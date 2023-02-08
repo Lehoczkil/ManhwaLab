@@ -198,7 +198,7 @@ INSERT INTO theme_for_comic ( comic_profile_id, theme_id) VALUES ( 10, 10);
 ---------------------------------------------------------------------------------------------
 -- USER PROFILE
 
-INSERT INTO user_profile (password, age, description, gender, joined, last_online, location, username) VALUES ('pw', 42, '', 'MALE', DATE_TRUNC('day', CURRENT_DATE ), DATE_TRUNC('day', CURRENT_DATE ), 'Budapest', 'Béla');
+INSERT INTO user_profile (password, age, description, gender, joined, last_online, location, username, role) VALUES ('pw', 42, '', 'MALE', DATE_TRUNC('day', CURRENT_DATE ), DATE_TRUNC('day', CURRENT_DATE ), 'Budapest', 'Béla', 'USER');
 
 ---------------------------------------------------------------------------------------------
 -- COMMENT
