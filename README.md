@@ -25,6 +25,8 @@ On localhost:
 
 Fixes, optimizations are continously done.
 
+*New deployed version expected on the next week ( 2023/02/13 - 2023/02/17).
+
 
 # Tech Stack
 
