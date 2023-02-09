@@ -20,7 +20,7 @@
                 <button id="browse" @click="handleBrowseBtn">Browse</button>
                 <button v-if="!tokenStore.isTokenExists()" @click="showRegister">Register</button>
                 <button v-if="!tokenStore.isTokenExists()" @click="showLogin">Login</button>
-                <button v-if="tokenStore.isTokenExists()">Profile</button>
+                <button v-if="tokenStore.isTokenExists()" @click="goToProfile">Profile</button>
                 <button v-if="tokenStore.isTokenExists()" @click="handleLogout">Logout</button>
             </div>
         </nav>
@@ -275,6 +275,9 @@ export default {
         },
         handleLogout() {
             this.tokenStore.clearToken();
+        },
+        goToProfile() {
+            this.$router.push('/user-profile')
         }
     },
     setup() {
