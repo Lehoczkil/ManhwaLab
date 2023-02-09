@@ -21,12 +21,14 @@ import java.util.List;
 public class UserProfile implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(name = "id", nullable = false, unique = true)
     private Long id;
+    @Column(unique = true)
     private String username;
     @Column(columnDefinition = "TEXT")
     private String description;
     private Integer age;
+    @Column(unique = true)
     private String email;
     private String Password;
     @Enumerated(EnumType.STRING)
