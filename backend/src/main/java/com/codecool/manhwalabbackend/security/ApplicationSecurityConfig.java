@@ -1,5 +1,6 @@
 package com.codecool.manhwalabbackend.security;
 
+import com.codecool.manhwalabbackend.model.roles.ApplicationUserRoles;
 import com.codecool.manhwalabbackend.security.jwt.JwtTokenVerifier;
 import com.codecool.manhwalabbackend.security.jwt.JwtUsernamePasswordAuthenticationFilter;
 import com.codecool.manhwalabbackend.service.UserProfileService;
@@ -43,7 +44,7 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/api/manhwaLab/top/**", "/api/manhwaLab/manhwaList", "/api/manhwaLab/*/update-view", "/api/manhwaLab/genres", "/api/manhwaLab/themes", "/api/manhwaLab/types", "/api/manhwaLab/registration", "/login", "/registration", "/images/*").permitAll()
 //                .antMatchers(HttpMethod.POST, "").permitAll()
-//                .antMatchers("").hasRole()
+                .antMatchers("/api/manhwaLab/profile").hasRole(ApplicationUserRoles.USER.name())
 //                .antMatchers(HttpMethod.POST, "").hasAnyRole()
                 .anyRequest()
                 .authenticated();
