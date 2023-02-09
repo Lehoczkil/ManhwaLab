@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDate;
 import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Setter
@@ -35,6 +36,26 @@ public class UserProfile implements UserDetails {
     private LocalDate joined;
     @Enumerated(EnumType.STRING)
     private ApplicationUserRoles role;
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "favourites",
+            joinColumns = @JoinColumn(name = "comicProfileId"),
+            inverseJoinColumns = @JoinColumn(name = "userProfileId"))
+    private List<ComicProfile> favourites;
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "read",
+            joinColumns = @JoinColumn(name = "comicProfileId"),
+            inverseJoinColumns = @JoinColumn(name = "userProfileId"))
+    private List<ComicProfile> read;
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "readLater",
+            joinColumns = @JoinColumn(name = "comicProfileId"),
+            inverseJoinColumns = @JoinColumn(name = "userProfileId"))
+    private List<ComicProfile> readLater;
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "finished",
+            joinColumns = @JoinColumn(name = "comicProfileId"),
+            inverseJoinColumns = @JoinColumn(name = "userProfileId"))
+    private List<ComicProfile> finished;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
