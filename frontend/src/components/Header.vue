@@ -18,10 +18,14 @@
             </div>
             <div class="auth">
                 <button id="browse" @click="handleBrowseBtn">Browse</button>
-                <button>Register</button>
-                <button>Login</button>
+                <button v-if="!tokenStore.isTokenExists()" @click="showRegister">Register</button>
+                <button v-if="!tokenStore.isTokenExists()" @click="showLogin">Login</button>
+                <button v-if="tokenStore.isTokenExists()">Profile</button>
+                <button v-if="tokenStore.isTokenExists()" @click="handleLogout">Logout</button>
             </div>
         </nav>
+        <Login v-show="isLoginVisible" @close="closeLogin" />
+        <Register v-show="isRegisterVisible" @close="closeRegister" />
     </header>
 </template>
 
@@ -40,6 +44,7 @@ header,
 img {
     width: 152px;
     height: 72px;
+    cursor: pointer;
 }
 
 .auth {
@@ -221,8 +226,23 @@ img {
 
 <script>
 import { useComicStore } from '@/stores/ComicStore'
+import { useTokenStore } from '@/stores/TokenStore'
+import { storeToRefs } from 'pinia'
+import Login from './Login.vue'
+import Register from './Register.vue'
+
 export default {
     name: 'Header',
+    components: {
+        Login,
+        Register
+    },
+    data() {
+        return {
+            isLoginVisible: false,
+            isRegisterVisible: false,
+        };
+    },
     methods: {
         handleBrowseBtn() {
             document.querySelector('#nav-check').checked = false;
@@ -233,11 +253,34 @@ export default {
             this.$router.push('/')
         },
         handleSearch() {
+            document.querySelector('#nav-check').checked = false;
             const comicStore = useComicStore();
-            text = document.querySelector('#search').value
-            comicStore.filterComics(null, null, null, null, search)
+            const search = document.querySelector('#search').value
+            comicStore.filterComics(null, null, null, null, search);
             this.$router.push('/comics')
+        },
+        showLogin() {
+            document.querySelector('#nav-check').checked = false;
+            this.isLoginVisible = true;
+        },
+        closeLogin() {
+            this.isLoginVisible = false;
+        },
+        showRegister() {
+            document.querySelector('#nav-check').checked = false;
+            this.isRegisterVisible = true;
+        },
+        closeRegister() {
+            this.isRegisterVisible = false;
+        },
+        handleLogout() {
+            this.tokenStore.clearToken();
         }
+    },
+    setup() {
+        const tokenStore = useTokenStore()
+        const { token } = storeToRefs(tokenStore)
+        return { tokenStore, token }
     }
 }
 </script>

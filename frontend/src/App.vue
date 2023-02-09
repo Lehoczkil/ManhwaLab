@@ -33,6 +33,10 @@ body {
   background: black;
 }
 
+button {
+  cursor: pointer;
+}
+
 button:active {
   transform: scale(0.95);
 }

@@ -1,14 +1,17 @@
 <template>
     <div class="comic" @click="handleClick">
-        <img :src="`https://second-backend-web-service.onrender.com${comic.coverPage}`" alt="picture about the comic" class="pic">
+        <img :src="`${comic.coverPageSmall}`" alt="picture about the comic" class="pic">
         <h1>{{ comic.title }}</h1>
         <p>{{ comic.numberOfChapters }} chapters</p>
         <div class="rating">
-            <img class="star" src="../assets/star.png" alt="star">
-            <img class="star" src="../assets/star.png" alt="star">
-            <img class="star" src="../assets/star.png" alt="star">
-            <img class="star" src="../assets/star.png" alt="star">
-            <img class="star" src="../assets/star.png" alt="star">
+            <div class="stars" v-if="tokenStore.isTokenExists()">
+                <img class="star" src="../assets/star.png" alt="star">
+                <img class="star" src="../assets/star.png" alt="star">
+                <img class="star" src="../assets/star.png" alt="star">
+                <img class="star" src="../assets/star.png" alt="star">
+                <img class="star" src="../assets/star.png" alt="star">
+            </div>
+            <p v-if="!tokenStore.isTokenExists()">Rating:</p>
             <span>{{ comic.rating }}</span>
         </div>
     </div>
@@ -16,6 +19,11 @@
 
 
 <style scoped>
+
+.rating {
+    display: flex;
+    justify-content: center;
+}
 .comic {
     flex-basis: 18%;
     height: clamp(430px, 26vh, 3200px);
@@ -48,6 +56,8 @@ span {
 </style>
 
 <script>
+import { useTokenStore } from '@/stores/TokenStore'
+import { storeToRefs } from 'pinia'
 
 export default {
     name: "Comic",
@@ -63,6 +73,11 @@ export default {
         handleClick() {
             this.$router.push(`/comics/${this.comic.comicId}`)
         }
+    },
+    setup() {
+        const tokenStore = useTokenStore()
+        const { token } = storeToRefs(tokenStore)
+        return { tokenStore, token }
     }
 }
 </script>
