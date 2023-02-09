@@ -26,6 +26,9 @@ public class UserProfileService implements UserDetailsService {
         return userProfileRepository.getUserProfileByUsername(username);
     }
 
+    public UserProfile getUser(String username){
+        return userProfileRepository.getUserProfileByUsername(username);    }
+
     public void addNewUser(UserProfileDTO userProfileDTO){
         userProfileDTO.setRole(ApplicationUserRoles.USER);
         UserProfile userProfile = userProfileBuilder(userProfileDTO);
