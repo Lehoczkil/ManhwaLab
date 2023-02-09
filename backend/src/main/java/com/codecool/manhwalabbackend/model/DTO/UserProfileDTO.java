@@ -9,11 +9,8 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ComicProfileDTO {
-
-    private Long comicId;
-    private String title;
-    private String coverPageSmall;
-    private Float rating;
-    private Integer numberOfChapters;
+public class UserProfileDTO {
+    private String username;
+    private String password;
+    private String email;
 }

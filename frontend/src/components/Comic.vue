@@ -1,7 +1,7 @@
 <template>
-    <div class="comic">
-        <img :src="`http://10.44.7.208:8080${comic.coverPage}`" alt="picture about the comic" class="pic">
-        <h1 @click="handleClick">{{ comic.title }}</h1>
+    <div class="comic" @click="handleClick">
+        <img :src="`https://second-backend-web-service.onrender.com${comic.coverPage}`" alt="picture about the comic" class="pic">
+        <h1>{{ comic.title }}</h1>
         <p>{{ comic.numberOfChapters }} chapters</p>
         <div class="rating">
             <img class="star" src="../assets/star.png" alt="star">

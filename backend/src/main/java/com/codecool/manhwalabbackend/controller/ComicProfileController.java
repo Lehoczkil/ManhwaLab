@@ -13,7 +13,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @RestController
-@CrossOrigin({"http://localhost:8081", "http://10.44.7.208:8081/"})
+@CrossOrigin({"http://localhost:8081", "https://manhwalab.onrender.com/"})
 @RequestMapping("/api/manhwaLab")
 @RequiredArgsConstructor
 public class ComicProfileController {
@@ -33,21 +33,6 @@ public class ComicProfileController {
         popularityService.updateDailyViewForComic(comicId, LocalDate.now());
         return new ResponseEntity<>("Succes", HttpStatus.CREATED);
 
-    }
-
-    @GetMapping(value = "/{comicTitle}/genres")
-    public List<String> getComicGenres(@PathVariable String comicTitle){
-        return genreService.getComicGenres(comicProfileService.getComicProfileByName(comicTitle).getId().intValue());
-    }
-
-    @GetMapping(value = "/{comicTitle}/themes")
-    public List<String> getComicThemes(@PathVariable String comicTitle){
-        return null;
-    }
-
-    @GetMapping(value = "/{comicTitle}/rating")
-    public Float getComicRating(@PathVariable String comicTitle){
-        return comicProfileService.getComicRating(comicTitle);
     }
 
 }

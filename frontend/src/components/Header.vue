@@ -13,8 +13,8 @@
 
         <nav class="menu-items">
             <div class="search">
-                <input type="search" placeholder="Find manhwa...">
-                <button>Search</button>
+                <input id="search" type="search" placeholder="Find manhwa...">
+                <button @click="handleSearch">Search</button>
             </div>
             <div class="auth">
                 <button id="browse" @click="handleBrowseBtn">Browse</button>
@@ -220,14 +220,23 @@ img {
 </style>
 
 <script>
+import { useComicStore } from '@/stores/ComicStore'
 export default {
     name: 'Header',
     methods: {
         handleBrowseBtn() {
+            document.querySelector('#nav-check').checked = false;
             this.$router.push('/comics')
         },
         handleMainPageBtn() {
+            document.querySelector('#nav-check').checked = false;
             this.$router.push('/')
+        },
+        handleSearch() {
+            const comicStore = useComicStore();
+            text = document.querySelector('#search').value
+            comicStore.filterComics(null, null, null, null, search)
+            this.$router.push('/comics')
         }
     }
 }

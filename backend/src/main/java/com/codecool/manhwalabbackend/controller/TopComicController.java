@@ -13,7 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping("api/manhwaLab")
 @RequiredArgsConstructor
-@CrossOrigin({"http://localhost:8081", "http://10.44.7.208:8081/"})
+@CrossOrigin({"http://localhost:8081", "https://manhwalab.onrender.com/"})
 public class TopComicController {
 
     private final PopularityService popularityService;
