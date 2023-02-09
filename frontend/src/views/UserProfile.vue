@@ -35,8 +35,10 @@
 <style scoped>
 article {
     padding: 1vw;
-    background: yellow;;
+    background: yellow;
+    ;
 }
+
 .profile-pic {
     height: clamp(400px, 48vh, 2000px);
     width: clamp(288px, 34vh, 1440px);
@@ -49,6 +51,7 @@ article {
     margin-bottom: 5vh;
     background: grey
 }
+
 .content {
     width: 78vw;
     padding: 2vw 2vw 2vw 0;
@@ -63,6 +66,7 @@ article {
     justify-content: space-between;
     background: white;
 }
+
 .description {
     text-align: justify;
     background: white;
@@ -75,11 +79,20 @@ article {
 
 <script>
 import Recommended from '../components/Recommended'
+import { useUserStore } from '@/stores/UserStore';
+import { storeToRefs } from 'pinia';
 
 export default {
     name: 'UserProfile',
     components: {
         Recommended
+    },
+    setup() {
+        const userStore = useUserStore()
+        userStore.getUser()
+
+        const { name, age, gender, location, lastOnline, joined, description, finished, read, favorites, readLater } = storeToRefs(userStore)
+        return { userStore, name, age, gender, location, lastOnline, joined, description, finished, read, favorites, readLater }
     }
 }
 </script>

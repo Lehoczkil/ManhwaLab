@@ -2,10 +2,12 @@ package com.codecool.manhwalabbackend.service;
 
 import com.codecool.manhwalabbackend.model.DTO.UserProfileDTO;
 import com.codecool.manhwalabbackend.model.UserProfile;
+import com.codecool.manhwalabbackend.model.roles.ApplicationUserRoles;
 import com.codecool.manhwalabbackend.repository.UserProfileRepository;
 import com.codecool.manhwalabbackend.security.PasswordConfig;
 import lombok.Builder;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -25,6 +27,7 @@ public class UserProfileService implements UserDetailsService {
     }
 
     public void addNewUser(UserProfileDTO userProfileDTO){
+        userProfileDTO.setRole(ApplicationUserRoles.USER);
         UserProfile userProfile = userProfileBuilder(userProfileDTO);
         userProfileRepository.save(userProfile);
     }
@@ -34,6 +37,7 @@ public class UserProfileService implements UserDetailsService {
         userProfile.setUsername(userProfileDTO.getUsername());
         userProfile.setPassword(passwordConfig.passwordEncoder().encode(userProfileDTO.getPassword()));
         userProfile.setEmail(userProfileDTO.getEmail());
+        userProfile.setRole(userProfileDTO.getRole());
         return userProfile;
     }
 }

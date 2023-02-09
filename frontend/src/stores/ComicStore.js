@@ -16,7 +16,7 @@ export const useComicStore = defineStore("comicStore", {
   actions: {
     async getComics() {
       this.loading = true;
-      const all = await fetch("https://second-backend-web-service.onrender.com/api/manhwaLab/manhwaList");
+      const all = await fetch("/api/manhwaLab/manhwaList");
       const allJson = await all.json();
 
       this.comics = allJson;
@@ -27,17 +27,17 @@ export const useComicStore = defineStore("comicStore", {
     },
     async getTopComics() {
       const daily = await fetch(
-        "https://second-backend-web-service.onrender.com/api/manhwaLab/top/daily"
+        "/api/manhwaLab/top/daily"
       );
       const dailyJson = await daily.json();
 
       const weekly = await fetch(
-        "https://second-backend-web-service.onrender.com/api/manhwaLab/top/weekly"
+        "/api/manhwaLab/top/weekly"
       );
       const weeklyJson = await weekly.json();
 
       const monthly = await fetch(
-        "https://second-backend-web-service.onrender.com/api/manhwaLab/top/monthly"
+        "/api/manhwaLab/top/monthly"
       );
       const monthlyJson = await monthly.json();
 
@@ -87,8 +87,8 @@ export const useComicStore = defineStore("comicStore", {
 
       this.comics = filteredComics;
       this.sortComics(sort);
-      this.searchInComics(search);
       this.numberOfComics = filteredComics.length;
+      this.searchInComics(search);
     },
     searchInComics(title) {
       let searchedComics = this.comics;
@@ -97,6 +97,7 @@ export const useComicStore = defineStore("comicStore", {
         searchedComics = searchedComics.filter((comic) =>
           comic.title.toLowerCase().includes(title)
         );
+        this.numberOfComics = searchedComics.length;
       }
       this.comics = searchedComics;
     },
@@ -133,7 +134,7 @@ export const useComicStore = defineStore("comicStore", {
       );
     },
     increaseViewCount(id) {
-      fetch(`https://second-backend-web-service.onrender.com/api/manhwaLab/${id}/update-view`, {
+      fetch(`/api/manhwaLab/${id}/update-view`, {
         method: "POST",
         headers: {
           'Accept': "application/json",
