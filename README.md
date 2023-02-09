@@ -12,6 +12,20 @@ It is usable locally, by completing (with your environment variables), and runni
 
 # Features
 
+On the deployed version:
+- Browse
+- Check Comic profile
+- Counting views
+- Showing most popular comics for the day/week/month ( currently the database resets after a while, soon will be fixed)
+
+On localhost:
+- All of the above
+- Register/login (JWT)
+- Database does not reset
+
+Fixes, optimizations are continously done.
+
+
 # Tech Stack
 
 ## Backend
