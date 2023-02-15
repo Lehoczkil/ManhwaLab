@@ -1,26 +1,45 @@
 <template>
     <article>
         <section class="profile">
-            <div class="profile-pic"></div>
+            <img src="../assets/default-pic.jpg" alt="Users profile picture" class="pic">
             <div class="content">
                 <div class="row">
-                    <p>Name: My Name</p>
-                    <p>Age: 27</p>
-                    <p>Gender: Male</p>
+                    <div class="field">
+                        <p>Name:</p>
+                        <span>{{ username }}</span>
+                    </div>
+
+                    <div class="field">
+                        <p>Age:</p>
+                        <span>{{ age }}</span>
+                    </div>
+
+                    <div class="field">
+                        <p>Gender:</p>
+                        <span>{{ gender }}</span>
+                    </div>
                 </div>
+
                 <div class="row">
-                    <p>Location: Hungary</p>
-                    <p>Last Online: 2022. 12. 09.</p>
-                    <p>Joined: 2018. 11. 07.</p>
+                    <div class="field">
+                        <p>Location:</p>
+                        <span>{{ location }}</span>
+                    </div>
+
+                    <div class="field">
+                        <p>Last Online:</p>
+                        <span>{{ lastOnline }}</span>
+                    </div>
+
+                    <div class="field">
+                        <p>Joined:</p>
+                        <span>{{ joined }}</span>
+                    </div>
                 </div>
+
                 <div class="description">
-                    <p>Nam et convallis tortor, in finibus leo. Nulla ut elit eros. Suspendisse porttitor eu velit a
-                        vestibulum. Integer iaculis ultrices neque ac vehicula. Fusce gravida, dui vitae egestas
-                        rhoncus, arcu nunc iaculis augue, scelerisque vulputate sapien neque vitae enim. Phasellus quis
-                        neque ultrices, commodo erat sed, finibus quam. In accumsan libero sed erat egestas, a convallis
-                        sapien auctor. Vivamus quam elit, luctus ac pretium in, egestas sit amet felis. Ut tempus luctus
-                        arcu sit amet molestie. Nunc ut metus quis felis porta tincidunt id at dolor. Nam molestie
-                        tempus augue, a feugiat mauris consequat finibus.
+                    <p>
+                        {{ description }}
                     </p>
                 </div>
             </div>
@@ -35,45 +54,88 @@
 <style scoped>
 article {
     padding: 1vw;
-    background: yellow;
-    ;
 }
 
-.profile-pic {
-    height: clamp(400px, 48vh, 2000px);
-    width: clamp(288px, 34vh, 1440px);
-    background: black;
+.pic {
+    width: clamp(240px, 24vw, 2400px);
+    height: clamp(300px, 30vw, 3000px);
+    margin: 1vh auto;
+    border-radius: clamp(20px, 1vw, 50px);
+    border: 0.5px solid white;
 }
 
 .profile {
     display: flex;
     justify-content: space-between;
     margin-bottom: 5vh;
-    background: grey
 }
 
 .content {
     width: 78vw;
-    padding: 2vw 2vw 2vw 0;
+    padding: 1rem 10rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background: red;
 }
 
 .row {
     display: flex;
     justify-content: space-between;
-    background: white;
+    color: white;
+}
+
+.field {
+    flex-basis: 20%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.1rem;
+    flex-wrap: wrap;
+}
+
+.field p {
+    font-weight: 800;
 }
 
 .description {
     text-align: justify;
-    background: white;
+    color: white;
+    font-weight: 600;
+    height: 10vh;
+    overflow-y: scroll;
+    padding-block: 1rem;
 }
 
 .shows {
     background: grey;
+}
+
+@media (max-width: 950px) {
+    article {
+        overflow-x: hidden;
+    }
+
+    .profile, .row {
+        flex-direction: column;
+    }    
+
+    .content {
+        margin: auto;
+        margin-top: 1rem;
+        padding: 0.5rem;
+    }
+
+    .row, .description {
+        width: 80%;
+        margin: auto;
+    }
+
+    .field {
+        margin-bottom: 1rem;
+    }
+
+    .description {
+        width: 80%;
+    }
 }
 </style>
 
@@ -91,8 +153,8 @@ export default {
         const userStore = useUserStore()
         userStore.getUser()
 
-        const { name, age, gender, location, lastOnline, joined, description, finished, read, favorites, readLater } = storeToRefs(userStore)
-        return { userStore, name, age, gender, location, lastOnline, joined, description, finished, read, favorites, readLater }
+        const { username, age, gender, location, lastOnline, joined, description, finished, read, favourites, readLater } = storeToRefs(userStore)
+        return { userStore, username, age, gender, location, lastOnline, joined, description, finished, read, favourites, readLater }
     }
 }
 </script>
