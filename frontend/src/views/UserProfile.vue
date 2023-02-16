@@ -11,7 +11,7 @@
                     <div class="field">
                         <p>Name:</p>
                         <span v-if="!isEditing">{{ username }}</span>
-                        <input class="data" type="text" v-if="isEditing" id="username"  :placeholder=username>
+                        <input class="data" type="text" v-if="isEditing" id="username" :placeholder=username>
                     </div>
 
                     <div class="field">
@@ -48,9 +48,10 @@
                 </div>
 
                 <div class="description">
-                    <p>
+                    <p v-if="!isEditing">
                         {{ description }}
                     </p>
+                    <textarea id="description" cols="30" rows="10" :placeholder=description />
                 </div>
             </div>
         </section>
@@ -194,8 +195,9 @@ export default {
             const location = document.querySelector("#location");
             const lastOnline = document.querySelector("#last-online");
             const joined = document.querySelector("#joined");
+            const description = document.querySelector("#description");
 
-            this.userStore.updateUser(username, age, gender, location, lastOnline, joined)
+            this.userStore.updateUser(username, age, gender, location, lastOnline, joined, description)
         }
     },
     data() {
