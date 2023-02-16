@@ -277,6 +277,7 @@ export default {
             this.tokenStore.clearToken();
         },
         goToProfile() {
+            document.querySelector('#nav-check').checked = false;
             this.$router.push('/user-profile')
         }
     },
