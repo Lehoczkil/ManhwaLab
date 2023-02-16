@@ -25,6 +25,7 @@
     justify-content: center;
 }
 .comic {
+    color: white;
     flex-basis: 18%;
     height: clamp(430px, 26vh, 3200px);
     display: flex;
