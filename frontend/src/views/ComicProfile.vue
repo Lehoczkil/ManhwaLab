@@ -122,7 +122,7 @@
                 <Comment />
             </div>
         </section>
-        <Recommended />
+        <ShortList title="Recommended" />
     </article>
 </template>
 
@@ -376,7 +376,7 @@ article,
 
 <script>
 import Comment from '../components/Comment'
-import Recommended from '../components/Recommended'
+import ShortList from '../components/ShortList'
 import { useComicStore } from '@/stores/ComicStore'
 import { useTokenStore } from '@/stores/TokenStore'
 import { storeToRefs } from 'pinia'
@@ -385,7 +385,7 @@ export default {
     name: 'ComicProfile',
     components: {
         Comment,
-        Recommended
+        ShortList
     },
     props: {
         id: String

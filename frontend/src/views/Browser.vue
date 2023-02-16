@@ -120,7 +120,7 @@ import { useTypeStore } from '@/stores/TypeStore'
 import List from '../components/List'
 import { storeToRefs } from 'pinia'
 export default {
-    name: 'Comics',
+    name: 'Browser',
     components: {
         Select,
         List

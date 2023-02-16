@@ -45,10 +45,10 @@
             </div>
         </section>
         <section class="shows">
-            <Recommended title="Favourites"/>
-            <Recommended title="Read"/>
-            <Recommended title="Read Later"/>
-            <Recommended title="Finished"/>
+            <ShortList title="Favourites"/>
+            <ShortList title="Read"/>
+            <ShortList title="Read Later"/>
+            <ShortList title="Finished"/>
         </section>
     </article>
 </template>
@@ -142,14 +142,14 @@ article {
 </style>
 
 <script>
-import Recommended from '../components/Recommended'
+import ShortList from '../components/ShortList'
 import { useUserStore } from '@/stores/UserStore';
 import { storeToRefs } from 'pinia';
 
 export default {
     name: 'UserProfile',
     components: {
-        Recommended
+        ShortList
     },
     setup() {
         const userStore = useUserStore()

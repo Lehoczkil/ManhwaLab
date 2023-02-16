@@ -1,5 +1,5 @@
 <template>
-    <section class="recommended">
+    <section class="short-list">
         <h1>{{ title }}</h1>
         <div class="comics">
             <comic />
@@ -12,7 +12,7 @@
 </template>
 
 <style scoped>
-.recommended {
+.short-list {
     margin-inline: 2vw;
     margin: 5vh auto;
     color: white;
@@ -33,7 +33,7 @@ h1 {
 }
 
 @media (max-width: 950px) {
-    .recommended {
+    .short-list {
         text-align: center;
         margin-inline: auto;
         margin-top: 8rem;
@@ -50,7 +50,7 @@ h1 {
 <script>
 import Comic from './Comic'
 export default {
-    name: 'Recommended',
+    name: 'ShortList',
     components: {
         Comic
     },

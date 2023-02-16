@@ -2,9 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home";
 import ComicProfile from "../views/ComicProfile";
 import UserProfile from "../views/UserProfile";
-import Comics from "../views/Comics";
-import Recommendations from "../views/Recommendations";
-
+import Browser from "../views/Browser";
 const routes = [
   {
     path: "/",
@@ -23,13 +21,8 @@ const routes = [
   },
   {
     path: "/comics",
-    name: "Comics",
-    component: Comics,
-  },
-  {
-    path: "/recommendations",
-    name: "Recommendations",
-    component: Recommendations,
+    name: "Browser",
+    component: Browser,
   },
 ];
 
