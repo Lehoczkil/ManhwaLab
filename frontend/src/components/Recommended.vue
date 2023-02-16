@@ -1,6 +1,6 @@
 <template>
     <section class="recommended">
-        <h1>More like this</h1>
+        <h1>{{ title }}</h1>
         <div class="comics">
             <comic />
             <comic />
@@ -12,20 +12,39 @@
 </template>
 
 <style scoped>
+.recommended {
+    margin-inline: 2vw;
+    margin: 5vh auto;
+    color: white;
+}
+
+.comics {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 300px);
+    grid-gap: 2rem;
+    justify-content: space-around;
+    width: 100%;
+}
+
+h1 {
+    padding-left: 2rem;
+    padding-block: 1rem;
+    font-size: 1.5rem;
+}
+
+@media (max-width: 950px) {
     .recommended {
-        background: purple;
-        margin-inline: 2vw;
-        width: 50vw;
-        margin:2vh auto;
-    }
-    .comics {
-        display: flex;
-        justify-content: space-around;
+        text-align: center;
+        margin-inline: auto;
+        margin-top: 8rem;
     }
 
     h1 {
-        margin-left: 2.5vw;
+        padding-left: 0;
+        margin-bottom: 1rem;
     }
+}
+
 </style>
 
 <script>
@@ -34,6 +53,9 @@ export default {
     name: 'Recommended',
     components: {
         Comic
+    },
+    props: {
+        title: String
     }
 }
 </script>
