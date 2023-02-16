@@ -3,7 +3,8 @@
         <section class="profile">
             <div class="img-container">
                 <img src="../assets/default-pic.jpg" alt="Users profile picture" class="pic">
-                <button class="edit">Edit</button>
+                <button v-if="!isEditing" @click="handleEdit" class="edit">Edit</button>
+                <button v-if="isEditing" @click="handleSave" class="edit">Save</button>
             </div>
             <div class="content">
                 <div class="row">
@@ -165,6 +166,19 @@ export default {
     name: 'UserProfile',
     components: {
         ShortList
+    },
+    methods: {
+        handleEdit() {
+            this.isEditing = true;
+        },
+        handleSave() {
+            this.handleEdit = false;
+        }
+    },
+    data() {
+        return {
+            isEditing: false
+        }
     },
     setup() {
         const userStore = useUserStore()
