@@ -10,34 +10,40 @@
                 <div class="row">
                     <div class="field">
                         <p>Name:</p>
-                        <span>{{ username }}</span>
+                        <span v-if="!isEditing">{{ username }}</span>
+                        <input class="data" type="text" v-if="isEditing" id="username"  :placeholder=username>
                     </div>
 
                     <div class="field">
                         <p>Age:</p>
-                        <span>{{ age }}</span>
+                        <span v-if="!isEditing">{{ age }}</span>
+                        <input class="data" type="text" v-if="isEditing" id="age" :placeholder=age>
                     </div>
 
                     <div class="field">
                         <p>Gender:</p>
-                        <span>{{ gender }}</span>
+                        <span v-if="!isEditing">{{ gender }}</span>
+                        <input class="data" type="text" v-if="isEditing" id="gender" :placeholder=gender>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="field">
                         <p>Location:</p>
-                        <span>{{ location }}</span>
+                        <span v-if="!isEditing">{{ location }}</span>
+                        <input class="data" type="text" v-if="isEditing" id="location" :placeholder=location>
                     </div>
 
                     <div class="field">
                         <p>Last Online:</p>
-                        <span>{{ lastOnline }}</span>
+                        <span v-if="!isEditing">{{ lastOnline }}</span>
+                        <input class="data" type="text" v-if="isEditing" id="last-online" :placeholder=lastOnline>
                     </div>
 
                     <div class="field">
                         <p>Joined:</p>
-                        <span>{{ joined }}</span>
+                        <span v-if="!isEditing">{{ joined }}</span>
+                        <input class="data" type="text" v-if="isEditing" id="joined" :placeholder=joined>
                     </div>
                 </div>
 
@@ -49,10 +55,10 @@
             </div>
         </section>
         <section class="shows">
-            <ShortList title="Favourites"/>
-            <ShortList title="Read"/>
-            <ShortList title="Read Later"/>
-            <ShortList title="Finished"/>
+            <ShortList title="Favourites" />
+            <ShortList title="Read" />
+            <ShortList title="Read Later" />
+            <ShortList title="Finished" />
         </section>
     </article>
 </template>
@@ -60,6 +66,12 @@
 <style scoped>
 article {
     padding: 1vw;
+}
+
+.data {
+    width: clamp(100px, 10vw, 200px);
+    background: #353434;
+    color: white;
 }
 
 .pic {
@@ -127,9 +139,10 @@ article {
         overflow-x: hidden;
     }
 
-    .profile, .row {
+    .profile,
+    .row {
         flex-direction: column;
-    }    
+    }
 
     .content {
         margin: auto;
@@ -137,7 +150,8 @@ article {
         padding: 0.5rem;
     }
 
-    .row, .description {
+    .row,
+    .description {
         width: 80%;
         margin: auto;
     }
@@ -172,7 +186,7 @@ export default {
             this.isEditing = true;
         },
         handleSave() {
-            this.handleEdit = false;
+            this.isEditing = false;
         }
     },
     data() {
