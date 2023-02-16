@@ -1,7 +1,10 @@
 <template>
     <article>
         <section class="profile">
-            <img src="../assets/default-pic.jpg" alt="Users profile picture" class="pic">
+            <div class="img-container">
+                <img src="../assets/default-pic.jpg" alt="Users profile picture" class="pic">
+                <button class="edit">Edit</button>
+            </div>
             <div class="content">
                 <div class="row">
                     <div class="field">
@@ -64,6 +67,18 @@ article {
     margin: 1vh auto;
     border-radius: clamp(20px, 1vw, 50px);
     border: 0.5px solid white;
+}
+
+.edit {
+    background: white;
+    border: none;
+    border-radius: clamp(5px, 0.5vh, 30px);
+    cursor: pointer;
+    font-size: clamp(15px, 1vw, 100px);
+    font-weight: 600;
+    padding-block: 0.8vh;
+    transition: all 0.4s;
+    width: clamp(100px, 9vw, 500px);
 }
 
 .profile {
