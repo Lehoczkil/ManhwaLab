@@ -45,8 +45,10 @@
             </div>
         </section>
         <section class="shows">
-            <Recommended />
-            <Recommended />
+            <Recommended title="Favourites"/>
+            <Recommended title="Read"/>
+            <Recommended title="Read Later"/>
+            <Recommended title="Finished"/>
         </section>
     </article>
 </template>
@@ -99,14 +101,9 @@ article {
 .description {
     text-align: justify;
     color: white;
-    font-weight: 600;
     height: 10vh;
     overflow-y: scroll;
     padding-block: 1rem;
-}
-
-.shows {
-    background: grey;
 }
 
 @media (max-width: 950px) {
@@ -134,8 +131,13 @@ article {
     }
 
     .description {
-        width: 80%;
+        margin-top: 2rem;
+        background: rgb(35, 35, 34);
+        border-radius: clamp(20px, 1vw, 50px);
+        width: 82%;
+        padding: 1rem;
     }
+
 }
 </style>
 
