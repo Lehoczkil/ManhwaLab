@@ -187,6 +187,15 @@ export default {
         },
         handleSave() {
             this.isEditing = false;
+
+            const username = document.querySelector("#username");
+            const age = document.querySelector("#age");
+            const gender = document.querySelector("#gender");
+            const location = document.querySelector("#location");
+            const lastOnline = document.querySelector("#last-online");
+            const joined = document.querySelector("#joined");
+
+            this.userStore.updateUser(username, age, gender, location, lastOnline, joined)
         }
     },
     data() {
