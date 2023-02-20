@@ -1,7 +1,9 @@
 package com.codecool.manhwalabbackend.service;
 
+import com.codecool.manhwalabbackend.model.DTO.UpdateUserDTO;
 import com.codecool.manhwalabbackend.model.DTO.UserProfileDTO;
 import com.codecool.manhwalabbackend.model.UserProfile;
+import com.codecool.manhwalabbackend.model.enums.Gender;
 import com.codecool.manhwalabbackend.model.roles.ApplicationUserRoles;
 import com.codecool.manhwalabbackend.repository.UserProfileRepository;
 import com.codecool.manhwalabbackend.security.PasswordConfig;
@@ -43,5 +45,16 @@ public class UserProfileService implements UserDetailsService {
         userProfile.setRole(userProfileDTO.getRole());
         return userProfile;
     }
+
+    public void updateUser(String username, UpdateUserDTO updateUserDTO) {
+        UserProfile userProfile = userProfileRepository.getUserProfileByUsername(username);
+        userProfile.setUsername(updateUserDTO.getUsername());
+        userProfile.setAge(Integer.valueOf(updateUserDTO.getAge()));
+        userProfile.setGender(Gender.valueOf(updateUserDTO.getGender()));
+        userProfile.setLocation(updateUserDTO.getLocation());
+        userProfile.setDescription(updateUserDTO.getDescription());
+        userProfileRepository.save(userProfile);
+    }
+
 }
 
