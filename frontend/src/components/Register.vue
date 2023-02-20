@@ -2,10 +2,10 @@
     <div class="modal-backdrop">
         <div class="modal">
             <header class="modal-header">
-                <h2>Register</h2>
                 <button type="button" class="btn-close" @click="close">
-                    x
+                    esc
                 </button>
+                <h2>Register</h2>
             </header>
 
             <section class="modal-body">

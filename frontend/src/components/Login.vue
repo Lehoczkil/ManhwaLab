@@ -2,10 +2,10 @@
     <div class="modal-backdrop">
         <div class="modal">
             <header class="modal-header">
-                <h2>Login</h2>
                 <button type="button" class="btn-close" @click="close">
-                    x
+                    esc
                 </button>
+                <h2>Login</h2>
             </header>
 
             <section class="modal-body">
@@ -24,31 +24,22 @@
 
 <style>
 h2 {
-    color: #353434;
+    color: rgb(231, 230, 230);
 }
 
 input {
-    width: 80%;
-    height: 40px;
+    height: 2.5rem;
     text-align: center;
-    background: transparent;
+    background: rgb(18 24 27);
     border: none;
-    border-bottom: 1px solid black;
-    color: black;
-    border-radius: 5px;
+    border-bottom: 0.200rem solid rgb(231, 230, 230);
     font-size: 20px;
+    color: white;
 }
 
-input:focus {
+input:focus, input:hover {
     border-right: none;
     outline: none;
-}
-
-input:focus,
-input:hover {
-    background: #353434;
-    transition: 0.3s;
-    color: white;
 }
 
 .modal-backdrop {
@@ -57,74 +48,60 @@ input:hover {
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.9);
     display: flex;
     justify-content: center;
-    align-items: center;
+    padding-top: 10vh;
 }
 
 .modal {
-    background: #d1cdcd;
-    height: clamp(500px, 50vh, 5000px);
-    width: clamp(350px, 35vw, 3500px);
-    box-shadow: 3px 3px 10px 2px rgb(136, 127, 127);
-    overflow-x: auto;
+    background: rgb(42 46 53);
+    height: clamp(400px, 50vh, 4000px);
+    width: clamp(320px, 30vw, 3200px);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    border-radius: 2%;
-}
-
-.modal-header {
-    position: relative;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px;
-    display: flex;
+    border-radius: 0.375rem;
+    padding: 2rem;
 }
 
 .modal-body {
     position: relative;
-    padding: 20px 10px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: space-around;
     height: 30%;
 }
 
 .btn-close {
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
-    font-weight: bold;
     background: transparent;
+    border: 0.150rem solid darkmagenta;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    color: rgb(231, 230, 230);
+    font-size: 0.80rem;
+    padding: 0.375rem;
+    display: flex;
+    margin-left: auto;
+    margin-bottom: 1rem;
 }
 
-.modal-footer {
-    text-align: center;
-    padding: 20px;
+.btn-close:hover {
+    background: darkmagenta;
+    color: white;
 }
 
 .login {
-    width: 80%;
-    min-width: 280px;
-    height: 50px;
-    border-radius: 12px;
+    width: 100%;
+    height: 2.5rem;
+    border-radius:0.375rem;
     border: none;
-    color: white;
+    color: rgb(42 46 53);
     padding: 10px;
     font-weight: 600;
-    background: #353434;
     cursor: pointer;
 }
 
-.login:hover {
-    background: white;
-    color: #353434;
-    transition: 0.3s;
-    border: 1px solid #353434;
-}
 </style>
 
 
