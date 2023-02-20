@@ -9,9 +9,9 @@
             </header>
 
             <section class="modal-body">
-                <input type="text" placeholder="Username" id="username-reg">
-                <input type="password" placeholder="Password" id="password-reg">
-                <input type="email" placeholder="Email" id="email">
+                <input class="input" type="text" placeholder="Username" id="username-reg">
+                <input class="input" type="password" placeholder="Password" id="password-reg">
+                <input class="input" type="email" placeholder="Email" id="email">
             </section>
 
             <footer class="modal-footer">

@@ -32,10 +32,10 @@
     flex-direction: column;
     justify-content: space-between;
     text-align: center;
-    background: rgb(35, 35, 34);
+    background: var(--dark-gray);
     margin-bottom: 1vh;
     padding: 1vh;
-    border-radius: clamp(20px, 1vw, 50px);
+    border-radius: var(--radius);
 }
 
 span {
@@ -51,7 +51,7 @@ span {
     width: clamp(133px, 8vw, 1330px);
     height: clamp(200px, 12vw, 2000px);
     margin: 1vh auto;
-    border-radius: clamp(20px, 1vw, 50px);
+    border-radius: var(--radius);
     border: 0.5px solid white;
 }
 </style>

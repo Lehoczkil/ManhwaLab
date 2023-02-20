@@ -64,9 +64,10 @@ img {
     width: clamp(150px, 13vw, 1200px);
     height: 3vh;
     padding-inline: 1vw;
+    background: var(--dark-gray);
     padding-block: 0.5vh;
     border: none;
-    border-radius: clamp(2px, 0.5vh, 15px) 0 0 clamp(2px, 0.5vh, 15px);
+    border-radius: var(--radius) 0 0 var(--radius);
     transition: all 0.3s;
 }
 
@@ -85,21 +86,20 @@ img {
 
 .search input:focus,
 .search input:hover {
-    background: #353434;
     color: white;
 }
 
 .search button {
     height: 3vh;
     border: none;
-    border-radius: 0 clamp(2px, 0.5vh, 15px) clamp(2px, 0.5vh, 15px) 0;
+    border-radius: 0 var(--radius) var(--radius) 0;
     padding-inline: 1.5vw;
     padding-block: 0.5vh;
     transition: all 0.3s;
 }
 
 .search button:hover {
-    background: darkmagenta;
+    background: var(--blue);
     color: white;
 }
 
@@ -107,7 +107,7 @@ img {
 #browse {
     background: transparent;
     border: none;
-    border-radius: clamp(5px, 0.5vh, 30px);
+    border-radius: var(--radius);
     color: white;
     cursor: pointer;
     font-size: clamp(15px, 1vw, 100px);
@@ -135,7 +135,7 @@ img {
     display: none;
 }
 
-@media (max-width:950px) {
+@media (max-width:1150px) {
 
     header {
         min-width: 350px;

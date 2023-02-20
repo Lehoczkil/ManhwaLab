@@ -73,7 +73,7 @@ article {
 
 .data {
     width: clamp(100px, 10vw, 200px);
-    background: #353434;
+    background: var(--dark-gray);
     color: white;
 }
 
@@ -81,14 +81,14 @@ article {
     width: clamp(240px, 24vw, 2400px);
     height: clamp(300px, 30vw, 3000px);
     margin: 1vh auto;
-    border-radius: clamp(20px, 1vw, 50px);
+    border-radius: var(--radius);
     border: 0.5px solid white;
 }
 
 .edit {
     background: white;
     border: none;
-    border-radius: clamp(5px, 0.5vh, 30px);
+    border-radius: var(--radius);
     cursor: pointer;
     font-size: clamp(15px, 1vw, 100px);
     font-weight: 600;
@@ -165,8 +165,8 @@ article {
 
     .description {
         margin-top: 2rem;
-        background: rgb(35, 35, 34);
-        border-radius: clamp(20px, 1vw, 50px);
+        background: var(--dark-gray);
+        border-radius: var(--radius);
         width: 82%;
         padding: 1rem;
     }

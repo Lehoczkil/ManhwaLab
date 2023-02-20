@@ -9,8 +9,8 @@
             </header>
 
             <section class="modal-body">
-                <input type="text" placeholder="Username" id="username">
-                <input type="password" placeholder="Password" id="password">
+                <input class="input" type="text" placeholder="Username" id="username">
+                <input class="input" type="password" placeholder="Password" id="password">
             </section>
 
             <footer class="modal-footer">
@@ -27,10 +27,10 @@ h2 {
     color: rgb(231, 230, 230);
 }
 
-input {
+.input {
     height: 2.5rem;
     text-align: center;
-    background: rgb(18 24 27);
+    background: var(--almost-black);
     border: none;
     border-bottom: 0.200rem solid rgb(231, 230, 230);
     font-size: 20px;
@@ -55,13 +55,13 @@ input:focus, input:hover {
 }
 
 .modal {
-    background: rgb(42 46 53);
+    background: var(--dark-gray);
     height: clamp(400px, 50vh, 4000px);
     width: clamp(320px, 30vw, 3200px);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    border-radius: 0.375rem;
+    border-radius: var(--radius);
     padding: 2rem;
 }
 
@@ -75,31 +75,30 @@ input:focus, input:hover {
 
 .btn-close {
     background: transparent;
-    border: 0.150rem solid darkmagenta;
-    border-radius: 0.375rem;
+    border: 0.150rem solid var(--blue);
+    border-radius: var(--radius);
     cursor: pointer;
     color: rgb(231, 230, 230);
     font-size: 0.80rem;
-    padding: 0.375rem;
+    padding: var(--radius);
     display: flex;
     margin-left: auto;
     margin-bottom: 1rem;
 }
 
 .btn-close:hover {
-    background: darkmagenta;
+    background: var(--blue);
     color: white;
 }
 
 .login {
     width: 100%;
     height: 2.5rem;
-    border-radius:0.375rem;
+    border-radius:var(--radius);
     border: none;
     color: rgb(42 46 53);
     padding: 10px;
     font-weight: 600;
-    cursor: pointer;
 }
 
 </style>

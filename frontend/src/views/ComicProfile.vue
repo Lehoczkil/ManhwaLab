@@ -143,7 +143,7 @@ article,
     width: clamp(180px, 18vw, 1800px);
     height: clamp(270px, 27vw, 2700px);
     margin: 1vh auto;
-    border-radius: clamp(20px, 1vw, 50px);
+    border-radius: var(--radius);
     border: 0.5px solid white;
 }
 
@@ -158,7 +158,7 @@ article,
 }
 
 .description {
-    border-radius: clamp(5px, 1vw, 60px);
+    border-radius: var(--radius);
     padding: 2vw;
     height: 36vh;
     font-size: 1rem;
@@ -185,7 +185,7 @@ article,
 }
 
 .info {
-    border-radius: clamp(5px, 1vw, 60px);
+    border-radius: var(--radius);
     padding: 2vw;
     height: 60vh;
 }
@@ -207,9 +207,9 @@ article,
     justify-content: center;
     align-items: center;
     text-align: center;
-    background: red;
+    background: var(--blue);
     border: none;
-    border-radius: clamp(3px, 1vh, 15px);
+    border-radius: var(--radius);
 }
 
 .tag-container {
@@ -226,12 +226,12 @@ article,
 .tag {
     width: clamp(140px, 12vw, 600px);
     height: 4vh;
-    background: rgb(35, 35, 34);
+    background: var(--dark-gray);
     color: white;
     padding-inline: 0.5vw;
     padding-block: 0.5vh;
     border: grey 1px solid;
-    border-radius: clamp(2px, 0.5vh, 15px);
+    border-radius: var(--radius);
     margin-right: 4vw;
     margin-bottom: 1vh;
 }
@@ -239,8 +239,8 @@ article,
 .stat {
     color: white;
     padding: 2vw;
-    background: rgb(35, 35, 34);
-    border-radius: 1.5vh;
+    background: var(--dark-gray);
+    border-radius: var(--radius);
 }
 
 .stars {
@@ -263,7 +263,7 @@ article,
 }
 
 .data {
-    color: red;
+    color: var(--blue);
     font-weight: 800;
 }
 
@@ -283,10 +283,10 @@ article,
 
 .auth {
     border: none;
-    border-radius: clamp(2px, 0.5vh, 15px);
+    border-radius: var(--radius);
     width: 10vw;
     height: 3vh;
-    background: red;
+    background: var(--blue);
     color: white;
 }
 

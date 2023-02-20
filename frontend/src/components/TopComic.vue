@@ -23,7 +23,7 @@
     width: clamp(133px, 8vw, 1330px);
     height: clamp(200px, 12vw, 2000px);
     margin: 1vh;
-    border-radius: clamp(20px, 1vw, 50px);
+    border-radius: var(--radius);
     border: 0.5px solid white;
 }
 
@@ -82,8 +82,8 @@ h1 {
         flex-direction: column;
         width: 80vw;
         margin-inline: auto;
-        background: rgb(35, 35, 34);
-        border-radius: clamp(20px, 1vw, 50px);
+        background: var(--dark-gray);
+        border-radius: var(--radius);
         margin-bottom: 3vh;
     }
 
