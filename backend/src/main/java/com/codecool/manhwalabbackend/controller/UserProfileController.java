@@ -1,5 +1,6 @@
 package com.codecool.manhwalabbackend.controller;
 
+import com.codecool.manhwalabbackend.model.DTO.UpdateUserDTO;
 import com.codecool.manhwalabbackend.model.UserProfile;
 import com.codecool.manhwalabbackend.service.UserProfileService;
 import lombok.RequiredArgsConstructor;
@@ -18,14 +19,14 @@ public class UserProfileController {
 
     @GetMapping(value = "/profile")
     public UserProfile getUser(){
-
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         return userProfileService.getUser(username);
     }
 
-
-
-
-
+    @PatchMapping(value = "/updateUser")
+    public void updateUser(@RequestBody UpdateUserDTO userData) {
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        userProfileService.updateUser(username, userData);
+    }
 
 }
