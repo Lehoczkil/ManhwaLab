@@ -11,19 +11,23 @@
                     <div class="field">
                         <p>Name:</p>
                         <span v-if="!isEditing">{{ username }}</span>
-                        <input class="data" type="text" v-if="isEditing" id="username" :placeholder=username>
+                        <input class="data" type="text" v-if="isEditing" id="name" :placeholder=username>
                     </div>
 
                     <div class="field">
                         <p>Age:</p>
                         <span v-if="!isEditing">{{ age }}</span>
-                        <input class="data" type="text" v-if="isEditing" id="age" :placeholder=age>
+                        <input class="data" type="number" v-if="isEditing" id="age" :placeholder=age>
                     </div>
 
                     <div class="field">
                         <p>Gender:</p>
                         <span v-if="!isEditing">{{ gender }}</span>
-                        <input class="data" type="text" v-if="isEditing" id="gender" :placeholder=gender>
+                        <select class="data" id="gender" v-if="isEditing" :placeholder=gender>
+                            <option value="MALE">Male</option>
+                            <option value="FEMALE">Female</option>
+                            <option value="OTHER">Other</option>
+                        </select>
                     </div>
                 </div>
 
@@ -36,14 +40,12 @@
 
                     <div class="field">
                         <p>Last Online:</p>
-                        <span v-if="!isEditing">{{ lastOnline }}</span>
-                        <input class="data" type="text" v-if="isEditing" id="last-online" :placeholder=lastOnline>
+                        <span>{{ lastOnline }}</span>
                     </div>
 
                     <div class="field">
                         <p>Joined:</p>
-                        <span v-if="!isEditing">{{ joined }}</span>
-                        <input class="data" type="text" v-if="isEditing" id="joined" :placeholder=joined>
+                        <span>{{ joined }}</span>
                     </div>
                 </div>
 
@@ -51,7 +53,7 @@
                     <p v-if="!isEditing">
                         {{ description }}
                     </p>
-                    <textarea id="description" cols="30" rows="10" :placeholder=description />
+                    <textarea v-if="isEditing" id="description" cols="30" rows="10" :placeholder=description />
                 </div>
             </div>
         </section>
@@ -169,6 +171,12 @@ article {
         padding: 1rem;
     }
 
+    .img-container {
+        display: flex;
+        margin: auto;
+        flex-direction: column;
+    }
+
 }
 </style>
 
@@ -189,15 +197,13 @@ export default {
         handleSave() {
             this.isEditing = false;
 
-            const username = document.querySelector("#username");
-            const age = document.querySelector("#age");
-            const gender = document.querySelector("#gender");
-            const location = document.querySelector("#location");
-            const lastOnline = document.querySelector("#last-online");
-            const joined = document.querySelector("#joined");
-            const description = document.querySelector("#description");
+            const username = document.querySelector("#name").value === "" ? this.username : document.querySelector("#name").value;
+            const age = document.querySelector("#age").value === "" ? this.age : document.querySelector("#age").value;
+            const gender = document.querySelector("#gender").value === "" ? this.gender : document.querySelector("#gender").value.toUpperCase();
+            const location = document.querySelector("#location").value === "" ? this.location : document.querySelector("#location").value;
+            const description = document.querySelector("#description").value === "" ? this.description : document.querySelector("#description").value;
 
-            this.userStore.updateUser(username, age, gender, location, lastOnline, joined, description)
+            this.userStore.updateUser(username, age, gender, location, description)
         }
     },
     data() {
