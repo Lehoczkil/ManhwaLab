@@ -15,6 +15,7 @@
             </section>
 
             <footer class="modal-footer">
+                <h2 class="invalid" v-if="!isValid">Invalid username, password or email</h2>
                 <button type="button" class="btn login" @click="handleRegister">
                     Register
                 </button>
@@ -24,9 +25,16 @@
 </template>
 
 <style scoped>
-    .modal-body {
-        height: 45%;
-    }
+.modal-body {
+    height: 45%;
+}
+
+.invalid {
+    font-size: 0.75rem;
+    margin-bottom: 0.75rem;
+    text-align: center;
+    color: var(--blue);
+}
 </style>
 
 
@@ -44,35 +52,46 @@ export default {
             const password = document.querySelector('#password-reg').value
             const email = document.querySelector('#email').value
 
-            await fetch(`/api/manhwaLab/registration`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    username: username,
-                    password: password,
-                    email: email
+            if (!(username === '' || password === '' || email === '')) {
+                await fetch(`/api/manhwaLab/registration`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        username: username,
+                        password: password,
+                        email: email
+                    })
                 })
-            })
 
-            const response = await fetch(`/login`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    username: username,
-                    password: password
+                this.isValid = true
+
+                const response = await fetch(`/login`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        username: username,
+                        password: password
+                    })
                 })
-            })
 
-            if (response.headers.get('Authorization')) {
-                this.$emit('close')
-                const tokenStore = useTokenStore()
-                tokenStore.setToken(response.headers.get('Authorization'))
+                if (response.headers.get('Authorization')) {
+                    this.$emit('close')
+                    const tokenStore = useTokenStore()
+                    tokenStore.setToken(response.headers.get('Authorization'))
+                }
+            } else {
+                this.isValid = false
             }
         }
     },
+    data() {
+        return {
+            isValid: true
+        }
+    }
 };
 </script>
