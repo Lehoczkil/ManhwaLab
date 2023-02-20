@@ -28,13 +28,6 @@
 .modal-body {
     height: 45%;
 }
-
-.invalid {
-    font-size: 0.75rem;
-    margin-bottom: 0.75rem;
-    text-align: center;
-    color: var(--blue);
-}
 </style>
 
 
