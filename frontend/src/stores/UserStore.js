@@ -47,11 +47,9 @@ export const useUserStore = defineStore("userStore", {
       age,
       gender,
       location,
-      lastOnline,
-      joined,
       description
     ) {
-      await fetch("/api/manhwaLab/updateUser", {
+      await fetch('/api/manhwaLab/updateUser', {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -62,8 +60,6 @@ export const useUserStore = defineStore("userStore", {
           age: age,
           gender: gender,
           location: location,
-          lastOnline: lastOnline,
-          joined: joined,
           description: description,
         }),
       });
@@ -72,8 +68,6 @@ export const useUserStore = defineStore("userStore", {
       this.age = age !== null ? age : "Not known";
       this.gender = gender !== null ? gender : "Not known";
       this.location = location !== null ? location : "Not known";
-      this.lastOnline = lastOnline !== null ? lastOnline : "Not known";
-      this.joined = joined !== null ? joined : "Not known";
       this.description =
         description !== null ? description : "There is no description";
     },
