@@ -14,6 +14,7 @@
             </section>
 
             <footer class="modal-footer">
+                <h2 class="invalid" v-if="!isValid">Invalid username or password</h2>
                 <button type="button" class="btn login" @click="handleLogin">
                     Login
                 </button>
@@ -27,6 +28,13 @@ h2 {
     color: rgb(231, 230, 230);
 }
 
+.invalid {
+    font-size: 0.75rem;
+    margin-bottom: 0.75rem;
+    text-align: center;
+    color: var(--blue);
+}
+
 .input {
     height: 2.5rem;
     text-align: center;
@@ -37,7 +45,8 @@ h2 {
     color: white;
 }
 
-input:focus, input:hover {
+input:focus,
+input:hover {
     border-right: none;
     outline: none;
 }
@@ -94,13 +103,12 @@ input:focus, input:hover {
 .login {
     width: 100%;
     height: 2.5rem;
-    border-radius:var(--radius);
+    border-radius: var(--radius);
     border: none;
     color: rgb(42 46 53);
     padding: 10px;
     font-weight: 600;
 }
-
 </style>
 
 
@@ -116,22 +124,33 @@ export default {
             const username = document.querySelector('#username').value
             const password = document.querySelector('#password').value
 
-            const response = await fetch(`/login`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    username: username,
-                    password: password
+            if (!(username === "" || password === "")) {
+                const response = await fetch(`/login`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        username: username,
+                        password: password
+                    })
                 })
-            })
 
-            if (response.headers.get('Authorization')) {
-                this.$emit('close')
-                const tokenStore = useTokenStore()
-                tokenStore.setToken(response.headers.get('Authorization'))
+                if (response.headers.get('Authorization')) {
+                    this.$emit('close')
+                    const tokenStore = useTokenStore()
+                    tokenStore.setToken(response.headers.get('Authorization'))
+                }
+
+                this.isValid = true
+            } else {
+                this.isValid = false
             }
+        }
+    },
+    data() {
+        return {
+            isValid: true
         }
     }
 }
