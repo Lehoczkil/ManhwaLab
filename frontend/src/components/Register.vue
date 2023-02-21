@@ -16,6 +16,7 @@
 
             <footer class="modal-footer">
                 <h2 class="invalid" v-if="!isValid">Invalid username, password or email</h2>
+                <h2 class="invalid" v-if="taken">Email or username is already in use</h2>
                 <button type="button" class="btn login" @click="handleRegister">
                     Register
                 </button>
@@ -46,7 +47,7 @@ export default {
             const email = document.querySelector('#email').value
 
             if (!(username === '' || password === '' || email === '')) {
-                await fetch(`/api/manhwaLab/registration`, {
+                const regResponse = await fetch(`/api/manhwaLab/registration`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
@@ -58,24 +59,32 @@ export default {
                     })
                 })
 
-                this.isValid = true
+                if (regResponse.status == 201) {
+                    this.isValid = true
+                    this.taken = false
 
-                const response = await fetch(`/login`, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        username: username,
-                        password: password
+                    const response = await fetch(`/login`, {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            username: username,
+                            password: password
+                        })
                     })
-                })
 
-                if (response.headers.get('Authorization')) {
-                    this.$emit('close')
-                    const tokenStore = useTokenStore()
-                    tokenStore.setToken(response.headers.get('Authorization'))
+                    if (response.headers.get('Authorization')) {
+                        this.$emit('close')
+                        const tokenStore = useTokenStore()
+                        tokenStore.setToken(response.headers.get('Authorization'))
+                    }
+                } else if (regResponse.status == 303) {
+                    this.isValid = true
+                    this.taken = true
+
                 }
+
             } else {
                 this.isValid = false
             }
@@ -83,7 +92,8 @@ export default {
     },
     data() {
         return {
-            isValid: true
+            isValid: true,
+            taken: false
         }
     }
 };
