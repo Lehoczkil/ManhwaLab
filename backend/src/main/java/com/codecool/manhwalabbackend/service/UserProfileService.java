@@ -15,6 +15,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+
 @Service
 @Builder
 @RequiredArgsConstructor
@@ -31,10 +33,16 @@ public class UserProfileService implements UserDetailsService {
     public UserProfile getUser(String username){
         return userProfileRepository.getUserProfileByUsername(username);    }
 
-    public void addNewUser(UserProfileDTO userProfileDTO){
+    public UserProfile addNewUser(UserProfileDTO userProfileDTO){
+        ArrayList<String> emails = userProfileRepository.getUserEmails();
+        ArrayList<String> usernames = userProfileRepository.getUsernames();
+        if (emails.contains(userProfileDTO.getEmail()) || usernames.contains(userProfileDTO.getUsername())) {
+            return null;
+        }
         userProfileDTO.setRole(ApplicationUserRoles.USER);
         UserProfile userProfile = userProfileBuilder(userProfileDTO);
         userProfileRepository.save(userProfile);
+        return userProfile;
     }
 
     private UserProfile userProfileBuilder(UserProfileDTO userProfileDTO){
