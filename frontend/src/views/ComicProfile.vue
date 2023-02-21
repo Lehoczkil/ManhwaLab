@@ -2,7 +2,17 @@
     <article>
         <main>
             <div class="pic-container">
-                <img :src="`${currentComic.coverPageBig}`" alt="" class="pic">
+                <div class="img-container">
+                    <img :src="`${currentComic.coverPageBig}`" alt="" class="pic">
+                    <div class="btn-row">
+                        <button v-if="tokenStore.isTokenExists()" class="add">Add to Reading</button>
+                        <button v-if="tokenStore.isTokenExists()" class="add">Add to Read Later</button>
+                    </div>
+                    <div class="btn-row">
+                        <button v-if="tokenStore.isTokenExists()" class="add">Add to Favourites</button>
+                        <button v-if="tokenStore.isTokenExists()" class="add">Add to Finished</button>
+                    </div>
+                </div>
                 <div class="content">
                     <h1>{{ currentComic.title }}</h1>
                     <div class="description">
@@ -131,6 +141,26 @@ article,
 .box span {
     color: white;
     font-size: 1vw;
+}
+
+.add {
+    background: white;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding-block: 0.8vh;
+    transition: all 0.4s;
+    width: clamp(150px, 10vw, 500px);
+    margin: auto;
+    margin-top: 0.5rem;
+}
+
+.btn-row {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .show-pic,
@@ -296,9 +326,19 @@ article,
     justify-content: space-evenly;
 }
 
+.img-container {
+    margin: auto;
+    width: 50%;
+    text-align: center;
+}
+
 @media (max-width: 950px) {
     article {
         overflow-x: hidden;
+    }
+
+    .img-container {
+        margin-bottom: 3rem;
     }
 
     .pic-container,

@@ -59,7 +59,7 @@
         </section>
         <section class="shows">
             <ShortList title="Favourites" />
-            <ShortList title="Read" />
+            <ShortList title="Reading" />
             <ShortList title="Read Later" />
             <ShortList title="Finished" />
         </section>
