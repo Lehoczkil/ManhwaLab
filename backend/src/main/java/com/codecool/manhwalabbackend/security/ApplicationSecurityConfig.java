@@ -33,7 +33,6 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-//                .csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
                 .csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
@@ -44,7 +43,11 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/api/manhwaLab/top/**", "/api/manhwaLab/manhwaList", "/api/manhwaLab/*/update-view", "/api/manhwaLab/genres", "/api/manhwaLab/themes", "/api/manhwaLab/types", "/api/manhwaLab/registration", "/login", "/registration", "/images/*").permitAll()
                 .antMatchers("/api/manhwaLab/profile").hasRole(ApplicationUserRoles.USER.name())
-                .antMatchers("/api/manhwaLab/updateUser").hasRole(ApplicationUserRoles.USER.name())
+                .antMatchers("/api/manhwaLab/addToUser").hasRole(ApplicationUserRoles.USER.name())
+                .antMatchers("/api/manhwaLab/addToReading").hasRole(ApplicationUserRoles.USER.name())
+                .antMatchers("/api/manhwaLab/addToReadLater").hasRole(ApplicationUserRoles.USER.name())
+                .antMatchers("/api/manhwaLab/addToFinished").hasRole(ApplicationUserRoles.USER.name())
+                .antMatchers("/api/manhwaLab/addToFavourites").hasRole(ApplicationUserRoles.USER.name())
                 .anyRequest()
                 .authenticated();
 
@@ -67,7 +70,7 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(Arrays.asList("http://localhost:8081"));
-        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PATCH"));
+        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PATCH", "PUT"));
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
         return source;
