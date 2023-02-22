@@ -1,5 +1,6 @@
 package com.codecool.manhwalabbackend.service;
 
+import com.codecool.manhwalabbackend.model.ComicProfile;
 import com.codecool.manhwalabbackend.model.DTO.UpdateUserDTO;
 import com.codecool.manhwalabbackend.model.DTO.UserProfileDTO;
 import com.codecool.manhwalabbackend.model.UserProfile;
@@ -9,6 +10,7 @@ import com.codecool.manhwalabbackend.repository.UserProfileRepository;
 import com.codecool.manhwalabbackend.security.PasswordConfig;
 import lombok.Builder;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -16,6 +18,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Service
 @Builder
@@ -24,6 +27,7 @@ public class UserProfileService implements UserDetailsService {
 
     private final UserProfileRepository userProfileRepository;
     private final PasswordConfig passwordConfig;
+    private final ComicProfileService comicProfileService;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -61,6 +65,46 @@ public class UserProfileService implements UserDetailsService {
         userProfile.setGender(Gender.valueOf(updateUserDTO.getGender()));
         userProfile.setLocation(updateUserDTO.getLocation());
         userProfile.setDescription(updateUserDTO.getDescription());
+        userProfileRepository.save(userProfile);
+    }
+
+    public void addToReading(String title) {
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        UserProfile userProfile = userProfileRepository.getUserProfileByUsername(username);
+        ComicProfile comicProfile = comicProfileService.getComicProfileByName(title);
+        List<ComicProfile> newRead = userProfile.getRead();
+        newRead.add(comicProfile);
+        userProfile.setRead(newRead);
+        userProfileRepository.save(userProfile);
+    }
+
+    public void addToReadLater(String title) {
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        UserProfile userProfile = userProfileRepository.getUserProfileByUsername(username);
+        ComicProfile comicProfile = comicProfileService.getComicProfileByName(title);
+        List<ComicProfile> newReadLater = userProfile.getReadLater();
+        newReadLater.add(comicProfile);
+        userProfile.setReadLater(newReadLater);
+        userProfileRepository.save(userProfile);
+    }
+
+    public void addToFinished(String title) {
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        UserProfile userProfile = userProfileRepository.getUserProfileByUsername(username);
+        ComicProfile comicProfile = comicProfileService.getComicProfileByName(title);
+        List<ComicProfile> newFinished = userProfile.getFinished();
+        newFinished.add(comicProfile);
+        userProfile.setFinished(newFinished);
+        userProfileRepository.save(userProfile);
+    }
+
+    public void addToFavourites(String title) {
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        UserProfile userProfile = userProfileRepository.getUserProfileByUsername(username);
+        ComicProfile comicProfile = comicProfileService.getComicProfileByName(title);
+        List<ComicProfile> newFavourites = userProfile.getFavourites();
+        newFavourites.add(comicProfile);
+        userProfile.setFavourites(newFavourites);
         userProfileRepository.save(userProfile);
     }
 
