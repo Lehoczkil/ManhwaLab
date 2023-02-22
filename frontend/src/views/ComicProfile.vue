@@ -5,12 +5,12 @@
                 <div class="img-container">
                     <img :src="`${currentComic.coverPageBig}`" alt="" class="pic">
                     <div class="btn-row">
-                        <button v-if="tokenStore.isTokenExists()" class="add">Add to Reading</button>
-                        <button v-if="tokenStore.isTokenExists()" class="add">Add to Read Later</button>
+                        <button v-if="tokenStore.isTokenExists()" class="add" @click="handleAdd('Reading')">Add to Reading</button>
+                        <button v-if="tokenStore.isTokenExists()" class="add" @click="handleAdd('Later')">Add to Read Later</button>
                     </div>
                     <div class="btn-row">
-                        <button v-if="tokenStore.isTokenExists()" class="add">Add to Favourites</button>
-                        <button v-if="tokenStore.isTokenExists()" class="add">Add to Finished</button>
+                        <button v-if="tokenStore.isTokenExists()" class="add" @click="handleAdd('Favourites')">Add to Favourites</button>
+                        <button v-if="tokenStore.isTokenExists()" class="add" @click="handleAdd('Finished')">Add to Finished</button>
                     </div>
                 </div>
                 <div class="content">
@@ -418,6 +418,7 @@ article,
 import Comment from '../components/Comment'
 import ShortList from '../components/ShortList'
 import { useComicStore } from '@/stores/ComicStore'
+import { useUserStore } from '@/stores/UserStore'
 import { useTokenStore } from '@/stores/TokenStore'
 import { storeToRefs } from 'pinia'
 
@@ -438,6 +439,24 @@ export default {
         handleFilterByTheme(theme) {
             this.comicStore.filterComics(null, theme, null, null)
             this.$router.push(`/comics`)
+        },
+        handleAdd(target) {
+            const userStore = useUserStore()
+            if (target == "Reading") {
+                userStore.updateReading(this.currentComic)
+            }
+            
+            if (target == "Later") {
+                userStore.updateLater(this.currentComic)
+            }
+
+            if (target == "Finished") {
+                userStore.updateFinished(this.currentComic)
+            }
+
+            if (target == "Favourites") {
+                userStore.updateFavourites(this.currentComic)
+            }
         }
     },
     setup(props) {
