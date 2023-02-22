@@ -42,14 +42,8 @@ export const useUserStore = defineStore("userStore", {
       this.readLater =
         user.readLater !== null ? user.readLater : "Nothing here";
     },
-    async updateUser(
-      username,
-      age,
-      gender,
-      location,
-      description
-    ) {
-      await fetch('/api/manhwaLab/updateUser', {
+    async updateUser(username, age, gender, location, description) {
+      await fetch("/api/manhwaLab/updateUser", {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -70,6 +64,66 @@ export const useUserStore = defineStore("userStore", {
       this.location = location !== null ? location : "Not known";
       this.description =
         description !== null ? description : "There is no description";
+    },
+    async updateReading(comic) {
+      if (!this.read.includes(comic)) {
+        this.read.push(comic);
+        await fetch("/api/manhwaLab/addToReading", {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: JSON.parse(localStorage.getItem("tokenStore")).token,
+          },
+          body: JSON.stringify({
+            comic: comic,
+          }),
+        });
+      }
+    },
+    async updateLater(comic) {
+      if (!this.readLater.includes(comic)) {
+        this.readLater.push(comic);
+        await fetch("/api/manhwaLab/addToReadLater", {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: JSON.parse(localStorage.getItem("tokenStore")).token,
+          },
+          body: JSON.stringify({
+            comic: comic,
+          }),
+        });
+      }
+    },
+    async updateFinished(comic) {
+      if (!this.finished.includes(comic)) {
+        this.finished.push(comic);
+        await fetch("/api/manhwaLab/addToFinished", {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: JSON.parse(localStorage.getItem("tokenStore")).token,
+          },
+          body: JSON.stringify({
+            comic: comic,
+          }),
+        });
+      }
+    },
+    async updateFavourites(comic) {
+      if (!this.favourites.includes(comic)) {
+        this.favourites.push(comic);
+        await fetch("/api/manhwaLab/addToFavourites", {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: JSON.parse(localStorage.getItem("tokenStore")).token,
+          },
+          body: JSON.stringify({
+            comic: comic,
+          }),
+        });
+      }
     },
   },
 });
