@@ -75,7 +75,7 @@ export const useUserStore = defineStore("userStore", {
             Authorization: JSON.parse(localStorage.getItem("tokenStore")).token,
           },
           body: JSON.stringify({
-            comic: comic,
+            title: comic.title
           }),
         });
       }
@@ -90,7 +90,7 @@ export const useUserStore = defineStore("userStore", {
             Authorization: JSON.parse(localStorage.getItem("tokenStore")).token,
           },
           body: JSON.stringify({
-            comic: comic,
+            title: comic.title
           }),
         });
       }
@@ -105,7 +105,7 @@ export const useUserStore = defineStore("userStore", {
             Authorization: JSON.parse(localStorage.getItem("tokenStore")).token,
           },
           body: JSON.stringify({
-            comic: comic,
+            title: comic.title
           }),
         });
       }
@@ -120,7 +120,7 @@ export const useUserStore = defineStore("userStore", {
             Authorization: JSON.parse(localStorage.getItem("tokenStore")).token,
           },
           body: JSON.stringify({
-            comic: comic,
+            title: comic.title
           }),
         });
       }
