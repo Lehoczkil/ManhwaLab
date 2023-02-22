@@ -1,5 +1,6 @@
 package com.codecool.manhwalabbackend.controller;
 
+import com.codecool.manhwalabbackend.model.DTO.TitleDTO;
 import com.codecool.manhwalabbackend.model.DTO.UpdateUserDTO;
 import com.codecool.manhwalabbackend.model.UserProfile;
 import com.codecool.manhwalabbackend.service.UserProfileService;
@@ -27,6 +28,26 @@ public class UserProfileController {
     public void updateUser(@RequestBody UpdateUserDTO userData) {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         userProfileService.updateUser(username, userData);
+    }
+
+    @PutMapping(value = "addToReading")
+    public void addToReading(@RequestBody TitleDTO titleDTO) {
+        userProfileService.addToReading(titleDTO.getTitle());
+    }
+
+    @PutMapping(value = "addToReadLater")
+    public void addToReadLater(@RequestBody TitleDTO titleDTO) {
+        userProfileService.addToReadLater(titleDTO.getTitle());
+    }
+
+    @PutMapping(value = "addToFinished")
+    public void addToFinished(@RequestBody TitleDTO titleDTO) {
+        userProfileService.addToFinished(titleDTO.getTitle());
+    }
+
+    @PutMapping(value = "addToFavourites")
+    public void addToFavourites(@RequestBody TitleDTO titleDTO) {
+        userProfileService.addToFavourites(titleDTO.getTitle());
     }
 
 }
