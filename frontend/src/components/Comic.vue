@@ -19,11 +19,11 @@
 
 
 <style scoped>
-
 .rating {
     display: flex;
     justify-content: center;
 }
+
 .comic {
     color: white;
     flex-basis: 18%;
@@ -68,11 +68,21 @@ export default {
             default() {
                 return {}
             }
+        },
+        fromShortList: {
+            type: Boolean,
+            default() {
+                return false
+            }
         }
     },
     methods: {
         handleClick() {
-            this.$router.push(`/comics/${this.comic.comicId}`)
+            if (this.fromShortList) {
+                this.$router.push(`/comics/${this.comic.id}`)
+            } else {
+                this.$router.push(`/comics/${this.comic.comicId}`)
+            }
         }
     },
     setup() {

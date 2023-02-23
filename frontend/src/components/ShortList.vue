@@ -2,11 +2,7 @@
     <section class="short-list">
         <h1>{{ title }}</h1>
         <div class="comics">
-            <comic />
-            <comic />
-            <comic />
-            <comic />
-            <comic />
+            <Comic v-for="comic in comics" :key="comic.comicId" :comic="comic" :fromShortList="true" />
         </div>
     </section>
 </template>
@@ -44,11 +40,12 @@ h1 {
         margin-bottom: 1rem;
     }
 }
-
 </style>
 
 <script>
 import Comic from './Comic'
+import { useUserStore } from '@/stores/UserStore';
+
 export default {
     name: 'ShortList',
     components: {
@@ -56,6 +53,27 @@ export default {
     },
     props: {
         title: String
+    },
+    setup(props) {
+        const userStore = useUserStore()
+
+        let comics = [];
+        switch (props.title) {
+            case 'Reading':
+                comics = userStore.read
+                break
+            case 'Read Later':
+                comics = userStore.readLater
+                break
+            case 'Finished':
+                comics = userStore.finished
+                break
+            case 'Favourites':
+                comics = userStore.favourites
+                break
+        }
+
+        return { comics }
     }
 }
 </script>
