@@ -3,7 +3,7 @@
         <main>
             <div class="pic-container">
                 <div class="img-container">
-                    <img :src="`${currentComic.coverPageBig}`" alt="" class="pic">
+                    <img :src="`${currentComic.coverPageBig}`" alt="Cover for the comic" class="pic">
                     <div class="btn-row">
                         <button v-if="tokenStore.isTokenExists()" class="add" @click="handleAdd('Reading')">Add to Reading</button>
                         <button v-if="tokenStore.isTokenExists()" class="add" @click="handleAdd('Later')">Add to Read Later</button>
