@@ -60,6 +60,8 @@ public class UserProfileService implements UserDetailsService {
         return userProfile;
     }
 
+    //    ne legyen minden String és akkor nem kell valueOf-ozni :D
+//    meg amúgy a save az csinál egy új user-t, so elvileg az nem editeli, hanem lement egy újat, bár idk mi van akkor ha kiszeded db-ből és utána save-eled, ha megnézted és megcsinálja akkor mind1, csak fura :D
     public void updateUser(String username, UpdateUserDTO updateUserDTO) {
         UserProfile userProfile = userProfileRepository.getUserProfileByUsername(username);
         userProfile.setUsername(updateUserDTO.getUsername());
@@ -69,7 +71,8 @@ public class UserProfileService implements UserDetailsService {
         userProfile.setDescription(updateUserDTO.getDescription());
         userProfileRepository.save(userProfile);
     }
-
+//    Innentől mindegyiknek első 3 sorát kilehet szervezni egy függvénybe, ami vissza ad egy objektumot
+//    aminek van egy username, userProfile, comicProfile field-je, és azokat get-elni
     public void addToReading(String title) {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         UserProfile userProfile = userProfileRepository.getUserProfileByUsername(username);
