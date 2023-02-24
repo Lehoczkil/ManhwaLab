@@ -1,6 +1,7 @@
 package com.codecool.manhwalabbackend.service;
 
 import com.codecool.manhwalabbackend.model.ComicProfile;
+import com.codecool.manhwalabbackend.model.DTO.DataForBookmarksDTO;
 import com.codecool.manhwalabbackend.model.DTO.UpdateUserDTO;
 import com.codecool.manhwalabbackend.model.DTO.UserProfileDTO;
 import com.codecool.manhwalabbackend.model.UserProfile;
@@ -11,7 +12,6 @@ import com.codecool.manhwalabbackend.security.PasswordConfig;
 import lombok.Builder;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -83,33 +83,35 @@ public class UserProfileService implements UserDetailsService {
     }
 
     public void addToReadLater(String title) {
-        String username = SecurityContextHolder.getContext().getAuthentication().getName();
-        UserProfile userProfile = userProfileRepository.getUserProfileByUsername(username);
-        ComicProfile comicProfile = comicProfileService.getComicProfileByName(title);
-        List<ComicProfile> newReadLater = userProfile.getReadLater();
-        newReadLater.add(comicProfile);
-        userProfile.setReadLater(newReadLater);
-        userProfileRepository.save(userProfile);
+        DataForBookmarksDTO data = getDataForAddComicsToBookmarks(title);
+        List<ComicProfile> newReadLater = data.getUserProfile().getReadLater();
+        newReadLater.add(data.getComicProfile());
+        data.getUserProfile().setReadLater(newReadLater);
+        userProfileRepository.save(data.getUserProfile());
     }
 
     public void addToFinished(String title) {
-        String username = SecurityContextHolder.getContext().getAuthentication().getName();
-        UserProfile userProfile = userProfileRepository.getUserProfileByUsername(username);
-        ComicProfile comicProfile = comicProfileService.getComicProfileByName(title);
-        List<ComicProfile> newFinished = userProfile.getFinished();
-        newFinished.add(comicProfile);
-        userProfile.setFinished(newFinished);
-        userProfileRepository.save(userProfile);
+        DataForBookmarksDTO data = getDataForAddComicsToBookmarks(title);
+
+        List<ComicProfile> newFinished = data.getUserProfile().getFinished();
+        newFinished.add(data.getComicProfile());
+        data.getUserProfile().setFinished(newFinished);
+        userProfileRepository.save(data.getUserProfile());
     }
 
     public void addToFavourites(String title) {
+        DataForBookmarksDTO data = getDataForAddComicsToBookmarks(title);
+        List<ComicProfile> newFavourites = data.getUserProfile().getFavourites();
+        newFavourites.add(data.getComicProfile());
+        data.getUserProfile().setFavourites(newFavourites);
+        userProfileRepository.save(data.getUserProfile());
+    }
+
+    private DataForBookmarksDTO getDataForAddComicsToBookmarks(String title){
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         UserProfile userProfile = userProfileRepository.getUserProfileByUsername(username);
         ComicProfile comicProfile = comicProfileService.getComicProfileByName(title);
-        List<ComicProfile> newFavourites = userProfile.getFavourites();
-        newFavourites.add(comicProfile);
-        userProfile.setFavourites(newFavourites);
-        userProfileRepository.save(userProfile);
+        return new DataForBookmarksDTO(username, comicProfile, userProfile);
     }
 
 }
