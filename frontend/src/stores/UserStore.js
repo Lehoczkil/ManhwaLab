@@ -66,7 +66,7 @@ export const useUserStore = defineStore("userStore", {
         description !== null ? description : "There is no description";
     },
     async updateReading(comic) {
-      if (!this.read.includes(comic)) {
+      if (!this.read.map((comic) => comic.id).includes(comic.id)) {
         this.read.push(comic);
         await fetch("/api/manhwaLab/addToReading", {
           method: "PUT",
@@ -75,13 +75,13 @@ export const useUserStore = defineStore("userStore", {
             Authorization: JSON.parse(localStorage.getItem("tokenStore")).token,
           },
           body: JSON.stringify({
-            title: comic.title
+            title: comic.title,
           }),
         });
       }
     },
     async updateLater(comic) {
-      if (!this.readLater.includes(comic)) {
+      if (!this.readLater.map((comic) => comic.id).includes(comic.id)) {
         this.readLater.push(comic);
         await fetch("/api/manhwaLab/addToReadLater", {
           method: "PUT",
@@ -90,13 +90,13 @@ export const useUserStore = defineStore("userStore", {
             Authorization: JSON.parse(localStorage.getItem("tokenStore")).token,
           },
           body: JSON.stringify({
-            title: comic.title
+            title: comic.title,
           }),
         });
       }
     },
     async updateFinished(comic) {
-      if (!this.finished.includes(comic)) {
+      if (!this.finished.map((comic) => comic.id).includes(comic.id)) {
         this.finished.push(comic);
         await fetch("/api/manhwaLab/addToFinished", {
           method: "PUT",
@@ -105,13 +105,13 @@ export const useUserStore = defineStore("userStore", {
             Authorization: JSON.parse(localStorage.getItem("tokenStore")).token,
           },
           body: JSON.stringify({
-            title: comic.title
+            title: comic.title,
           }),
         });
       }
     },
     async updateFavourites(comic) {
-      if (!this.favourites.includes(comic)) {
+      if (!this.favourites.map((comic) => comic.id).includes(comic.id)) {
         this.favourites.push(comic);
         await fetch("/api/manhwaLab/addToFavourites", {
           method: "PUT",
@@ -120,7 +120,78 @@ export const useUserStore = defineStore("userStore", {
             Authorization: JSON.parse(localStorage.getItem("tokenStore")).token,
           },
           body: JSON.stringify({
-            title: comic.title
+            title: comic.title,
+          }),
+        });
+      }
+    },
+    async removeFromReading(comic) {
+      let comicIds = this.read.map((comic) => comic.id);
+
+      if (comicIds.includes(comic.id)) {
+        this.read.splice(comicIds.indexOf(comic.id), 1);
+
+        await fetch("/api/manhwaLab/removeFromReading", {
+          method: "DELETE",
+          headers: {
+            "Content-type": "application/json",
+            Authorization: JSON.parse(localStorage.getItem("tokenStore")).token,
+          },
+          body: JSON.stringify({
+            title: comic.title,
+          }),
+        });
+      }
+    },
+    async removeFromReadLater(comic) {
+      let comicIds = this.readLater.map((comic) => comic.id);
+
+      if (comicIds.includes(comic.id)) {
+        this.readLater.splice(comicIds.indexOf(comic.id), 1);
+
+        await fetch("/api/manhwaLab/removeFromReadLater", {
+          method: "DELETE",
+          headers: {
+            "Content-type": "application/json",
+            Authorization: JSON.parse(localStorage.getItem("tokenStore")).token,
+          },
+          body: JSON.stringify({
+            title: comic.title,
+          }),
+        });
+      }
+    },
+    async removeFromFinished(comic) {
+      let comicIds = this.finished.map((comic) => comic.id);
+
+      if (comicIds.includes(comic.id)) {
+        this.finished.splice(comicIds.indexOf(comic.id), 1);
+
+        await fetch("/api/manhwaLab/removeFromFinished", {
+          method: "DELETE",
+          headers: {
+            "Content-type": "application/json",
+            Authorization: JSON.parse(localStorage.getItem("tokenStore")).token,
+          },
+          body: JSON.stringify({
+            title: comic.title,
+          }),
+        });
+      }
+    },
+    async removeFromFavourites(comic) {
+      let comicIds = this.favourites.map((comic) => comic.id);
+
+      if (comicIds.includes(comic.id)) {
+        this.favourites.splice(comicIds.indexOf(comic.id), 1);
+        await fetch("/api/manhwaLab/removeFromFavourites", {
+          method: "DELETE",
+          headers: {
+            "Content-type": "application/json",
+            Authorization: JSON.parse(localStorage.getItem("tokenStore")).token,
+          },
+          body: JSON.stringify({
+            title: comic.title,
           }),
         });
       }

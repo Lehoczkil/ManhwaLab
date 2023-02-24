@@ -20,6 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Builder
@@ -36,10 +37,11 @@ public class UserProfileService implements UserDetailsService {
         return userProfileRepository.getUserProfileByUsername(username);
     }
 
-    public UserProfile getUser(String username){
-        return userProfileRepository.getUserProfileByUsername(username);    }
+    public UserProfile getUser(String username) {
+        return userProfileRepository.getUserProfileByUsername(username);
+    }
 
-    public UserProfile addNewUser(UserProfileDTO userProfileDTO){
+    public UserProfile addNewUser(UserProfileDTO userProfileDTO) {
         ArrayList<String> emails = userProfileRepository.getUserEmails();
         ArrayList<String> usernames = userProfileRepository.getUsernames();
         if (emails.contains(userProfileDTO.getEmail()) || usernames.contains(userProfileDTO.getUsername())) {
@@ -51,7 +53,7 @@ public class UserProfileService implements UserDetailsService {
         return userProfile;
     }
 
-    private UserProfile userProfileBuilder(UserProfileDTO userProfileDTO){
+    private UserProfile userProfileBuilder(UserProfileDTO userProfileDTO) {
         UserProfile userProfile = new UserProfile();
         userProfile.setUsername(userProfileDTO.getUsername());
         userProfile.setPassword(passwordConfig.passwordEncoder().encode(userProfileDTO.getPassword()));
@@ -114,5 +116,40 @@ public class UserProfileService implements UserDetailsService {
         return new DataForBookmarksDTO(username, comicProfile, userProfile);
     }
 
+    public void removeFromReading(String title) {
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        UserProfile userProfile = userProfileRepository.getUserProfileByUsername(username);
+        Long comicId = comicProfileService.getComicProfileByName(title).getId();
+        List<ComicProfile> newReading = userProfile.getRead().stream().filter(item -> !item.getId().equals(comicId)).collect(Collectors.toList());
+        userProfile.setRead(newReading);
+        userProfileRepository.save(userProfile);
+    }
+
+    public void removeFromReadLater(String title) {
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        UserProfile userProfile = userProfileRepository.getUserProfileByUsername(username);
+        Long comicId = comicProfileService.getComicProfileByName(title).getId();
+        List<ComicProfile> newReadLater = userProfile.getReadLater().stream().filter(item -> !item.getId().equals(comicId)).collect(Collectors.toList());
+        userProfile.setReadLater(newReadLater);
+        userProfileRepository.save(userProfile);
+    }
+
+    public void removeFromFinished(String title) {
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        UserProfile userProfile = userProfileRepository.getUserProfileByUsername(username);
+        Long comicId = comicProfileService.getComicProfileByName(title).getId();
+        List<ComicProfile> newFinished = userProfile.getFinished().stream().filter(item -> !item.getId().equals(comicId)).collect(Collectors.toList());
+        userProfile.setFinished(newFinished);
+        userProfileRepository.save(userProfile);
+    }
+
+    public void removeFromFavourites(String title) {
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        UserProfile userProfile = userProfileRepository.getUserProfileByUsername(username);
+        Long comicId = comicProfileService.getComicProfileByName(title).getId();
+        List<ComicProfile> newFavourites = userProfile.getFavourites().stream().filter(item -> !item.getId().equals(comicId)).collect(Collectors.toList());
+        userProfile.setFavourites(newFavourites);
+        userProfileRepository.save(userProfile);
+    }
 }
 
