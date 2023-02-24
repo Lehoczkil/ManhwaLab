@@ -50,4 +50,23 @@ public class UserProfileController {
         userProfileService.addToFavourites(titleDTO.getTitle());
     }
 
+    @DeleteMapping(value = "removeFromReading")
+    public void removeFromReading(@RequestBody TitleDTO titleDTO) {
+        userProfileService.removeFromReading(titleDTO.getTitle());
+    }
+
+    @DeleteMapping(value = "removeFromReadLater")
+    public void removeFromReadLater(@RequestBody TitleDTO titleDTO) {
+        userProfileService.removeFromReadLater(titleDTO.getTitle());
+    }
+
+    @DeleteMapping(value = "removeFromFinished")
+    public void removeFromFinished(@RequestBody TitleDTO titleDTO) {
+        userProfileService.removeFromFinished(titleDTO.getTitle());
+    }
+
+    @DeleteMapping(value = "removeFromFavourites")
+    public void removeFromFavourites(@RequestBody TitleDTO titleDTO) {
+        userProfileService.removeFromFavourites(titleDTO.getTitle());
+    }
 }
