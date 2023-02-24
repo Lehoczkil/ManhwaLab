@@ -1,8 +1,17 @@
 <template>
     <section class="short-list">
         <h1>{{ title }}</h1>
-        <div class="comics">
-            <Comic v-for="comic in comics" :key="comic.comicId" :comic="comic" :fromShortList="true" />
+        <div class="comics" v-if="this.title === 'Reading'">
+            <Comic v-for="comic in read" :key="comic.comicId" :comic="comic" :fromShortList="true" :category="title" />
+        </div>
+        <div class="comics" v-if="this.title === 'Read Later'">
+            <Comic v-for="comic in readLater" :key="comic.comicId" :comic="comic" :fromShortList="true" :category="title" />
+        </div>
+        <div class="comics" v-if="this.title === 'Finished'">
+            <Comic v-for="comic in finished" :key="comic.comicId" :comic="comic" :fromShortList="true" :category="title" />
+        </div>
+        <div class="comics" v-if="this.title === 'Favourites'">
+            <Comic v-for="comic in favourites" :key="comic.comicId" :comic="comic" :fromShortList="true" :category="title" />
         </div>
     </section>
 </template>
@@ -44,6 +53,7 @@ h1 {
 
 <script>
 import Comic from './Comic'
+import { storeToRefs } from 'pinia';
 import { useUserStore } from '@/stores/UserStore';
 
 export default {
@@ -54,26 +64,12 @@ export default {
     props: {
         title: String
     },
-    setup(props) {
+    setup() {
         const userStore = useUserStore()
 
-        let comics = [];
-        switch (props.title) {
-            case 'Reading':
-                comics = userStore.read
-                break
-            case 'Read Later':
-                comics = userStore.readLater
-                break
-            case 'Finished':
-                comics = userStore.finished
-                break
-            case 'Favourites':
-                comics = userStore.favourites
-                break
-        }
+        const {read,readLater, finished, favourites } = storeToRefs(userStore)
 
-        return { comics }
+        return { read, readLater, finished, favourites, userStore }
     }
 }
 </script>
