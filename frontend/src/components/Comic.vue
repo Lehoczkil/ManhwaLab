@@ -1,6 +1,8 @@
 <template>
     <div class="comic" @click="handleClick">
-        <button v-if="fromShortList" class="remove" @click.stop="handleRemove">-</button>
+        <div v-if="fromShortList" class="remove-container">
+            <button class="remove" @click.stop="handleRemove">-</button>
+        </div>
         <img :src="`${comic.coverPageSmall}`" alt="picture about the comic" class="pic">
         <h1>{{ comic.title }}</h1>
         <p>{{ comic.numberOfChapters }} chapters</p>
@@ -26,7 +28,6 @@
 }
 
 .comic {
-    position: relative;
     color: white;
     flex-basis: 18%;
     height: clamp(430px, 26vh, 3200px);
@@ -58,18 +59,16 @@ span {
 }
 
 .remove {
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 3rem;
-    height: 2rem;
+    float: right;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 1rem;
     color: white;
     background: transparent;
     border: none;
     font-size: 3rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .remove:hover,
