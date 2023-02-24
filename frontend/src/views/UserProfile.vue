@@ -75,6 +75,8 @@ article {
     width: clamp(100px, 10vw, 200px);
     background: var(--dark-gray);
     color: white;
+    border: none;
+    height: 2rem;
 }
 
 .pic {
