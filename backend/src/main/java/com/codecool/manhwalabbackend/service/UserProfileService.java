@@ -16,6 +16,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +24,7 @@ import java.util.List;
 @Service
 @Builder
 @RequiredArgsConstructor
+@Transactional
 public class UserProfileService implements UserDetailsService {
 
     private final UserProfileRepository userProfileRepository;
@@ -67,7 +69,6 @@ public class UserProfileService implements UserDetailsService {
         userProfile.setGender(Gender.valueOf(updateUserDTO.getGender()));
         userProfile.setLocation(updateUserDTO.getLocation());
         userProfile.setDescription(updateUserDTO.getDescription());
-        userProfileRepository.save(userProfile);
     }
 //    Innentől mindegyiknek első 3 sorát kilehet szervezni egy függvénybe, ami vissza ad egy objektumot
 //    aminek van egy username, userProfile, comicProfile field-je, és azokat get-elni
