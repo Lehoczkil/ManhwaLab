@@ -28,8 +28,8 @@
 select {
     height: clamp(30px, 6vh, 200px);
     width: clamp(140px, 28vw, 1000px);
-    background: #353434;
-    border-radius: clamp(2px, 1.5vh, 40px);
+    background: var(--dark-gray);
+    border-radius: var(--radius);
     padding-inline: 1.5vw;
     transition: all 0.3s;
     border: none;
@@ -50,12 +50,12 @@ select::after {
     top: 26px;
     transform: translateY(-50%);
     padding: 0 0 0 20px;
-    background: #353434;
+    background: var(--dark-gray);
     position: absolute;
     pointer-events: none;
 }
 
-@media(max-width:950px) {
+@media(max-width:1150px) {
     select {
         margin-bottom: 2vh;
         width: 60vw;

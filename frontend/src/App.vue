@@ -22,6 +22,13 @@ export default {
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
 
+:root {
+  --radius: 0.375rem;
+  --dark-gray: rgb(42 46 53);
+  --blue: rgb(59 130 246);
+  --almost-black: rgb(18 24 27);
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -38,7 +45,7 @@ button {
 }
 
 button:active {
-  transform: scale(0.95);
+  transform: scale(0.98);
 }
 
 .container {

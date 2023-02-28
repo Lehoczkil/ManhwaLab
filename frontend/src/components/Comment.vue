@@ -112,11 +112,11 @@
 }
 
 .action {
-    background: red;
+    background: var(--blue);
     width: clamp(90px, 2vw, 1000px);
     border: none;
     color: white;
-    border-radius: clamp(2px, 0.5vw, 20px);
+    border-radius: var(--radius);
 }
 
 @media(max-width: 950px) {

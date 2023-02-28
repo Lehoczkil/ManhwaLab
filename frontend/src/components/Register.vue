@@ -2,19 +2,21 @@
     <div class="modal-backdrop">
         <div class="modal">
             <header class="modal-header">
-                <h2>Register</h2>
                 <button type="button" class="btn-close" @click="close">
-                    x
+                    esc
                 </button>
+                <h2>Register</h2>
             </header>
 
             <section class="modal-body">
-                <input type="text" placeholder="Username" id="username-reg">
-                <input type="password" placeholder="Password" id="password-reg">
-                <input type="email" placeholder="Email" id="email">
+                <input class="input" type="text" placeholder="Username" id="username-reg">
+                <input class="input" type="password" placeholder="Password" id="password-reg">
+                <input class="input" type="email" placeholder="Email" id="email">
             </section>
 
             <footer class="modal-footer">
+                <h2 class="invalid" v-if="!isValid">Invalid username, password or email</h2>
+                <h2 class="invalid" v-if="taken">Email or username is already in use</h2>
                 <button type="button" class="btn login" @click="handleRegister">
                     Register
                 </button>
@@ -24,9 +26,9 @@
 </template>
 
 <style scoped>
-    .modal-body {
-        height: 45%;
-    }
+.modal-body {
+    height: 45%;
+}
 </style>
 
 
@@ -44,35 +46,55 @@ export default {
             const password = document.querySelector('#password-reg').value
             const email = document.querySelector('#email').value
 
-            await fetch(`/api/manhwaLab/registration`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    username: username,
-                    password: password,
-                    email: email
+            if (!(username === '' || password === '' || email === '')) {
+                const regResponse = await fetch(`/api/manhwaLab/registration`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        username: username,
+                        password: password,
+                        email: email
+                    })
                 })
-            })
 
-            const response = await fetch(`/login`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    username: username,
-                    password: password
-                })
-            })
+                if (regResponse.status == 201) {
+                    this.isValid = true
+                    this.taken = false
 
-            if (response.headers.get('Authorization')) {
-                this.$emit('close')
-                const tokenStore = useTokenStore()
-                tokenStore.setToken(response.headers.get('Authorization'))
+                    const response = await fetch(`/login`, {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            username: username,
+                            password: password
+                        })
+                    })
+
+                    if (response.headers.get('Authorization')) {
+                        this.$emit('close')
+                        const tokenStore = useTokenStore()
+                        tokenStore.setToken(response.headers.get('Authorization'))
+                    }
+                } else if (regResponse.status == 303) {
+                    this.isValid = true
+                    this.taken = true
+
+                }
+
+            } else {
+                this.isValid = false
             }
         }
     },
+    data() {
+        return {
+            isValid: true,
+            taken: false
+        }
+    }
 };
 </script>

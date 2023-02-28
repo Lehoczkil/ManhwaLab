@@ -2,7 +2,17 @@
     <article>
         <main>
             <div class="pic-container">
-                <img :src="`${currentComic.coverPageBig}`" alt="" class="pic">
+                <div class="img-container">
+                    <img :src="`${currentComic.coverPageBig}`" alt="Cover for the comic" class="pic">
+                    <div class="btn-row">
+                        <button v-if="tokenStore.isTokenExists()" class="add" @click="handleAdd('Reading')">Add to Reading</button>
+                        <button v-if="tokenStore.isTokenExists()" class="add" @click="handleAdd('Later')">Add to Read Later</button>
+                    </div>
+                    <div class="btn-row">
+                        <button v-if="tokenStore.isTokenExists()" class="add" @click="handleAdd('Favourites')">Add to Favourites</button>
+                        <button v-if="tokenStore.isTokenExists()" class="add" @click="handleAdd('Finished')">Add to Finished</button>
+                    </div>
+                </div>
                 <div class="content">
                     <h1>{{ currentComic.title }}</h1>
                     <div class="description">
@@ -122,7 +132,7 @@
                 <Comment />
             </div>
         </section>
-        <Recommended />
+        <ShortList title="Recommended" />
     </article>
 </template>
 
@@ -131,6 +141,26 @@ article,
 .box span {
     color: white;
     font-size: 1vw;
+}
+
+.add {
+    background: white;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding-block: 0.8vh;
+    transition: all 0.4s;
+    width: clamp(150px, 10vw, 500px);
+    margin: auto;
+    margin-top: 0.5rem;
+}
+
+.btn-row {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .show-pic,
@@ -143,7 +173,7 @@ article,
     width: clamp(180px, 18vw, 1800px);
     height: clamp(270px, 27vw, 2700px);
     margin: 1vh auto;
-    border-radius: clamp(20px, 1vw, 50px);
+    border-radius: var(--radius);
     border: 0.5px solid white;
 }
 
@@ -158,7 +188,7 @@ article,
 }
 
 .description {
-    border-radius: clamp(5px, 1vw, 60px);
+    border-radius: var(--radius);
     padding: 2vw;
     height: 36vh;
     font-size: 1rem;
@@ -185,7 +215,7 @@ article,
 }
 
 .info {
-    border-radius: clamp(5px, 1vw, 60px);
+    border-radius: var(--radius);
     padding: 2vw;
     height: 60vh;
 }
@@ -207,9 +237,9 @@ article,
     justify-content: center;
     align-items: center;
     text-align: center;
-    background: red;
+    background: var(--blue);
     border: none;
-    border-radius: clamp(3px, 1vh, 15px);
+    border-radius: var(--radius);
 }
 
 .tag-container {
@@ -226,12 +256,12 @@ article,
 .tag {
     width: clamp(140px, 12vw, 600px);
     height: 4vh;
-    background: rgb(35, 35, 34);
+    background: var(--dark-gray);
     color: white;
     padding-inline: 0.5vw;
     padding-block: 0.5vh;
     border: grey 1px solid;
-    border-radius: clamp(2px, 0.5vh, 15px);
+    border-radius: var(--radius);
     margin-right: 4vw;
     margin-bottom: 1vh;
 }
@@ -239,8 +269,8 @@ article,
 .stat {
     color: white;
     padding: 2vw;
-    background: rgb(35, 35, 34);
-    border-radius: 1.5vh;
+    background: var(--dark-gray);
+    border-radius: var(--radius);
 }
 
 .stars {
@@ -263,7 +293,7 @@ article,
 }
 
 .data {
-    color: red;
+    color: var(--blue);
     font-weight: 800;
 }
 
@@ -283,10 +313,10 @@ article,
 
 .auth {
     border: none;
-    border-radius: clamp(2px, 0.5vh, 15px);
+    border-radius: var(--radius);
     width: 10vw;
     height: 3vh;
-    background: red;
+    background: var(--blue);
     color: white;
 }
 
@@ -296,9 +326,19 @@ article,
     justify-content: space-evenly;
 }
 
+.img-container {
+    margin: auto;
+    width: 50%;
+    text-align: center;
+}
+
 @media (max-width: 950px) {
     article {
         overflow-x: hidden;
+    }
+
+    .img-container {
+        margin-bottom: 3rem;
     }
 
     .pic-container,
@@ -376,8 +416,9 @@ article,
 
 <script>
 import Comment from '../components/Comment'
-import Recommended from '../components/Recommended'
+import ShortList from '../components/ShortList'
 import { useComicStore } from '@/stores/ComicStore'
+import { useUserStore } from '@/stores/UserStore'
 import { useTokenStore } from '@/stores/TokenStore'
 import { storeToRefs } from 'pinia'
 
@@ -385,7 +426,7 @@ export default {
     name: 'ComicProfile',
     components: {
         Comment,
-        Recommended
+        ShortList
     },
     props: {
         id: String
@@ -398,6 +439,24 @@ export default {
         handleFilterByTheme(theme) {
             this.comicStore.filterComics(null, theme, null, null)
             this.$router.push(`/comics`)
+        },
+        handleAdd(target) {
+            const userStore = useUserStore()
+            if (target == "Reading") {
+                userStore.updateReading(this.currentComic)
+            }
+            
+            if (target == "Later") {
+                userStore.updateLater(this.currentComic)
+            }
+
+            if (target == "Finished") {
+                userStore.updateFinished(this.currentComic)
+            }
+
+            if (target == "Favourites") {
+                userStore.updateFavourites(this.currentComic)
+            }
         }
     },
     setup(props) {

@@ -44,12 +44,12 @@
 .search input {
     width: clamp(150px, 50vw, 1200px);
     height: clamp(30px, 6vh, 200px);
-    background: #2d2f31;
+    background: var(--dark-gray);
     color: white;
     padding-inline: 1vw;
     padding-block: 0.5vh;
     border: none;
-    border-radius: clamp(2px, 1.5vh, 40px) 0 0 clamp(2px, 1.5vh, 40px);
+    border-radius: var(--radius) 0 0 var(--radius);
     transition: all 0.3s;
 }
 
@@ -69,26 +69,28 @@
     height: clamp(30px, 6vh, 200px);
     width: 10vw;
     border: none;
-    border-radius: 0 clamp(2px, 1.5vh, 40px) clamp(2px, 1.5vh, 40px) 0;
+    border-radius: 0 var(--radius) var(--radius) 0;
     padding-inline: 1.5vw;
     padding-block: 0.5vh;
     transition: all 0.3s;
-    background: #2d2f31;
+    background: var(--dark-gray);
     color: white
 }
 
 .search button:hover {
-    background: darkslateblue;
+    background: var(--blue);
     color: white;
 }
 
-@media(max-width:950px) {
+@media(max-width:1150px) {
 
     .search {
         flex-direction: column;
     }
+
     .row {
         display: block;
+        width: 60vw;
         text-align: center;
     }
 
@@ -100,12 +102,11 @@
     .search button {
         display: block;
         width: 60vw;
-        border-radius: clamp(2px, 1.5vh, 40px);
+        border-radius: var(--radius);
         margin-bottom: 2vh;
     }
 
     .search button {
-        background: rgb(79, 42, 98);
         font-size: 1.2rem;
     }
 }
@@ -120,7 +121,7 @@ import { useTypeStore } from '@/stores/TypeStore'
 import List from '../components/List'
 import { storeToRefs } from 'pinia'
 export default {
-    name: 'Comics',
+    name: 'Browser',
     components: {
         Select,
         List

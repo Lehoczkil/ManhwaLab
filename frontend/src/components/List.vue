@@ -23,19 +23,19 @@
 
 .comic {
     text-align: center;
-    background: rgb(35, 35, 34);
+    background: var(--dark-gray);
     margin-bottom: 1vh;
     height: clamp(430px, 25vw, 3400px);
     padding: 0.5vh;
     color: white;
-    border-radius: clamp(20px, 1vw, 50px);
+    border-radius: var(--radius);
 }
 
 .pic {
     width: clamp(210px, 12vw, 2100px);
     height: clamp(280px, 16vw, 2800px);
     margin: 1vh auto;
-    border-radius: clamp(20px, 1vw, 50px);
+    border-radius: var(--radius);
     border: 0.5px solid white;
 }
 </style>

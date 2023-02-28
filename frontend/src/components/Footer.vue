@@ -9,7 +9,7 @@
 footer {
     margin-top: 30px;
     text-align: center;
-    background: rgb(35, 35, 34);
+    background: var(--dark-gray);
     color: white;
     height: 7vh;
     display: flex;
