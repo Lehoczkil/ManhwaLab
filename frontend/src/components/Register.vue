@@ -46,7 +46,7 @@ export default {
             const password = document.querySelector('#password-reg').value
             const email = document.querySelector('#email').value
 
-            if (!(username === '' || password === '' || email === '')) {
+            if (!(username === '' || username.includes('"') || username.includes("'") || password === '' || email === '')) {
                 const regResponse = await fetch(`/api/manhwaLab/registration`, {
                     method: "POST",
                     headers: {
