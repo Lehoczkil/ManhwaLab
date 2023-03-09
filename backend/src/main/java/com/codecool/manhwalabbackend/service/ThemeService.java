@@ -20,7 +20,7 @@ public class ThemeService {
     public List<Theme> getAllTheme(){
         return themeRepository.findAll();
     }
-    public List<Theme> getComicThemes(int comicId){
+    public List<Theme> getComicThemes(Long comicId){
         return themeRepository.getComicThemes(comicId);
     }
 }

@@ -13,7 +13,7 @@ public interface ThemeRepository extends JpaRepository<Theme, Long> {
     @Query(value = "SELECT theme.id, theme.name FROM theme " +
             "JOIN theme_for_comic tfc on theme.id = tfc.theme_id " +
             "WHERE comic_profile_id = ?1", nativeQuery = true)
-    List<Theme> getComicThemes(int comicId);
+    List<Theme> getComicThemes(Long comicId);
 
 }
 
