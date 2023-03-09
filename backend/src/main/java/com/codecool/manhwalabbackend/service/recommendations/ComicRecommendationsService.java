@@ -55,10 +55,13 @@ public class ComicRecommendationsService {
 
     private int calculateRecommendationValue(ComicProfile currentlyCalculatedComic, RecommendationDTO recommendationDTO) {
         int recommendationValue = 0;
-
         for (Genre genre : currentlyCalculatedComic.getGenreList()) {
-            if (recommendationDTO.getCurrentComic().getGenreList().contains(genre)) {
-                recommendationValue += 2;
+            for (Genre currentComicGenre : recommendationDTO.getCurrentComic().getGenreList()) {
+                if (currentComicGenre.getName().equals(genre.getName()) ){
+                    recommendationValue += 2;
+                    System.out.println(recommendationValue + "||" + currentlyCalculatedComic.getTitle());
+                    break;
+                }
             }
         }
 
