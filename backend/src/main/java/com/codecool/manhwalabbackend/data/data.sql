@@ -205,7 +205,7 @@ INSERT INTO theme_for_comic ( comic_profile_id, theme_id) VALUES ( 10, 10);
 ---------------------------------------------------------------------------------------------
 -- MANHWA PROFILE USER PROFILE LIST
 
-INSERT INTO comic_profile_user_profile (comic_profile_id, user_profile_id) VALUES (1, 1);
+-- INSERT INTO comic_profile_user_profile (comic_profile_id, user_profile_id) VALUES (1, 1);
 
 
 ---------------------------------------------------------------------------------------------------
