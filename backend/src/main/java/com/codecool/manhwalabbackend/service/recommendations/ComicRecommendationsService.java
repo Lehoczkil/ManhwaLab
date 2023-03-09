@@ -25,7 +25,7 @@ public class ComicRecommendationsService {
     //    private final ComicProfileRepository comicProfileRepository;
     private final ComicProfileService comicProfileService;
 
-    public List<ComicProfile> getRecommendedComics(int id) {
+    public List<ComicProfile> getRecommendedComics(Long id) {
         RecommendationDTO recommendationDTO = createRecommendationDTO(id);
         List<RecommendationScoreDTO> recommendationScoreDTOList = new ArrayList<>();
         for (ComicProfile currentlyCalculatedComic : recommendationDTO.getAllOtherComics()) {
@@ -36,7 +36,7 @@ public class ComicRecommendationsService {
         return getTopFiveComicProfile(recommendationScoreDTOList);
     }
 
-    private RecommendationDTO createRecommendationDTO(int id) {
+    private RecommendationDTO createRecommendationDTO(Long id) {
         RecommendationDTO recommendationDTO = new RecommendationDTO();
         recommendationDTO.setCurrentComic(getCurrentComic(id));
         recommendationDTO.setAllOtherComics(getAllOtherComics(id));
@@ -45,11 +45,11 @@ public class ComicRecommendationsService {
         return recommendationDTO;
     }
 
-    private List<Genre> getSearchedComicProfileGenres(int id) {
+    private List<Genre> getSearchedComicProfileGenres(Long id) {
         return genreService.getComicGenres(id);
     }
 
-    private List<Theme> getSearchedComicProfileThemes(int id) {
+    private List<Theme> getSearchedComicProfileThemes(Long id) {
         return themeService.getComicThemes(id);
     }
 
@@ -75,11 +75,11 @@ public class ComicRecommendationsService {
        return null;
     }
 
-    private List<ComicProfile> getAllOtherComics(int id) {
-        return comicProfileService.getAllOtherComicProfile((long) id);
+    private List<ComicProfile> getAllOtherComics(Long id) {
+        return comicProfileService.getAllOtherComicProfile(id);
     }
 
-    private ComicProfile getCurrentComic(int id) {
-        return comicProfileService.getComicProfileById((long) id);
+    private ComicProfile getCurrentComic(Long id) {
+        return comicProfileService.getComicProfileById(id);
     }
 }
