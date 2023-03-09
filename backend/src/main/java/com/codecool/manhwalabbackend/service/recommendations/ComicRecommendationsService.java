@@ -66,8 +66,11 @@ public class ComicRecommendationsService {
         }
 
         for (Theme theme : currentlyCalculatedComic.getThemeList()) {
-            if (recommendationDTO.getCurrentComic().getThemeList().contains(theme)) {
-                recommendationValue += 1;
+            for (Theme currentComicTheme : recommendationDTO.getCurrentComic().getThemeList()) {
+                if (currentComicTheme.getName().equals(theme.getName()) ){
+                    recommendationValue += 1;
+                    break;
+                }
             }
         }
         return recommendationValue;
