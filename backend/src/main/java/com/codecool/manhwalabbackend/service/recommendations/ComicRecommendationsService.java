@@ -77,7 +77,11 @@ public class ComicRecommendationsService {
     }
 
     private List<ComicProfile> getTopFiveComicProfile(List<RecommendationScoreDTO> recommendationScoreDTOList) {
-
+        RecommendationScoreComparator comparator = new RecommendationScoreComparator();
+        Collections.sort(recommendationScoreDTOList, comparator);
+        for (RecommendationScoreDTO recommendationScoreDTO : recommendationScoreDTOList) {
+            System.out.println("title" + recommendationScoreDTO.getTitle() + " score: " + recommendationScoreDTO.getScore());
+        }
        return null;
     }
 
