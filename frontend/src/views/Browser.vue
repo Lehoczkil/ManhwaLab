@@ -11,7 +11,7 @@
                 <Select title="Sort by" />
             </div>
             <div class="search">
-                <input type="search" placeholder="Search..." id="search">
+                <input type="search" placeholder="Search..." id="search-phrase">
                 <button type="submit" @click="handleClick">Go</button>
             </div>
         </section>
@@ -135,8 +135,7 @@ export default {
                 const theme = document.querySelector('#Theme').value
                 const type = document.querySelector('#Type').value
                 const sort = document.querySelector('#sort').value
-                const search = document.querySelector('#search').value
-
+                const search = document.querySelector('#search-phrase').value
                 comicStore.filterComics(genre, theme, type, sort, search)
             }
         }
