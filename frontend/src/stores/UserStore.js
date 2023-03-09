@@ -196,5 +196,18 @@ export const useUserStore = defineStore("userStore", {
         });
       }
     },
+    clearUser() {
+      this.username = '';
+      this.age = '';
+      this.gender ='';
+      this.location = '';
+      this.lastOnline = '';
+      this.joined = '';
+      this.description = '';
+      this.finished = '';
+      this.read = '';
+      this.favourites = '';
+      this.readLater = '';
+    }
   },
 });
