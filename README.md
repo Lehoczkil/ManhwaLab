@@ -104,10 +104,16 @@ npm run serve
 npm install -g serve
 ```
 
-2. Use the following command to serve the build:
+2. Build the production version via the following command:
 
 ```bash
-serve -s build -l 8081
+npm run build
+```
+
+3. Use the following command to serve the build:
+
+```bash
+serve -s dist -l 8081
 ```
 
 ### Backend: 
