@@ -11,7 +11,12 @@
             <Comic v-for="comic in finished" :key="comic.comicId" :comic="comic" :fromShortList="true" :category="title" />
         </div>
         <div class="comics" v-if="this.title === 'Favourites'">
-            <Comic v-for="comic in favourites" :key="comic.comicId" :comic="comic" :fromShortList="true" :category="title" />
+            <Comic v-for="comic in favourites" :key="comic.comicId" :comic="comic" :fromShortList="true"
+                :category="title" />
+        </div>
+        <div class="comics" v-if="this.title === 'Recommended'">
+            <Comic v-for="comic in recommendations" :key="comic.comicId" :comic="comic" :fromShortList="false"
+                :category="title" />
         </div>
     </section>
 </template>
@@ -55,6 +60,7 @@ h1 {
 import Comic from './Comic'
 import { storeToRefs } from 'pinia';
 import { useUserStore } from '@/stores/UserStore';
+import { useComicStore } from '@/stores/ComicStore';
 
 export default {
     name: 'ShortList',
@@ -66,10 +72,12 @@ export default {
     },
     setup() {
         const userStore = useUserStore()
+        const comicStore = useComicStore()
 
-        const {read,readLater, finished, favourites } = storeToRefs(userStore)
+        const { read, readLater, finished, favourites } = storeToRefs(userStore)
+        const { recommendations } = storeToRefs(comicStore)
 
-        return { read, readLater, finished, favourites, userStore }
+        return { read, readLater, finished, favourites, userStore, comicStore, recommendations }
     }
 }
 </script>
