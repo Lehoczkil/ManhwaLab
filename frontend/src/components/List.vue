@@ -38,6 +38,12 @@
     border-radius: var(--radius);
     border: 0.5px solid white;
 }
+
+@media (min-width:1921px) {
+    .comic-list {
+        grid-template-columns: repeat(auto-fill, 400px);
+    }
+}
 </style>
 
 <script>
