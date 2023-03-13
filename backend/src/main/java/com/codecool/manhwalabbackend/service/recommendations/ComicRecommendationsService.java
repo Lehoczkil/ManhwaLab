@@ -57,8 +57,8 @@ public class ComicRecommendationsService {
         int recommendationValue = 0;
         for (Genre genre : currentlyCalculatedComic.getGenreList()) {
             for (Genre currentComicGenre : recommendationDTO.getCurrentComic().getGenreList()) {
-                if (currentComicGenre.getName().equals(genre.getName()) ){
-                    recommendationValue += 2;
+                if (currentComicGenre.getName().equals(genre.getName())) {
+                    recommendationValue += 25;
                     System.out.println(recommendationValue + "||" + currentlyCalculatedComic.getTitle());
                     break;
                 }
@@ -67,22 +67,24 @@ public class ComicRecommendationsService {
 
         for (Theme theme : currentlyCalculatedComic.getThemeList()) {
             for (Theme currentComicTheme : recommendationDTO.getCurrentComic().getThemeList()) {
-                if (currentComicTheme.getName().equals(theme.getName()) ){
-                    recommendationValue += 1;
+                if (currentComicTheme.getName().equals(theme.getName())) {
+                    recommendationValue += 15;
                     break;
                 }
             }
         }
-        return recommendationValue;
+        return (int) (recommendationValue + currentlyCalculatedComic.getRating() * 10);
     }
 
     private List<ComicProfile> getTopFiveComicProfile(List<RecommendationScoreDTO> recommendationScoreDTOList) {
         RecommendationScoreComparator comparator = new RecommendationScoreComparator();
-        Collections.sort(recommendationScoreDTOList, comparator);
+        recommendationScoreDTOList.sort(comparator);
+        recommendationScoreDTOList = recommendationScoreDTOList.stream().limit(5).collect(Collectors.toList());
+        List<ComicProfile> recommendedComics = new ArrayList<>();
         for (RecommendationScoreDTO recommendationScoreDTO : recommendationScoreDTOList) {
-            System.out.println("title" + recommendationScoreDTO.getTitle() + " score: " + recommendationScoreDTO.getScore());
+            recommendedComics.add(comicProfileService.getComicProfileByName(recommendationScoreDTO.getTitle()));
         }
-       return null;
+        return recommendedComics;
     }
 
     private List<ComicProfile> getAllOtherComics(Long id) {
