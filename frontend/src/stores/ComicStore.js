@@ -17,7 +17,7 @@ export const useComicStore = defineStore("comicStore", {
   actions: {
     async getComics() {
       this.loading = true;
-      const all = await fetch("/api/manhwaLab/manhwaList");
+      const all = await fetch("http://3.75.0.59:8080/api/manhwaLab/manhwaList");
       const allJson = await all.json();
 
       this.comics = allJson;
@@ -28,17 +28,17 @@ export const useComicStore = defineStore("comicStore", {
     },
     async getTopComics() {
       const daily = await fetch(
-        "/api/manhwaLab/top/daily"
+        "http://3.75.0.59:8080/api/manhwaLab/top/daily"
       );
       const dailyJson = await daily.json();
 
       const weekly = await fetch(
-        "/api/manhwaLab/top/weekly"
+        "http://3.75.0.59:8080/api/manhwaLab/top/weekly"
       );
       const weeklyJson = await weekly.json();
 
       const monthly = await fetch(
-        "/api/manhwaLab/top/monthly"
+        "http://3.75.0.59:8080/api/manhwaLab/top/monthly"
       );
       const monthlyJson = await monthly.json();
 
@@ -135,7 +135,7 @@ export const useComicStore = defineStore("comicStore", {
       );
     },
     increaseViewCount(id) {
-      fetch(`/api/manhwaLab/${id}/update-view`, {
+      fetch(`http://3.75.0.59:8080/api/manhwaLab/update-view/${id}`, {
         method: "POST",
         headers: {
           'Accept': "application/json",
@@ -144,7 +144,7 @@ export const useComicStore = defineStore("comicStore", {
       });
     },
     async getRecommendations(id) {
-      const recommendations = await fetch(`/api/manhwaLab/${id}/recommendations`)
+      const recommendations = await fetch(`http://3.75.0.59:8080/api/manhwaLab/${id}/recommendations`)
       this.recommendations = await recommendations.json();
     }
   },
