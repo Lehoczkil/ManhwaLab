@@ -199,7 +199,12 @@ export default {
         handleSave() {
             this.isEditing = false;
 
-            const username = document.querySelector("#name").value === "" ? this.username : document.querySelector("#name").value;
+            let username = this.username;
+            let usernameToBeTested = document.querySelector("#name").value
+            if (usernameToBeTested !== '' && !usernameToBeTested.includes('"') && !usernameToBeTested.includes("'")) {
+                console.log('here')
+                username = usernameToBeTested
+            }
             const age = document.querySelector("#age").value === "" ? this.age : document.querySelector("#age").value;
             const gender = document.querySelector("#gender").value === "" ? this.gender : document.querySelector("#gender").value.toUpperCase();
             const location = document.querySelector("#location").value === "" ? this.location : document.querySelector("#location").value;

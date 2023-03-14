@@ -1,8 +1,9 @@
 import { defineStore } from "pinia";
+import { useUserStore } from "./UserStore";
 
 export const useTokenStore = defineStore("tokenStore", {
   state: () => ({
-    token: '',
+    token: "",
   }),
   actions: {
     setToken(token) {
@@ -13,11 +14,13 @@ export const useTokenStore = defineStore("tokenStore", {
       }
     },
     isTokenExists() {
-        return this.token !== '';
+      return this.token !== "";
     },
     clearToken() {
       localStorage.removeItem("token");
-      this.token = '';
-    }
+      this.token = "";
+      const UserStore = useUserStore();
+      UserStore.clearUser();
+    },
   },
 });

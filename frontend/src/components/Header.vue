@@ -1,8 +1,7 @@
 <template>
     <header>
         <input type="checkbox" id="nav-check">
-        <img src="../assets/logo.png" alt="logo with a purple potion and the text 'ManhwaLab'"
-            @click="handleMainPageBtn">
+        <img src="../assets/logo.png" alt="logo with a purple potion and the text 'ManhwaLab'" @click="handleMainPageBtn">
         <div class="menu-icon">
             <label for="nav-check">
                 <span></span>
@@ -274,7 +273,9 @@ export default {
             this.isRegisterVisible = false;
         },
         handleLogout() {
+            document.querySelector('#nav-check').checked = false;
             this.tokenStore.clearToken();
+            this.$router.push('/');
         },
         goToProfile() {
             document.querySelector('#nav-check').checked = false;

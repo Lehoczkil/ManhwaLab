@@ -10,10 +10,10 @@ import java.util.List;
 @Repository
 public interface GenreRepository extends JpaRepository<Genre, Long> {
 
-    @Query(value = "SELECT genre.name FROM genre " +
+    @Query(value = "SELECT genre.id, genre.name FROM genre " +
             "JOIN genre_for_comic gfc on genre.id = gfc.genre_id " +
             "WHERE comic_profile_id = ?1", nativeQuery = true)
-    List<String> getComicGenres(int comicId);
+    List<Genre> getComicGenres(Long comicId);
 
 }
 
