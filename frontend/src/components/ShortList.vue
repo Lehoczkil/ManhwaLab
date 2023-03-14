@@ -54,6 +54,12 @@ h1 {
         margin-bottom: 1rem;
     }
 }
+
+@media (min-width: 1921px) {
+    .comic, .short-list {
+        min-height: 600px;
+    }
+}
 </style>
 
 <script>
