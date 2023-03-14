@@ -9,5 +9,5 @@ import static com.codeborne.selenide.Selenide.$x;
 public class MainPage {
     public SelenideElement seeAllToolsButton = $("a.wt-button_mode_primary");
     public SelenideElement toolsMenu = $x("//div[contains(@class, 'menu-main__item') and text() = 'Developer Tools']");
-    public SelenideElement searchButton = $("[data-test='menu-main-icon-search']");
+    public SelenideElement searchButton = $x("//*[@id=\"app\"]/div/article/aside/section[1]/div/div[1]/img");
 }
