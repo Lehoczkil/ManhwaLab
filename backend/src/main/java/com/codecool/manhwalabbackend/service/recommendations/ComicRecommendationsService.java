@@ -55,16 +55,12 @@ public class ComicRecommendationsService {
 
     private int calculateRecommendationValue(ComicProfile currentlyCalculatedComic, RecommendationDTO recommendationDTO) {
         int recommendationValue = 0;
-        for (Genre genre : currentlyCalculatedComic.getGenreList()) {
-            for (Genre currentComicGenre : recommendationDTO.getCurrentComic().getGenreList()) {
-                if (currentComicGenre.getName().equals(genre.getName())) {
-                    recommendationValue += 25;
-                    System.out.println(recommendationValue + "||" + currentlyCalculatedComic.getTitle());
-                    break;
-                }
-            }
-        }
+        recommendationValue += getRecommendationValueForGenre(currentlyCalculatedComic, recommendationDTO, recommendationValue);
+        recommendationValue += getRecommendationValueForTheme(currentlyCalculatedComic, recommendationDTO, recommendationValue);
+        return (int) (recommendationValue + currentlyCalculatedComic.getRating() * 10);
+    }
 
+    private int getRecommendationValueForTheme(ComicProfile currentlyCalculatedComic, RecommendationDTO recommendationDTO, int recommendationValue) {
         for (Theme theme : currentlyCalculatedComic.getThemeList()) {
             for (Theme currentComicTheme : recommendationDTO.getCurrentComic().getThemeList()) {
                 if (currentComicTheme.getName().equals(theme.getName())) {
@@ -73,7 +69,20 @@ public class ComicRecommendationsService {
                 }
             }
         }
-        return (int) (recommendationValue + currentlyCalculatedComic.getRating() * 10);
+        return recommendationValue;
+    }
+
+    private int getRecommendationValueForGenre(ComicProfile currentlyCalculatedComic, RecommendationDTO recommendationDTO, int recommendationValue) {
+        for (Genre genre : currentlyCalculatedComic.getGenreList()) {
+            for (Genre currentComicGenre : recommendationDTO.getCurrentComic().getGenreList()) {
+                if (currentComicGenre.getName().equals(genre.getName())) {
+                    recommendationValue += 25;
+//                    System.out.println(recommendationValue + "||" + currentlyCalculatedComic.getTitle());
+                    break;
+                }
+            }
+        }
+        return recommendationValue;
     }
 
     private List<ComicProfile> getTopFiveComicProfile(List<RecommendationScoreDTO> recommendationScoreDTOList) {
