@@ -10,6 +10,7 @@ export const useComicStore = defineStore("comicStore", {
     monthlyTop: [],
     mostViewed: [],
     topOngoing: [],
+    recommendations: [],
     loading: false,
     numberOfComics: 0,
   }),
@@ -142,5 +143,9 @@ export const useComicStore = defineStore("comicStore", {
         },
       });
     },
+    async getRecommendations(id) {
+      const recommendations = await fetch(`/api/manhwaLab/${id}/recommendations`)
+      this.recommendations = await recommendations.json();
+    }
   },
 });

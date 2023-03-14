@@ -13,7 +13,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, 200px);
     grid-gap: 1rem;
-    justify-content: space-around;
+    justify-content: space-between;
     margin-top: 1vh;
 }
 
@@ -22,6 +22,13 @@
         text-align: center;
         font-size: 2rem;
         margin-block: 3vh;
+    }
+}
+
+@media (min-width: 1921px) {
+    .comic-container {
+        grid-template-columns: repeat(auto-fill, 300px);
+        min-height: 500px;
     }
 }
 

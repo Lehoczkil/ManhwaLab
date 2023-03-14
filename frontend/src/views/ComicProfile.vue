@@ -465,6 +465,7 @@ export default {
 
         comicStore.getComicById(props.id)
         comicStore.increaseViewCount(props.id)
+        comicStore.getRecommendations(props.id)
 
         const { currentComic } = storeToRefs(comicStore)
         const { token } = storeToRefs(tokenStore)

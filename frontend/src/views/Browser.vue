@@ -42,7 +42,7 @@
 }
 
 .search input {
-    width: clamp(150px, 50vw, 1200px);
+    width: 50vw;
     height: clamp(30px, 6vh, 200px);
     background: var(--dark-gray);
     color: white;
