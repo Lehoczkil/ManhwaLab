@@ -16,7 +16,7 @@ export const useUserStore = defineStore("userStore", {
   }),
   actions: {
     async getUser() {
-      const response = await fetch("/api/manhwaLab/profile", {
+      const response = await fetch("http://3.75.0.59:8080/api/manhwaLab/profile", {
         headers: {
           Authorization: JSON.parse(localStorage.getItem("tokenStore")).token,
         },
@@ -43,7 +43,7 @@ export const useUserStore = defineStore("userStore", {
         user.readLater !== null ? user.readLater : "Nothing here";
     },
     async updateUser(username, age, gender, location, description) {
-      await fetch("/api/manhwaLab/updateUser", {
+      await fetch("http://3.75.0.59:8080/api/manhwaLab/updateUser", {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -68,7 +68,7 @@ export const useUserStore = defineStore("userStore", {
     async updateReading(comic) {
       if (!this.read.map((comic) => comic.id).includes(comic.id)) {
         this.read.push(comic);
-        await fetch("/api/manhwaLab/addToReading", {
+        await fetch("http://3.75.0.59:8080/api/manhwaLab/addToReading", {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
@@ -83,7 +83,7 @@ export const useUserStore = defineStore("userStore", {
     async updateLater(comic) {
       if (!this.readLater.map((comic) => comic.id).includes(comic.id)) {
         this.readLater.push(comic);
-        await fetch("/api/manhwaLab/addToReadLater", {
+        await fetch("http://3.75.0.59:8080/api/manhwaLab/addToReadLater", {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
@@ -98,7 +98,7 @@ export const useUserStore = defineStore("userStore", {
     async updateFinished(comic) {
       if (!this.finished.map((comic) => comic.id).includes(comic.id)) {
         this.finished.push(comic);
-        await fetch("/api/manhwaLab/addToFinished", {
+        await fetch("http://3.75.0.59:8080/api/manhwaLab/addToFinished", {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
@@ -113,7 +113,7 @@ export const useUserStore = defineStore("userStore", {
     async updateFavourites(comic) {
       if (!this.favourites.map((comic) => comic.id).includes(comic.id)) {
         this.favourites.push(comic);
-        await fetch("/api/manhwaLab/addToFavourites", {
+        await fetch("http://3.75.0.59:8080/api/manhwaLab/addToFavourites", {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
@@ -131,7 +131,7 @@ export const useUserStore = defineStore("userStore", {
       if (comicIds.includes(comic.id)) {
         this.read.splice(comicIds.indexOf(comic.id), 1);
 
-        await fetch("/api/manhwaLab/removeFromReading", {
+        await fetch("http://3.75.0.59:8080/api/manhwaLab/removeFromReading", {
           method: "DELETE",
           headers: {
             "Content-type": "application/json",
@@ -149,7 +149,7 @@ export const useUserStore = defineStore("userStore", {
       if (comicIds.includes(comic.id)) {
         this.readLater.splice(comicIds.indexOf(comic.id), 1);
 
-        await fetch("/api/manhwaLab/removeFromReadLater", {
+        await fetch("http://3.75.0.59:8080/api/manhwaLab/removeFromReadLater", {
           method: "DELETE",
           headers: {
             "Content-type": "application/json",
@@ -167,7 +167,7 @@ export const useUserStore = defineStore("userStore", {
       if (comicIds.includes(comic.id)) {
         this.finished.splice(comicIds.indexOf(comic.id), 1);
 
-        await fetch("/api/manhwaLab/removeFromFinished", {
+        await fetch("http://3.75.0.59:8080/api/manhwaLab/removeFromFinished", {
           method: "DELETE",
           headers: {
             "Content-type": "application/json",
@@ -184,7 +184,7 @@ export const useUserStore = defineStore("userStore", {
 
       if (comicIds.includes(comic.id)) {
         this.favourites.splice(comicIds.indexOf(comic.id), 1);
-        await fetch("/api/manhwaLab/removeFromFavourites", {
+        await fetch("http://3.75.0.59:8080/api/manhwaLab/removeFromFavourites", {
           method: "DELETE",
           headers: {
             "Content-type": "application/json",

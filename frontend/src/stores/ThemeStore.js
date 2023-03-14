@@ -6,7 +6,7 @@ export const useThemeStore = defineStore("themeStore", {
   }),
   actions: {
     async getThemes() {
-      const res = await fetch("/api/manhwaLab/themes");
+      const res = await fetch("http://3.75.0.59:8080/api/manhwaLab/themes");
       const data = await res.json();
 
       this.themes = data;
