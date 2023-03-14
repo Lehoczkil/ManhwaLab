@@ -30,5 +30,17 @@ public class ComicProfileService {
         comicProfileRepository.updateViews(currentVies+1, comicId);
     }
 
+    public ComicProfile getComicProfileById(Long comicId){
+        return comicProfileRepository.getComicProfileById(comicId);
+    }
+
+    public List<ComicProfile> getAllOtherComicProfile(Long comicId){
+        List<ComicProfile> allComics = getAllComic();
+        allComics.remove(getComicProfileById(comicId));
+        return allComics;
+    }
+
+
+
 }
 

@@ -75,6 +75,12 @@ span {
 .remove:focus {
     color: var(--blue);
 }
+
+@media (min-width: 1921px) {
+    .comic {
+        height: 520px;
+    }
+}
 </style>
 
 <script>
