@@ -29,12 +29,12 @@ public class ComicProfileController {
         return comicProfileService.getComicProfileByName(comicTitle);
     }
 
-    @PostMapping(value = "/{comicId}/update-view")
+    @PostMapping(value = "/update-view/{comicId}")
     public ResponseEntity<String> updateComicViewNumbers(@PathVariable Long comicId) {
         comicProfileService.updateComicViews(comicId);
         popularityService.updateDailyViewForComic(comicId, LocalDate.now());
         recommendationsService.getRecommendedComics(comicId);
-        return new ResponseEntity<>("Succes", HttpStatus.CREATED);
+        return new ResponseEntity<>("Success", HttpStatus.CREATED);
     }
 
     @GetMapping(value = "/{comicId}/recommendations")
