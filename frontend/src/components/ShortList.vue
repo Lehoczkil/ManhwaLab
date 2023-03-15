@@ -15,7 +15,7 @@
                 :category="title" />
         </div>
         <div class="comics" v-if="this.title === 'Recommended'">
-            <Comic v-for="comic in recommendations" :key="comic.comicId" :comic="comic" :fromShortList="false"
+            <Comic v-for="comic in recommendations" :key="comic.comicId" :comic="comic" :isRecommended="true" :fromShortList="false"
                 :category="title" />
         </div>
     </section>

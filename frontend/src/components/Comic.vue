@@ -88,6 +88,7 @@ import { useTokenStore } from '@/stores/TokenStore'
 import { useUserStore } from '@/stores/UserStore'
 import { storeToRefs } from 'pinia'
 import { getCurrentInstance } from 'vue';
+import { useComicStore } from '@/stores/ComicStore';
 
 export default {
     name: "Comic",
@@ -104,6 +105,12 @@ export default {
                 return false
             }
         },
+        isRecommended: {
+            type: Boolean,
+            default() {
+                return false
+            }
+        },
         category: {
             type: String,
             default() {
@@ -113,8 +120,10 @@ export default {
     },
     methods: {
         handleClick() {
-            if (this.fromShortList) {
+            if (this.fromShortList || this.isRecommended) {
+                this.comicStore.getComicById(this.comic.id)
                 this.$router.push(`/comics/${this.comic.id}`)
+                document.getElementById('app').scrollIntoView({ behavior: 'smooth' });
             } else {
                 this.$router.push(`/comics/${this.comic.comicId}`)
             }
@@ -143,10 +152,11 @@ export default {
     setup() {
         const tokenStore = useTokenStore()
         const userStore = useUserStore()
+        const comicStore = useComicStore()
 
         const { token } = storeToRefs(tokenStore)
 
-        return { userStore, tokenStore, token }
+        return { userStore, tokenStore, token, comicStore }
     }
 }
 </script>
