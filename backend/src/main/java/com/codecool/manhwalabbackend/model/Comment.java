@@ -18,12 +18,14 @@ public class Comment {
     @Column(name = "id", nullable = false)
     private Long id;
     private String text;
-    private String userId;
+    @ManyToOne(cascade = CascadeType.ALL)
+    private UserProfile parentUserProfile;
     private Timestamp commentedAt;
     @Enumerated(EnumType.STRING)
     private CommentType commentType;
     private Long parentCommentId;
     private Integer likes;
     private Integer dislikes;
-
+    @ManyToOne(cascade = CascadeType.ALL)
+    private ComicProfile parentComic;
 }
