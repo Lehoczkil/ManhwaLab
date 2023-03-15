@@ -4,7 +4,7 @@
 
         <div class="comics" v-for="comic in comics" :key="comic.id">
             <div class="comic" @click="handleClick(comic.id)">
-                <img :src="`${comic.coverPageSmall}`" alt="Cover page of the manhwa" class="pic">
+                <img :src="`${baseUrl}${comic.coverPageSmall}`" alt="Cover page of the manhwa" class="pic">
                 <h1>{{ comic.title }}</h1>
             </div>
         </div>
@@ -57,6 +57,11 @@ export default {
             this.$router.push(`/comics/${comicId}`)
         }
     },
+    computed: {
+        baseUrl() {
+            return process.env.VUE_APP_API_BASE
+        }
+    },
     setup() {
         const comicStore = useComicStore()
 
@@ -64,6 +69,7 @@ export default {
         if (!comicStore.haveComics()) {
             comicStore.getComics()
         }
+
 
         return { comicStore, comics, loading }
     }

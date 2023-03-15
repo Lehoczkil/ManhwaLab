@@ -17,7 +17,7 @@ export const useComicStore = defineStore("comicStore", {
   actions: {
     async getComics() {
       this.loading = true;
-      const all = await fetch("http://3.75.0.59:8080/api/manhwaLab/manhwaList");
+      const all = await fetch(`${process.env.VUE_APP_API_BASE}/api/manhwaLab/manhwaList`);
       const allJson = await all.json();
 
       this.comics = allJson;
@@ -28,17 +28,17 @@ export const useComicStore = defineStore("comicStore", {
     },
     async getTopComics() {
       const daily = await fetch(
-        "http://3.75.0.59:8080/api/manhwaLab/top/daily"
+        `${process.env.VUE_APP_API_BASE}/api/manhwaLab/top/daily`
       );
       const dailyJson = await daily.json();
 
       const weekly = await fetch(
-        "http://3.75.0.59:8080/api/manhwaLab/top/weekly"
+        `${process.env.VUE_APP_API_BASE}/api/manhwaLab/top/weekly`
       );
       const weeklyJson = await weekly.json();
 
       const monthly = await fetch(
-        "http://3.75.0.59:8080/api/manhwaLab/top/monthly"
+        `${process.env.VUE_APP_API_BASE}/api/manhwaLab/top/monthly`
       );
       const monthlyJson = await monthly.json();
 
@@ -135,7 +135,7 @@ export const useComicStore = defineStore("comicStore", {
       );
     },
     increaseViewCount(id) {
-      fetch(`http://3.75.0.59:8080/api/manhwaLab/update-view/${id}`, {
+      fetch(`${process.env.VUE_APP_API_BASE}/api/manhwaLab/updateView/${id}`, {
         method: "POST",
         headers: {
           'Accept': "application/json",
@@ -144,7 +144,7 @@ export const useComicStore = defineStore("comicStore", {
       });
     },
     async getRecommendations(id) {
-      const recommendations = await fetch(`http://3.75.0.59:8080/api/manhwaLab/${id}/recommendations`)
+      const recommendations = await fetch(`${process.env.VUE_APP_API_BASE}/api/manhwaLab/${id}/recommendations`)
       this.recommendations = await recommendations.json();
     }
   },

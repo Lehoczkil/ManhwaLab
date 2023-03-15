@@ -6,7 +6,7 @@ export const useTypeStore = defineStore("typeStore", {
   }),
   actions: {
     async getTypes() {
-      const res = await fetch("http://3.75.0.59:8080/api/manhwaLab/types");
+      const res = await fetch(`${process.env.VUE_APP_API_BASE}/api/manhwaLab/types`);
       const data = await res.json();
 
       this.types = data;

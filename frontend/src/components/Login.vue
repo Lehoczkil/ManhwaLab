@@ -116,6 +116,11 @@ input:hover {
 import { useTokenStore } from '@/stores/TokenStore';
 export default {
     name: 'Login',
+    computed: {
+        baseUrl() {
+            return process.env.VUE_APP_API_BASE
+        }
+    },
     methods: {
         close() {
             this.$emit('close');
@@ -125,7 +130,7 @@ export default {
             const password = document.querySelector('#password').value
 
             if (!(username === "" || password === "")) {
-                const response = await fetch(`/login`, {
+                const response = await fetch(`${this.baseUrl}/login`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
