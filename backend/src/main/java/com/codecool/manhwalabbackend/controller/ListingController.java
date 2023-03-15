@@ -18,7 +18,7 @@ import java.util.EnumSet;
 import java.util.List;
 
 @RestController
-@CrossOrigin({"http://localhost:8081", "https://manhwalab.onrender.com/"})
+@CrossOrigin({"http://localhost:8081"})
 @RequestMapping("/api/manhwaLab")
 @RequiredArgsConstructor
 public class ListingController {

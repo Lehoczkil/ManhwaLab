@@ -12,7 +12,7 @@ import java.rmi.ServerException;
 
 @RestController
 @RequiredArgsConstructor
-@CrossOrigin({"http://localhost:8081", "https://manhwalab.onrender.com/"})
+@CrossOrigin({"http://localhost:8081"})
 @RequestMapping("/api/manhwaLab")
 public class UserManagementController {
 
