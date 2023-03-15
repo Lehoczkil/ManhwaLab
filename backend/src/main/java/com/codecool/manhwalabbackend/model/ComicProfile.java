@@ -45,6 +45,8 @@ public class ComicProfile {
             joinColumns = @JoinColumn(name = "comicProfileId"),
             inverseJoinColumns = @JoinColumn(name = "themeId"))
     private List<Theme> themeList;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Comment> comments;
     private Float rating;
     private Integer ratingRanking;
     private Integer popularityRanking;
