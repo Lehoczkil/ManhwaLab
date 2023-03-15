@@ -14,7 +14,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @RestController
-@CrossOrigin({"http://localhost:8081", "http://manhwalab-static.s3-website.eu-central-1.amazonaws.com/"})
+@CrossOrigin({"http://localhost:8080", "http://localhost:8081", "http://manhwalab-static.s3-website.eu-central-1.amazonaws.com/"})
 @RequestMapping("/api/manhwaLab")
 @RequiredArgsConstructor
 public class ComicProfileController {
@@ -29,7 +29,7 @@ public class ComicProfileController {
         return comicProfileService.getComicProfileByName(comicTitle);
     }
 
-    @PostMapping(value = "/update-view/{comicId}")
+    @PostMapping(value = "/updateView/{comicId}")
     public ResponseEntity<String> updateComicViewNumbers(@PathVariable Long comicId) {
         comicProfileService.updateComicViews(comicId);
         popularityService.updateDailyViewForComic(comicId, LocalDate.now());
