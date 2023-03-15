@@ -3,6 +3,7 @@ package com.codecool.manhwalabbackend.controller;
 import com.codecool.manhwalabbackend.model.Comment;
 import com.codecool.manhwalabbackend.service.CommentService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,7 +22,9 @@ public class CommentController {
     }
 
     @PostMapping(value = "/add-comment/{comicId}")
-    public void addNewComment(@PathVariable Long comicId){
+    public void addNewComment(@PathVariable Long comicId, @RequestBody String comment){
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        commentService.addNewComment(comicId, comment, username);
     }
 
     @PatchMapping(value = "/edit-comment/{comicId}")
