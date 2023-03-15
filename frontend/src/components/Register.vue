@@ -47,7 +47,7 @@ export default {
             const email = document.querySelector('#email').value
 
             if (!(username === '' || username.includes('"') || username.includes("'") || password === '' || email === '')) {
-                const regResponse = await fetch(`/api/manhwaLab/registration`, {
+                const regResponse = await fetch(`${process.env.VUE_APP_API_BASE}/api/manhwaLab/registration`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"

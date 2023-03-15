@@ -3,7 +3,7 @@
         <div v-if="fromShortList" class="remove-container">
             <button class="remove" @click.stop="handleRemove">-</button>
         </div>
-        <img :src="`${comic.coverPageSmall}`" alt="picture about the comic" class="pic">
+        <img :src="`${process.env.VUE_APP_API_BASE}${comic.coverPageSmall}`" alt="picture about the comic" class="pic">
         <h1>{{ comic.title }}</h1>
         <p>{{ comic.numberOfChapters }} chapters</p>
         <div class="rating">

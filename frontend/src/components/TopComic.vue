@@ -1,6 +1,6 @@
 <template>
     <div class="comic" @click="handleClick">
-        <img :src="`${comic.coverPageSmall}`" alt="picture about the comic" class="pic">
+        <img :src="`${process.env.VUE_APP_API_BASE}${comic.coverPageSmall}`" alt="picture about the comic" class="pic">
         <div class="content">
             <h1>{{ comic.title }}</h1>
             <div class="info">
