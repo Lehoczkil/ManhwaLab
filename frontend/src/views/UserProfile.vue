@@ -201,14 +201,29 @@ export default {
 
             let username = this.username;
             let usernameToBeTested = document.querySelector("#name").value
-            if (usernameToBeTested !== '' && !usernameToBeTested.includes('"') && !usernameToBeTested.includes("'")) {
-                console.log('here')
+            if (usernameToBeTested !== '' && !usernameToBeTested.includes('"') && !usernameToBeTested.includes("'") && usernameToBeTested.length > 3 && usernameToBeTested.length < 16 && !(/\d/.test(usernameToBeTested))) {
                 username = usernameToBeTested
             }
-            const age = document.querySelector("#age").value === "" ? this.age : document.querySelector("#age").value;
+
+            let age = this.age;
+            let ageToBeTested = document.querySelector("#age").value
+            if (ageToBeTested !== '' && ageToBeTested > 0 && ageToBeTested < 130) {
+                age = ageToBeTested
+            }
+
+            let location = this.location;
+            let locationToBeTested = document.querySelector("#location").value
+            if (locationToBeTested !== '' && locationToBeTested.length < 3 && locationToBeTested.length > 30 && !(/\d/.test(usernameToBeTested))) {
+                location = locationToBeTested
+            }
+
             const gender = document.querySelector("#gender").value === "" ? this.gender : document.querySelector("#gender").value.toUpperCase();
-            const location = document.querySelector("#location").value === "" ? this.location : document.querySelector("#location").value;
-            const description = document.querySelector("#description").value === "" ? this.description : document.querySelector("#description").value;
+            
+            let description = this.description
+            let descriptionToBeTested = document.querySelector("#description").value
+            if (descriptionToBeTested !== '' && locationToBeTested < 0 && locationToBeTested > 150) {
+                description = locationToBeTested
+            }
 
             this.userStore.updateUser(username, age, gender, location, description)
         }
