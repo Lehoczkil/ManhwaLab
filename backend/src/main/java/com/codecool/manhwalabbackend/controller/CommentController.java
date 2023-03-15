@@ -1,6 +1,7 @@
 package com.codecool.manhwalabbackend.controller;
 
 import com.codecool.manhwalabbackend.model.Comment;
+import com.codecool.manhwalabbackend.service.CommentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,6 +13,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CommentController {
 
+    private final CommentService commentService;
 
     @GetMapping(value = "/comments/{comicId}")
     public List<Comment> getComicComments(@PathVariable Long comicId) {
