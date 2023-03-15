@@ -34,7 +34,7 @@ public class ComicProfileController {
         comicProfileService.updateComicViews(comicId);
         popularityService.updateDailyViewForComic(comicId, LocalDate.now());
         recommendationsService.getRecommendedComics(comicId);
-        return new ResponseEntity<>("Succes", HttpStatus.CREATED);
+        return new ResponseEntity<>("Success", HttpStatus.CREATED);
     }
 
     @GetMapping(value = "/{comicId}/recommendations")
