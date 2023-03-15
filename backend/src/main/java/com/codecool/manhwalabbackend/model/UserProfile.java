@@ -58,6 +58,8 @@ public class UserProfile implements UserDetails {
             joinColumns = @JoinColumn(name = "comicProfileId"),
             inverseJoinColumns = @JoinColumn(name = "userProfileId"))
     private List<ComicProfile> finished;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Comment> userComments;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
