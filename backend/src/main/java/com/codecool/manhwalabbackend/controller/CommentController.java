@@ -17,7 +17,7 @@ public class CommentController {
 
     @GetMapping(value = "/comments/{comicId}")
     public List<Comment> getComicComments(@PathVariable Long comicId) {
-        return null;
+        return commentService.getComicComments(comicId);
     }
 
     @PostMapping(value = "/add-comment/{comicId}")
