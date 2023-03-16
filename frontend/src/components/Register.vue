@@ -37,6 +37,11 @@ import { useTokenStore } from '@/stores/TokenStore';
 
 export default {
     name: 'Register',
+    computed: {
+        baseUrl() {
+            return process.env.VUE_APP_API_BASE
+        }
+    },
     methods: {
         close() {
             this.$emit('close');
@@ -47,10 +52,11 @@ export default {
             const email = document.querySelector('#email').value
 
             if (!(username === '' || username.includes('"') || username.includes("'") || password === '' || email === '')) {
-                const regResponse = await fetch(`${process.env.VUE_APP_API_BASE}/api/manhwaLab/registration`, {
+                const regResponse = await fetch(`${this.baseUrl}/api/manhwaLab/registration`, {
                     method: "POST",
                     headers: {
-                        "Content-Type": "application/json"
+                        "Content-Type": "application/json",
+                        "Access-Control-Max-Age": 600
                     },
                     body: JSON.stringify({
                         username: username,
@@ -63,10 +69,11 @@ export default {
                     this.isValid = true
                     this.taken = false
 
-                    const response = await fetch(`/login`, {
+                    const response = await fetch(`${this.baseUrl}/login`, {
                         method: "POST",
                         headers: {
-                            "Content-Type": "application/json"
+                            "Content-Type": "application/json",
+                            "Access-Control-Max-Age": 600
                         },
                         body: JSON.stringify({
                             username: username,

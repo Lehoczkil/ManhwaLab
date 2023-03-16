@@ -133,7 +133,8 @@ export default {
                 const response = await fetch(`${this.baseUrl}/login`, {
                     method: "POST",
                     headers: {
-                        "Content-Type": "application/json"
+                        "Content-Type": "application/json",
+                        "Access-Control-Max-Age": 600
                     },
                     body: JSON.stringify({
                         username: username,
