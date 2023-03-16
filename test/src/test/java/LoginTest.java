@@ -44,12 +44,16 @@ public class LoginTest {
     @Test
     public void loginWithInvalidUsername(){
         loginPage.openLoginModal();
-        loginPage.loggingIn(INVALID_USERNAME, "123");
+        loginPage.loggingIn(INVALID_USERNAME, VALID_PASSWORD);
+        String errorMsg = loginPage.getErrorMsg();
+        Assertions.assertEquals(errorMsg, EXPECTED_ERROR_MSG);
     }
     @Test
     public void loginWithInvalidPassword(){
         loginPage.openLoginModal();
         loginPage.loggingIn(VALID_USERNAME, INVALID_PASSWORD);
+        String errorMsg = loginPage.getErrorMsg();
+        Assertions.assertEquals(errorMsg, EXPECTED_ERROR_MSG);
     }
 
     @AfterEach
