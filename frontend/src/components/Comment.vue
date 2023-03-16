@@ -3,18 +3,14 @@
         <div class="profile-pic"></div>
         <div class="content">
             <div class="name-container">
-                <h1>Name</h1>
+                <h1>{{ comment.parentUserProfile.username }}</h1>
                 <div class="date">
-                    <p>6 months ago</p>
+                    <p>{{ comment.commendtedAt }}</p>
                 </div>
             </div>
             <div class="bottom-part">
-                <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vehicula suscipit
-                    mauris, sit amet
-                    vehicula est porttitor eu. Donec vitae consequat sapien. Maecenas tempus ante sit amet magna
-                    faucibus aliquam. Nullam congue, turpis ut maximus rhoncus, nisl leo placerat neque, nec vulputate
-                    odio felis et orci. Vestibulum molestie, lorem et maximus dictum, nunc odio convallis metus, eu
-                    molestie nulla libero in felis. Integer consectetur bibendum purus id tempus.
+                <p class="description">
+                    {{ comment.text }}
                 </p>
 
                 <div class="actions">
@@ -23,13 +19,13 @@
                             <button>
                                 <img class="star" src="../assets/like.png" alt="like">
                             </button>
-                            <p>293</p>
+                            <p>{{comment.likes}}</p>
                         </div>
                         <div class="like">
                             <button>
                                 <img class="star" src="../assets/dislike.png" alt="dislike">
                             </button>
-                            <p>23</p>
+                            <p>{{comment.dislikes}}</p>
                         </div>
                     </div>
                     <div class="interactions">
@@ -156,7 +152,15 @@
 
 <script>
 export default {
-    name: "Comment"
+    name: "Comment",
+    props: {
+        comment: {
+            type: Object,
+            default() {
+                return {}
+            }
+        }
+    }
 }
 </script>
 
