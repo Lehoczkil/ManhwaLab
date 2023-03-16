@@ -6,9 +6,7 @@ import com.codecool.manhwalabbackend.security.jwt.JwtUsernamePasswordAuthenticat
 import com.codecool.manhwalabbackend.service.UserProfileService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -41,10 +39,10 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                 .addFilter(new JwtUsernamePasswordAuthenticationFilter(authenticationManager()))
                 .addFilterAfter(new JwtTokenVerifier(), JwtUsernamePasswordAuthenticationFilter.class)
                 .authorizeRequests()
-                .antMatchers("/api/manhwaLab/top/**", "/api/manhwaLab/manhwaList", "/api/manhwaLab/updateView/**", "/api/manhwaLab/genres", "/api/manhwaLab/themes", "/api/manhwaLab/types", "/api/manhwaLab/registration", "/login", "/registration", "/images/*", "/api/manhwaLab/*/recommendations").permitAll()
+                .antMatchers("/api/manhwaLab/top/**", "/api/manhwaLab/manhwaList", "/api/manhwaLab/updateView/**", "/api/manhwaLab/genres", "/api/manhwaLab/themes", "/api/manhwaLab/types", "/api/manhwaLab/registration", "/login", "/registration", "/images/*", "/api/manhwaLab/*/recommendations", "/css/**", "/js/**", "/comics", "/index.html", "/", "/img/**", "/favicon.png", "/comics/**").permitAll()
                 .antMatchers("/api/manhwaLab/profile").hasRole(ApplicationUserRoles.USER.name())
                 .antMatchers("/api/manhwaLab/addToUser", "/api/manhwaLab/addToReading", "/api/manhwaLab/addToReadLater", "/api/manhwaLab/addToFinished", "/api/manhwaLab/addToFavourites").hasRole(ApplicationUserRoles.USER.name())
-                .antMatchers("/api/manhwaLab/removeFromReading", "/api/manhwaLab/removeFromReadLater", "/api/manhwaLab/removeFromFinished", "/api/manhwaLab/removeFromFavourites").hasRole(ApplicationUserRoles.USER.name())
+                .antMatchers("/api/manhwaLab/removeFromReading", "/api/manhwaLab/removeFromReadLater", "/api/manhwaLab/removeFromFinished", "/api/manhwaLab/removeFromFavourites", "/user-profile").hasRole(ApplicationUserRoles.USER.name())
                 .anyRequest()
                 .authenticated();
 
