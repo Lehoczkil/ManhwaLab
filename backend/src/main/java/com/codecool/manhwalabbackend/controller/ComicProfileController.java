@@ -8,6 +8,7 @@ import com.codecool.manhwalabbackend.service.recommendations.ComicRecommendation
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -30,7 +31,8 @@ public class ComicProfileController {
     }
 
     @PostMapping(value = "/updateView/{comicId}")
-    public ResponseEntity<String> updateComicViewNumbers(@PathVariable Long comicId) {
+    public ResponseEntity<String> updateComicViewNumbers(@PathVariable Long comicId, ServerHttpResponse serverHttpResponse) {
+        serverHttpResponse.getHeaders().add("Access-Control-Max-Age" ,"600" );
         comicProfileService.updateComicViews(comicId);
         popularityService.updateDailyViewForComic(comicId, LocalDate.now());
         recommendationsService.getRecommendedComics(comicId);
