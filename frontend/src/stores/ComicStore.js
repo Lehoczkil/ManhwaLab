@@ -17,7 +17,9 @@ export const useComicStore = defineStore("comicStore", {
   actions: {
     async getComics() {
       this.loading = true;
-      const all = await fetch(`${process.env.VUE_APP_API_BASE}/api/manhwaLab/manhwaList`);
+      const all = await fetch(
+        `${process.env.VUE_APP_API_BASE}/api/manhwaLab/manhwaList`
+      );
       const allJson = await all.json();
 
       this.comics = allJson;
@@ -138,14 +140,17 @@ export const useComicStore = defineStore("comicStore", {
       fetch(`${process.env.VUE_APP_API_BASE}/api/manhwaLab/updateView/${id}`, {
         method: "POST",
         headers: {
-          'Accept': "application/json",
+          Accept: "application/json",
           "Content-Type": "application/json",
+          "Access-Control-Max-Age": 600,
         },
       });
     },
     async getRecommendations(id) {
-      const recommendations = await fetch(`${process.env.VUE_APP_API_BASE}/api/manhwaLab/${id}/recommendations`)
+      const recommendations = await fetch(
+        `${process.env.VUE_APP_API_BASE}/api/manhwaLab/${id}/recommendations`
+      );
       this.recommendations = await recommendations.json();
-    }
+    },
   },
 });
