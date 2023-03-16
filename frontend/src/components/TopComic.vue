@@ -1,6 +1,6 @@
 <template>
     <div class="comic" @click="handleClick">
-        <img :src="`${process.env.VUE_APP_API_BASE}${comic.coverPageSmall}`" alt="picture about the comic" class="pic">
+        <img :src="`${baseUrl}${comic.coverPageSmall}`" alt="picture about the comic" class="pic">
         <div class="content">
             <h1>{{ comic.title }}</h1>
             <div class="info">
@@ -102,6 +102,11 @@ export default {
     name: 'TopComic',
     props: {
         comic: Object
+    },
+    computed: {
+        baseUrl() {
+            return process.env.VUE_APP_API_BASE
+        }
     },
     methods: {
         handleClick() {
