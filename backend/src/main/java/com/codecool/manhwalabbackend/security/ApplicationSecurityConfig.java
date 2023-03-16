@@ -41,7 +41,7 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                 .addFilter(new JwtUsernamePasswordAuthenticationFilter(authenticationManager()))
                 .addFilterAfter(new JwtTokenVerifier(), JwtUsernamePasswordAuthenticationFilter.class)
                 .authorizeRequests()
-                .antMatchers("/api/manhwaLab/top/**", "/api/manhwaLab/manhwaList", "/api/manhwaLab/updateView/*", "/api/manhwaLab/genres", "/api/manhwaLab/themes", "/api/manhwaLab/types", "/api/manhwaLab/registration", "/login", "/registration", "/images/*", "/api/manhwaLab/*/recommendations").permitAll()
+                .antMatchers("/api/manhwaLab/top/**", "/api/manhwaLab/manhwaList", "/api/manhwaLab/updateView/**", "/api/manhwaLab/genres", "/api/manhwaLab/themes", "/api/manhwaLab/types", "/api/manhwaLab/registration", "/login", "/registration", "/images/*", "/api/manhwaLab/*/recommendations").permitAll()
                 .antMatchers("/api/manhwaLab/profile").hasRole(ApplicationUserRoles.USER.name())
                 .antMatchers("/api/manhwaLab/addToUser", "/api/manhwaLab/addToReading", "/api/manhwaLab/addToReadLater", "/api/manhwaLab/addToFinished", "/api/manhwaLab/addToFavourites").hasRole(ApplicationUserRoles.USER.name())
                 .antMatchers("/api/manhwaLab/removeFromReading", "/api/manhwaLab/removeFromReadLater", "/api/manhwaLab/removeFromFinished", "/api/manhwaLab/removeFromFavourites").hasRole(ApplicationUserRoles.USER.name())
