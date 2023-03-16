@@ -5,12 +5,16 @@
                 <div class="img-container">
                     <img :src="`${currentComic.coverPageBig}`" alt="Cover for the comic" class="pic">
                     <div class="btn-row">
-                        <button v-if="tokenStore.isTokenExists()" class="add" @click="handleAdd('Reading')">Add to Reading</button>
-                        <button v-if="tokenStore.isTokenExists()" class="add" @click="handleAdd('Later')">Add to Read Later</button>
+                        <button v-if="tokenStore.isTokenExists()" class="add" @click="handleAdd('Reading')">Add to
+                            Reading</button>
+                        <button v-if="tokenStore.isTokenExists()" class="add" @click="handleAdd('Later')">Add to Read
+                            Later</button>
                     </div>
                     <div class="btn-row">
-                        <button v-if="tokenStore.isTokenExists()" class="add" @click="handleAdd('Favourites')">Add to Favourites</button>
-                        <button v-if="tokenStore.isTokenExists()" class="add" @click="handleAdd('Finished')">Add to Finished</button>
+                        <button v-if="tokenStore.isTokenExists()" class="add" @click="handleAdd('Favourites')">Add to
+                            Favourites</button>
+                        <button v-if="tokenStore.isTokenExists()" class="add" @click="handleAdd('Finished')">Add to
+                            Finished</button>
                     </div>
                 </div>
                 <div class="content">
@@ -126,10 +130,7 @@
                 <button class="auth" v-if="tokenStore.isTokenExists()">Send</button>
             </div>
             <div class="comment-container">
-                <Comment />
-                <Comment />
-                <Comment />
-                <Comment />
+                <Comment v-for="comment in comments" :key="comment.id" :comment="comment"/>
             </div>
         </section>
         <ShortList title="Recommended" />
@@ -303,7 +304,7 @@ article,
     color: white !important;
 }
 
-.auth-container{
+.auth-container {
     width: 30vw;
     display: flex;
     justify-content: space-between;
@@ -420,6 +421,7 @@ import ShortList from '../components/ShortList'
 import { useComicStore } from '@/stores/ComicStore'
 import { useUserStore } from '@/stores/UserStore'
 import { useTokenStore } from '@/stores/TokenStore'
+import { useCommentStore } from '@/stores/CommentStore'
 import { storeToRefs } from 'pinia'
 
 export default {
@@ -445,7 +447,7 @@ export default {
             if (target == "Reading") {
                 userStore.updateReading(this.currentComic)
             }
-            
+
             if (target == "Later") {
                 userStore.updateLater(this.currentComic)
             }
@@ -462,15 +464,18 @@ export default {
     setup(props) {
         const comicStore = useComicStore()
         const tokenStore = useTokenStore()
+        const commentStore = useCommentStore()
 
         comicStore.getComicById(props.id)
         comicStore.increaseViewCount(props.id)
         comicStore.getRecommendations(props.id)
+        commentStore.getComments(props.id)
 
         const { currentComic } = storeToRefs(comicStore)
         const { token } = storeToRefs(tokenStore)
+        const {comments } = storeToRefs(commentStore)
 
-        return { comicStore, currentComic, tokenStore, token }
+        return { comicStore, currentComic, tokenStore, token, commentStore, comments }
     }
 }
 </script>
