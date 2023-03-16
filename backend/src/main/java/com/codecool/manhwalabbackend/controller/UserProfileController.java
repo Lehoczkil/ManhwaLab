@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("api/manhwaLab")
 @RequiredArgsConstructor
-@CrossOrigin({"http://localhost:8081", "http://manhwalab-static.s3-website.eu-central-1.amazonaws.com/"})
+@CrossOrigin({"http://localhost:8080", "http://localhost:8081", "http://manhwalab-static.s3-website.eu-central-1.amazonaws.com/"})
 public class UserProfileController {
 
     private final UserProfileService userProfileService;
