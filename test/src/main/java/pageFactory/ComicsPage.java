@@ -53,14 +53,14 @@ public class ComicsPage extends BasePage{
     public void selectType(String value){
         wait.until(ExpectedConditions.elementToBeClickable(typeDropDown));
         Select select = new Select(typeDropDown);
-        select.selectByValue(value);
+        select.selectByVisibleText(value);
     }
-    public void slectTheme(String value){
+    public void selectTheme(String value){
         wait.until(ExpectedConditions.elementToBeClickable(themeDropDown));
         Select select = new Select(themeDropDown);
         select.selectByValue(value);
     }
-    public void slectShortBy(String value){
+    public void selectShortBy(String value){
         wait.until(ExpectedConditions.elementToBeClickable(sortByDropDown));
         Select select = new Select(sortByDropDown);
         select.selectByValue(value);
@@ -69,6 +69,8 @@ public class ComicsPage extends BasePage{
         wait.until(ExpectedConditions.elementToBeClickable(goBtn));
         goBtn.click();
     }
+
+
 
     public void navigateToNotExistComic(){
         driver.get("http://localhost:8081/comics/9999");

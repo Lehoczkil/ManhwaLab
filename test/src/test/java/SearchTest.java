@@ -46,6 +46,42 @@ public class SearchTest {
         comicsPage.navigateToNotExistComic();
         Assertions.assertEquals(comicsPage.getErrorMsg(),NOT_EXISTING_MANWHA_ERROR_MSG);
     }
+
+    // dropdownokat kell meg megcsinalni
+
+    @Test
+    public void selectGenre() throws InterruptedException {
+        Thread.sleep(1000);
+        comicsPage.selectGenre("Action");
+        comicsPage.clickGoBtn();
+        Thread.sleep(2000);
+        comicsPage.findComicByTitel("Villain To Kill").click();
+        Thread.sleep(6000);
+        Assertions.assertEquals("Action", manhwaPage.getElementByText("Action").getText());
+    }
+
+    @Test
+    public void selectTheme() throws InterruptedException {
+        Thread.sleep(1000);
+        comicsPage.selectTheme("Hero");
+        comicsPage.clickGoBtn();
+        Thread.sleep(2000);
+        comicsPage.findComicByTitel("Villain To Kill").click();
+        Thread.sleep(6000);
+        Assertions.assertEquals("Hero", manhwaPage.getElementByText("Hero").getText());
+    }
+
+    @Test
+    public void selectType() throws InterruptedException {
+        Thread.sleep(1000);
+        comicsPage.selectType("MANHWA");
+        comicsPage.clickGoBtn();
+        Thread.sleep(2000);
+        comicsPage.findComicByTitel("Villain To Kill").click();
+        Thread.sleep(6000);
+        Assertions.assertEquals("MANHWA", manhwaPage.getElementByText("MANHWA").getText());
+    }
+
     @AfterEach
     public void tearDown(){
         loginPage.quit();
