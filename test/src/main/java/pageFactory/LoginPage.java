@@ -79,6 +79,7 @@ public class LoginPage extends BasePage {
         wait.until(ExpectedConditions.elementToBeClickable(browseBtn));
     }
 
+
     public void quit () {
         WebDriverFactory.shutDown();
     }
