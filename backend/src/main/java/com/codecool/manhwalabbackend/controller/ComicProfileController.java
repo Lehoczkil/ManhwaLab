@@ -31,12 +31,13 @@ public class ComicProfileController {
     }
 
     @PostMapping(value = "/updateView/{comicId}")
-    public ResponseEntity<String> updateComicViewNumbers(@PathVariable Long comicId, ServerHttpResponse serverHttpResponse) {
-        serverHttpResponse.getHeaders().add("Access-Control-Max-Age" ,"600" );
+    public ResponseEntity<String> updateComicViewNumbers(@PathVariable Long comicId) {
         comicProfileService.updateComicViews(comicId);
         popularityService.updateDailyViewForComic(comicId, LocalDate.now());
         recommendationsService.getRecommendedComics(comicId);
-        return new ResponseEntity<>("Success", HttpStatus.CREATED);
+        ResponseEntity<String> responseEntity = new ResponseEntity<>("Success", HttpStatus.CREATED);
+        responseEntity.getHeaders().add("Access-Control-Max-Age" ,"600" );
+        return responseEntity;
     }
 
     @GetMapping(value = "/{comicId}/recommendations")
