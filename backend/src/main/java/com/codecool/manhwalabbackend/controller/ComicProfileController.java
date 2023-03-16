@@ -6,6 +6,7 @@ import com.codecool.manhwalabbackend.service.ComicProfileService;
 import com.codecool.manhwalabbackend.service.popularity.PopularityService;
 import com.codecool.manhwalabbackend.service.recommendations.ComicRecommendationsService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.server.ServerHttpResponse;
@@ -35,9 +36,14 @@ public class ComicProfileController {
         comicProfileService.updateComicViews(comicId);
         popularityService.updateDailyViewForComic(comicId, LocalDate.now());
         recommendationsService.getRecommendedComics(comicId);
-        ResponseEntity<String> responseEntity = new ResponseEntity<>("Success", HttpStatus.CREATED);
-        responseEntity.getHeaders().add("Access-Control-Max-Age" ,"600" );
-        return responseEntity;
+//
+//        ResponseEntity<String> responseEntity = new ResponseEntity<>("Success", HttpStatus.CREATED);
+//        responseEntity.getHeaders().add("Access-Control-Max-Age" ,"600" );
+//        return responseEntity;
+
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.set("Access-Control-Max-Age" ,"600");
+        return ResponseEntity.ok().headers(httpHeaders).body("Success");
     }
 
     @GetMapping(value = "/{comicId}/recommendations")
