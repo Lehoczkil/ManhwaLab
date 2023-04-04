@@ -1,11 +1,21 @@
 <template>
     <div class="comment">
-        <div class="profile-pic"></div>
+        <img src="../assets/default-pic.jpg" class="profile-pic">
         <div class="content">
             <div class="name-container">
                 <h1>{{ comment.parentUserProfile.username }}</h1>
-                <div class="date">
-                    <p>{{ comment.commendtedAt }}</p>
+                <div class="top-bar">
+                    <div class="date-container">
+                        <p>{{ comment.commendtedAt }}</p>
+                    </div>
+                    <div class="crud-container">
+                        <button>
+                            <img src="../assets/delete.png" class="star" alt="delete icon">
+                        </button>
+                        <button>
+                            <img src="../assets/edit.png" class="star" alt="edit icon">
+                        </button>
+                    </div>
                 </div>
             </div>
             <div class="bottom-part">
@@ -19,13 +29,13 @@
                             <button>
                                 <img class="star" src="../assets/like.png" alt="like">
                             </button>
-                            <p>{{comment.likes}}</p>
+                            <p>{{ comment.likes }}</p>
                         </div>
                         <div class="like">
                             <button>
                                 <img class="star" src="../assets/dislike.png" alt="dislike">
                             </button>
-                            <p>{{comment.dislikes}}</p>
+                            <p>{{ comment.dislikes }}</p>
                         </div>
                     </div>
                     <div class="interactions">
@@ -43,6 +53,16 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 1vh;
+}
+
+.top-bar, .crud-container {
+    width: 20%;
+    justify-content: space-between;
+    display: flex;
+}
+
+.crud-container, .date-container {
+    width: 50%;
 }
 
 .description {
@@ -70,7 +90,7 @@
     align-items: center;
 }
 
-.like button {
+.like button, .crud-container button {
     background: transparent;
     border: none;
 }
@@ -104,7 +124,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height:100%;
+    height: 100%;
 }
 
 .action {
@@ -131,7 +151,7 @@
         width: 100px;
     }
 
-    .date p {
+    .crud-container p {
         font-weight: 600;
     }
 
@@ -144,6 +164,7 @@
         width: 15vw;
         font-size: 1rem;
     }
+
     .interactions {
         width: 40vw;
     }
