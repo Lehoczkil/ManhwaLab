@@ -1,5 +1,4 @@
-import { defineStore, storeToRefs } from "pinia";
-import { useComicStore } from "./ComicStore";
+import { defineStore } from "pinia";
 
 export const useCommentStore = defineStore("commentStore", {
   state: () => ({
@@ -7,14 +6,10 @@ export const useCommentStore = defineStore("commentStore", {
   }),
   actions: {
     async getComments(comicId) {
-      const comicStore = useComicStore;
-      const { currentComic } = storeToRefs(comicStore);
-      const comicId = currentComic.comicId;
-
-      const comments = await fetch(`api/manhwaLab/comments/${comicId}`);
-      this.comments = comments.json();
+      const comments = await fetch(`/api/manhwaLab/comments/${comicId}`);
+      this.comments = await comments.json();
     },
-    async addComment(text, type, comicId) {
+    async addComment(text, comicId) {
       await fetch(`/api/manhwaLab/add-comment/${comicId}`, {
         method: "POST",
         headers: {
@@ -22,11 +17,10 @@ export const useCommentStore = defineStore("commentStore", {
           Authorization: JSON.parse(localStorage.getItem("tokenStore")).token,
         },
         body: JSON.stringify({
-          commentType: type,
-          text: text,
-        }),
+          title: text
+        })
       });
-      this.getComments()
+      this.getComments(comicId)
     },
     async editComment(text, comicId) {
       await fetch(`/api/manhwaLab/edit-comment/${comicId}`, {
@@ -39,7 +33,7 @@ export const useCommentStore = defineStore("commentStore", {
           text: text,
         }),
       });
-      this.getComments()
+      this.getComments(comicId)
     },
     async removeComment(commentId, comicId) {
       await fetch(`/api/manhwaLab/remove-comment/${comicId}`, {
@@ -52,7 +46,7 @@ export const useCommentStore = defineStore("commentStore", {
             commentId: commentId
         })
       });
-      this.getComments()
+      this.getComments(comicId)
     },
   },
 });
