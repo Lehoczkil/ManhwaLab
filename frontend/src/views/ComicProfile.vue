@@ -119,18 +119,16 @@
             </div>
         </main>
         <section class="comment-section">
-            <div style=" width: 100%;">
+            <div style=" width: 100%;" v-if="tokenStore.isTokenExists()">
                 <textarea placeholder="Join the discussion..."
-                    style="width: 100%; padding: 1vw; max-width: 100%; border-radius: clamp(5px, 0.7vw, 20px)"></textarea>
+                    style="width: 100%; padding: 1vw; max-width: 100%; border-radius: clamp(5px, 0.7vw, 20px)"
+                    id="commentText"></textarea>
             </div>
             <div class="auth-container">
-                <button class="auth" v-if="!tokenStore.isTokenExists()">Sign in</button>
-                <button class="auth" v-if="!tokenStore.isTokenExists()">Login</button>
-
-                <button class="auth" v-if="tokenStore.isTokenExists()">Send</button>
+                <button class="auth" v-if="tokenStore.isTokenExists()" @click="sendComment">Send</button>
             </div>
             <div class="comment-container">
-                <Comment v-for="comment in comments" :key="comment.id" :comment="comment"/>
+                <Comment v-for="comment in comments" :key="comment.id" :comment="comment" />
             </div>
         </section>
         <ShortList title="Recommended" />
@@ -459,6 +457,10 @@ export default {
             if (target == "Favourites") {
                 userStore.updateFavourites(this.currentComic)
             }
+        },
+        sendComment() {
+            const commentText = document.querySelector("#commentText").value;
+            this.commentStore.addComment(commentText, this.id);
         }
     },
     setup(props) {
@@ -473,7 +475,9 @@ export default {
 
         const { currentComic } = storeToRefs(comicStore)
         const { token } = storeToRefs(tokenStore)
-        const {comments } = storeToRefs(commentStore)
+        const { comments } = storeToRefs(commentStore)
+
+        console.log(comments)
 
         return { comicStore, currentComic, tokenStore, token, commentStore, comments }
     }
