@@ -477,7 +477,6 @@ export default {
         const { token } = storeToRefs(tokenStore)
         const { comments } = storeToRefs(commentStore)
 
-        console.log(comments)
 
         return { comicStore, currentComic, tokenStore, token, commentStore, comments }
     }
