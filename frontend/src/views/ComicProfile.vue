@@ -460,7 +460,9 @@ export default {
         },
         sendComment() {
             const commentText = document.querySelector("#commentText").value;
-            this.commentStore.addComment(commentText, this.id);
+            if (commentText.length > 0) {
+                this.commentStore.addComment(commentText, this.id);
+            }
         }
     },
     setup(props) {
