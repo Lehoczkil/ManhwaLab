@@ -9,7 +9,7 @@
                         <p>{{ comment.commendtedAt }}</p>
                     </div>
                     <div class="crud-container">
-                        <button>
+                        <button @click="deleteComment">
                             <img src="../assets/delete.png" class="star" alt="delete icon">
                         </button>
                         <button>
@@ -55,13 +55,15 @@
     margin-bottom: 1vh;
 }
 
-.top-bar, .crud-container {
+.top-bar,
+.crud-container {
     width: 20%;
     justify-content: space-between;
     display: flex;
 }
 
-.crud-container, .date-container {
+.crud-container,
+.date-container {
     width: 50%;
 }
 
@@ -90,7 +92,8 @@
     align-items: center;
 }
 
-.like button, .crud-container button {
+.like button,
+.crud-container button {
     background: transparent;
     border: none;
 }
@@ -172,6 +175,7 @@
 </style>
 
 <script>
+import { useCommentStore } from '@/stores/CommentStore'
 export default {
     name: "Comment",
     props: {
@@ -181,6 +185,15 @@ export default {
                 return {}
             }
         }
+    },
+    methods: {
+        deleteComment() {
+            this.commentStore.deleteComment(this.comment.id, this.comment.parentComic.id);
+        }
+    },
+    setup() {
+        const commentStore = useCommentStore()
+        return { commentStore }
     }
 }
 </script>
