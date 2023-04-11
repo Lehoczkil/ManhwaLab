@@ -35,15 +35,15 @@ export const useCommentStore = defineStore("commentStore", {
       });
       this.getComments(comicId)
     },
-    async removeComment(commentId, comicId) {
-      await fetch(`/api/manhwaLab/remove-comment/${comicId}`, {
+    async deleteComment(commentId, comicId) {
+      await fetch(`/api/manhwaLab/delete-comment/${comicId}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
           Authorization: JSON.parse(localStorage.getItem("tokenStore")).token,
         },
         body: JSON.stringify({
-            commentId: commentId
+            title: commentId
         })
       });
       this.getComments(comicId)
