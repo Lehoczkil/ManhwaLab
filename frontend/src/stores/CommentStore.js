@@ -1,4 +1,5 @@
 import { defineStore } from "pinia";
+import { useUserStore } from "./UserStore";
 
 export const useCommentStore = defineStore("commentStore", {
   state: () => ({
@@ -48,6 +49,11 @@ export const useCommentStore = defineStore("commentStore", {
         })
       });
       this.getComments(comicId);
+    },
+    isUsersComment(comment) {
+      const userStore = useUserStore();
+      userStore.getUser();
+      return comment.parentUserProfile.username === userStore.username;
     }
   },
 });
