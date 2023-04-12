@@ -39,11 +39,15 @@
                             <p>{{ comment.dislikes }}</p>
                         </div>
                     </div>
-                    <button v-if="!isEditing" class="action">Reply</button>
+                    <button v-if="!isEditing" @click="reply" class="action">Reply</button>
                     <button v-if="isEditing" @click="sendEditedComment" class="action">Save</button>
                 </div>
             </div>
         </div>
+    </div>
+    <div v-if="isReplying" class="reply">
+        <input type="text" class="reply-input" placeholder="Reply...">
+        <button @click="sendReply" class="send-reply">Send</button>
     </div>
 </template>
 
@@ -188,7 +192,8 @@ export default {
     },
     data() {
         return {
-            isEditing: false
+            isEditing: false,
+            isReplying: false,
         }
     },
     methods: {
@@ -205,6 +210,14 @@ export default {
         },
         increaseLike(isLike) {
             this.commentStore.increaseLike(this.comment.parentComic.id, this.comment.id, isLike);
+        },
+        reply() {
+            this.isReplying = true;
+        },
+        sendReply() {
+            this.isReplying = false;
+            const message = document.querySelector('.reply-input').value;
+            this.commentStore.addReply(message, this.comment.parentComic.id);
         }
     },
     setup(props) {
