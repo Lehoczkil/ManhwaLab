@@ -18,10 +18,10 @@ export const useCommentStore = defineStore("commentStore", {
           Authorization: JSON.parse(localStorage.getItem("tokenStore")).token,
         },
         body: JSON.stringify({
-          title: text
-        })
+          title: text,
+        }),
       });
-      this.getComments(comicId)
+      this.getComments(comicId);
     },
     async deleteComment(commentId, comicId) {
       await fetch(`/api/manhwaLab/delete-comment/${comicId}`, {
@@ -31,10 +31,10 @@ export const useCommentStore = defineStore("commentStore", {
           Authorization: JSON.parse(localStorage.getItem("tokenStore")).token,
         },
         body: JSON.stringify({
-            title: commentId
-        })
+          title: commentId,
+        }),
       });
-      this.getComments(comicId)
+      this.getComments(comicId);
     },
     async editComment(commentId, text, comicId) {
       await fetch(`/api/manhwaLab/edit-comment/${comicId}`, {
@@ -44,16 +44,39 @@ export const useCommentStore = defineStore("commentStore", {
           Authorization: JSON.parse(localStorage.getItem("tokenStore")).token,
         },
         body: JSON.stringify({
-            commentId: commentId,
-            text: text
-        })
+          commentId: commentId,
+          text: text,
+        }),
       });
+      this.getComments(comicId);
+    },
+    async increaseLike(comicId, commentId, isLike) {
+      if (isLike) {
+        await fetch(`/api/manhwaLab/like/${commentId}`, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: JSON.parse(localStorage.getItem("tokenStore")).token,
+          },
+          body: JSON.stringify({
+            title: commentId,
+          }),
+        });
+      } else {
+        await fetch(`/api/manhwaLab/dislike/${commentId}`, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: JSON.parse(localStorage.getItem("tokenStore")).token,
+          }
+        });
+      }
       this.getComments(comicId);
     },
     isUsersComment(comment) {
       const userStore = useUserStore();
       userStore.getUser();
       return comment.parentUserProfile.username === userStore.username;
-    }
+    },
   },
 });
