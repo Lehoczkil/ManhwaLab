@@ -22,7 +22,7 @@
                 <p v-if="!isEditing" class="description">
                     {{ comment.text }}
                 </p>
-                <input v-if="isEditing" id="comment-text" type="text" :placeholder="comment.text">
+                <input v-if="isEditing" class="comment-text" id="comment-text" type="text" :placeholder="comment.text">
 
                 <div class="actions">
                     <div class="likes">
@@ -130,6 +130,15 @@
     border: none;
     color: white;
     border-radius: var(--radius);
+}
+
+.comment-text {
+    width: clamp(100px, 10vw, 200px);
+    background: var(--dark-gray);
+    padding-left: 1rem;
+    color: white;
+    border: none;
+    height: 2rem;
 }
 
 @media(max-width: 950px) {
