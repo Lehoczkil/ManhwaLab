@@ -12,16 +12,17 @@
                         <button @click="deleteComment">
                             <img src="../assets/delete.png" class="star" alt="delete icon">
                         </button>
-                        <button>
+                        <button @click="editComment">
                             <img src="../assets/edit.png" class="star" alt="edit icon">
                         </button>
                     </div>
                 </div>
             </div>
             <div class="bottom-part">
-                <p class="description">
+                <p v-if="!isEditing" class="description">
                     {{ comment.text }}
                 </p>
+                <input v-if="isEditing" id="comment-text" type="text" :placeholder="comment.text">
 
                 <div class="actions">
                     <div class="likes">
@@ -38,10 +39,8 @@
                             <p>{{ comment.dislikes }}</p>
                         </div>
                     </div>
-                    <div class="interactions">
-                        <button class="action">Reply</button>
-                        <button class="action">Share</button>
-                    </div>
+                        <button v-if="!isEditing" class="action">Reply</button>
+                        <button v-if="isEditing" @click="sendEditedComment" class="action" >Save</button>
                 </div>
             </div>
         </div>
@@ -73,17 +72,12 @@
 }
 
 .actions,
-.interactions,
 .likes,
 .like {
     display: flex;
     justify-content: space-between;
 }
 
-.likes,
-.interactions {
-    width: clamp(200px, 12vw, 1000px);
-}
 
 .like {
     width: clamp(50px, 4vw, 250px);
@@ -167,10 +161,6 @@
         width: 15vw;
         font-size: 1rem;
     }
-
-    .interactions {
-        width: 40vw;
-    }
 }
 </style>
 
@@ -186,9 +176,22 @@ export default {
             }
         }
     },
+    data() {
+        return {
+            isEditing: false
+        }
+    },
     methods: {
         deleteComment() {
             this.commentStore.deleteComment(this.comment.id, this.comment.parentComic.id);
+        },
+        editComment() {
+            this.isEditing = true;
+        },
+        sendEditedComment() {
+            const text = document.querySelector('#comment-text').value;
+            this.commentStore.editComment(this.comment.id, text, this.comment.parentComic.id);
+            this.isEditing = false;
         }
     },
     setup() {
