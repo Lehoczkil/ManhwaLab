@@ -22,19 +22,6 @@ export const useCommentStore = defineStore("commentStore", {
       });
       this.getComments(comicId)
     },
-    async editComment(text, comicId) {
-      await fetch(`/api/manhwaLab/edit-comment/${comicId}`, {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: JSON.parse(localStorage.getItem("tokenStore")).token,
-        },
-        body: JSON.stringify({
-          text: text,
-        }),
-      });
-      this.getComments(comicId)
-    },
     async deleteComment(commentId, comicId) {
       await fetch(`/api/manhwaLab/delete-comment/${comicId}`, {
         method: "DELETE",
@@ -48,5 +35,19 @@ export const useCommentStore = defineStore("commentStore", {
       });
       this.getComments(comicId)
     },
+    async editComment(commentId, text, comicId) {
+      await fetch(`/api/manhwaLab/edit-comment/${comicId}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: JSON.parse(localStorage.getItem("tokenStore")).token,
+        },
+        body: JSON.stringify({
+            commentId: commentId,
+            text: text
+        })
+      });
+      this.getComments(comicId);
+    }
   },
 });
