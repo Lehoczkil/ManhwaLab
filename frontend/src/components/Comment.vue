@@ -26,13 +26,13 @@
 
                 <div class="actions">
                     <div class="likes">
-                        <div class="like">
+                        <div v-if="!isUsersComment" class="like">
                             <button @click="increaseLike(true)">
                                 <img class="star" src="../assets/like.png" alt="like">
                             </button>
                             <p>{{ comment.likes }}</p>
                         </div>
-                        <div class="like">
+                        <div v-if="!isUsersComment" class="like">
                             <button @click="increaseLike(false)">
                                 <img class="star" src="../assets/dislike.png" alt="dislike">
                             </button>
@@ -127,6 +127,7 @@
 .action {
     background: var(--blue);
     width: clamp(90px, 2vw, 1000px);
+    height: 2rem;
     border: none;
     color: white;
     border-radius: var(--radius);
