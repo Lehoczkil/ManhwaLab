@@ -23,6 +23,19 @@ export const useCommentStore = defineStore("commentStore", {
       });
       this.getComments(comicId);
     },
+    async addReply(text, comicId) {
+      await fetch(`/api/manhwaLab/add-reply/${comicId}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: JSON.parse(localStorage.getItem("tokenStore")).token,
+        },
+        body: JSON.stringify({
+          title: text,
+        }),
+      });
+      this.getComments(comicId);
+    },
     async deleteComment(commentId, comicId) {
       await fetch(`/api/manhwaLab/delete-comment/${comicId}`, {
         method: "DELETE",
