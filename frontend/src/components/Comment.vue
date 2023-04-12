@@ -8,7 +8,7 @@
                     <div class="date-container">
                         <p>{{ comment.commendtedAt }}</p>
                     </div>
-                    <div class="crud-container">
+                    <div v-if="isUsersComment" class="crud-container">
                         <button @click="deleteComment">
                             <img src="../assets/delete.png" class="star" alt="delete icon">
                         </button>
@@ -194,9 +194,10 @@ export default {
             this.isEditing = false;
         }
     },
-    setup() {
+    setup(props) {
         const commentStore = useCommentStore()
-        return { commentStore }
+        const isUsersComment = commentStore.isUsersComment(props.comment);
+        return { commentStore, isUsersComment }
     }
 }
 </script>
