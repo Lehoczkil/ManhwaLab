@@ -27,20 +27,20 @@
                 <div class="actions">
                     <div class="likes">
                         <div class="like">
-                            <button>
+                            <button @click="increaseLike(true)">
                                 <img class="star" src="../assets/like.png" alt="like">
                             </button>
                             <p>{{ comment.likes }}</p>
                         </div>
                         <div class="like">
-                            <button>
+                            <button @click="increaseLike(false)">
                                 <img class="star" src="../assets/dislike.png" alt="dislike">
                             </button>
                             <p>{{ comment.dislikes }}</p>
                         </div>
                     </div>
-                        <button v-if="!isEditing" class="action">Reply</button>
-                        <button v-if="isEditing" @click="sendEditedComment" class="action" >Save</button>
+                    <button v-if="!isEditing" class="action">Reply</button>
+                    <button v-if="isEditing" @click="sendEditedComment" class="action">Save</button>
                 </div>
             </div>
         </div>
@@ -201,6 +201,9 @@ export default {
             const text = document.querySelector('#comment-text').value;
             this.commentStore.editComment(this.comment.id, text, this.comment.parentComic.id);
             this.isEditing = false;
+        },
+        increaseLike(isLike) {
+            this.commentStore.increaseLike(this.comment.parentComic.id, this.comment.id, isLike);
         }
     },
     setup(props) {
