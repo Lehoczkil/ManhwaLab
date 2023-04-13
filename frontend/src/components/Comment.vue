@@ -217,7 +217,7 @@ export default {
         sendReply() {
             this.isReplying = false;
             const message = document.querySelector('.reply-input').value;
-            this.commentStore.addReply(message, this.comment.parentComic.id);
+            this.commentStore.addReply(message, this.comment.parentComic.id, this.comment.id);
         }
     },
     setup(props) {
