@@ -47,7 +47,10 @@
     </div>
     <div v-if="isReplying" class="reply">
         <textarea type="text" class="reply-input" placeholder="Reply..." cols="30" rows="10"></textarea>
-        <button @click="sendReply" class="send-reply action">Send</button>
+        <div class="reply-btns">
+            <button @click="sendReply" class="action">Send</button>
+            <button @click="cancel" class="action">Cancel</button>
+        </div>
     </div>
 </template>
 
@@ -57,13 +60,21 @@
     display: flex;
     flex-direction: column;
     width: 60%;
+    min-width: 290px;
     margin-left: 5rem;
 }
 
 .reply-input {
     border-radius: 0.375rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
     padding: 1rem;
+}
+
+.reply-btns {
+    width: 18%;
+    min-width: 170px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .name-container {
@@ -232,6 +243,9 @@ export default {
             this.isReplying = false;
             const message = document.querySelector('.reply-input').value;
             this.commentStore.addReply(message, this.comment.parentComic.id, this.comment.id);
+        },
+        cancel() {
+            this.isReplying = false;
         }
     },
     setup(props) {
