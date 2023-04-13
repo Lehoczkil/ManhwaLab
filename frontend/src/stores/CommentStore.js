@@ -10,6 +10,9 @@ export const useCommentStore = defineStore("commentStore", {
       const comments = await fetch(`/api/manhwaLab/comments/${comicId}`);
       this.comments = await comments.json();
     },
+    async getReplies(commentId) {
+      return await fetch(`/api/manhwaLab/replies/${commentId}`).json();
+    },
     async addComment(text, comicId) {
       await fetch(`/api/manhwaLab/add-comment/${comicId}`, {
         method: "POST",
@@ -23,7 +26,7 @@ export const useCommentStore = defineStore("commentStore", {
       });
       this.getComments(comicId);
     },
-    async addReply(text, comicId) {
+    async addReply(text, comicId, commentId) {
       await fetch(`/api/manhwaLab/add-reply/${comicId}`, {
         method: "POST",
         headers: {
@@ -31,7 +34,8 @@ export const useCommentStore = defineStore("commentStore", {
           Authorization: JSON.parse(localStorage.getItem("tokenStore")).token,
         },
         body: JSON.stringify({
-          title: text,
+          commentId: commentId,
+          text: text,
         }),
       });
       this.getComments(comicId);
