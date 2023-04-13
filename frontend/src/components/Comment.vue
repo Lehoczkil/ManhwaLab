@@ -46,12 +46,26 @@
         </div>
     </div>
     <div v-if="isReplying" class="reply">
-        <input type="text" class="reply-input" placeholder="Reply...">
-        <button @click="sendReply" class="send-reply">Send</button>
+        <textarea type="text" class="reply-input" placeholder="Reply..." cols="30" rows="10"></textarea>
+        <button @click="sendReply" class="send-reply action">Send</button>
     </div>
 </template>
 
 <style scoped>
+
+.reply {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    margin-left: 5rem;
+}
+
+.reply-input {
+    border-radius: 0.375rem;
+    margin-bottom: 0.5rem;
+    padding: 1rem;
+}
+
 .name-container {
     display: flex;
     justify-content: space-between;
