@@ -77,7 +77,6 @@ public class ComicRecommendationsService {
             for (Genre currentComicGenre : recommendationDTO.getCurrentComic().getGenreList()) {
                 if (currentComicGenre.getName().equals(genre.getName())) {
                     recommendationValue += 25;
-//                    System.out.println(recommendationValue + "||" + currentlyCalculatedComic.getTitle());
                     break;
                 }
             }
