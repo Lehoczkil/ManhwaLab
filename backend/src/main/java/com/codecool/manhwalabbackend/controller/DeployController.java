@@ -1,6 +1,5 @@
 package com.codecool.manhwalabbackend.controller;
 
-import org.springframework.security.access.method.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,8 +19,8 @@ public class DeployController {
         return "index.html";
     }
 
-    @GetMapping("comics/{comicId}")
-    public String getComicProfilePage(@PathVariable int comicId) {
+    @GetMapping("comics/:id")
+    public String getComicProfilePageForStatic(@PathVariable String id) {
         return "index.html";
 
     }
