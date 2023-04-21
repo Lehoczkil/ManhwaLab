@@ -127,9 +127,11 @@
             <div class="auth-container">
                 <button class="auth" v-if="tokenStore.isTokenExists()" @click="sendComment">Send</button>
             </div>
-            <div class="comment-container">
-                <Comment v-for="comment in comments" :key="comment.id" :comment="comment" />
-            </div>
+            <Suspense>
+                <div class="comment-container">
+                    <Comment v-for="comment in comments" :key="comment.id" :comment="comment" />
+                </div>
+            </Suspense>
         </section>
         <ShortList title="Recommended" />
     </article>
@@ -426,7 +428,7 @@ export default {
     name: 'ComicProfile',
     components: {
         Comment,
-        ShortList
+        ShortList,
     },
     props: {
         id: String

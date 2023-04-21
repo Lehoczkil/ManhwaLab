@@ -4,6 +4,7 @@ import { useUserStore } from "./UserStore";
 export const useCommentStore = defineStore("commentStore", {
   state: () => ({
     comments: [],
+    currentReplies: [],
   }),
   actions: {
     async getComments(comicId) {
@@ -11,7 +12,8 @@ export const useCommentStore = defineStore("commentStore", {
       this.comments = await comments.json();
     },
     async getReplies(commentId) {
-      return await fetch(`/api/manhwaLab/replies/${commentId}`).json();
+      const replies = await fetch(`/api/manhwaLab/replies/${commentId}`);
+      return await replies.json();
     },
     async addComment(text, comicId) {
       await fetch(`/api/manhwaLab/add-comment/${comicId}`, {
@@ -39,6 +41,7 @@ export const useCommentStore = defineStore("commentStore", {
         }),
       });
       this.getComments(comicId);
+      this.getReplies(commentId)
     },
     async deleteComment(commentId, comicId) {
       await fetch(`/api/manhwaLab/delete-comment/${comicId}`, {

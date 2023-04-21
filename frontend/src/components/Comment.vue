@@ -52,10 +52,10 @@
             <button @click="cancel" class="action">Cancel</button>
         </div>
     </div>
+    <Replies :replies="replies" />
 </template>
 
 <style scoped>
-
 .reply {
     display: flex;
     flex-direction: column;
@@ -72,7 +72,7 @@
 
 .reply-btns {
     width: 18%;
-    min-width: 170px;
+    min-width: 190px;
     display: flex;
     justify-content: space-between;
 }
@@ -133,7 +133,6 @@
 }
 
 .profile-pic {
-    height: clamp(200px, 15vw, 1400px);
     width: clamp(200px, 15vw, 1400px);
     background: white;
 }
@@ -183,7 +182,6 @@
     .profile-pic {
         margin-inline: auto;
         margin-bottom: 2vh;
-        height: 100px;
         width: 100px;
     }
 
@@ -205,8 +203,13 @@
 
 <script>
 import { useCommentStore } from '@/stores/CommentStore'
+import Replies from './Replies'
+
 export default {
     name: "Comment",
+    components: {
+        Replies,
+    },
     props: {
         comment: {
             type: Object,
@@ -248,10 +251,15 @@ export default {
             this.isReplying = false;
         }
     },
-    setup(props) {
+    async setup(props) {
         const commentStore = useCommentStore()
         const isUsersComment = commentStore.isUsersComment(props.comment);
-        return { commentStore, isUsersComment }
+
+        const replies = await commentStore.getReplies(props.comment.id);
+        
+        console.log(replies)
+
+        return { commentStore, isUsersComment, replies }
     }
 }
 </script>
