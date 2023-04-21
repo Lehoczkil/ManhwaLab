@@ -16,7 +16,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @RestController
-@CrossOrigin({"http://localhost:8080", "http://localhost:8081", "http://manhwalab-static.s3-website.eu-central-1.amazonaws.com/"})
+@CrossOrigin({"http://localhost:8080", "http://localhost:8081"})
 @RequestMapping("/api/manhwaLab")
 @RequiredArgsConstructor
 public class ComicProfileController {
