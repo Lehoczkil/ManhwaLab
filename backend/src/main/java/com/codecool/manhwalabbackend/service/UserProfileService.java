@@ -63,7 +63,6 @@ public class UserProfileService implements UserDetailsService {
     }
 
     //    ne legyen minden String és akkor nem kell valueOf-ozni :D
-//    meg amúgy a save az csinál egy új user-t, so elvileg az nem editeli, hanem lement egy újat, bár idk mi van akkor ha kiszeded db-ből és utána save-eled, ha megnézted és megcsinálja akkor mind1, csak fura :D
     public void updateUser(String username, UpdateUserDTO updateUserDTO) {
         UserProfile userProfile = userProfileRepository.getUserProfileByUsername(username);
         userProfile.setUsername(updateUserDTO.getUsername());
