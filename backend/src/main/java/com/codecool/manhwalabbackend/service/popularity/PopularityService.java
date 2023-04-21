@@ -73,7 +73,9 @@ public class PopularityService {
     private Pageable getPageable() {
         Sort sort = Sort.by(Sort.Direction.DESC, "viewsThisDay");
 //        change magic numbers
-        return PageRequest.of(0, 5, sort);
+        int from = 0;
+        int size = 5;
+        return PageRequest.of(from, size, sort);
     }
 
     public void updateDailyViewForComic(Long comicId, LocalDate date){
