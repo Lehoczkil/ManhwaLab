@@ -28,13 +28,13 @@
                     <div class="actions">
                         <div class="likes">
                             <div class="like">
-                                <button>
+                                <button @click="increaseLike(reply, true)">
                                     <img class="star" src="../assets/like.png" alt="like">
                                 </button>
                                 <p>{{ reply.likes }}</p>
                             </div>
                             <div class="like">
-                                <button>
+                                <button @click="increaseLike(reply, false)">
                                     <img class="star" src="../assets/dislike.png" alt="dislike">
                                 </button>
                                 <p>{{ reply.dislikes }}</p>
@@ -88,6 +88,11 @@ export default {
         },
         isUsersComment(reply) {
             return this.commentStore.isUsersComment(reply);
+        },
+        async increaseLike(reply, isLike) {
+            await this.commentStore.increaseLike(reply.parentComic.id, reply.id, isLike);
+            const newReplies = await this.commentStore.getReplies(reply.parentCommentId);
+            this.$emit('update:replies', newReplies);
         }
     },
     setup() {
