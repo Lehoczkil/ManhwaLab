@@ -52,7 +52,7 @@
             <button @click="cancel" class="action">Cancel</button>
         </div>
     </div>
-    <Replies :replies="replies" />
+    <Replies v-model:replies="replies" />
 </template>
 
 <style scoped>
@@ -204,6 +204,7 @@
 <script>
 import { useCommentStore } from '@/stores/CommentStore'
 import Replies from './Replies'
+import { ref } from 'vue'
 
 export default {
     name: "Comment",
@@ -216,12 +217,6 @@ export default {
             default() {
                 return {}
             }
-        }
-    },
-    data() {
-        return {
-            isEditing: false,
-            isReplying: false,
         }
     },
     methods: {
@@ -242,10 +237,11 @@ export default {
         reply() {
             this.isReplying = true;
         },
-        sendReply() {
+        async sendReply() {
             this.isReplying = false;
             const message = document.querySelector('.reply-input').value;
-            this.commentStore.addReply(message, this.comment.parentComic.id, this.comment.id);
+            await this.commentStore.addReply(message, this.comment.parentComic.id, this.comment.id);
+            this.replies = await this.commentStore.getReplies(this.comment.id);
         },
         cancel() {
             this.isReplying = false;
@@ -255,11 +251,12 @@ export default {
         const commentStore = useCommentStore()
         const isUsersComment = commentStore.isUsersComment(props.comment);
 
-        const replies = await commentStore.getReplies(props.comment.id);
-        
-        console.log(replies)
 
-        return { commentStore, isUsersComment, replies }
+        const isEditing = ref(false);
+        const isReplying =  ref(false);
+        const replies = ref(await commentStore.getReplies(props.comment.id));
+
+        return { commentStore, isUsersComment, isEditing, isReplying, replies }
     }
 }
 </script>
