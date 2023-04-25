@@ -228,7 +228,9 @@ export default {
         },
         sendEditedComment() {
             const text = document.querySelector('#comment-text').value;
-            this.commentStore.editComment(this.comment.id, text, this.comment.parentComic.id);
+            if (text.length > 0) {
+                this.commentStore.editComment(this.comment.id, text, this.comment.parentComic.id);
+            }
             this.isEditing = false;
         },
         increaseLike(isLike) {
