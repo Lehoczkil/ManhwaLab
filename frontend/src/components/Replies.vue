@@ -13,16 +13,18 @@
                             <button @click="deleteReply(reply)">
                                 <img src="../assets/delete.png" class="star" alt="delete icon">
                             </button>
-                            <button @click="editReply">
+                            <button @click="editReply(reply)">
                                 <img src="../assets/edit.png" class="star" alt="edit icon">
                             </button>
                         </div>
                     </div>
                 </div>
                 <div class="bottom-part">
-                    <p class="description">
+                    <p v-if="!isEditing" class="description">
                         {{ reply.text }}
                     </p>
+                    <input v-if="isEditing && editedComment === reply.id" class="reply-text" id="reply-text" type="text"
+                        :placeholder="reply.text">
                     <div class="actions">
                         <div class="likes">
                             <div class="like">
@@ -38,7 +40,8 @@
                                 <p>{{ reply.dislikes }}</p>
                             </div>
                         </div>
-                        <button class="action">Save</button>
+                        <button @click="sendEditedReply(reply)" v-if="isEditing && editedComment === reply.id"
+                            class="action">Save</button>
                     </div>
                 </div>
             </div>
@@ -61,7 +64,7 @@ export default {
         }
     },
     emits: [
-        'update:replies'
+        'update:replies',
     ],
     methods: {
         async deleteReply(reply) {
@@ -69,11 +72,19 @@ export default {
             const newReplies = await this.commentStore.getReplies(reply.parentCommentId);
             this.$emit('update:replies', newReplies);
         },
-        editReply() {
-
+        editReply(reply) {
+            this.isEditing = true;
+            this.editedComment = reply.id;
         },
-        sendEditedReply() {
-
+        async sendEditedReply(reply) {
+            const text = document.querySelector('#reply-text').value;
+            if (text.length > 0) {
+                await this.commentStore.editComment(reply.id, text, reply.parentComic.id);
+                const newReplies = await this.commentStore.getReplies(reply.parentCommentId);
+                this.$emit('update:replies', newReplies);
+            }
+            this.isEditing = false;
+            this.editComments = NaN;
         },
         isUsersComment(reply) {
             return this.commentStore.isUsersComment(reply);
@@ -82,7 +93,8 @@ export default {
     setup() {
         const commentStore = useCommentStore();
         const isEditing = ref(false);
-        return { commentStore, isEditing }
+        const editedComment = ref(NaN);
+        return { commentStore, isEditing, editedComment }
     }
 }
 </script>
