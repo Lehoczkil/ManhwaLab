@@ -9,11 +9,11 @@
                         <div class="date-container">
                             <p>{{ reply.commendtedAt }}</p>
                         </div>
-                        <div class="crud-container">
-                            <button>
+                        <div v-if="isUsersComment(reply)" class="crud-container">
+                            <button @click="deleteReply(reply)">
                                 <img src="../assets/delete.png" class="star" alt="delete icon">
                             </button>
-                            <button>
+                            <button @click="editReply">
                                 <img src="../assets/edit.png" class="star" alt="edit icon">
                             </button>
                         </div>
@@ -47,6 +47,9 @@
 </template>
 
 <script>
+import { useCommentStore } from '@/stores/CommentStore';
+import { ref } from 'vue';
+
 export default {
     name: "Replies",
     props: {
@@ -56,12 +59,35 @@ export default {
                 return [];
             }
         }
+    },
+    emits: [
+        'update:replies'
+    ],
+    methods: {
+        async deleteReply(reply) {
+            await this.commentStore.deleteComment(reply.id, reply.parentComic.id);
+            const newReplies = await this.commentStore.getReplies(reply.parentCommentId);
+            this.$emit('update:replies', newReplies);
+        },
+        editReply() {
+
+        },
+        sendEditedReply() {
+
+        },
+        isUsersComment(reply) {
+            return this.commentStore.isUsersComment(reply);
+        }
+    },
+    setup() {
+        const commentStore = useCommentStore();
+        const isEditing = ref(false);
+        return { commentStore, isEditing }
     }
 }
 </script>
 
 <style scoped>
-
 .replies {
     padding-left: 5vw;
 }
@@ -75,6 +101,7 @@ export default {
     min-width: 130px;
     width: 10vw;
 }
+
 .name-container {
     display: flex;
     justify-content: space-between;
