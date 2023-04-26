@@ -94,7 +94,6 @@ export const useCommentStore = defineStore("commentStore", {
     },
     isUsersComment(comment) {
       const userStore = useUserStore();
-      userStore.getUser();
       return comment.parentUserProfile.username === userStore.username;
     },
   },
