@@ -26,20 +26,20 @@
 
                 <div class="actions">
                     <div class="likes">
-                        <div v-if="!isUsersComment" class="like">
+                        <div v-if="!isUsersComment && isLoggedIn()" class="like">
                             <button @click="increaseLike(true)">
                                 <img class="star" src="../assets/like.png" alt="like">
                             </button>
                             <p>{{ comment.likes }}</p>
                         </div>
-                        <div v-if="!isUsersComment" class="like">
+                        <div v-if="!isUsersComment && isLoggedIn()" class="like">
                             <button @click="increaseLike(false)">
                                 <img class="star" src="../assets/dislike.png" alt="dislike">
                             </button>
                             <p>{{ comment.dislikes }}</p>
                         </div>
                     </div>
-                    <button v-if="!isEditing" @click="reply" class="action">Reply</button>
+                    <button v-if="!isEditing && isLoggedIn()" @click="reply" class="action">Reply</button>
                     <button v-if="isEditing" @click="sendEditedComment" class="action">Save</button>
                 </div>
             </div>
@@ -203,6 +203,7 @@
 
 <script>
 import { useCommentStore } from '@/stores/CommentStore'
+import { useUserStore } from '@/stores/UserStore'
 import Replies from './Replies'
 import { ref } from 'vue'
 
@@ -247,18 +248,20 @@ export default {
         },
         cancel() {
             this.isReplying = false;
+        },
+        isLoggedIn() {
+            return this.userStore.isLoggedIn();
         }
     },
     async setup(props) {
         const commentStore = useCommentStore()
-        const isUsersComment = commentStore.isUsersComment(props.comment);
-
-
+        const userStore = useUserStore();
+        const isUsersComment = ref(commentStore.isUsersComment(props.comment));
         const isEditing = ref(false);
         const isReplying =  ref(false);
         const replies = ref(await commentStore.getReplies(props.comment.id));
 
-        return { commentStore, isUsersComment, isEditing, isReplying, replies }
+        return { userStore, commentStore, isUsersComment, isEditing, isReplying, replies }
     }
 }
 </script>
