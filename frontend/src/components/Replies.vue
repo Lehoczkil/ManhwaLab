@@ -27,13 +27,13 @@
                         :placeholder="reply.text">
                     <div class="actions">
                         <div class="likes">
-                            <div class="like">
+                            <div v-if="!isUsersComment(reply) && isLoggedIn()" class="like">
                                 <button @click="increaseLike(reply, true)">
                                     <img class="star" src="../assets/like.png" alt="like">
                                 </button>
                                 <p>{{ reply.likes }}</p>
                             </div>
-                            <div class="like">
+                            <div v-if="!isUsersComment(reply) && isLoggedIn()" class="like">
                                 <button @click="increaseLike(reply, false)">
                                     <img class="star" src="../assets/dislike.png" alt="dislike">
                                 </button>
@@ -51,6 +51,7 @@
 
 <script>
 import { useCommentStore } from '@/stores/CommentStore';
+import { useUserStore } from '@/stores/UserStore';
 import { ref } from 'vue';
 
 export default {
@@ -86,20 +87,25 @@ export default {
             this.isEditing = false;
             this.editComments = NaN;
         },
-        isUsersComment(reply) {
-            return this.commentStore.isUsersComment(reply);
-        },
         async increaseLike(reply, isLike) {
             await this.commentStore.increaseLike(reply.parentComic.id, reply.id, isLike);
             const newReplies = await this.commentStore.getReplies(reply.parentCommentId);
             this.$emit('update:replies', newReplies);
+        },
+        isLoggedIn() {
+            return this.userStore.isLoggedIn();
+        },
+        isUsersComment(reply) {
+            
+            return this.commentStore.isUsersComment(reply);
         }
     },
     setup() {
         const commentStore = useCommentStore();
+        const userStore = useUserStore();
         const isEditing = ref(false);
         const editedComment = ref(NaN);
-        return { commentStore, isEditing, editedComment }
+        return { commentStore, userStore, isEditing, editedComment }
     }
 }
 </script>
