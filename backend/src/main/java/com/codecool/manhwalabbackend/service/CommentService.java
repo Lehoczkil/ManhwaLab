@@ -61,7 +61,6 @@ public class CommentService {
     }
 
     public void increaseLikeCount(Long commentId) {
-        //TODO do not increase if the user already likes the comment before
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         UserProfile userProfile = userProfileService.getUser(username);
         Comment comment = commentRepository.getById(commentId);
@@ -70,6 +69,9 @@ public class CommentService {
             usersWhoLiked.add(userProfile);
             comment.setUsersWhoLiked(usersWhoLiked);
             commentRepository.increaseLikeCount(commentId);
+        } else {
+            usersWhoLiked.remove(userProfile);
+            commentRepository.decreaseLikeCount(commentId);
         }
     }
 
