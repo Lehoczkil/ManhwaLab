@@ -5,6 +5,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.List;
 
 @Entity
 @Setter
@@ -28,4 +29,6 @@ public class Comment {
     private Integer dislikes;
     @ManyToOne(cascade = CascadeType.ALL)
     private ComicProfile parentComic;
+    @ManyToMany(cascade = CascadeType.ALL)
+    private List<UserProfile> usersWhoLiked;
 }
