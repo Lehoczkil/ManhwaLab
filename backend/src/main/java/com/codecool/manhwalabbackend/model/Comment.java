@@ -31,4 +31,6 @@ public class Comment {
     private ComicProfile parentComic;
     @ManyToMany(cascade = CascadeType.ALL)
     private List<UserProfile> usersWhoLiked;
+    @ManyToMany(cascade = CascadeType.ALL)
+    private List<UserProfile> usersWhoDisliked;
 }
