@@ -85,7 +85,7 @@ export default {
                 this.$emit('update:replies', newReplies);
             }
             this.isEditing = false;
-            this.editComments = NaN;
+            this.editComment = NaN;
         },
         async increaseLike(reply, isLike) {
             await this.commentStore.increaseLike(reply.parentComic.id, reply.id, isLike);
