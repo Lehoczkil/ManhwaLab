@@ -71,29 +71,57 @@ public class CommentService {
             commentRepository.increaseLikeCount(commentId);
         } else {
             usersWhoLiked.remove(userProfile);
+            comment.setUsersWhoLiked(usersWhoLiked);
             commentRepository.decreaseLikeCount(commentId);
+        }
+        List<UserProfile> usersWhoDisliked = comment.getUsersWhoDisliked();
+        changeLikeStatus(commentId, userProfile, comment, usersWhoDisliked, true);
+    }
+
+    private void changeLikeStatus(Long commentId, UserProfile userProfile, Comment comment, List<UserProfile> users, boolean isLike) {
+        if (users.contains(userProfile)) {
+            users.remove(userProfile);
+            if (isLike) {
+                comment.setUsersWhoDisliked(users);
+                commentRepository.decreaseDislikeCount(commentId);
+            } else {
+                comment.setUsersWhoLiked(users);
+                commentRepository.decreaseLikeCount(commentId);
+            }
         }
     }
 
     public void increaseDislikeCount(Long commentId) {
-        //TODO do not increase if the user already disliked the comment before
-        commentRepository.increaseDislikeCount(commentId);
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        UserProfile userProfile = userProfileService.getUser(username);
+        Comment comment = commentRepository.getById(commentId);
+        List<UserProfile> usersWhoDisliked = comment.getUsersWhoDisliked();
+        if (!usersWhoDisliked.contains(userProfile)) {
+            usersWhoDisliked.add(userProfile);
+            comment.setUsersWhoDisliked(usersWhoDisliked);
+            commentRepository.increaseDislikeCount(commentId);
+        } else {
+            usersWhoDisliked.remove(userProfile);
+            comment.setUsersWhoDisliked(usersWhoDisliked);
+            commentRepository.decreaseDislikeCount(commentId);
+        }
+        List<UserProfile> usersWhoLiked = comment.getUsersWhoLiked();
+        System.out.println("Users = likers");
+        changeLikeStatus(commentId, userProfile, comment, usersWhoLiked, false);
     }
-
-    //TODO decrease likes if user dislikes, but already liked before, vica-versa
 
     private Comment newCommentBuilder(Long comicId, String commentText, String username) {
         return new Comment(
                 comicId, commentText, userProfileService.getUser(username),
                 null, CommentType.COMMENT, null,
-                0, 0, comicProfileService.getComicProfileById(comicId), new ArrayList<>());
+                0, 0, comicProfileService.getComicProfileById(comicId), new ArrayList<>(), new ArrayList<>());
     }
 
     private Comment newCommentBuilder(Long comicId, String commentText, String username, Long commentId) {
         return new Comment(
                 comicId, commentText, userProfileService.getUser(username),
                 null, CommentType.REPLY, commentId,
-                0, 0, comicProfileService.getComicProfileById(comicId), new ArrayList<>());
+                0, 0, comicProfileService.getComicProfileById(comicId), new ArrayList<>(), new ArrayList<>());
     }
 
 }
