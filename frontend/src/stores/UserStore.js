@@ -16,7 +16,8 @@ export const useUserStore = defineStore("userStore", {
   }),
   actions: {
     isLoggedIn() {
-      return JSON.parse(localStorage.getItem("tokenStore")).token !== "";
+      return JSON.parse(localStorage.getItem("tokenStore")) !== null &&
+      JSON.parse(localStorage.getItem("tokenStore")).token !== "";
     },
     async getUser(token = JSON.parse(localStorage.getItem("tokenStore")).token) {
       const response = await fetch("/api/manhwaLab/profile", {
