@@ -5,12 +5,16 @@
                 <div class="img-container">
                     <img :src="`${currentComic.coverPageBig}`" alt="Cover for the comic" class="pic">
                     <div class="btn-row">
-                        <button v-if="tokenStore.isTokenExists()" class="add" @click="handleAdd('Reading')">Add to Reading</button>
-                        <button v-if="tokenStore.isTokenExists()" class="add" @click="handleAdd('Later')">Add to Read Later</button>
+                        <button v-if="tokenStore.isTokenExists()" class="add" @click="handleAdd('Reading')">Add to
+                            Reading</button>
+                        <button v-if="tokenStore.isTokenExists()" class="add" @click="handleAdd('Later')">Add to Read
+                            Later</button>
                     </div>
                     <div class="btn-row">
-                        <button v-if="tokenStore.isTokenExists()" class="add" @click="handleAdd('Favourites')">Add to Favourites</button>
-                        <button v-if="tokenStore.isTokenExists()" class="add" @click="handleAdd('Finished')">Add to Finished</button>
+                        <button v-if="tokenStore.isTokenExists()" class="add" @click="handleAdd('Favourites')">Add to
+                            Favourites</button>
+                        <button v-if="tokenStore.isTokenExists()" class="add" @click="handleAdd('Finished')">Add to
+                            Finished</button>
                     </div>
                 </div>
                 <div class="content">
@@ -115,22 +119,19 @@
             </div>
         </main>
         <section class="comment-section">
-            <div style=" width: 100%;">
+            <div style=" width: 100%;" v-if="tokenStore.isTokenExists()">
                 <textarea placeholder="Join the discussion..."
-                    style="width: 100%; padding: 1vw; max-width: 100%; border-radius: clamp(5px, 0.7vw, 20px)"></textarea>
+                    style="width: 100%; padding: 1vw; max-width: 100%; border-radius: clamp(5px, 0.7vw, 20px)"
+                    id="commentText"></textarea>
             </div>
             <div class="auth-container">
-                <button class="auth" v-if="!tokenStore.isTokenExists()">Sign in</button>
-                <button class="auth" v-if="!tokenStore.isTokenExists()">Login</button>
-
-                <button class="auth" v-if="tokenStore.isTokenExists()">Send</button>
+                <button class="auth" v-if="tokenStore.isTokenExists()" @click="sendComment">Send</button>
             </div>
-            <div class="comment-container">
-                <Comment />
-                <Comment />
-                <Comment />
-                <Comment />
-            </div>
+            <Suspense>
+                <div class="comment-container">
+                    <Comment v-for="comment in comments" :key="comment.id" :comment="comment" />
+                </div>
+            </Suspense>
         </section>
         <ShortList title="Recommended" />
     </article>
@@ -303,7 +304,7 @@ article,
     color: white !important;
 }
 
-.auth-container{
+.auth-container {
     width: 30vw;
     display: flex;
     justify-content: space-between;
@@ -420,13 +421,14 @@ import ShortList from '../components/ShortList'
 import { useComicStore } from '@/stores/ComicStore'
 import { useUserStore } from '@/stores/UserStore'
 import { useTokenStore } from '@/stores/TokenStore'
+import { useCommentStore } from '@/stores/CommentStore'
 import { storeToRefs } from 'pinia'
 
 export default {
     name: 'ComicProfile',
     components: {
         Comment,
-        ShortList
+        ShortList,
     },
     props: {
         id: String
@@ -445,7 +447,7 @@ export default {
             if (target == "Reading") {
                 userStore.updateReading(this.currentComic)
             }
-            
+
             if (target == "Later") {
                 userStore.updateLater(this.currentComic)
             }
@@ -457,20 +459,30 @@ export default {
             if (target == "Favourites") {
                 userStore.updateFavourites(this.currentComic)
             }
+        },
+        sendComment() {
+            const commentText = document.querySelector("#commentText").value;
+            if (commentText.length > 0) {
+                this.commentStore.addComment(commentText, this.id);
+            }
         }
     },
     setup(props) {
         const comicStore = useComicStore()
         const tokenStore = useTokenStore()
+        const commentStore = useCommentStore()
 
         comicStore.getComicById(props.id)
         comicStore.increaseViewCount(props.id)
         comicStore.getRecommendations(props.id)
+        commentStore.getComments(props.id)
 
         const { currentComic } = storeToRefs(comicStore)
         const { token } = storeToRefs(tokenStore)
+        const { comments } = storeToRefs(commentStore)
 
-        return { comicStore, currentComic, tokenStore, token }
+
+        return { comicStore, currentComic, tokenStore, token, commentStore, comments }
     }
 }
 </script>

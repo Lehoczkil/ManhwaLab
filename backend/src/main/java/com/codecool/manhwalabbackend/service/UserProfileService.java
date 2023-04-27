@@ -129,7 +129,10 @@ public class UserProfileService implements UserDetailsService {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         UserProfile userProfile = userProfileRepository.getUserProfileByUsername(username);
         Long comicId = comicProfileService.getComicProfileByName(title).getId();
-        List<ComicProfile> newReadLater = userProfile.getReadLater().stream().filter(item -> !item.getId().equals(comicId)).collect(Collectors.toList());
+        List<ComicProfile> newReadLater = userProfile.getReadLater()
+                .stream()
+                .filter(item -> !item.getId().equals(comicId))
+                .collect(Collectors.toList());
         userProfile.setReadLater(newReadLater);
         userProfileRepository.save(userProfile);
     }
