@@ -6,17 +6,15 @@ import com.codecool.manhwalabbackend.service.ComicProfileService;
 import com.codecool.manhwalabbackend.service.popularity.PopularityService;
 import com.codecool.manhwalabbackend.service.recommendations.ComicRecommendationsService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.List;
 
 @RestController
-@CrossOrigin({"http://localhost:8080", "http://localhost:8081"})
+@CrossOrigin({"http://localhost:8081"})
 @RequestMapping("/api/manhwaLab")
 @RequiredArgsConstructor
 public class ComicProfileController {
@@ -31,19 +29,12 @@ public class ComicProfileController {
         return comicProfileService.getComicProfileByName(comicTitle);
     }
 
-    @PostMapping(value = "/updateView/{comicId}")
+    @PostMapping(value = "/{comicId}/update-view")
     public ResponseEntity<String> updateComicViewNumbers(@PathVariable Long comicId) {
         comicProfileService.updateComicViews(comicId);
         popularityService.updateDailyViewForComic(comicId, LocalDate.now());
         recommendationsService.getRecommendedComics(comicId);
-//
-//        ResponseEntity<String> responseEntity = new ResponseEntity<>("Success", HttpStatus.CREATED);
-//        responseEntity.getHeaders().add("Access-Control-Max-Age" ,"600" );
-//        return responseEntity;
-
-        HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.set("Access-Control-Max-Age" ,"600");
-        return ResponseEntity.ok().headers(httpHeaders).body("Success");
+        return new ResponseEntity<>("Success", HttpStatus.CREATED);
     }
 
     @GetMapping(value = "/{comicId}/recommendations")
