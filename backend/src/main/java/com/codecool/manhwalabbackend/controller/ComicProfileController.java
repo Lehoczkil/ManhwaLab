@@ -29,7 +29,7 @@ public class ComicProfileController {
         return comicProfileService.getComicProfileByName(comicTitle);
     }
 
-    @PostMapping(value = "/{comicId}/update-view")
+    @PostMapping(value = "/updateView/{comicId}")
     public ResponseEntity<String> updateComicViewNumbers(@PathVariable Long comicId) {
         comicProfileService.updateComicViews(comicId);
         popularityService.updateDailyViewForComic(comicId, LocalDate.now());

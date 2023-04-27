@@ -39,10 +39,13 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                 .addFilter(new JwtUsernamePasswordAuthenticationFilter(authenticationManager()))
                 .addFilterAfter(new JwtTokenVerifier(), JwtUsernamePasswordAuthenticationFilter.class)
                 .authorizeRequests()
-                .antMatchers("/api/manhwaLab/top/**", "/api/manhwaLab/manhwaList", "/api/manhwaLab/updateView/**", "/api/manhwaLab/genres", "/api/manhwaLab/themes", "/api/manhwaLab/types", "/api/manhwaLab/registration", "/login", "/registration", "/images/*", "/api/manhwaLab/*/recommendations", "/css/**", "/js/**", "/comics", "/index.html", "/", "/img/**", "/favicon.ico", "/favicon.png", "/comics/**").permitAll()
+//                .antMatchers("/api/manhwaLab/top/**", "/api/manhwaLab/manhwaList", "/api/manhwaLab/*/update-view", "/api/manhwaLab/genres", "/api/manhwaLab/themes", "/api/manhwaLab/types", "/api/manhwaLab/registration", "/login", "/registration", "/images/*", "/api/manhwaLab/*/recommendations", "/api/manhwaLab/comments/*", "/api/manhwaLab/replies/*").permitAll()
+                .antMatchers("/api/manhwaLab/top/**", "/api/manhwaLab/manhwaList", "/api/manhwaLab/updateView/**", "/api/manhwaLab/genres", "/api/manhwaLab/themes", "/api/manhwaLab/types", "/api/manhwaLab/registration", "/login", "/registration", "/images/*", "/api/manhwaLab/*/recommendations", "/api/manhwaLab/comments/*", "/api/manhwaLab/replies/*","/css/**", "/js/**", "/comics", "/index.html", "/", "/img/**", "/favicon.ico", "/favicon.png", "/comics/**").permitAll()
                 .antMatchers("/api/manhwaLab/profile").hasRole(ApplicationUserRoles.USER.name())
-                .antMatchers("/api/manhwaLab/addToUser", "/api/manhwaLab/addToReading", "/api/manhwaLab/addToReadLater", "/api/manhwaLab/addToFinished", "/api/manhwaLab/addToFavourites").hasRole(ApplicationUserRoles.USER.name())
+//                .antMatchers("/api/manhwaLab/addToUser", "/api/manhwaLab/addToReading", "/api/manhwaLab/addToReadLater", "/api/manhwaLab/addToFinished", "/api/manhwaLab/addToFavourites").hasRole(ApplicationUserRoles.USER.name())
+                .antMatchers("/api/manhwaLab/addToUser", "/api/manhwaLab/addToReading", "/api/manhwaLab/addToReadLater", "/api/manhwaLab/addToFinished", "/api/manhwaLab/addToFavourites", "/api/manhwaLab/add-comment/*", "/api/manhwaLab/delete-comment/*", "/api/manhwaLab/edit-comment/*", "/api/manhwaLab/add-reply/*").hasRole(ApplicationUserRoles.USER.name())
                 .antMatchers("/api/manhwaLab/removeFromReading", "/api/manhwaLab/removeFromReadLater", "/api/manhwaLab/removeFromFinished", "/api/manhwaLab/removeFromFavourites", "/user-profile").hasRole(ApplicationUserRoles.USER.name())
+//                .antMatchers("/api/manhwaLab/removeFromReading", "/api/manhwaLab/removeFromReadLater", "/api/manhwaLab/removeFromFinished", "/api/manhwaLab/removeFromFavourites").hasRole(ApplicationUserRoles.USER.name())
                 .anyRequest()
                 .authenticated();
 
@@ -64,8 +67,8 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("http://localhost:8080", "http://localhost:8081", "http://manhwalab-static.s3-website.eu-central-1.amazonaws.com/"));
-        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PATCH", "PUT", "DELETE", "OPTIONS"));
+        configuration.setAllowedOrigins(Arrays.asList("http://localhost:8081"));
+        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PATCH", "PUT", "DELETE"));
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
         return source;

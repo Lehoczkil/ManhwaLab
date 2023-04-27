@@ -15,10 +15,13 @@ export const useUserStore = defineStore("userStore", {
     readLater: [],
   }),
   actions: {
-    async getUser() {
-      const response = await fetch(`${process.env.VUE_APP_API_BASE}/api/manhwaLab/profile`, {
+    isLoggedIn() {
+      return JSON.parse(localStorage.getItem("tokenStore")).token !== "";
+    },
+    async getUser(token = JSON.parse(localStorage.getItem("tokenStore")).token) {
+      const response = await fetch("/api/manhwaLab/profile", {
         headers: {
-          Authorization: JSON.parse(localStorage.getItem("tokenStore")).token,
+          Authorization: token,
         },
       });
 

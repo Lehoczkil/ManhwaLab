@@ -114,6 +114,7 @@ input:hover {
 
 <script>
 import { useTokenStore } from '@/stores/TokenStore';
+
 export default {
     name: 'Login',
     computed: {
@@ -143,11 +144,12 @@ export default {
                 })
 
                 if (response.headers.get('Authorization')) {
-                    this.$emit('close')
-                    const tokenStore = useTokenStore()
-                    tokenStore.setToken(response.headers.get('Authorization'))
+                    this.$emit('close');
+                    const tokenStore = useTokenStore();
+                    tokenStore.setToken(response.headers.get('Authorization'));
+                    this.$router.push('/');
                 }
-
+                
                 this.isValid = true
             } else {
                 this.isValid = false

@@ -9,6 +9,8 @@ export const useTokenStore = defineStore("tokenStore", {
     setToken(token) {
       if (token.includes("Bearer")) {
         this.token = token;
+        const userStore = useUserStore();
+        userStore.getUser(token);
       } else {
         console.error("Access token not exists");
       }
