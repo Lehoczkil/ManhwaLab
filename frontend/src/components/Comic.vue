@@ -126,7 +126,8 @@ export default {
                 this.commentStore.getComments(this.comic.id)
                 this.comicStore.getRecommendations(this.comic.id)
                 this.$router.push(`/comics/${this.comic.id}`)
-                document.getElementById('app').scrollIntoView({ behavior: 'smooth' });
+                window.scrollTo(0,0);
+                // document.getElementById('app').scrollIntoView({ behavior: 'smooth' });
             } else {
                 this.$router.push(`/comics/${this.comic.comicId}`)
             }
