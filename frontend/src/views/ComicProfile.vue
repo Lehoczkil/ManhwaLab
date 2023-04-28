@@ -299,6 +299,7 @@ article,
 }
 
 .comment-section {
+    margin-top: 3vw;
     background: black;
     padding: 2vw;
     color: white !important;
